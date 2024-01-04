@@ -1,5 +1,8 @@
+import { Button } from '@chakra-ui/button';
+import { Box, Flex, Heading } from '@chakra-ui/layout';
 import { useRef, useState } from 'react';
 import './App.css';
+import PDFNavigatorComponent from './components/PDFNavigatorComponent';
 import { PdfUrlViewer } from './components/PdfURLViewer';
 
 function App() {
@@ -9,30 +12,29 @@ function App() {
   const windowRef: any = useRef();
   const url = 'sample.pdf';
 
-  const scrollToItem = () => {
-    windowRef.current && windowRef.current.scrollToItem(page - 1, 'start');
-  };
+  function obtainFilename(url: string) {
+    const urlParts = url.split('/');
+    return urlParts[urlParts.length - 1];
+  }
 
   return (
-    <div className='App'>
-      <h1>Pdf Viewer</h1>
-      <div>
-        <input value={page} onChange={(e) => setPage(e.target.value)} />
-        <button type='button' onClick={scrollToItem}>
-          goto
-        </button>
-        Zoom
-        <button type='button' onClick={() => setScale((v) => v + 0.1)}>
-          +
-        </button>
-        <button type='button' onClick={() => setScale((v) => v - 0.1)}>
-          -
-        </button>
-      </div>
+    <Box w='full' className='App'>
+      <Flex justifyContent='space-between' alignItems='center'>
+        <Heading>{obtainFilename(url)}</Heading>
+        <Button>X</Button>
+      </Flex>
+      <PDFNavigatorComponent
+        scale={scale}
+        setScale={setScale}
+        page={page}
+        setPage={setPage}
+        windowRef={windowRef}
+      />
+
       <br />
 
       <PdfUrlViewer url={url} scale={scale} windowRef={windowRef} />
-    </div>
+    </Box>
   );
 }
 
