@@ -8,7 +8,7 @@ import { ArrowUpIcon } from './ArrowUpIcon';
 type PDFNavigatorComponentProps = {
   scale?: number;
   setScale?: any;
-  page?: number;
+  page: number;
   setPage?: any;
   windowRef?: any;
 };
@@ -16,7 +16,6 @@ type PDFNavigatorComponentProps = {
 const PDFNavigatorComponent: FC<PDFNavigatorComponentProps> = ({
   page,
   setPage,
-  scale,
   windowRef,
   setScale,
 }) => {

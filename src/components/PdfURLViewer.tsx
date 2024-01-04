@@ -12,7 +12,7 @@ export const PdfUrlViewer: React.FC<PdfUrlViewerProps> = ({
   url,
   ...others
 }: PdfUrlViewerProps) => {
-  const pdfRef = useRef();
+  const pdfRef: any = useRef();
 
   const [itemCount, setItemCount] = useState(0);
 
@@ -26,7 +26,7 @@ export const PdfUrlViewer: React.FC<PdfUrlViewerProps> = ({
 
         // Fetch the first page
         var pageNumber = 1;
-        pdf.getPage(pageNumber).then(function (page: any) {
+        pdf.getPage(pageNumber).then(function () {
           console.log('Page loaded');
         });
       },

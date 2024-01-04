@@ -25,7 +25,7 @@ const PdfViewer: FC<PdfViewerProps> = ({
 }: PdfViewerProps) => {
   const [pages, setPages] = useState([]);
 
-  const listRef = useRef();
+  const listRef: any = useRef();
 
   const {
     ref,
@@ -91,7 +91,7 @@ const PdfViewer: FC<PdfViewerProps> = ({
         itemCount={itemCount}
         itemSize={handleItemSize}
       >
-        {({ index, style }) => {
+        {({ index, style }: any) => {
           fetchPage(index);
           return (
             <Page style={style}>
