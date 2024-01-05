@@ -1,9 +1,7 @@
 import { Button } from '@chakra-ui/button';
 import { Input } from '@chakra-ui/input';
 import { Flex } from '@chakra-ui/layout';
-import { FC } from 'react';
-import { ArrowDownIcon } from './ArroDownIcon';
-import { ArrowUpIcon } from './ArrowUpIcon';
+import { FC, useEffect } from 'react';
 //TODO: total page count
 type PDFNavigatorComponentProps = {
   scale?: number;
@@ -11,6 +9,8 @@ type PDFNavigatorComponentProps = {
   page: number;
   setPage?: any;
   windowRef?: any;
+  text?: string;
+  setText?: any;
 };
 
 const PDFNavigatorComponent: FC<PDFNavigatorComponentProps> = ({
@@ -18,20 +18,29 @@ const PDFNavigatorComponent: FC<PDFNavigatorComponentProps> = ({
   setPage,
   windowRef,
   setScale,
+  text,
+  setText,
 }) => {
   const scrollToItem = () => {
     windowRef.current && windowRef.current.scrollToItem(page - 1, 'start');
   };
+
+  useEffect(() => {
+    scrollToItem();
+  }, [page]);
+
   return (
     <Flex>
-      <ArrowDownIcon color='black' />
-      <Button>
-        <ArrowUpIcon />
-      </Button>
-      <Input value={page} onChange={(e) => setPage(e.target.value)} />
-      <Button type='button' onClick={scrollToItem}>
-        goto
-      </Button>
+      <Button onClick={() => setPage((p: number) => p - 1)}>Prev page</Button>
+      <Button onClick={() => setPage((p: number) => p + 1)}>Next page</Button>
+      <Input
+        value={page}
+        onChange={(e) => {
+          setPage(e.target.value);
+        }}
+        type='text'
+      />
+      <Input value={text} onChange={(e) => setText(e.target.value)} />
       Zoom
       <Button type='button' onClick={() => setScale((v: number) => v + 0.1)}>
         +
