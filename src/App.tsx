@@ -10,6 +10,7 @@ function App() {
   const [scale, setScale] = useState(1);
   const [page, setPage] = useState<any>(1);
   const windowRef: any = useRef();
+  const [text, setText] = useState('');
   const url = 'sample.pdf';
 
   function obtainFilename(url: string) {
@@ -29,11 +30,13 @@ function App() {
         page={page}
         setPage={setPage}
         windowRef={windowRef}
+        text={text}
+        setText={setText}
       />
 
       <br />
 
-      <PdfUrlViewer url={url} scale={scale} windowRef={windowRef} />
+      <PdfUrlViewer url={url} scale={scale} windowRef={windowRef} text={text} />
     </Box>
   );
 }

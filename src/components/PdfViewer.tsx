@@ -12,6 +12,7 @@ type PdfViewerProps = {
   scale?: number;
   gap?: number;
   windowRef?: any;
+  text: string;
 };
 
 const PdfViewer: FC<PdfViewerProps> = ({
@@ -22,6 +23,7 @@ const PdfViewer: FC<PdfViewerProps> = ({
   scale,
   gap,
   windowRef,
+  text,
 }: PdfViewerProps) => {
   const [pages, setPages] = useState([]);
 
@@ -95,7 +97,7 @@ const PdfViewer: FC<PdfViewerProps> = ({
           fetchPage(index);
           return (
             <Page style={style}>
-              <PdfPage page={pages[index]} scale={scale} />
+              <PdfPage page={pages[index]} scale={scale} text={text} />
             </Page>
           );
         }}

@@ -20,3 +20,12 @@
   cursor: text;
   transform-origin: 0% 0%;
 }
+
+.highlighted {
+  background-color: yellow;
+  border-radius: 2px;
+  position: absolute;
+  z-index: 1;
+  transform-origin: 0% 0%;
+  cursor: text;
+}

@@ -5,6 +5,7 @@ import './PdfPage.css';
 type PdfPageProps = {
   page: any;
   scale?: number;
+  text: string;
 };
 
 const PdfPage = React.memo((props: PdfPageProps) => {
@@ -39,6 +40,24 @@ const PdfPage = React.memo((props: PdfPageProps) => {
   }
 
   useEffect(() => {
+    highlightText(textLayerRef.current, props.text);
+  }, [props.text, textLayerRef.current]);
+
+  function highlightText(textLayer: any, text: string) {
+    console.log({ textLayer });
+    let collection: HTMLCollection = textLayer.children;
+    console.log(textLayer.children);
+    let spanArray: any = Array.from(collection);
+    console.log(spanArray);
+    //if (spanArray[0] !== undefined) spanArray[0].style.backgroundColor = 'red';
+    spanArray.map((span: any) => {
+      console.log(span.textContent);
+      if (span.textContent.includes('Virtual'))
+        span.classList.add('highlighted');
+    });
+  }
+
+  useEffect(() => {
     if (!page) {
       return;
     }
@@ -70,15 +89,17 @@ const PdfPage = React.memo((props: PdfPageProps) => {
         }
 
         // Pass the data to the method for rendering of text over the pdf canvas.
-        pdfjs.renderTextLayer({
+        var textToRender = pdfjs.renderTextLayer({
           textContent: textContent,
           container: textLayerRef.current,
           viewport: viewport,
           textDivs: [],
         });
 
+        //console.log({ textToRender });
+
         // Draw a blue rectangle on the canvas
-        printRectInCanvas(context);
+        //printRectInCanvas(context);
       });
     }
   }, [page, scale]);
@@ -86,7 +107,7 @@ const PdfPage = React.memo((props: PdfPageProps) => {
   return (
     <div className='PdfPage'>
       <canvas id='canvas' ref={canvasRef} />
-      <div ref={textLayerRef} className='PdfPage__textLayer' />
+      <div id='textLayer' ref={textLayerRef} className='PdfPage__textLayer' />
     </div>
   );
 });
