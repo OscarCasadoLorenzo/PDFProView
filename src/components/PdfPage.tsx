@@ -14,6 +14,30 @@ const PdfPage = React.memo((props: PdfPageProps) => {
 
   const textLayerRef: any = useRef();
 
+  function numberOfOccurrences(textContent: any) {
+    let textOCR = '';
+    //console.log(textContent.items);
+    textContent.items.map((p: any) => {
+      //console.log(p.str);
+      textOCR = textOCR.concat(p.str);
+    });
+    // console.log(textOCR);
+
+    //Lowercase
+    textOCR = textOCR.toLowerCase();
+
+    // Get number of ocurrences
+    let ocurrences = textOCR.split('boring').length - 1;
+
+    console.log(ocurrences);
+    return ocurrences;
+  }
+
+  function printRectInCanvas(canvasContext: any) {
+    canvasContext.fillStyle = 'blue';
+    canvasContext.fillRect(50, 50, 100, 100); // Adjust the coordinates (x, y) and size (width, height)
+  }
+
   useEffect(() => {
     if (!page) {
       return;
@@ -34,11 +58,13 @@ const PdfPage = React.memo((props: PdfPageProps) => {
       };
       const renderTask = page.render(renderContext);
       renderTask.promise.then(function () {
-        // console.log("Page rendered");
+        // console.log("Page rendered"); // Adjust the coordinates (x, y) and size (width, height)
       });
 
       page.getTextContent().then((textContent: any) => {
-        // console.log(textContent);
+        //console.log(textContent);
+        //console.log(numberOfOccurrences(textContent));
+
         if (!textLayerRef.current) {
           return;
         }
@@ -50,13 +76,16 @@ const PdfPage = React.memo((props: PdfPageProps) => {
           viewport: viewport,
           textDivs: [],
         });
+
+        // Draw a blue rectangle on the canvas
+        printRectInCanvas(context);
       });
     }
   }, [page, scale]);
 
   return (
     <div className='PdfPage'>
-      <canvas ref={canvasRef} />
+      <canvas id='canvas' ref={canvasRef} />
       <div ref={textLayerRef} className='PdfPage__textLayer' />
     </div>
   );
