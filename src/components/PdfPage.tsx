@@ -42,26 +42,18 @@ const PdfPage = (props: PdfPageProps) => {
     canvasContext.fillRect(50, 50, 100, 100); // Adjust the coordinates (x, y) and size (width, height)
   }
 
-  let collection: HTMLCollection;
   useEffect(() => {
-    collection = textLayerRef.current.children;
-  }, []);
-
-  useEffect(() => {
-    console.log(collection);
-    console.log({ collection });
+    const collection: HTMLCollection = textLayerRef.current.children;
     if (collection !== null && collection !== undefined) {
-      console.log('collection is not null');
       let spanArray: any = Array.from(collection);
-      console.log(spanArray);
       spanArray.map((span: any) => {
-        console.log(text);
         //TODO: Increase occurence counter inside this if
         if (text !== '' && span.textContent.toLowerCase().includes(text))
           span.classList.add('highlighted');
+        else span.classList.remove('highlighted');
       });
     }
-  }, [text]);
+  }, [textLayerRef, text]);
 
   useEffect(() => {
     if (!page) {
