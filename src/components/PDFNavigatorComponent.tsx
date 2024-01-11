@@ -1,26 +1,21 @@
 import { Button } from '@chakra-ui/button';
 import { Input } from '@chakra-ui/input';
 import { Flex } from '@chakra-ui/layout';
+import { useAtom } from 'jotai';
 import { FC, useEffect } from 'react';
+import { pageAtom, scaleAtom, searchTextAtom } from './atoms';
 //TODO: total page count
 type PDFNavigatorComponentProps = {
-  scale?: number;
-  setScale?: any;
-  page: number;
-  setPage?: any;
   windowRef?: any;
-  text?: string;
-  setText?: any;
 };
 
 const PDFNavigatorComponent: FC<PDFNavigatorComponentProps> = ({
-  page,
-  setPage,
   windowRef,
-  setScale,
-  text,
-  setText,
 }) => {
+  const [page, setPage] = useAtom(pageAtom);
+  const [, setScale] = useAtom(scaleAtom);
+  const [text, setText] = useAtom(searchTextAtom);
+
   const scrollToItem = () => {
     windowRef.current && windowRef.current.scrollToItem(page - 1, 'start');
   };
@@ -36,7 +31,7 @@ const PDFNavigatorComponent: FC<PDFNavigatorComponentProps> = ({
       <Input
         value={page}
         onChange={(e) => {
-          setPage(e.target.value);
+          setPage(Number(e.target.value));
         }}
         type='text'
       />

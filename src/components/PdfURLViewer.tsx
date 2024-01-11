@@ -4,9 +4,7 @@ import PdfViewer from './PdfViewer';
 
 type PdfUrlViewerProps = {
   url: string;
-  scale?: number;
   windowRef?: any;
-  text: string;
 };
 
 export const PdfUrlViewer: React.FC<PdfUrlViewerProps> = ({

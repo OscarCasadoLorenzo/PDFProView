@@ -1,15 +1,18 @@
+import { useAtomValue } from 'jotai';
 import pdfjs from 'pdfjs-dist';
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import './PdfPage.css';
+import { scaleAtom, searchTextAtom } from './atoms';
 
 type PdfPageProps = {
   page: any;
-  scale?: number;
-  text: string;
 };
 
-const PdfPage = React.memo((props: PdfPageProps) => {
-  const { page, scale } = props;
+const PdfPage = (props: PdfPageProps) => {
+  const { page } = props;
+
+  const text = useAtomValue(searchTextAtom);
+  const scale = useAtomValue(scaleAtom);
 
   const canvasRef: any = useRef();
 
@@ -30,7 +33,7 @@ const PdfPage = React.memo((props: PdfPageProps) => {
     // Get number of ocurrences
     let ocurrences = textOCR.split('boring').length - 1;
 
-    console.log(ocurrences);
+    //console.log(ocurrences);
     return ocurrences;
   }
 
@@ -39,23 +42,26 @@ const PdfPage = React.memo((props: PdfPageProps) => {
     canvasContext.fillRect(50, 50, 100, 100); // Adjust the coordinates (x, y) and size (width, height)
   }
 
+  let collection: HTMLCollection;
   useEffect(() => {
-    highlightText(textLayerRef.current, props.text);
-  }, [props.text, textLayerRef.current]);
+    collection = textLayerRef.current.children;
+  }, []);
 
-  function highlightText(textLayer: any, text: string) {
-    console.log({ textLayer });
-    let collection: HTMLCollection = textLayer.children;
-    console.log(textLayer.children);
-    let spanArray: any = Array.from(collection);
-    console.log(spanArray);
-    //if (spanArray[0] !== undefined) spanArray[0].style.backgroundColor = 'red';
-    spanArray.map((span: any) => {
-      console.log(span.textContent);
-      if (span.textContent.includes('Virtual'))
-        span.classList.add('highlighted');
-    });
-  }
+  useEffect(() => {
+    console.log(collection);
+    console.log({ collection });
+    if (collection !== null && collection !== undefined) {
+      console.log('collection is not null');
+      let spanArray: any = Array.from(collection);
+      console.log(spanArray);
+      spanArray.map((span: any) => {
+        console.log(text);
+        //TODO: Increase occurence counter inside this if
+        if (text !== '' && span.textContent.toLowerCase().includes(text))
+          span.classList.add('highlighted');
+      });
+    }
+  }, [text]);
 
   useEffect(() => {
     if (!page) {
@@ -77,13 +83,10 @@ const PdfPage = React.memo((props: PdfPageProps) => {
       };
       const renderTask = page.render(renderContext);
       renderTask.promise.then(function () {
-        // console.log("Page rendered"); // Adjust the coordinates (x, y) and size (width, height)
+        // console.log("Page rendered");
       });
 
       page.getTextContent().then((textContent: any) => {
-        //console.log(textContent);
-        //console.log(numberOfOccurrences(textContent));
-
         if (!textLayerRef.current) {
           return;
         }
@@ -95,8 +98,6 @@ const PdfPage = React.memo((props: PdfPageProps) => {
           viewport: viewport,
           textDivs: [],
         });
-
-        //console.log({ textToRender });
 
         // Draw a blue rectangle on the canvas
         //printRectInCanvas(context);
@@ -110,6 +111,6 @@ const PdfPage = React.memo((props: PdfPageProps) => {
       <div id='textLayer' ref={textLayerRef} className='PdfPage__textLayer' />
     </div>
   );
-});
+};
 
 export default PdfPage;

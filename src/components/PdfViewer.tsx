@@ -1,18 +1,18 @@
+import { useAtom } from 'jotai';
 import { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { VariableSizeList } from 'react-window';
 import useResizeObserver from 'use-resize-observer';
 import Page from './Page';
 import PdfPage from './PdfPage';
+import { scaleAtom } from './atoms';
 
 type PdfViewerProps = {
   width?: number | string;
   height?: number | string;
   itemCount: number;
   getPdfPage: (index: number) => Promise<any>;
-  scale?: number;
   gap?: number;
   windowRef?: any;
-  text: string;
 };
 
 const PdfViewer: FC<PdfViewerProps> = ({
@@ -20,12 +20,12 @@ const PdfViewer: FC<PdfViewerProps> = ({
   height,
   itemCount,
   getPdfPage,
-  scale,
   gap,
   windowRef,
-  text,
 }: PdfViewerProps) => {
   const [pages, setPages] = useState([]);
+
+  const [scale] = useAtom(scaleAtom);
 
   const listRef: any = useRef();
 
@@ -97,7 +97,7 @@ const PdfViewer: FC<PdfViewerProps> = ({
           fetchPage(index);
           return (
             <Page style={style}>
-              <PdfPage page={pages[index]} scale={scale} text={text} />
+              <PdfPage page={pages[index]} />
             </Page>
           );
         }}
