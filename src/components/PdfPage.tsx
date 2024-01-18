@@ -1,6 +1,6 @@
 import { useAtomValue } from 'jotai';
 import pdfjs from 'pdfjs-dist';
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import './PdfPage.css';
 import { scaleAtom, searchTextAtom } from './atoms';
 
@@ -8,14 +8,13 @@ type PdfPageProps = {
   page: any;
 };
 
-const PdfPage = (props: PdfPageProps) => {
+const PdfPage = React.memo((props: PdfPageProps) => {
   const { page } = props;
 
   const text = useAtomValue(searchTextAtom);
   const scale = useAtomValue(scaleAtom);
 
   const canvasRef: any = useRef();
-
   const textLayerRef: any = useRef();
 
   function numberOfOccurrences(textContent: any) {
@@ -59,24 +58,25 @@ const PdfPage = (props: PdfPageProps) => {
     if (!page) {
       return;
     }
+
     const viewport = page.getViewport({ scale });
 
-    // Prepare canvas using PDF page dimensions
-    const canvas: any = canvasRef.current;
+    const canvas = canvasRef.current;
     if (canvas) {
       const context = canvas.getContext('2d');
       canvas.height = viewport.height;
       canvas.width = viewport.width;
-
       // Render PDF page into canvas context
       const renderContext = {
         canvasContext: context,
         viewport: viewport,
       };
       const renderTask = page.render(renderContext);
-      renderTask.promise.then(function () {
-        // console.log("Page rendered");
-      });
+      renderTask.promise
+        .then(function () {
+          // console.log("Page rendered");
+        })
+        .catch((e: any) => console.log(e));
 
       page.getTextContent().then((textContent: any) => {
         if (!textLayerRef.current) {
@@ -91,18 +91,18 @@ const PdfPage = (props: PdfPageProps) => {
           textDivs: [],
         });
 
-        // Draw a blue rectangle on the canvas
-        //printRectInCanvas(context);
+        //Draw a blue rectangle on the canvas
+        // printRectInCanvas(context);
       });
     }
   }, [page, scale]);
 
   return (
-    <div className='PdfPage'>
+    <div className='PdfPage' id='pdfPage'>
       <canvas id='canvas' ref={canvasRef} />
-      <div id='textLayer' ref={textLayerRef} className='PdfPage__textLayer' />
+      <div ref={textLayerRef} className='PdfPage__textLayer' />
     </div>
   );
-};
+});
 
 export default PdfPage;
