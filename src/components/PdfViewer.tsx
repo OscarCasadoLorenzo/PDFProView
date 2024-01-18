@@ -2,9 +2,9 @@ import { useAtom } from 'jotai';
 import { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { VariableSizeList } from 'react-window';
 import useResizeObserver from 'use-resize-observer';
+import { scaleAtom, totalPagesAtom } from '../data/atoms';
 import Page from './Page';
 import PdfPage from './PdfPage';
-import { scaleAtom } from './atoms';
 
 type PdfViewerProps = {
   width?: number | string;
@@ -50,6 +50,11 @@ const PdfViewer: FC<PdfViewerProps> = ({
     },
     [getPdfPage, pages]
   );
+
+  const [, setTotalPages] = useAtom(totalPagesAtom);
+  useEffect(() => {
+    setTotalPages(pages.length);
+  }, [pages]);
 
   const handleItemSize = useCallback(
     (index: number) => {
@@ -108,8 +113,7 @@ const PdfViewer: FC<PdfViewerProps> = ({
 
 PdfViewer.defaultProps = {
   width: '100%',
-  height: '400px',
-  scale: 1,
+  height: '70vh',
   gap: 40,
 };
 
