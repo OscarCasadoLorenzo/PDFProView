@@ -23,7 +23,6 @@ import MagnifyingGlassIcon from '../icons/MagnifyingGlassIcon';
 import MinusIcon from '../icons/MinusIcon';
 import PlusIcon from '../icons/PlusIcon';
 
-//TODO: total page count
 type PDFNavigatorComponentProps = {
   windowRef?: any;
 };
@@ -66,16 +65,17 @@ const PDFNavigatorComponent: FC<PDFNavigatorComponentProps> = ({
           onClick={() => setPage((p: number) => p - 1)}
           isDisabled={prevPageDisabled}
         >
-          <ArrowDownIcon />
+          <ArrowUpIcon />
         </Button>
-        <Divider orientation='vertical' />
+        <Divider orientation='vertical' mx='5px' />
         <Button
           onClick={() => setPage((p: number) => p + 1)}
           isDisabled={nextPageDisabled}
         >
-          <ArrowUpIcon />
+          <ArrowDownIcon />
         </Button>
         <Input
+          ml='5px'
           value={page}
           w={'80px'}
           mr='5px'
@@ -91,10 +91,12 @@ const PDFNavigatorComponent: FC<PDFNavigatorComponentProps> = ({
         <Button type='button' onClick={() => setScale((v: number) => v + 0.1)}>
           <PlusIcon />
         </Button>
+        <Divider orientation='vertical' mx='5px' />
         <Button type='button' onClick={() => setScale((v: number) => v - 0.1)}>
           <MinusIcon />
         </Button>
         <Select
+          ml='5px'
           minW='100px'
           onChange={(e) => {
             setScale(Number(e.target.value));
