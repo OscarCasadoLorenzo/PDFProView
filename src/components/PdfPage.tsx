@@ -76,7 +76,9 @@ const PdfPage = React.memo((props: PdfPageProps) => {
         .then(function () {
           // console.log("Page rendered");
         })
-        .catch((e: any) => console.log(e));
+        .catch((e: any) => {
+          //console.log(e);
+        });
 
       page.getTextContent().then((textContent: any) => {
         if (!textLayerRef.current) {
