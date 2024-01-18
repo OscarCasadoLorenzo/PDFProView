@@ -26,7 +26,7 @@ export const PdfUrlViewer: React.FC<PdfUrlViewerProps> = ({
         // Fetch the first page
         var pageNumber = 1;
         pdf.getPage(pageNumber).then(function () {
-          console.log('Page loaded');
+          //console.log('Page loaded');
         });
       },
       (reason: any) => {
