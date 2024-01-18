@@ -41,6 +41,9 @@ const PDFNavigatorComponent: FC<PDFNavigatorComponentProps> = ({
     windowRef.current && windowRef.current.scrollToItem(page - 1, 'start');
   };
 
+  const nextPageDisabled = page >= totalPages;
+  const prevPageDisabled = page <= 0;
+
   useEffect(() => {
     scrollToItem();
   }, [page]);
@@ -59,11 +62,17 @@ const PDFNavigatorComponent: FC<PDFNavigatorComponentProps> = ({
       </InputGroup>
 
       <Box display='inherit' alignItems='center'>
-        <Button onClick={() => setPage((p: number) => p - 1)}>
+        <Button
+          onClick={() => setPage((p: number) => p - 1)}
+          isDisabled={prevPageDisabled}
+        >
           <ArrowDownIcon />
         </Button>
         <Divider orientation='vertical' />
-        <Button onClick={() => setPage((p: number) => p + 1)}>
+        <Button
+          onClick={() => setPage((p: number) => p + 1)}
+          isDisabled={nextPageDisabled}
+        >
           <ArrowUpIcon />
         </Button>
         <Input
