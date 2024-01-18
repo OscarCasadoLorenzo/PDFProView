@@ -108,8 +108,7 @@ const PdfViewer: FC<PdfViewerProps> = ({
 
 PdfViewer.defaultProps = {
   width: '100%',
-  height: '400px',
-  scale: 1,
+  height: '70vh',
   gap: 40,
 };
 
