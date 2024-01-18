@@ -1,9 +1,14 @@
 import { Button } from '@chakra-ui/button';
 import { Input } from '@chakra-ui/input';
 import { Flex } from '@chakra-ui/layout';
-import { useAtom } from 'jotai';
+import { useAtom, useAtomValue } from 'jotai';
 import { FC, useEffect } from 'react';
-import { pageAtom, scaleAtom, searchTextAtom } from '../data/atoms';
+import {
+  pageAtom,
+  scaleAtom,
+  searchTextAtom,
+  totalPagesAtom,
+} from '../data/atoms';
 
 import {
   Box,
@@ -29,6 +34,8 @@ const PDFNavigatorComponent: FC<PDFNavigatorComponentProps> = ({
   const [page, setPage] = useAtom(pageAtom);
   const [, setScale] = useAtom(scaleAtom);
   const [text, setText] = useAtom(searchTextAtom);
+
+  const totalPages = useAtomValue(totalPagesAtom);
 
   const scrollToItem = () => {
     windowRef.current && windowRef.current.scrollToItem(page - 1, 'start');
@@ -61,13 +68,14 @@ const PDFNavigatorComponent: FC<PDFNavigatorComponentProps> = ({
         </Button>
         <Input
           value={page}
-          maxW={'100px'}
+          w={'80px'}
+          mr='5px'
           onChange={(e) => {
             setPage(Number(e.target.value));
           }}
           type='text'
         />
-        de 14
+        of {totalPages}
       </Box>
 
       <Box display='inherit'>
