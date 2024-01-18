@@ -47,7 +47,10 @@ const PdfPage = React.memo((props: PdfPageProps) => {
       let spanArray: any = Array.from(collection);
       spanArray.map((span: any) => {
         //TODO: Increase occurence counter inside this if
-        if (text !== '' && span.textContent.toLowerCase().includes(text))
+        if (
+          text !== '' &&
+          span.textContent.toLowerCase().includes(text.toLowerCase())
+        )
           span.classList.add('highlighted');
         else span.classList.remove('highlighted');
       });
