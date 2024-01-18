@@ -4,6 +4,13 @@ import { Flex } from '@chakra-ui/layout';
 import { useAtom } from 'jotai';
 import { FC, useEffect } from 'react';
 import { pageAtom, scaleAtom, searchTextAtom } from './atoms';
+
+import { Divider } from '@chakra-ui/react';
+import ArrowDownIcon from '../icons/ArrowDownIcon';
+import ArrowUpIcon from '../icons/ArrowUpIcon';
+import MinusIcon from '../icons/MinusIcon';
+import PlusIcon from '../icons/PlusIcon';
+
 //TODO: total page count
 type PDFNavigatorComponentProps = {
   windowRef?: any;
@@ -26,8 +33,13 @@ const PDFNavigatorComponent: FC<PDFNavigatorComponentProps> = ({
 
   return (
     <Flex>
-      <Button onClick={() => setPage((p: number) => p - 1)}>Prev page</Button>
-      <Button onClick={() => setPage((p: number) => p + 1)}>Next page</Button>
+      <Button onClick={() => setPage((p: number) => p - 1)}>
+        <ArrowDownIcon />
+      </Button>
+      <Divider orientation='vertical' />
+      <Button onClick={() => setPage((p: number) => p + 1)}>
+        <ArrowUpIcon />
+      </Button>
       <Input
         value={page}
         onChange={(e) => {
@@ -36,12 +48,12 @@ const PDFNavigatorComponent: FC<PDFNavigatorComponentProps> = ({
         type='text'
       />
       <Input value={text} onChange={(e) => setText(e.target.value)} />
-      Zoom
+
       <Button type='button' onClick={() => setScale((v: number) => v + 0.1)}>
-        +
+        <PlusIcon />
       </Button>
       <Button type='button' onClick={() => setScale((v: number) => v - 0.1)}>
-        -
+        <MinusIcon />
       </Button>
     </Flex>
   );
