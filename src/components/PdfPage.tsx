@@ -1,8 +1,8 @@
 import { useAtomValue } from 'jotai';
 import pdfjs from 'pdfjs-dist';
 import React, { useEffect, useRef } from 'react';
+import { scaleAtom, searchTextAtom } from '../data/atoms';
 import './PdfPage.css';
-import { scaleAtom, searchTextAtom } from './atoms';
 
 type PdfPageProps = {
   page: any;

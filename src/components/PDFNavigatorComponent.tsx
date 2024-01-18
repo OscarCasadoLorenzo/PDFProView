@@ -3,7 +3,7 @@ import { Input } from '@chakra-ui/input';
 import { Flex } from '@chakra-ui/layout';
 import { useAtom } from 'jotai';
 import { FC, useEffect } from 'react';
-import { pageAtom, scaleAtom, searchTextAtom } from './atoms';
+import { pageAtom, scaleAtom, searchTextAtom } from '../data/atoms';
 
 import { Box, Divider, InputGroup, InputLeftElement } from '@chakra-ui/react';
 import ArrowDownIcon from '../icons/ArrowDownIcon';
