@@ -5,7 +5,13 @@ import { useAtom } from 'jotai';
 import { FC, useEffect } from 'react';
 import { pageAtom, scaleAtom, searchTextAtom } from '../data/atoms';
 
-import { Box, Divider, InputGroup, InputLeftElement } from '@chakra-ui/react';
+import {
+  Box,
+  Divider,
+  InputGroup,
+  InputLeftElement,
+  Select,
+} from '@chakra-ui/react';
 import ArrowDownIcon from '../icons/ArrowDownIcon';
 import ArrowUpIcon from '../icons/ArrowUpIcon';
 import MagnifyingGlassIcon from '../icons/MagnifyingGlassIcon';
@@ -71,6 +77,17 @@ const PDFNavigatorComponent: FC<PDFNavigatorComponentProps> = ({
         <Button type='button' onClick={() => setScale((v: number) => v - 0.1)}>
           <MinusIcon />
         </Button>
+        <Select
+          minW='100px'
+          onChange={(e) => {
+            setScale(Number(e.target.value));
+          }}
+        >
+          <option value={1}>100%</option>
+          <option value={0.5}>50%</option>
+          <option value={1.5}>150%</option>
+          <option value={2}>200%</option>
+        </Select>
       </Box>
     </Flex>
   );
