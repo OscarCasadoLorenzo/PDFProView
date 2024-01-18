@@ -17,30 +17,6 @@ const PdfPage = React.memo((props: PdfPageProps) => {
   const canvasRef: any = useRef();
   const textLayerRef: any = useRef();
 
-  function numberOfOccurrences(textContent: any) {
-    let textOCR = '';
-    //console.log(textContent.items);
-    textContent.items.map((p: any) => {
-      //console.log(p.str);
-      textOCR = textOCR.concat(p.str);
-    });
-    // console.log(textOCR);
-
-    //Lowercase
-    textOCR = textOCR.toLowerCase();
-
-    // Get number of ocurrences
-    let ocurrences = textOCR.split('boring').length - 1;
-
-    //console.log(ocurrences);
-    return ocurrences;
-  }
-
-  function printRectInCanvas(canvasContext: any) {
-    canvasContext.fillStyle = 'blue';
-    canvasContext.fillRect(50, 50, 100, 100); // Adjust the coordinates (x, y) and size (width, height)
-  }
-
   useEffect(() => {
     const collection: HTMLCollection = textLayerRef.current.children;
     if (collection !== null && collection !== undefined) {
@@ -79,7 +55,7 @@ const PdfPage = React.memo((props: PdfPageProps) => {
         .then(function () {
           // console.log("Page rendered");
         })
-        .catch((e: any) => {
+        .catch(() => {
           //console.log(e);
         });
 
@@ -89,7 +65,7 @@ const PdfPage = React.memo((props: PdfPageProps) => {
         }
 
         // Pass the data to the method for rendering of text over the pdf canvas.
-        var textToRender = pdfjs.renderTextLayer({
+        pdfjs.renderTextLayer({
           textContent: textContent,
           container: textLayerRef.current,
           viewport: viewport,
