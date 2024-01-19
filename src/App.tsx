@@ -1,4 +1,3 @@
-import { Button } from '@chakra-ui/button';
 import { Flex, Heading } from '@chakra-ui/layout';
 import { Box } from '@chakra-ui/react';
 import { useRef } from 'react';
@@ -17,9 +16,8 @@ function App() {
 
   return (
     <Box className='App' m='5% 10%'>
-      <Flex justifyContent='space-between' alignItems='center'>
+      <Flex justifyContent='space-between' alignItems='center' mb='10px'>
         <Heading>{obtainFilename(url)}</Heading>
-        <Button>X</Button>
       </Flex>
       <PDFNavigatorComponent windowRef={windowRef} />
 
