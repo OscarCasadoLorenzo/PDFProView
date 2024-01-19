@@ -41,7 +41,7 @@ const PDFNavigatorComponent: FC<PDFNavigatorComponentProps> = ({
   };
 
   const nextPageDisabled = page >= totalPages;
-  const prevPageDisabled = page <= 0;
+  const prevPageDisabled = page <= 1;
 
   useEffect(() => {
     scrollToItem();
