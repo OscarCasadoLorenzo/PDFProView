@@ -91,14 +91,12 @@ Create a new issue or a discussion and describe the feature / fix / changes you 
 4. **Implement your changes**  
    ❗ This repository follows the [Conventional Commits](https://www.conventionalcommits.org/) specification.
 
-5. **Submit a pull request, referencing the associated issue**
-
-6. **Create the Pull Request**
+5. **Create and submit the Pull Request**
 
    Visit your forked repository on GitHub. Click on the `Pull Requests` tab, then the `New Pull Request` button. GitHub will guide you through the process of creating a pull request to the original repository.  
    📑Do not forget to link the associated issue, for example: "Closes #1234"
 
-7. **Enjoy your work 😎**  
+6. **Enjoy your work 😎**  
    When a Pull Request is merged into develop branch you will be added in <u>contributors list</u>.
 
 ## 📚 Additional Resources
