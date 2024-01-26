@@ -1,8 +1,8 @@
 ---
-name: "Bug Report"
-about: "Report an issue to help the project improve."
-title: "[Bug]"
-labels: "Type: Bug"
+name: 'Bug Report'
+about: 'Report an issue to help the project improve.'
+title: '[Bug]'
+labels: 'Type: Bug'
 ---
 
 # **Bug Report**
@@ -33,7 +33,7 @@ labels: "Type: Bug"
 
 <!-- A clear and concise description of what you expected to happen. -->
 
-- ***
+---
 
 ### **Media prove**
 
@@ -56,5 +56,3 @@ and remove all the bulleted list elements that are not relevant for this issue. 
 ### **Additional context**
 
 <!-- Add any other context or additional information about the problem here.-->
-
--
