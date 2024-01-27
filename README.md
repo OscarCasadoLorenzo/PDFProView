@@ -18,7 +18,7 @@ PDFProView is an open-source project that harnesses the power of React and the p
 
 ## Contributing
 
-We welcome contributions to PDFProView! If you have suggestions, find bugs, or want to add new features, please check out our [Contributing Guidelines](https://github.com/OscarCasadoLorenzo/PDFProView/CONTRIBUTING.MD).
+We welcome contributions to PDFProView! If you have suggestions, find bugs, or want to add new features, please check out our [Contributing Guidelines](https://github.com/OscarCasadoLorenzo/PDFProView/blob/develop/CONTRIBUTING.MD).
 
 ## License
 
