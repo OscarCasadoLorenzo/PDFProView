@@ -1,7 +1,7 @@
+import { fileAtom } from '@/features/pdfViewer/data/atoms';
 import { Button, Center, Text, chakra } from '@chakra-ui/react';
 import { useSetAtom } from 'jotai';
 import { FC, useEffect, useRef, useState } from 'react';
-import { fileAtom } from '../../../data/atoms';
 import UploadIcon from '../../../icons/UploadIcon';
 
 type DroppableProps = {
@@ -22,9 +22,7 @@ const Droppable: FC<DroppableProps> = (props: DroppableProps) => {
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const changeImageDropped = (e: any) => {
-    const blob = e.dataTransfer.files[0];
-
+  const changeImageDropped = (blob: any) => {
     console.log({ blob });
     const url = URL.createObjectURL(blob);
 
@@ -47,8 +45,10 @@ const Droppable: FC<DroppableProps> = (props: DroppableProps) => {
 
   function dragOverHandler(e: any) {
     setItemOver(true);
-    console.log('File(s) in drop zone');
 
+    const blob = e.dataTransfer.files[0];
+    console.log('File(s) in drop zone');
+    changeImageDropped(blob);
     // Prevent default behavior (Prevent file from being opened)
     e.preventDefault();
   }
@@ -80,6 +80,9 @@ const Droppable: FC<DroppableProps> = (props: DroppableProps) => {
           display='none'
           onChange={(e) => {
             console.log(e.target.files);
+            const blob = e.target.files?.[0];
+            changeImageDropped(blob);
+            e.preventDefault();
           }}
         />
       </Center>
