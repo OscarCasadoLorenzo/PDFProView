@@ -1,22 +1,17 @@
+import { PdfUrlViewer } from '@/features/pdfViewer/components/PdfUrlViewer';
 import { Flex, Heading } from '@chakra-ui/layout';
 import { Box } from '@chakra-ui/react';
+import PDFNavigatorComponent from '@features/pdfViewer/components/PDFNavigatorComponent';
 import { useAtomValue } from 'jotai';
 import { isEmpty } from 'lodash';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import './App.css';
-import PDFNavigatorComponent from './components/PDFNavigatorComponent';
-import { PdfUrlViewer } from './components/PdfURLViewer';
-import { fileAtom } from './data/atoms';
+import { fileAtom } from './features/pdfViewer/data/atoms';
 import UploadFileComponent from './features/uploadFile/view/UploadFileComponent';
-
 function App() {
   const windowRef: any = useRef();
 
   const file = useAtomValue(fileAtom);
-
-  useEffect(() => {
-    console.log({ file });
-  }, [file]);
 
   function obtainFilename(fileName: string) {
     const urlParts = fileName.split('/');
