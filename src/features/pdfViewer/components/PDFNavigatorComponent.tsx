@@ -17,11 +17,11 @@ import {
   InputLeftElement,
   Select,
 } from '@chakra-ui/react';
-import ArrowDownIcon from '../icons/ArrowDownIcon';
-import ArrowUpIcon from '../icons/ArrowUpIcon';
-import MagnifyingGlassIcon from '../icons/MagnifyingGlassIcon';
-import MinusIcon from '../icons/MinusIcon';
-import PlusIcon from '../icons/PlusIcon';
+import ArrowDownIcon from '../../../icons/ArrowDownIcon';
+import ArrowUpIcon from '../../../icons/ArrowUpIcon';
+import MagnifyingGlassIcon from '../../../icons/MagnifyingGlassIcon';
+import MinusIcon from '../../../icons/MinusIcon';
+import PlusIcon from '../../../icons/PlusIcon';
 
 type PDFNavigatorComponentProps = {
   windowRef?: any;
