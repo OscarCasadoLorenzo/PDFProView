@@ -4,7 +4,7 @@ import { Box } from '@chakra-ui/react';
 import PDFNavigatorComponent from '@features/pdfViewer/components/PDFNavigatorComponent';
 import { useAtomValue } from 'jotai';
 import { isEmpty } from 'lodash';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import './App.css';
 import { fileAtom } from './features/pdfViewer/data/atoms';
 import UploadFileComponent from './features/uploadFile/view/UploadFileComponent';
@@ -12,10 +12,6 @@ function App() {
   const windowRef: any = useRef();
 
   const file = useAtomValue(fileAtom);
-
-  useEffect(() => {
-    console.log({ file });
-  }, [file]);
 
   function obtainFilename(fileName: string) {
     const urlParts = fileName.split('/');

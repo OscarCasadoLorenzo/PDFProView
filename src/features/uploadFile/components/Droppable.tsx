@@ -1,55 +1,36 @@
 import { fileAtom } from '@/features/pdfViewer/data/atoms';
 import { Button, Center, Text, chakra } from '@chakra-ui/react';
 import { useSetAtom } from 'jotai';
-import { FC, useEffect, useRef, useState } from 'react';
+import { FC, useRef, useState } from 'react';
 import UploadIcon from '../../../icons/UploadIcon';
+import {
+  extractBinaryWithDrop,
+  extractBinaryWithInput,
+} from '../helpers/extract-binary-from-event';
 
 type DroppableProps = {
   id: string;
 };
 
 const Droppable: FC<DroppableProps> = (props: DroppableProps) => {
-  const [imageDropped, setImageDropped] = useState<string | ArrayBuffer | null>(
-    null
-  );
-
   const setFileAtom = useSetAtom(fileAtom);
 
-  useEffect(() => {
-    console.log({ imageDropped });
-  }, [imageDropped]);
   const [itemOver, setItemOver] = useState(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
 
   const changeImageDropped = (blob: any) => {
-    console.log({ blob });
     const url = URL.createObjectURL(blob);
 
     setFileAtom({ name: blob.name, url: url });
-    console.log({ url });
-    const reader = new FileReader();
-    reader.readAsDataURL(blob);
-    reader.onload = (e) => {
-      e.preventDefault();
-      e.target?.result && setImageDropped(e.target?.result);
-    };
-
-    //You are not able to access/use the user's local file-system path. This means that you can't use the real path to the file on their machine to preview.
   };
   function dropHandler(e: any) {
-    e.preventDefault();
-    changeImageDropped(e);
-    console.log(e.dataTransfer.files);
+    const blob = extractBinaryWithDrop(e);
+    changeImageDropped(blob);
   }
 
   function dragOverHandler(e: any) {
     setItemOver(true);
-
-    const blob = e.dataTransfer.files[0];
-    console.log('File(s) in drop zone');
-    changeImageDropped(blob);
-    // Prevent default behavior (Prevent file from being opened)
     e.preventDefault();
   }
 
@@ -79,10 +60,8 @@ const Droppable: FC<DroppableProps> = (props: DroppableProps) => {
           type='file'
           display='none'
           onChange={(e) => {
-            console.log(e.target.files);
-            const blob = e.target.files?.[0];
+            const blob = extractBinaryWithInput(e);
             changeImageDropped(blob);
-            e.preventDefault();
           }}
         />
       </Center>
