@@ -37,22 +37,25 @@ const Droppable: FC<DroppableProps> = (props: DroppableProps) => {
   return (
     <>
       <Center
-        border='3px dashed gray'
+        border='3px dashed'
+        borderColor='primary.900'
         borderRadius='20px'
         p='15px 20px'
         flexDirection='column'
         id='dropZone'
-        bg={itemOver ? 'gray.100' : 'white'}
+        w={'500px'}
+        padding={'2rem'}
+        bg={itemOver ? 'secondary.50' : ''}
         onDrop={(e) => dropHandler(e)}
         onDragOver={(e) => dragOverHandler(e)}
         onDragLeave={() => setItemOver(false)}
       >
-        <UploadIcon boxSize='36' />
+        <UploadIcon boxSize='30' />
         <Text fontWeight='bold' fontSize='20px'>
           Drag & drop
         </Text>
         OR
-        <Button colorScheme='blue' onClick={() => inputRef.current?.click()}>
+        <Button colorScheme='primary' onClick={() => inputRef.current?.click()}>
           Browse file
         </Button>
         <chakra.input

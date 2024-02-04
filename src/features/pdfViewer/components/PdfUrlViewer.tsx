@@ -16,7 +16,7 @@ export const PdfUrlViewer: React.FC<PdfUrlViewerProps> = ({
   const [itemCount, setItemCount] = useState(0);
 
   useEffect(() => {
-    var loadingTask = pdfjs.getDocument(url);
+    const loadingTask = pdfjs.getDocument(url);
     loadingTask.promise.then(
       (pdf: any) => {
         pdfRef.current = pdf;
@@ -24,7 +24,7 @@ export const PdfUrlViewer: React.FC<PdfUrlViewerProps> = ({
         setItemCount(pdf._pdfInfo.numPages);
 
         // Fetch the first page
-        var pageNumber = 1;
+        const pageNumber = 1;
         pdf.getPage(pageNumber).then(function () {
           //console.log('Page loaded');
         });
