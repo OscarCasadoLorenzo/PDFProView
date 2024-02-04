@@ -96,7 +96,7 @@ const PDFNavigatorComponent: FC<PDFNavigatorComponentProps> = ({
           colorScheme='primary'
           onClick={() => setScale((v: number) => v + 0.1)}
         >
-          <PlusIcon />
+          <PlusIcon boxSize={7} />
         </Button>
         <Divider orientation='vertical' mx='5px' />
         <Button
@@ -104,7 +104,7 @@ const PDFNavigatorComponent: FC<PDFNavigatorComponentProps> = ({
           colorScheme='primary'
           onClick={() => setScale((v: number) => v - 0.1)}
         >
-          <MinusIcon />
+          <MinusIcon boxSize={7} />
         </Button>
         <Select
           ml='5px'
