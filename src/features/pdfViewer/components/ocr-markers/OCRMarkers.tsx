@@ -4,9 +4,9 @@ import EyeIcon from '@/icons/EyeIcon'
 import { Box, FormLabel, Input, InputGroup, InputLeftAddon, InputRightAddon } from '@chakra-ui/react'
 import { useAtom } from 'jotai'
 import React from 'react'
-import { enabledOCRMarkers } from '../../data/atoms'
-import OCRMarkers from '../../data/ocr-sample'
-import { OCRMark } from '../../data/types'
+import { enabledOCRMarkers } from '../../../../data/atoms'
+import OCRMarkers from '../../../../data/ocr-sample'
+import { OCRMark } from '../../../../data/types'
 
 type MarkersProps = {
   windowRef: any

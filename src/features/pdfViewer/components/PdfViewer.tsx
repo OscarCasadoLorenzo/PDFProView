@@ -2,7 +2,7 @@ import { useAtom } from 'jotai';
 import { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { VariableSizeList } from 'react-window';
 import useResizeObserver from 'use-resize-observer';
-import { scaleAtom, totalPagesAtom } from '../data/atoms';
+import { scaleAtom, totalPagesAtom } from '../../../data/atoms';
 import Page from './Page';
 import PdfPage from './PdfPage';
 
