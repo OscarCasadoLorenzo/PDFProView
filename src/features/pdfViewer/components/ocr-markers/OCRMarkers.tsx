@@ -1,6 +1,7 @@
+import BoxArrowLeftIcon from '@/icons/BoxArrowLeft'
 import EyeFillIcon from '@/icons/EyeFilledIcon'
 import EyeIcon from '@/icons/EyeIcon'
-import { Box, FormLabel, Input, InputGroup, InputLeftAddon } from '@chakra-ui/react'
+import { Box, FormLabel, Input, InputGroup, InputLeftAddon, InputRightAddon } from '@chakra-ui/react'
 import { useAtom } from 'jotai'
 import React from 'react'
 import { enabledOCRMarkers } from '../../data/atoms'
@@ -37,8 +38,9 @@ export  const Markers: React.FC<MarkersProps> = ({windowRef})=>{
    <Box>
      <FormLabel>{OCRMark.description}</FormLabel>
    <InputGroup>
-   <InputLeftAddon>{enabledOCRMarkersValue.includes(OCRMark) ? <EyeFillIcon color={'primary.700'} onClick={ () => {handleMarkerClick(enabledOCRMarkersValue.includes(OCRMark), OCRMark)}}/> : <EyeIcon color={'primary.700'} onClick={ () => {handleMarkerClick(enabledOCRMarkersValue.includes(OCRMark), OCRMark)}}/>}</InputLeftAddon>
+   <InputLeftAddon onClick={ () => {handleMarkerClick(enabledOCRMarkersValue.includes(OCRMark), OCRMark)}}>{enabledOCRMarkersValue.includes(OCRMark) ? <EyeFillIcon color={'primary.700'} /> : <EyeIcon color={'primary.700'} />}</InputLeftAddon>
    <Input disabled={true} value={OCRMark.text}></Input>
+   <InputRightAddon onClick={() => {scrollToSelectedMark(OCRMark)}}><BoxArrowLeftIcon/></InputRightAddon>
    </InputGroup>
    </Box>
   )
