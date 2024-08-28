@@ -8,8 +8,6 @@ type PdfPageProps = {
   page: any;
 };
 
-
-
 const PdfPage = React.memo((props: PdfPageProps) => {
 
   const { page } = props;
@@ -17,7 +15,8 @@ const PdfPage = React.memo((props: PdfPageProps) => {
   const text = useAtomValue(searchTextAtom);
   const scale = useAtomValue(scaleAtom);
 
-  const canvasRef: any = useRef();
+  const canvasPDFRef: any = useRef();
+  const canvasMarkersRef: any = useRef();
   const textLayerRef: any = useRef();
 
   const [enabledOCRMarkersValue, setEnabledOCRMarkers] = useAtom(enabledOCRMarkers)
@@ -27,6 +26,28 @@ const PdfPage = React.memo((props: PdfPageProps) => {
       drawArrow(context, enabledMarker.x-50, enabledMarker.y, enabledMarker.x, enabledMarker.y)
     })
   }
+
+  useEffect(() => {
+    if (!page) {
+      return;
+    }
+        /** For avoid re-render each time the enabledMarkers are updated, we draw ALL the markers once when the page is rendered
+            and we hide all of them with the css class 'hidden' and then we show only the enabled markers with the class 'visible'
+            not affecting to the performance
+        **/
+            const canvas = canvasMarkersRef.current;
+
+    const viewport = page.getViewport({ scale });
+            if (canvas) {
+              
+      canvas.height = viewport.height;
+      canvas.width = viewport.width;
+              const context = canvas.getContext('2d');
+
+        const actualPageNumber = page.pageIndex+1
+            printOCRMarkers(context, actualPageNumber)
+          }
+  }, [page, enabledOCRMarkersValue, scale]);
 
   useEffect(() => {
     const collection: HTMLCollection = textLayerRef.current.children;
@@ -51,7 +72,7 @@ const PdfPage = React.memo((props: PdfPageProps) => {
 
     const viewport = page.getViewport({ scale });
 
-    const canvas = canvasRef.current;
+    const canvas = canvasPDFRef.current;
     if (canvas) {
       const context = canvas.getContext('2d');
       canvas.height = viewport.height;
@@ -82,18 +103,17 @@ const PdfPage = React.memo((props: PdfPageProps) => {
           viewport: viewport,
           textDivs: [],
         });
-        const actualPageNumber = page.pageIndex+1
 
-        //Draw a blue rectangle on the canvas
-        printOCRMarkers(context, actualPageNumber)
       });
     }
-  }, [page, scale, enabledOCRMarkersValue]);
+  }, [page, scale ]);
 
 
   return (
     <div className='PdfPage' id='pdfPage'>
-      <canvas id='canvas' ref={canvasRef} />
+
+<canvas id='canvasMarkers'  className='PdfPage_canvasMarkers' ref={canvasMarkersRef} />
+      <canvas id='canvasPDF' ref={canvasPDFRef} />
       <div ref={textLayerRef} className='PdfPage__textLayer' />
     </div>
   );
