@@ -1,4 +1,5 @@
-import { fileAtom } from '@/features/pdfViewer/data/atoms';
+import { fileAtom } from '@/data/atoms';
+import { ALLOWED_BLOB_TYPES, MAX_PDF_SIZE } from '@/data/constants';
 import { Button, Center, Text, chakra } from '@chakra-ui/react';
 import { useSetAtom } from 'jotai';
 import { FC, useRef, useState } from 'react';
@@ -64,7 +65,19 @@ const Droppable: FC<DroppableProps> = (props: DroppableProps) => {
           display='none'
           onChange={(e) => {
             const blob = extractBinaryWithInput(e);
-            changeImageDropped(blob);
+
+            if(blob) {
+              if( !ALLOWED_BLOB_TYPES.includes( blob.type)){
+                alert('Please upload a pdf file');
+                return;
+              }
+              else if (blob.size > MAX_PDF_SIZE){
+                alert('Please upload a smaller file');
+                return;
+              } 
+              else changeImageDropped(blob);
+            }
+            
           }}
         />
       </Center>
