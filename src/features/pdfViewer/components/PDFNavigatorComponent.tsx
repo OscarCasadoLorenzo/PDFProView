@@ -62,6 +62,7 @@ const PDFNavigatorComponent: FC<PDFNavigatorComponentProps> = ({
 
       <Box display='inherit' alignItems='center'>
         <Button
+          colorScheme='primary'
           onClick={() => setPage((p: number) => p - 1)}
           isDisabled={prevPageDisabled}
         >
@@ -69,12 +70,14 @@ const PDFNavigatorComponent: FC<PDFNavigatorComponentProps> = ({
         </Button>
         <Divider orientation='vertical' mx='5px' />
         <Button
+          colorScheme='primary'
           onClick={() => setPage((p: number) => p + 1)}
           isDisabled={nextPageDisabled}
         >
           <ArrowDownIcon />
         </Button>
         <Input
+          colorScheme='primary'
           ml='5px'
           value={page}
           w={'80px'}
@@ -88,12 +91,20 @@ const PDFNavigatorComponent: FC<PDFNavigatorComponentProps> = ({
       </Box>
 
       <Box display='inherit'>
-        <Button type='button' onClick={() => setScale((v: number) => v + 0.1)}>
-          <PlusIcon />
+        <Button
+          type='button'
+          colorScheme='primary'
+          onClick={() => setScale((v: number) => v + 0.1)}
+        >
+          <PlusIcon boxSize={7} />
         </Button>
         <Divider orientation='vertical' mx='5px' />
-        <Button type='button' onClick={() => setScale((v: number) => v - 0.1)}>
-          <MinusIcon />
+        <Button
+          type='button'
+          colorScheme='primary'
+          onClick={() => setScale((v: number) => v - 0.1)}
+        >
+          <MinusIcon boxSize={7} />
         </Button>
         <Select
           ml='5px'

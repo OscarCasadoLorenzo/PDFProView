@@ -1,6 +1,6 @@
 import { PdfUrlViewer } from '@/features/pdfViewer/components/PdfUrlViewer';
 import { Flex, Heading, HStack } from '@chakra-ui/layout';
-import { Box } from '@chakra-ui/react';
+import { AbsoluteCenter, Box } from '@chakra-ui/react';
 import PDFNavigatorComponent from '@features/pdfViewer/components/PDFNavigatorComponent';
 import { useAtomValue } from 'jotai';
 import { isEmpty } from 'lodash';
@@ -20,8 +20,12 @@ function App() {
   }
 
   return (
-    <Box className='App' m='5% 10%'>
-      {isEmpty(file) && <UploadFileComponent />}
+    <Box className='App' bgColor='brand.background'>
+      {isEmpty(file) && (
+        <AbsoluteCenter>
+          <UploadFileComponent />
+        </AbsoluteCenter>
+      )}
       {!isEmpty(file) && (
         <>
           <Flex justifyContent='space-between' alignItems='center' mb='10px'>
