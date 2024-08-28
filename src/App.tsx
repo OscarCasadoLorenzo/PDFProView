@@ -40,7 +40,7 @@ function App() {
               <PdfUrlViewer url={file.url} windowRef={windowRef} />
             </Box>
           
-          <Markers/></HStack>
+          <Markers windowRef={windowRef}/></HStack>
         </>
       )}
     </Box>

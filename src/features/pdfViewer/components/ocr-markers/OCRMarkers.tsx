@@ -8,8 +8,9 @@ import OCRMarkers from '../../data/ocr-sample'
 import { OCRMark } from '../../data/types'
 
 type MarkersProps = {
+  windowRef: any
 }
-export  const Markers: React.FC<MarkersProps> = ({})=>{
+export  const Markers: React.FC<MarkersProps> = ({windowRef})=>{
 
  const [enabledOCRMarkersValue, setEnabledOCRMarkers] = useAtom(enabledOCRMarkers)
 
@@ -17,10 +18,18 @@ export  const Markers: React.FC<MarkersProps> = ({})=>{
   return enabledOCRMarkersValue.filter(marker => marker.id !== markerToRemoveID)
  }
 
+ function scrollToSelectedMark(selectedMarker:OCRMark){
+    windowRef.current && windowRef.current.scrollToItem(selectedMarker.page-1, 'start');
+ }
+
  function handleMarkerClick(isEnabled:boolean, selectedMarker:OCRMark){
   let newEnabledMarkers:OCRMark[] = []
   isEnabled ? newEnabledMarkers = removeEnabledMarkerById(selectedMarker.id) : newEnabledMarkers = enabledOCRMarkersValue.concat(selectedMarker)
   setEnabledOCRMarkers(newEnabledMarkers)
+
+  if(!isEnabled){
+    scrollToSelectedMark(selectedMarker)
+  }
  }
 
  return <Box>{OCRMarkers.map((OCRMark)=>{
@@ -28,7 +37,7 @@ export  const Markers: React.FC<MarkersProps> = ({})=>{
    <Box>
      <FormLabel>{OCRMark.description}</FormLabel>
    <InputGroup>
-   <InputLeftAddon>{enabledOCRMarkersValue.includes(OCRMark) ? <EyeFillIcon onClick={ () => {handleMarkerClick(enabledOCRMarkersValue.includes(OCRMark), OCRMark)}}/> : <EyeIcon onClick={ () => {handleMarkerClick(enabledOCRMarkersValue.includes(OCRMark), OCRMark)}}/>}</InputLeftAddon>
+   <InputLeftAddon>{enabledOCRMarkersValue.includes(OCRMark) ? <EyeFillIcon color={'primary.700'} onClick={ () => {handleMarkerClick(enabledOCRMarkersValue.includes(OCRMark), OCRMark)}}/> : <EyeIcon color={'primary.700'} onClick={ () => {handleMarkerClick(enabledOCRMarkersValue.includes(OCRMark), OCRMark)}}/>}</InputLeftAddon>
    <Input disabled={true} value={OCRMark.text}></Input>
    </InputGroup>
    </Box>
