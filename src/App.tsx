@@ -28,12 +28,13 @@ function App() {
       )}
       {!isEmpty(file) && (
         <>
+
+          <HStack justifyContent={'center'} my={20}>
+            <Box>
+
           <Flex justifyContent='space-between' alignItems='center' mb='10px'>
             <Heading>{obtainFilename(file.name)}</Heading>
           </Flex>
-
-          <HStack>
-            <Box>
               <PDFNavigatorComponent windowRef={windowRef} />
               <br />
               <PdfUrlViewer url={file.url} windowRef={windowRef} />
