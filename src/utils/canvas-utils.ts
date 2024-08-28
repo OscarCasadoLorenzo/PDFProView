@@ -1,4 +1,4 @@
-const ARROW_HEIGHT = 10;
+import { ARROW_HEIGHT } from '@/data/constants';
 
 export function drawArrow(context:any, fromX:number, fromY:number, toX:number, toY:number) {
 

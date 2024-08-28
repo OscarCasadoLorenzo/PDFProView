@@ -1,8 +1,8 @@
 import { useAtom, useAtomValue } from 'jotai';
 import pdfjs from 'pdfjs-dist';
 import React, { useEffect, useRef } from 'react';
-import { enabledOCRMarkers, scaleAtom, searchTextAtom } from '../data/atoms';
-import { drawArrow } from '../utils/canvas-utils';
+import { enabledOCRMarkers, scaleAtom, searchTextAtom } from '../../../data/atoms';
+import { drawArrow } from '../../../utils/canvas-utils';
 import './PdfPage.css';
 type PdfPageProps = {
   page: any;
@@ -95,7 +95,6 @@ const PdfPage = React.memo((props: PdfPageProps) => {
         if (!textLayerRef.current) {
           return;
         }
-
         // Pass the data to the method for rendering of text over the pdf canvas.
         pdfjs.renderTextLayer({
           textContent: textContent,

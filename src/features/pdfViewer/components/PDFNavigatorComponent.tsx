@@ -8,7 +8,7 @@ import {
   scaleAtom,
   searchTextAtom,
   totalPagesAtom,
-} from '../data/atoms';
+} from '../../../data/atoms';
 
 import {
   Box,

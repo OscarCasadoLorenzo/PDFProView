@@ -6,8 +6,8 @@ import { useAtomValue } from 'jotai';
 import { isEmpty } from 'lodash';
 import { useRef } from 'react';
 import './App.css';
+import { fileAtom } from './data/atoms';
 import { Markers } from './features/pdfViewer/components/ocr-markers/OCRMarkers';
-import { fileAtom } from './features/pdfViewer/data/atoms';
 import UploadFileComponent from './features/uploadFile/view/UploadFileComponent';
 function App() {
   const windowRef: any = useRef();
