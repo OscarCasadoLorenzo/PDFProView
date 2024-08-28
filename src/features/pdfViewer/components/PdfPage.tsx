@@ -1,14 +1,17 @@
-import { useAtomValue } from 'jotai';
+import { useAtom, useAtomValue } from 'jotai';
 import pdfjs from 'pdfjs-dist';
 import React, { useEffect, useRef } from 'react';
-import { scaleAtom, searchTextAtom } from '../data/atoms';
+import { enabledOCRMarkers, scaleAtom, searchTextAtom } from '../data/atoms';
+import { drawArrow } from '../utils/canvas-utils';
 import './PdfPage.css';
-
 type PdfPageProps = {
   page: any;
 };
 
+
+
 const PdfPage = React.memo((props: PdfPageProps) => {
+
   const { page } = props;
 
   const text = useAtomValue(searchTextAtom);
@@ -16,6 +19,14 @@ const PdfPage = React.memo((props: PdfPageProps) => {
 
   const canvasRef: any = useRef();
   const textLayerRef: any = useRef();
+
+  const [enabledOCRMarkersValue, setEnabledOCRMarkers] = useAtom(enabledOCRMarkers)
+
+  function printOCRMarkers(context: any, actualPage:number){
+    enabledOCRMarkersValue.filter(marker => marker.page === actualPage).forEach((enabledMarker) =>{
+      drawArrow(context, enabledMarker.x-50, enabledMarker.y, enabledMarker.x, enabledMarker.y)
+    })
+  }
 
   useEffect(() => {
     const collection: HTMLCollection = textLayerRef.current.children;
@@ -71,12 +82,14 @@ const PdfPage = React.memo((props: PdfPageProps) => {
           viewport: viewport,
           textDivs: [],
         });
+        const actualPageNumber = page.pageIndex+1
 
         //Draw a blue rectangle on the canvas
-        // printRectInCanvas(context);
+        printOCRMarkers(context, actualPageNumber)
       });
     }
-  }, [page, scale]);
+  }, [page, scale, enabledOCRMarkersValue]);
+
 
   return (
     <div className='PdfPage' id='pdfPage'>

@@ -1,11 +1,12 @@
 import { PdfUrlViewer } from '@/features/pdfViewer/components/PdfUrlViewer';
-import { Flex, Heading } from '@chakra-ui/layout';
+import { Flex, Heading, HStack } from '@chakra-ui/layout';
 import { Box } from '@chakra-ui/react';
 import PDFNavigatorComponent from '@features/pdfViewer/components/PDFNavigatorComponent';
 import { useAtomValue } from 'jotai';
 import { isEmpty } from 'lodash';
 import { useRef } from 'react';
 import './App.css';
+import { Markers } from './features/pdfViewer/components/ocr-markers/OCRMarkers';
 import { fileAtom } from './features/pdfViewer/data/atoms';
 import UploadFileComponent from './features/uploadFile/view/UploadFileComponent';
 function App() {
@@ -27,9 +28,14 @@ function App() {
             <Heading>{obtainFilename(file.name)}</Heading>
           </Flex>
 
-          <PDFNavigatorComponent windowRef={windowRef} />
-          <br />
-          <PdfUrlViewer url={file.url} windowRef={windowRef} />
+          <HStack>
+            <Box>
+              <PDFNavigatorComponent windowRef={windowRef} />
+              <br />
+              <PdfUrlViewer url={file.url} windowRef={windowRef} />
+            </Box>
+          
+          <Markers/></HStack>
         </>
       )}
     </Box>
