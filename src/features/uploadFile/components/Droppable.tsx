@@ -6,7 +6,7 @@ import { FC, useRef, useState } from 'react';
 import UploadIcon from '../../../icons/UploadIcon';
 import {
   extractBinaryWithDrop,
-  extractBinaryWithInput,
+  extractBinaryWithInput
 } from '../helpers/extract-binary-from-event';
 
 type DroppableProps = {
@@ -38,12 +38,12 @@ const Droppable: FC<DroppableProps> = (props: DroppableProps) => {
   return (
     <>
       <Center
-        border='3px dashed'
-        borderColor='primary.900'
-        borderRadius='20px'
-        p='15px 20px'
-        flexDirection='column'
-        id='dropZone'
+        border="3px dashed"
+        borderColor="primary.900"
+        borderRadius="20px"
+        p="15px 20px"
+        flexDirection="column"
+        id="dropZone"
         w={'500px'}
         padding={'2rem'}
         bg={itemOver ? 'secondary.50' : ''}
@@ -51,33 +51,30 @@ const Droppable: FC<DroppableProps> = (props: DroppableProps) => {
         onDragOver={(e) => dragOverHandler(e)}
         onDragLeave={() => setItemOver(false)}
       >
-        <UploadIcon boxSize='30' />
-        <Text fontWeight='bold' fontSize='20px'>
+        <UploadIcon boxSize="30" />
+        <Text fontWeight="bold" fontSize="20px">
           Drag & drop
         </Text>
         OR
-        <Button colorScheme='primary' onClick={() => inputRef.current?.click()}>
+        <Button colorScheme="primary" onClick={() => inputRef.current?.click()}>
           Browse file
         </Button>
         <chakra.input
           ref={inputRef}
-          type='file'
-          display='none'
+          type="file"
+          display="none"
           onChange={(e) => {
             const blob = extractBinaryWithInput(e);
 
-            if(blob) {
-              if( !ALLOWED_BLOB_TYPES.includes( blob.type)){
+            if (blob) {
+              if (!ALLOWED_BLOB_TYPES.includes(blob.type)) {
                 alert('Please upload a pdf file');
                 return;
-              }
-              else if (blob.size > MAX_PDF_SIZE){
+              } else if (blob.size > MAX_PDF_SIZE) {
                 alert('Please upload a smaller file');
                 return;
-              } 
-              else changeImageDropped(blob);
+              } else changeImageDropped(blob);
             }
-            
           }}
         />
       </Center>

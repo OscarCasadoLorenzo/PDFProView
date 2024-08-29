@@ -20,7 +20,7 @@ function App() {
   }
 
   return (
-    <Box className='App' bgColor='brand.background'>
+    <Box className="App" bgColor="brand.background">
       {isEmpty(file) && (
         <AbsoluteCenter>
           <UploadFileComponent />
@@ -28,19 +28,22 @@ function App() {
       )}
       {!isEmpty(file) && (
         <>
-
           <HStack justifyContent={'center'} my={20}>
             <Box>
-
-          <Flex justifyContent='space-between' alignItems='center' mb='10px'>
-            <Heading>{obtainFilename(file.name)}</Heading>
-          </Flex>
+              <Flex
+                justifyContent="space-between"
+                alignItems="center"
+                mb="10px"
+              >
+                <Heading>{obtainFilename(file.name)}</Heading>
+              </Flex>
               <PDFNavigatorComponent windowRef={windowRef} />
               <br />
               <PdfUrlViewer url={file.url} windowRef={windowRef} />
             </Box>
-          
-          <Markers windowRef={windowRef}/></HStack>
+
+            <Markers windowRef={windowRef} />
+          </HStack>
         </>
       )}
     </Box>

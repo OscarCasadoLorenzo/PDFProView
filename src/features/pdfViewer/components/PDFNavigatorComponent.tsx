@@ -7,7 +7,7 @@ import {
   pageAtom,
   scaleAtom,
   searchTextAtom,
-  totalPagesAtom,
+  totalPagesAtom
 } from '../../../data/atoms';
 
 import {
@@ -15,7 +15,7 @@ import {
   Divider,
   InputGroup,
   InputLeftElement,
-  Select,
+  Select
 } from '@chakra-ui/react';
 import ArrowDownIcon from '../../../icons/ArrowDownIcon';
 import ArrowUpIcon from '../../../icons/ArrowUpIcon';
@@ -28,7 +28,7 @@ type PDFNavigatorComponentProps = {
 };
 
 const PDFNavigatorComponent: FC<PDFNavigatorComponentProps> = ({
-  windowRef,
+  windowRef
 }) => {
   const [page, setPage] = useAtom(pageAtom);
   const [, setScale] = useAtom(scaleAtom);
@@ -48,67 +48,67 @@ const PDFNavigatorComponent: FC<PDFNavigatorComponentProps> = ({
   }, [page]);
 
   return (
-    <Flex justifyContent='space-between'>
+    <Flex justifyContent="space-between">
       <InputGroup maxW={'500px'}>
         <InputLeftElement>
           <MagnifyingGlassIcon />
         </InputLeftElement>
         <Input
           value={text}
-          placeholder='Search text'
+          placeholder="Search text"
           onChange={(e) => setText(e.target.value)}
         />
       </InputGroup>
 
-      <Box display='inherit' alignItems='center'>
+      <Box display="inherit" alignItems="center">
         <Button
-          colorScheme='primary'
+          colorScheme="primary"
           onClick={() => setPage((p: number) => p - 1)}
           isDisabled={prevPageDisabled}
         >
           <ArrowUpIcon />
         </Button>
-        <Divider orientation='vertical' mx='5px' />
+        <Divider orientation="vertical" mx="5px" />
         <Button
-          colorScheme='primary'
+          colorScheme="primary"
           onClick={() => setPage((p: number) => p + 1)}
           isDisabled={nextPageDisabled}
         >
           <ArrowDownIcon />
         </Button>
         <Input
-          colorScheme='primary'
-          ml='5px'
+          colorScheme="primary"
+          ml="5px"
           value={page}
           w={'80px'}
-          mr='5px'
+          mr="5px"
           onChange={(e) => {
             setPage(Number(e.target.value));
           }}
-          type='text'
+          type="text"
         />
         of {totalPages}
       </Box>
 
-      <Box display='inherit'>
+      <Box display="inherit">
         <Button
-          type='button'
-          colorScheme='primary'
+          type="button"
+          colorScheme="primary"
           onClick={() => setScale((v: number) => v + 0.1)}
         >
           <PlusIcon boxSize={7} />
         </Button>
-        <Divider orientation='vertical' mx='5px' />
+        <Divider orientation="vertical" mx="5px" />
         <Button
-          type='button'
-          colorScheme='primary'
+          type="button"
+          colorScheme="primary"
           onClick={() => setScale((v: number) => v - 0.1)}
         >
           <MinusIcon boxSize={7} />
         </Button>
         <Select
-          ml='5px'
-          minW='100px'
+          ml="5px"
+          minW="100px"
           onChange={(e) => {
             setScale(Number(e.target.value));
           }}

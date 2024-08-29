@@ -12,7 +12,7 @@ const Page = React.memo((props: PageProps) => {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    outline: '1px solid #ccc',
+    outline: '1px solid #ccc'
   };
   return <div style={internalStyle}>{children}</div>;
 });

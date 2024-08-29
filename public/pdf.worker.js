@@ -46,7 +46,7 @@
       /******/ var module = (installedModules[moduleId] = {
         /******/ i: moduleId,
         /******/ l: false,
-        /******/ exports: {},
+        /******/ exports: {}
         /******/
       });
       /******/
@@ -78,7 +78,7 @@
       /******/ if (!__w_pdfjs_require__.o(exports, name)) {
         /******/ Object.defineProperty(exports, name, {
           enumerable: true,
-          get: getter,
+          get: getter
         });
         /******/
       }
@@ -89,7 +89,7 @@
     /******/ __w_pdfjs_require__.r = function (exports) {
       /******/ if (typeof Symbol !== 'undefined' && Symbol.toStringTag) {
         /******/ Object.defineProperty(exports, Symbol.toStringTag, {
-          value: 'Module',
+          value: 'Module'
         });
         /******/
       }
@@ -116,7 +116,7 @@
       /******/ __w_pdfjs_require__.r(ns);
       /******/ Object.defineProperty(ns, 'default', {
         enumerable: true,
-        value: value,
+        value: value
       });
       /******/ if (mode & 2 && typeof value != 'string')
         for (var key in value)
@@ -179,7 +179,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.WorkerMessageHandler = exports.WorkerTask = void 0;
 
@@ -347,7 +347,7 @@
               if (this.terminated) {
                 throw new Error('Worker task was terminated');
               }
-            },
+            }
           };
           return WorkerTask;
         })();
@@ -386,7 +386,7 @@
 
               handler.send('test', {
                 supportTypedArray: true,
-                supportTransfers: supportTransfers,
+                supportTransfers: supportTransfers
               });
             });
             handler.on('configure', function wphConfigure(data) {
@@ -481,7 +481,7 @@
                           _context.next = 11;
                           return Promise.all([
                             pdfManager.ensureDoc('numPages'),
-                            pdfManager.ensureDoc('fingerprint'),
+                            pdfManager.ensureDoc('fingerprint')
                           ]);
 
                         case 11:
@@ -491,7 +491,7 @@
                           fingerprint = _ref5[1];
                           return _context.abrupt('return', {
                             numPages: numPages,
-                            fingerprint: fingerprint,
+                            fingerprint: fingerprint
                           });
 
                         case 16:
@@ -499,8 +499,7 @@
                           return _context.stop();
                       }
                     }
-                  },
-                  _callee);
+                  }, _callee);
                 })
               );
               return _loadDocument.apply(this, arguments);
@@ -555,7 +554,7 @@
                       password: source.password,
                       length: fullRequest.contentLength,
                       disableAutoFetch: disableAutoFetch,
-                      rangeChunkSize: source.rangeChunkSize,
+                      rangeChunkSize: source.rangeChunkSize
                     },
                     evaluatorOptions,
                     docBaseUrl
@@ -620,7 +619,7 @@
                     if (!fullRequest.isStreamingSupported) {
                       handler.send('DocProgress', {
                         loaded: loaded,
-                        total: Math.max(loaded, fullRequest.contentLength || 0),
+                        total: Math.max(loaded, fullRequest.contentLength || 0)
                       });
                     }
 
@@ -654,7 +653,7 @@
               function onSuccess(doc) {
                 ensureNotTerminated();
                 handler.send('GetDoc', {
-                  pdfInfo: doc,
+                  pdfInfo: doc
                 });
               }
 
@@ -722,7 +721,7 @@
                 disableFontFace: data.disableFontFace,
                 nativeImageDecoderSupport: data.nativeImageDecoderSupport,
                 ignoreErrors: data.ignoreErrors,
-                isEvalSupported: data.isEvalSupported,
+                isEvalSupported: data.isEvalSupported
               };
               getPdfManager(data, evaluatorOptions)
                 .then(function (newPdfManager) {
@@ -734,7 +733,7 @@
                   pdfManager = newPdfManager;
                   pdfManager.onLoadedStream().then(function (stream) {
                     handler.send('DataLoaded', {
-                      length: stream.bytes.byteLength,
+                      length: stream.bytes.byteLength
                     });
                   });
                 })
@@ -747,7 +746,7 @@
                   pdfManager.ensure(page, 'rotate'),
                   pdfManager.ensure(page, 'ref'),
                   pdfManager.ensure(page, 'userUnit'),
-                  pdfManager.ensure(page, 'view'),
+                  pdfManager.ensure(page, 'view')
                 ]).then(function (_ref) {
                   var _ref2 = _slicedToArray(_ref, 4),
                     rotate = _ref2[0],
@@ -759,7 +758,7 @@
                     rotate: rotate,
                     ref: ref,
                     userUnit: userUnit,
-                    view: view,
+                    view: view
                   };
                 });
               });
@@ -809,7 +808,7 @@
             handler.on('GetMetadata', function wphSetupGetMetadata(data) {
               return Promise.all([
                 pdfManager.ensureDoc('documentInfo'),
-                pdfManager.ensureCatalog('metadata'),
+                pdfManager.ensureCatalog('metadata')
               ]);
             });
             handler.on('GetData', function wphSetupGetData(data) {
@@ -844,7 +843,7 @@
                       handler: handler,
                       task: task,
                       intent: data.intent,
-                      renderInteractiveForms: data.renderInteractiveForms,
+                      renderInteractiveForms: data.renderInteractiveForms
                     })
                     .then(
                       function (operatorList) {
@@ -870,7 +869,7 @@
                         }
 
                         handler.send('UnsupportedFeature', {
-                          featureId: _util.UNSUPPORTED_FEATURES.unknown,
+                          featureId: _util.UNSUPPORTED_FEATURES.unknown
                         });
                         var minimumStackMessage =
                           'worker.js: while trying to getPage() and getOperatorList()';
@@ -879,24 +878,24 @@
                         if (typeof e === 'string') {
                           wrappedException = {
                             message: e,
-                            stack: minimumStackMessage,
+                            stack: minimumStackMessage
                           };
                         } else if (_typeof(e) === 'object') {
                           wrappedException = {
                             message: e.message || e.toString(),
-                            stack: e.stack || minimumStackMessage,
+                            stack: e.stack || minimumStackMessage
                           };
                         } else {
                           wrappedException = {
                             message: 'Unknown exception type: ' + _typeof(e),
-                            stack: minimumStackMessage,
+                            stack: minimumStackMessage
                           };
                         }
 
                         handler.send('PageError', {
                           pageIndex: pageIndex,
                           error: wrappedException,
-                          intent: data.intent,
+                          intent: data.intent
                         });
                       }
                     );
@@ -922,7 +921,7 @@
                     task: task,
                     sink: sink,
                     normalizeWhitespace: data.normalizeWhitespace,
-                    combineTextItems: data.combineTextItems,
+                    combineTextItems: data.combineTextItems
                   })
                   .then(
                     function () {
@@ -995,7 +994,7 @@
             );
             WorkerMessageHandler.setup(handler, port);
             handler.send('ready', null);
-          },
+          }
         };
         exports.WorkerMessageHandler = WorkerMessageHandler;
 
@@ -1079,12 +1078,12 @@
               try {
                 return {
                   type: 'normal',
-                  arg: fn.call(obj, arg),
+                  arg: fn.call(obj, arg)
                 };
               } catch (err) {
                 return {
                   type: 'throw',
-                  arg: err,
+                  arg: err
                 };
               }
             }
@@ -1162,7 +1161,7 @@
 
             exports.awrap = function (arg) {
               return {
-                __await: arg,
+                __await: arg
               };
             };
 
@@ -1299,7 +1298,7 @@
 
                     return {
                       value: record.arg,
-                      done: context.done,
+                      done: context.done
                     };
                   } else if (record.type === 'throw') {
                     state = GenStateCompleted;
@@ -1383,7 +1382,7 @@
 
             function pushTryEntry(locs) {
               var entry = {
-                tryLoc: locs[0],
+                tryLoc: locs[0]
               };
 
               if (1 in locs) {
@@ -1408,8 +1407,8 @@
             function Context(tryLocsList) {
               this.tryEntries = [
                 {
-                  tryLoc: 'root',
-                },
+                  tryLoc: 'root'
+                }
               ];
               tryLocsList.forEach(pushTryEntry, this);
               this.reset(true);
@@ -1472,7 +1471,7 @@
               }
 
               return {
-                next: doneResult,
+                next: doneResult
               };
             }
 
@@ -1481,7 +1480,7 @@
             function doneResult() {
               return {
                 value: undefined,
-                done: true,
+                done: true
               };
             }
 
@@ -1661,7 +1660,7 @@
                 this.delegate = {
                   iterator: values(iterable),
                   resultName: resultName,
-                  nextLoc: nextLoc,
+                  nextLoc: nextLoc
                 };
 
                 if (this.method === 'next') {
@@ -1669,7 +1668,7 @@
                 }
 
                 return ContinueSentinel;
-              },
+              }
             };
             return exports;
           })(
@@ -1702,13 +1701,13 @@
               enumerable: true,
               get: function get() {
                 return module.l;
-              },
+              }
             });
             Object.defineProperty(module, 'id', {
               enumerable: true,
               get: function get() {
                 return module.i;
-              },
+              }
             });
             module.webpackPolyfill = 1;
           }
@@ -1723,7 +1722,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.arrayByteLength = arrayByteLength;
         exports.arraysToBytes = arraysToBytes;
@@ -1761,13 +1760,13 @@
           enumerable: true,
           get: function get() {
             return _streams_polyfill.ReadableStream;
-          },
+          }
         });
         Object.defineProperty(exports, 'URL', {
           enumerable: true,
           get: function get() {
             return _url_polyfill.URL;
-          },
+          }
         });
         exports.createObjectURL =
           exports.FormatError =
@@ -1831,7 +1830,7 @@
         var NativeImageDecoding = {
           NONE: 'none',
           DECODE: 'decode',
-          DISPLAY: 'display',
+          DISPLAY: 'display'
         };
         exports.NativeImageDecoding = NativeImageDecoding;
         var PermissionFlag = {
@@ -1842,7 +1841,7 @@
           FILL_INTERACTIVE_FORMS: 0x100,
           COPY_FOR_ACCESSIBILITY: 0x200,
           ASSEMBLE: 0x400,
-          PRINT_HIGH_QUALITY: 0x800,
+          PRINT_HIGH_QUALITY: 0x800
         };
         exports.PermissionFlag = PermissionFlag;
         var TextRenderingMode = {
@@ -1855,13 +1854,13 @@
           FILL_STROKE_ADD_TO_PATH: 6,
           ADD_TO_PATH: 7,
           FILL_STROKE_MASK: 3,
-          ADD_TO_PATH_FLAG: 4,
+          ADD_TO_PATH_FLAG: 4
         };
         exports.TextRenderingMode = TextRenderingMode;
         var ImageKind = {
           GRAYSCALE_1BPP: 1,
           RGB_24BPP: 2,
-          RGBA_32BPP: 3,
+          RGBA_32BPP: 3
         };
         exports.ImageKind = ImageKind;
         var AnnotationType = {
@@ -1890,7 +1889,7 @@
           TRAPNET: 23,
           WATERMARK: 24,
           THREED: 25,
-          REDACT: 26,
+          REDACT: 26
         };
         exports.AnnotationType = AnnotationType;
         var AnnotationFlag = {
@@ -1903,7 +1902,7 @@
           READONLY: 0x40,
           LOCKED: 0x80,
           TOGGLENOVIEW: 0x100,
-          LOCKEDCONTENTS: 0x200,
+          LOCKEDCONTENTS: 0x200
         };
         exports.AnnotationFlag = AnnotationFlag;
         var AnnotationFieldFlag = {
@@ -1925,7 +1924,7 @@
           COMB: 0x1000000,
           RICHTEXT: 0x2000000,
           RADIOSINUNISON: 0x2000000,
-          COMMITONSELCHANGE: 0x4000000,
+          COMMITONSELCHANGE: 0x4000000
         };
         exports.AnnotationFieldFlag = AnnotationFieldFlag;
         var AnnotationBorderStyleType = {
@@ -1933,7 +1932,7 @@
           DASHED: 2,
           BEVELED: 3,
           INSET: 4,
-          UNDERLINE: 5,
+          UNDERLINE: 5
         };
         exports.AnnotationBorderStyleType = AnnotationBorderStyleType;
         var StreamType = {
@@ -1946,7 +1945,7 @@
           A85: 6,
           AHX: 7,
           CCF: 8,
-          RL: 9,
+          RL: 9
         };
         exports.StreamType = StreamType;
         var FontType = {
@@ -1960,19 +1959,19 @@
           TYPE3: 7,
           OPENTYPE: 8,
           TYPE0: 9,
-          MMTYPE1: 10,
+          MMTYPE1: 10
         };
         exports.FontType = FontType;
         var VerbosityLevel = {
           ERRORS: 0,
           WARNINGS: 1,
-          INFOS: 5,
+          INFOS: 5
         };
         exports.VerbosityLevel = VerbosityLevel;
         var CMapCompressionType = {
           NONE: 0,
           BINARY: 1,
-          STREAM: 2,
+          STREAM: 2
         };
         exports.CMapCompressionType = CMapCompressionType;
         var OPS = {
@@ -2066,7 +2065,7 @@
           paintImageXObjectRepeat: 88,
           paintImageMaskXObjectRepeat: 89,
           paintSolidColorImageMask: 90,
-          constructPath: 91,
+          constructPath: 91
         };
         exports.OPS = OPS;
         var UNSUPPORTED_FEATURES = {
@@ -2075,12 +2074,12 @@
           javaScript: 'javaScript',
           smask: 'smask',
           shadingPattern: 'shadingPattern',
-          font: 'font',
+          font: 'font'
         };
         exports.UNSUPPORTED_FEATURES = UNSUPPORTED_FEATURES;
         var PasswordResponses = {
           NEED_PASSWORD: 1,
-          INCORRECT_PASSWORD: 2,
+          INCORRECT_PASSWORD: 2
         };
         exports.PasswordResponses = PasswordResponses;
         var verbosity = VerbosityLevel.WARNINGS;
@@ -2173,7 +2172,7 @@
             value: value,
             enumerable: true,
             configurable: true,
-            writable: false,
+            writable: false
           });
           return value;
         }
@@ -2438,7 +2437,7 @@
               m1[0] * m2[2] + m1[2] * m2[3],
               m1[1] * m2[2] + m1[3] * m2[3],
               m1[0] * m2[4] + m1[2] * m2[5] + m1[4],
-              m1[1] * m2[4] + m1[3] * m2[5] + m1[5],
+              m1[1] * m2[4] + m1[3] * m2[5] + m1[5]
             ];
           };
 
@@ -2470,7 +2469,7 @@
                 Math.min(p1[0], p2[0], p3[0], p4[0]),
                 Math.min(p1[1], p2[1], p3[1], p4[1]),
                 Math.max(p1[0], p2[0], p3[0], p4[0]),
-                Math.max(p1[1], p2[1], p3[1], p4[1]),
+                Math.max(p1[1], p2[1], p3[1], p4[1])
               ];
             };
 
@@ -2482,7 +2481,7 @@
               -m[2] / d,
               m[0] / d,
               (m[2] * m[5] - m[4] * m[3]) / d,
-              (m[4] * m[1] - m[5] * m[0]) / d,
+              (m[4] * m[1] - m[5] * m[0]) / d
             ];
           };
 
@@ -2490,7 +2489,7 @@
             return [
               m[0] * v[0] + m[1] * v[1] + m[2] * v[2],
               m[3] * v[0] + m[4] * v[1] + m[5] * v[2],
-              m[6] * v[0] + m[7] * v[1] + m[8] * v[2],
+              m[6] * v[0] + m[7] * v[1] + m[8] * v[2]
             ];
           };
 
@@ -2575,7 +2574,7 @@
           0x2022, 0x2020, 0x2021, 0x2026, 0x2014, 0x2013, 0x192, 0x2044, 0x2039,
           0x203a, 0x2212, 0x2030, 0x201e, 0x201c, 0x201d, 0x2018, 0x2019,
           0x201a, 0x2122, 0xfb01, 0xfb02, 0x141, 0x152, 0x160, 0x178, 0x17d,
-          0x131, 0x142, 0x153, 0x161, 0x17e, 0, 0x20ac,
+          0x131, 0x142, 0x153, 0x161, 0x17e, 0, 0x20ac
         ];
 
         function stringToPDFString(str) {
@@ -2655,7 +2654,7 @@
           Object.defineProperty(capability, 'settled', {
             get: function get() {
               return isSettled;
-            },
+            }
           });
           capability.promise = new Promise(function (resolve, reject) {
             capability.resolve = function (data) {
@@ -2682,7 +2681,7 @@
 
             if (!forceDataSchema && _url_polyfill.URL.createObjectURL) {
               var blob = new Blob([data], {
-                type: contentType,
+                type: contentType
               });
               return _url_polyfill.URL.createObjectURL(blob);
             }
@@ -3015,10 +3014,10 @@
           typeof window !== 'undefined' && window.Math === Math
             ? window
             : typeof global !== 'undefined' && global.Math === Math
-            ? global
-            : typeof self !== 'undefined' && self.Math === Math
-            ? self
-            : {};
+              ? global
+              : typeof self !== 'undefined' && self.Math === Math
+                ? self
+                : {};
 
         /***/
       },
@@ -3098,7 +3097,7 @@
               return $startsWith
                 ? $startsWith.call(that, search, index)
                 : that.slice(index, index + search.length) === search;
-            },
+            }
           }
         );
 
@@ -3129,8 +3128,8 @@
           var target = IS_GLOBAL
             ? global
             : IS_STATIC
-            ? global[name] || (global[name] = {})
-            : (global[name] || {})[PROTOTYPE];
+              ? global[name] || (global[name] = {})
+              : (global[name] || {})[PROTOTYPE];
           var exports = IS_GLOBAL ? core : core[name] || (core[name] = {});
           var expProto = exports[PROTOTYPE] || (exports[PROTOTYPE] = {});
           var key, own, out, exp;
@@ -3143,8 +3142,8 @@
               IS_BIND && own
                 ? ctx(out, global)
                 : IS_PROTO && typeof out == 'function'
-                ? ctx(Function.call, out)
-                : out;
+                  ? ctx(Function.call, out)
+                  : out;
             if (target) redefine(target, key, out, type & $export.U);
             if (exports[key] != out) hide(exports, key, exp);
             if (IS_PROTO && expProto[key] != out) expProto[key] = out;
@@ -3172,8 +3171,8 @@
           typeof window != 'undefined' && window.Math == Math
             ? window
             : typeof self != 'undefined' && self.Math == Math
-            ? self
-            : Function('return this')());
+              ? self
+              : Function('return this')());
         if (typeof __g == 'number') __g = global;
 
         /***/
@@ -3183,7 +3182,7 @@
         'use strict';
 
         var core = (module.exports = {
-          version: '2.6.9',
+          version: '2.6.9'
         });
         if (typeof __e == 'number') __e = core;
 
@@ -3294,7 +3293,7 @@
               Object.defineProperty(__w_pdfjs_require__(21)('div'), 'a', {
                 get: function get() {
                   return 7;
-                },
+                }
               }).a != 7
             );
           });
@@ -3310,7 +3309,7 @@
             Object.defineProperty({}, 'a', {
               get: function get() {
                 return 7;
-              },
+              }
             }).a != 7
           );
         });
@@ -3387,7 +3386,7 @@
             enumerable: !(bitmap & 1),
             configurable: !(bitmap & 2),
             writable: !(bitmap & 4),
-            value: value,
+            value: value
           };
         };
 
@@ -3495,7 +3494,7 @@
         })('versions', []).push({
           version: core.version,
           mode: __w_pdfjs_require__(29) ? 'pure' : 'global',
-          copyright: '© 2019 Denis Pushkarev (zloirock.ru)',
+          copyright: '© 2019 Denis Pushkarev (zloirock.ru)'
         });
 
         /***/
@@ -3728,7 +3727,7 @@
               return $endsWith
                 ? $endsWith.call(that, search, end)
                 : that.slice(end - search.length, end) === search;
-            },
+            }
           }
         );
 
@@ -3762,7 +3761,7 @@
                 searchString,
                 arguments.length > 1 ? arguments[1] : undefined
               );
-            },
+            }
           }
         );
 
@@ -3793,7 +3792,7 @@
               el,
               arguments.length > 1 ? arguments[1] : undefined
             );
-          },
+          }
         });
 
         __w_pdfjs_require__(50)('includes');
@@ -3925,13 +3924,13 @@
             if (index >= O.length)
               return {
                 value: undefined,
-                done: true,
+                done: true
               };
             point = $at(O, index);
             this._i += point.length;
             return {
               value: point,
-              done: false,
+              done: false
             };
           }
         );
@@ -3963,8 +3962,8 @@
                 ? s.charAt(i)
                 : a
               : TO_STRING
-              ? s.slice(i, i + 2)
-              : ((a - 0xd800) << 10) + (b - 0xdc00) + 0x10000;
+                ? s.slice(i, i + 2)
+                : ((a - 0xd800) << 10) + (b - 0xdc00) + 0x10000;
           };
         };
 
@@ -4084,7 +4083,7 @@
             methods = {
               values: DEF_VALUES ? $default : getMethod(VALUES),
               keys: IS_SET ? $default : getMethod(KEYS),
-              entries: $entries,
+              entries: $entries
             };
             if (FORCED)
               for (key in methods) {
@@ -4133,7 +4132,7 @@
 
         module.exports = function (Constructor, NAME, next) {
           Constructor.prototype = create(IteratorPrototype, {
-            next: descriptor(1, next),
+            next: descriptor(1, next)
           });
           setToStringTag(Constructor, NAME + ' Iterator');
         };
@@ -4326,7 +4325,7 @@
           if (it && !has((it = stat ? it : it.prototype), TAG))
             def(it, TAG, {
               configurable: true,
-              value: tag,
+              value: tag
             });
         };
 
@@ -4442,7 +4441,7 @@
 
               result.length = index;
               return result;
-            },
+            }
           }
         );
 
@@ -4546,14 +4545,14 @@
           return it === undefined
             ? 'Undefined'
             : it === null
-            ? 'Null'
-            : typeof (T = tryGet((O = Object(it)), TAG)) == 'string'
-            ? T
-            : ARG
-            ? cof(O)
-            : (B = cof(O)) == 'Object' && typeof O.callee == 'function'
-            ? 'Arguments'
-            : B;
+              ? 'Null'
+              : typeof (T = tryGet((O = Object(it)), TAG)) == 'string'
+                ? T
+                : ARG
+                  ? cof(O)
+                  : (B = cof(O)) == 'Object' && typeof O.callee == 'function'
+                    ? 'Arguments'
+                    : B;
         };
 
         /***/
@@ -4588,7 +4587,7 @@
 
             iter.next = function () {
               return {
-                done: (safe = true),
+                done: (safe = true)
               };
             };
 
@@ -4621,7 +4620,7 @@
         var $export = __w_pdfjs_require__(11);
 
         $export($export.S + $export.F, 'Object', {
-          assign: __w_pdfjs_require__(76),
+          assign: __w_pdfjs_require__(76)
         });
 
         /***/
@@ -4722,7 +4721,7 @@
         $export($export.S, 'Math', {
           log2: function log2(x) {
             return Math.log(x) / Math.LN2;
-          },
+          }
         });
 
         /***/
@@ -4746,7 +4745,7 @@
         $export($export.S, 'Number', {
           isNaN: function isNaN(number) {
             return number != number;
-          },
+          }
         });
 
         /***/
@@ -4768,7 +4767,7 @@
         var $export = __w_pdfjs_require__(11);
 
         $export($export.S, 'Number', {
-          isInteger: __w_pdfjs_require__(85),
+          isInteger: __w_pdfjs_require__(85)
         });
 
         /***/
@@ -4881,7 +4880,7 @@
           StyleSheetList: true,
           TextTrackCueList: false,
           TextTrackList: false,
-          TouchList: false,
+          TouchList: false
         };
 
         for (
@@ -4958,7 +4957,7 @@
         module.exports = function (done, value) {
           return {
             value: value,
-            done: !!done,
+            done: !!done
           };
         };
 
@@ -5111,7 +5110,7 @@
                 } else if ((handler = global.onunhandledrejection)) {
                   handler({
                     promise: promise,
-                    reason: value,
+                    reason: value
                   });
                 } else if ((console = global.console) && console.error) {
                   console.error('Unhandled promise rejection', value);
@@ -5138,7 +5137,7 @@
             } else if ((handler = global.onrejectionhandled)) {
               handler({
                 promise: promise,
-                reason: promise._v,
+                reason: promise._v
               });
             }
           });
@@ -5170,7 +5169,7 @@
               microtask(function () {
                 var wrapper = {
                   _w: promise,
-                  _d: false,
+                  _d: false
                 };
 
                 try {
@@ -5192,7 +5191,7 @@
             $reject.call(
               {
                 _w: promise,
-                _d: false,
+                _d: false
               },
               e
             );
@@ -5240,7 +5239,7 @@
             },
             catch: function _catch(onRejected) {
               return this.then(undefined, onRejected);
-            },
+            }
           });
 
           OwnPromiseCapability = function OwnPromiseCapability() {
@@ -5259,7 +5258,7 @@
         }
 
         $export($export.G + $export.W + $export.F * !USE_NATIVE, {
-          Promise: $Promise,
+          Promise: $Promise
         });
 
         __w_pdfjs_require__(64)($Promise, PROMISE);
@@ -5273,7 +5272,7 @@
             var $$reject = capability.reject;
             $$reject(r);
             return capability.promise;
-          },
+          }
         });
         $export($export.S + $export.F * (LIBRARY || !USE_NATIVE), PROMISE, {
           resolve: function resolve(x) {
@@ -5281,7 +5280,7 @@
               LIBRARY && this === Wrapper ? $Promise : this,
               x
             );
-          },
+          }
         });
         $export(
           $export.S +
@@ -5331,7 +5330,7 @@
               });
               if (result.e) reject(result.v);
               return capability.promise;
-            },
+            }
           }
         );
 
@@ -5532,7 +5531,7 @@
 
         module.exports = {
           set: setTask,
-          clear: clearTask,
+          clear: clearTask
         };
 
         /***/
@@ -5620,7 +5619,7 @@
             var toggle = true;
             var node = document.createTextNode('');
             new Observer(flush).observe(node, {
-              characterData: true,
+              characterData: true
             });
 
             notify = function notify() {
@@ -5641,7 +5640,7 @@
           return function (fn) {
             var task = {
               fn: fn,
-              next: undefined,
+              next: undefined
             };
             if (last) last.next = task;
 
@@ -5688,12 +5687,12 @@
           try {
             return {
               e: false,
-              v: exec(),
+              v: exec()
             };
           } catch (e) {
             return {
               e: true,
-              v: e,
+              v: e
             };
           }
         };
@@ -5767,7 +5766,7 @@
               configurable: true,
               get: function get() {
                 return this;
-              },
+              }
             });
         };
 
@@ -5807,7 +5806,7 @@
                   }
                 : onFinally
             );
-          },
+          }
         });
 
         /***/
@@ -5830,7 +5829,7 @@
               result.v
             );
             return promiseCapability.promise;
-          },
+          }
         });
 
         /***/
@@ -5899,7 +5898,7 @@
           },
           set: function set(key, value) {
             return weak.def(validate(this, WEAK_MAP), key, value);
-          },
+          }
         };
 
         var $WeakMap = (module.exports = __w_pdfjs_require__(115)(
@@ -5965,8 +5964,8 @@
             var result = IS_MAP
               ? create($this, length)
               : IS_FILTER
-              ? create($this, 0)
-              : undefined;
+                ? create($this, 0)
+                : undefined;
             var val, res;
 
             for (; length > index; index++) {
@@ -6105,8 +6104,8 @@
           setDesc(it, META, {
             value: {
               i: 'O' + ++id,
-              w: {},
-            },
+              w: {}
+            }
           });
         };
 
@@ -6146,7 +6145,7 @@
           NEED: false,
           fastKey: fastKey,
           getWeak: getWeak,
-          onFreeze: onFreeze,
+          onFreeze: onFreeze
         });
 
         /***/
@@ -6210,7 +6209,7 @@
             });
             if (~index) this.a.splice(index, 1);
             return !!~index;
-          },
+          }
         };
         module.exports = {
           getConstructor: function getConstructor(
@@ -6243,7 +6242,7 @@
                 if (data === true)
                   return uncaughtFrozenStore(validate(this, NAME)).has(key);
                 return data && $has(data, this._i);
-              },
+              }
             });
             return C;
           },
@@ -6253,7 +6252,7 @@
             else data[that._i] = value;
             return that;
           },
-          ufstore: uncaughtFrozenStore,
+          ufstore: uncaughtFrozenStore
         };
 
         /***/
@@ -6326,26 +6325,26 @@
                       : fn.call(this, a === 0 ? 0 : a);
                   }
                 : KEY == 'has'
-                ? function has(a) {
-                    return IS_WEAK && !isObject(a)
-                      ? false
-                      : fn.call(this, a === 0 ? 0 : a);
-                  }
-                : KEY == 'get'
-                ? function get(a) {
-                    return IS_WEAK && !isObject(a)
-                      ? undefined
-                      : fn.call(this, a === 0 ? 0 : a);
-                  }
-                : KEY == 'add'
-                ? function add(a) {
-                    fn.call(this, a === 0 ? 0 : a);
-                    return this;
-                  }
-                : function set(a, b) {
-                    fn.call(this, a === 0 ? 0 : a, b);
-                    return this;
-                  }
+                  ? function has(a) {
+                      return IS_WEAK && !isObject(a)
+                        ? false
+                        : fn.call(this, a === 0 ? 0 : a);
+                    }
+                  : KEY == 'get'
+                    ? function get(a) {
+                        return IS_WEAK && !isObject(a)
+                          ? undefined
+                          : fn.call(this, a === 0 ? 0 : a);
+                      }
+                    : KEY == 'add'
+                      ? function add(a) {
+                          fn.call(this, a === 0 ? 0 : a);
+                          return this;
+                        }
+                      : function set(a, b) {
+                          fn.call(this, a === 0 ? 0 : a, b);
+                          return this;
+                        }
             );
           };
 
@@ -6483,7 +6482,7 @@
                   };
                 })({}, false)
               : undefined),
-          check: check,
+          check: check
         };
 
         /***/
@@ -6544,7 +6543,7 @@
               }
 
               return new this(A);
-            },
+            }
           });
         };
 
@@ -6592,7 +6591,7 @@
               }
 
               return new this(A);
-            },
+            }
           });
         };
 
@@ -6636,7 +6635,7 @@
           {
             add: function add(value) {
               return weak.def(validate(this, WEAK_SET), value, true);
-            },
+            }
           },
           weak,
           false,
@@ -6682,7 +6681,7 @@
         $export($export.P, 'String', {
           codePointAt: function codePointAt(pos) {
             return $at(this, pos);
-          },
+          }
         });
 
         /***/
@@ -6733,7 +6732,7 @@
               }
 
               return res.join('');
-            },
+            }
           }
         );
 
@@ -6858,9 +6857,9 @@
                 dP({}, 'a', {
                   get: function get() {
                     return dP(this, 'a', {
-                      value: 7,
+                      value: 7
                     }).a;
-                  },
+                  }
                 })
               ).a != 7
             );
@@ -6903,7 +6902,7 @@
             } else {
               if (has(it, HIDDEN) && it[HIDDEN][key]) it[HIDDEN][key] = false;
               D = _create(D, {
-                enumerable: createDesc(0, false),
+                enumerable: createDesc(0, false)
               });
             }
 
@@ -7023,7 +7022,7 @@
             if (DESCRIPTORS && setter)
               setSymbolDesc(ObjectProto, tag, {
                 configurable: true,
-                set: $set,
+                set: $set
               });
             return wrap(tag);
           };
@@ -7052,7 +7051,7 @@
         }
 
         $export($export.G + $export.W + $export.F * !USE_NATIVE, {
-          Symbol: $Symbol,
+          Symbol: $Symbol
         });
 
         for (
@@ -7093,7 +7092,7 @@
           },
           useSimple: function useSimple() {
             setter = false;
-          },
+          }
         });
         $export($export.S + $export.F * !USE_NATIVE, 'Object', {
           create: $create,
@@ -7101,7 +7100,7 @@
           defineProperties: $defineProperties,
           getOwnPropertyDescriptor: $getOwnPropertyDescriptor,
           getOwnPropertyNames: $getOwnPropertyNames,
-          getOwnPropertySymbols: $getOwnPropertySymbols,
+          getOwnPropertySymbols: $getOwnPropertySymbols
         });
         var FAILS_ON_PRIMITIVES = $fails(function () {
           $GOPS.f(1);
@@ -7109,7 +7108,7 @@
         $export($export.S + $export.F * FAILS_ON_PRIMITIVES, 'Object', {
           getOwnPropertySymbols: function getOwnPropertySymbols(it) {
             return $GOPS.f(toObject(it));
-          },
+          }
         });
         $JSON &&
           $export(
@@ -7121,7 +7120,7 @@
                     return (
                       _stringify([S]) != '[null]' ||
                       _stringify({
-                        a: S,
+                        a: S
                       }) != '{}' ||
                       _stringify(Object(S)) != '{}'
                     );
@@ -7148,7 +7147,7 @@
                   };
                 args[1] = replacer;
                 return _stringify.apply($JSON, args);
-              },
+              }
             }
           );
         $Symbol[PROTOTYPE][TO_PRIMITIVE] ||
@@ -7190,7 +7189,7 @@
             core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
           if (name.charAt(0) != '_' && !(name in $Symbol))
             defineProperty($Symbol, name, {
-              value: wksExt.f(name),
+              value: wksExt.f(name)
             });
         };
 
@@ -7326,7 +7325,7 @@
               arguments.length > 1 ? arguments[1] : undefined,
               true
             );
-          },
+          }
         });
 
         /***/
@@ -7413,7 +7412,7 @@
               arguments.length > 1 ? arguments[1] : undefined,
               false
             );
-          },
+          }
         });
 
         /***/
@@ -7439,7 +7438,7 @@
         $export($export.S, 'Object', {
           values: function values(it) {
             return $values(it);
-          },
+          }
         });
 
         /***/
@@ -7491,7 +7490,7 @@
               new ReadableStream({
                 start: function start(controller) {
                   controller.close();
-                },
+                }
               });
               isReadableStreamSupported = true;
             } catch (e) {}
@@ -7546,7 +7545,7 @@
               var module = (installedModules[moduleId] = {
                 i: moduleId,
                 l: false,
-                exports: {},
+                exports: {}
               });
               modules[moduleId].call(
                 module.exports,
@@ -7570,7 +7569,7 @@
                 Object.defineProperty(exports, name, {
                   configurable: false,
                   enumerable: true,
-                  get: getter,
+                  get: getter
                 });
               }
             };
@@ -7642,7 +7641,7 @@
                   value: v,
                   writable: true,
                   enumerable: true,
-                  configurable: true,
+                  configurable: true
                 });
               };
 
@@ -7670,13 +7669,13 @@
                   value: value,
                   enumerable: true,
                   writable: true,
-                  configurable: true,
+                  configurable: true
                 });
                 Object.defineProperty(obj, 'done', {
                   value: done,
                   enumerable: true,
                   writable: true,
-                  configurable: true,
+                  configurable: true
                 });
                 return obj;
               };
@@ -7792,7 +7791,7 @@
                   exports.ValidateAndNormalizeHighWaterMark(highWaterMark);
                 return {
                   size: size,
-                  highWaterMark: highWaterMark,
+                  highWaterMark: highWaterMark
                 };
               };
             },
@@ -7825,7 +7824,7 @@
               module.exports = {
                 rethrowAssertionErrorRejection: rethrowAssertionErrorRejection,
                 AssertionError: AssertionError,
-                assert: assert,
+                assert: assert
               };
             },
             function (module, exports, __w_pdfjs_require__) {
@@ -7938,7 +7937,7 @@
                       }
 
                       return WritableStreamAbort(this, reason);
-                    },
+                    }
                   },
                   {
                     key: 'getWriter',
@@ -7948,7 +7947,7 @@
                       }
 
                       return AcquireWritableStreamDefaultWriter(this);
-                    },
+                    }
                   },
                   {
                     key: 'locked',
@@ -7958,8 +7957,8 @@
                       }
 
                       return IsWritableStreamLocked(this);
-                    },
-                  },
+                    }
+                  }
                 ]);
 
                 return WritableStream;
@@ -7981,7 +7980,7 @@
                 WritableStreamDefaultWriterWrite:
                   WritableStreamDefaultWriterWrite,
                 WritableStreamCloseQueuedOrInFlight:
-                  WritableStreamCloseQueuedOrInFlight,
+                  WritableStreamCloseQueuedOrInFlight
               };
 
               function AcquireWritableStreamDefaultWriter(stream) {
@@ -8051,7 +8050,7 @@
                     _resolve: resolve,
                     _reject: reject,
                     _reason: reason,
-                    _wasAlreadyErroring: wasAlreadyErroring,
+                    _wasAlreadyErroring: wasAlreadyErroring
                   };
                 });
 
@@ -8068,7 +8067,7 @@
                 var promise = new Promise(function (resolve, reject) {
                   var writeRequest = {
                     _resolve: resolve,
-                    _reject: reject,
+                    _reject: reject
                   };
 
                   stream._writeRequests.push(writeRequest);
@@ -8420,7 +8419,7 @@
                       }
 
                       return WritableStreamDefaultWriterAbort(this, reason);
-                    },
+                    }
                   },
                   {
                     key: 'close',
@@ -8450,7 +8449,7 @@
                       }
 
                       return WritableStreamDefaultWriterClose(this);
-                    },
+                    }
                   },
                   {
                     key: 'releaseLock',
@@ -8467,7 +8466,7 @@
 
                       assert(stream._writer !== undefined);
                       WritableStreamDefaultWriterRelease(this);
-                    },
+                    }
                   },
                   {
                     key: 'write',
@@ -8485,7 +8484,7 @@
                       }
 
                       return WritableStreamDefaultWriterWrite(this, chunk);
-                    },
+                    }
                   },
                   {
                     key: 'closed',
@@ -8497,7 +8496,7 @@
                       }
 
                       return this._closedPromise;
-                    },
+                    }
                   },
                   {
                     key: 'desiredSize',
@@ -8511,7 +8510,7 @@
                       }
 
                       return WritableStreamDefaultWriterGetDesiredSize(this);
-                    },
+                    }
                   },
                   {
                     key: 'ready',
@@ -8523,8 +8522,8 @@
                       }
 
                       return this._readyPromise;
-                    },
-                  },
+                    }
+                  }
                 ]);
 
                 return WritableStreamDefaultWriter;
@@ -8573,7 +8572,7 @@
                 var promise = new Promise(function (resolve, reject) {
                   var closeRequest = {
                     _resolve: resolve,
-                    _reject: reject,
+                    _reject: reject
                   };
                   stream._closeRequest = closeRequest;
                 });
@@ -8771,7 +8770,7 @@
                       }
 
                       WritableStreamDefaultControllerError(this, e);
-                    },
+                    }
                   },
                   {
                     key: '__abortSteps',
@@ -8781,13 +8780,13 @@
                         'abort',
                         [reason]
                       );
-                    },
+                    }
                   },
                   {
                     key: '__errorSteps',
                     value: function __errorSteps() {
                       ResetQueue(this);
-                    },
+                    }
                   },
                   {
                     key: '__startSteps',
@@ -8822,8 +8821,8 @@
                           }
                         )
                         ['catch'](rethrowAssertionErrorRejection);
-                    },
-                  },
+                    }
+                  }
                 ]);
 
                 return WritableStreamDefaultController;
@@ -8867,7 +8866,7 @@
                 chunkSize
               ) {
                 var writeRecord = {
-                  chunk: chunk,
+                  chunk: chunk
                 };
 
                 try {
@@ -9291,7 +9290,7 @@
 
                 container._queue.push({
                   value: value,
-                  size: size,
+                  size: size
                 });
 
                 container._queueTotalSize += size;
@@ -9460,7 +9459,7 @@
                       }
 
                       return ReadableStreamCancel(this, reason);
-                    },
+                    }
                   },
                   {
                     key: 'getReader',
@@ -9486,7 +9485,7 @@
                       }
 
                       throw new RangeError('Invalid mode is specified');
-                    },
+                    }
                   },
                   {
                     key: 'pipeThrough',
@@ -9498,7 +9497,7 @@
                         promise
                       );
                       return readable;
-                    },
+                    }
                   },
                   {
                     key: 'pipeTo',
@@ -9757,7 +9756,7 @@
                           }
                         }
                       });
-                    },
+                    }
                   },
                   {
                     key: 'tee',
@@ -9768,7 +9767,7 @@
 
                       var branches = ReadableStreamTee(this, false);
                       return createArrayFromList(branches);
-                    },
+                    }
                   },
                   {
                     key: 'locked',
@@ -9778,8 +9777,8 @@
                       }
 
                       return IsReadableStreamLocked(this);
-                    },
-                  },
+                    }
+                  }
                 ]);
 
                 return ReadableStream;
@@ -9795,7 +9794,7 @@
                 ReadableStreamDefaultControllerError:
                   ReadableStreamDefaultControllerError,
                 ReadableStreamDefaultControllerGetDesiredSize:
-                  ReadableStreamDefaultControllerGetDesiredSize,
+                  ReadableStreamDefaultControllerGetDesiredSize
               };
 
               function AcquireReadableStreamBYOBReader(stream) {
@@ -9853,7 +9852,7 @@
                   canceled1: false,
                   canceled2: false,
                   reason1: undefined,
-                  reason2: undefined,
+                  reason2: undefined
                 };
                 teeState.promise = new Promise(function (resolve) {
                   teeState._resolve = resolve;
@@ -9898,41 +9897,41 @@
                     branch1 = f._branch1,
                     branch2 = f._branch2,
                     teeState = f._teeState;
-                  return ReadableStreamDefaultReaderRead(reader).then(function (
-                    result
-                  ) {
-                    assert(typeIsObject(result));
-                    var value = result.value;
-                    var done = result.done;
-                    assert(typeof done === 'boolean');
+                  return ReadableStreamDefaultReaderRead(reader).then(
+                    function (result) {
+                      assert(typeIsObject(result));
+                      var value = result.value;
+                      var done = result.done;
+                      assert(typeof done === 'boolean');
 
-                    if (done === true && teeState.closedOrErrored === false) {
+                      if (done === true && teeState.closedOrErrored === false) {
+                        if (teeState.canceled1 === false) {
+                          ReadableStreamDefaultControllerClose(branch1);
+                        }
+
+                        if (teeState.canceled2 === false) {
+                          ReadableStreamDefaultControllerClose(branch2);
+                        }
+
+                        teeState.closedOrErrored = true;
+                      }
+
+                      if (teeState.closedOrErrored === true) {
+                        return;
+                      }
+
+                      var value1 = value;
+                      var value2 = value;
+
                       if (teeState.canceled1 === false) {
-                        ReadableStreamDefaultControllerClose(branch1);
+                        ReadableStreamDefaultControllerEnqueue(branch1, value1);
                       }
 
                       if (teeState.canceled2 === false) {
-                        ReadableStreamDefaultControllerClose(branch2);
+                        ReadableStreamDefaultControllerEnqueue(branch2, value2);
                       }
-
-                      teeState.closedOrErrored = true;
                     }
-
-                    if (teeState.closedOrErrored === true) {
-                      return;
-                    }
-
-                    var value1 = value;
-                    var value2 = value;
-
-                    if (teeState.canceled1 === false) {
-                      ReadableStreamDefaultControllerEnqueue(branch1, value1);
-                    }
-
-                    if (teeState.canceled2 === false) {
-                      ReadableStreamDefaultControllerEnqueue(branch2, value2);
-                    }
-                  });
+                  );
                 }
 
                 return f;
@@ -9948,7 +9947,7 @@
                   if (teeState.canceled2 === true) {
                     var compositeReason = createArrayFromList([
                       teeState.reason1,
-                      teeState.reason2,
+                      teeState.reason2
                     ]);
                     var cancelResult = ReadableStreamCancel(
                       stream,
@@ -9974,7 +9973,7 @@
                   if (teeState.canceled1 === true) {
                     var compositeReason = createArrayFromList([
                       teeState.reason1,
-                      teeState.reason2,
+                      teeState.reason2
                     ]);
                     var cancelResult = ReadableStreamCancel(
                       stream,
@@ -9998,7 +9997,7 @@
                 var promise = new Promise(function (resolve, reject) {
                   var readIntoRequest = {
                     _resolve: resolve,
-                    _reject: reject,
+                    _reject: reject
                   };
 
                   stream._reader._readIntoRequests.push(readIntoRequest);
@@ -10012,7 +10011,7 @@
                 var promise = new Promise(function (resolve, reject) {
                   var readRequest = {
                     _resolve: resolve,
-                    _reject: reject,
+                    _reject: reject
                   };
 
                   stream._reader._readRequests.push(readRequest);
@@ -10199,7 +10198,7 @@
                       }
 
                       return ReadableStreamReaderGenericCancel(this, reason);
-                    },
+                    }
                   },
                   {
                     key: 'read',
@@ -10215,7 +10214,7 @@
                       }
 
                       return ReadableStreamDefaultReaderRead(this);
-                    },
+                    }
                   },
                   {
                     key: 'releaseLock',
@@ -10235,7 +10234,7 @@
                       }
 
                       ReadableStreamReaderGenericRelease(this);
-                    },
+                    }
                   },
                   {
                     key: 'closed',
@@ -10247,8 +10246,8 @@
                       }
 
                       return this._closedPromise;
-                    },
-                  },
+                    }
+                  }
                 ]);
 
                 return ReadableStreamDefaultReader;
@@ -10301,7 +10300,7 @@
                       }
 
                       return ReadableStreamReaderGenericCancel(this, reason);
-                    },
+                    }
                   },
                   {
                     key: 'read',
@@ -10329,7 +10328,7 @@
                       }
 
                       return ReadableStreamBYOBReaderRead(this, view);
-                    },
+                    }
                   },
                   {
                     key: 'releaseLock',
@@ -10349,7 +10348,7 @@
                       }
 
                       ReadableStreamReaderGenericRelease(this);
-                    },
+                    }
                   },
                   {
                     key: 'closed',
@@ -10361,8 +10360,8 @@
                       }
 
                       return this._closedPromise;
-                    },
-                  },
+                    }
+                  }
                 ]);
 
                 return ReadableStreamBYOBReader;
@@ -10517,7 +10516,7 @@
                   this._strategyHWM = normalizedStrategy.highWaterMark;
                   var controller = this;
                   var startResult = InvokeOrNoop(underlyingSource, 'start', [
-                    this,
+                    this
                   ]);
                   Promise.resolve(startResult)
                     .then(
@@ -10564,7 +10563,7 @@
                       }
 
                       ReadableStreamDefaultControllerClose(this);
-                    },
+                    }
                   },
                   {
                     key: 'enqueue',
@@ -10591,7 +10590,7 @@
                         this,
                         chunk
                       );
-                    },
+                    }
                   },
                   {
                     key: 'error',
@@ -10611,7 +10610,7 @@
                       }
 
                       ReadableStreamDefaultControllerError(this, e);
-                    },
+                    }
                   },
                   {
                     key: '__cancelSteps',
@@ -10622,7 +10621,7 @@
                         'cancel',
                         [reason]
                       );
-                    },
+                    }
                   },
                   {
                     key: '__pullSteps',
@@ -10649,7 +10648,7 @@
                       var pendingPromise = ReadableStreamAddReadRequest(stream);
                       ReadableStreamDefaultControllerCallPullIfNeeded(this);
                       return pendingPromise;
-                    },
+                    }
                   },
                   {
                     key: 'desiredSize',
@@ -10663,8 +10662,8 @@
                       return ReadableStreamDefaultControllerGetDesiredSize(
                         this
                       );
-                    },
-                  },
+                    }
+                  }
                 ]);
 
                 return ReadableStreamDefaultController;
@@ -10885,7 +10884,7 @@
                         this._associatedReadableByteStreamController,
                         bytesWritten
                       );
-                    },
+                    }
                   },
                   {
                     key: 'respondWithNewView',
@@ -10913,14 +10912,14 @@
                         this._associatedReadableByteStreamController,
                         view
                       );
-                    },
+                    }
                   },
                   {
                     key: 'view',
                     get: function get() {
                       return this._view;
-                    },
-                  },
+                    }
+                  }
                 ]);
 
                 return ReadableStreamBYOBRequest;
@@ -11025,7 +11024,7 @@
                       }
 
                       ReadableByteStreamControllerClose(this);
-                    },
+                    }
                   },
                   {
                     key: 'enqueue',
@@ -11057,7 +11056,7 @@
                       }
 
                       ReadableByteStreamControllerEnqueue(this, chunk);
-                    },
+                    }
                   },
                   {
                     key: 'error',
@@ -11077,7 +11076,7 @@
                       }
 
                       ReadableByteStreamControllerError(this, e);
-                    },
+                    }
                   },
                   {
                     key: '__cancelSteps',
@@ -11093,7 +11092,7 @@
                         'cancel',
                         [reason]
                       );
-                    },
+                    }
                   },
                   {
                     key: '__pullSteps',
@@ -11143,7 +11142,7 @@
                           bytesFilled: 0,
                           elementSize: 1,
                           ctor: Uint8Array,
-                          readerType: 'default',
+                          readerType: 'default'
                         };
 
                         this._pendingPullIntos.push(pullIntoDescriptor);
@@ -11152,7 +11151,7 @@
                       var promise = ReadableStreamAddReadRequest(stream);
                       ReadableByteStreamControllerCallPullIfNeeded(this);
                       return promise;
-                    },
+                    }
                   },
                   {
                     key: 'byobRequest',
@@ -11182,7 +11181,7 @@
                       }
 
                       return this._byobRequest;
-                    },
+                    }
                   },
                   {
                     key: 'desiredSize',
@@ -11194,8 +11193,8 @@
                       }
 
                       return ReadableByteStreamControllerGetDesiredSize(this);
-                    },
-                  },
+                    }
+                  }
                 ]);
 
                 return ReadableByteStreamController;
@@ -11344,7 +11343,7 @@
                 controller._queue.push({
                   buffer: buffer,
                   byteOffset: byteOffset,
-                  byteLength: byteLength,
+                  byteLength: byteLength
                 });
 
                 controller._queueTotalSize += byteLength;
@@ -11513,7 +11512,7 @@
                   bytesFilled: 0,
                   elementSize: elementSize,
                   ctor: ctor,
-                  readerType: 'byob',
+                  readerType: 'byob'
                 };
 
                 if (controller._pendingPullIntos.length > 0) {
@@ -12225,14 +12224,14 @@
                   }
                 );
 
-                transformStream._backpressureChangePromise.then(function (
-                  resolution
-                ) {
-                  assert(
-                    resolution !== backpressure,
-                    '_backpressureChangePromise should be fulfilled only when backpressure is changed'
-                  );
-                });
+                transformStream._backpressureChangePromise.then(
+                  function (resolution) {
+                    assert(
+                      resolution !== backpressure,
+                      '_backpressureChangePromise should be fulfilled only when backpressure is changed'
+                    );
+                  }
+                );
 
                 transformStream._backpressure = backpressure;
               }
@@ -12326,14 +12325,14 @@
                           transformStream
                         );
                       });
-                    },
+                    }
                   },
                   {
                     key: 'write',
                     value: function write(chunk) {
                       var transformStream = this._transformStream;
                       return TransformStreamTransform(transformStream, chunk);
-                    },
+                    }
                   },
                   {
                     key: 'abort',
@@ -12344,7 +12343,7 @@
                         transformStream,
                         new TypeError('Writable side aborted')
                       );
-                    },
+                    }
                   },
                   {
                     key: 'close',
@@ -12375,8 +12374,8 @@
                           TransformStreamErrorIfNeeded(transformStream, r);
                           return Promise.reject(transformStream._storedError);
                         });
-                    },
-                  },
+                    }
+                  }
                 ]);
 
                 return TransformStreamSink;
@@ -12413,7 +12412,7 @@
                         );
                         return transformStream._backpressureChangePromise;
                       });
-                    },
+                    }
                   },
                   {
                     key: 'pull',
@@ -12430,7 +12429,7 @@
                       );
                       TransformStreamSetBackpressure(transformStream, false);
                       return transformStream._backpressureChangePromise;
-                    },
+                    }
                   },
                   {
                     key: 'cancel',
@@ -12441,8 +12440,8 @@
                         transformStream,
                         new TypeError('Readable side canceled')
                       );
-                    },
-                  },
+                    }
+                  }
                 ]);
 
                 return TransformStreamSource;
@@ -12483,7 +12482,7 @@
                         this._controlledTransformStream,
                         chunk
                       );
-                    },
+                    }
                   },
                   {
                     key: 'close',
@@ -12495,7 +12494,7 @@
                       TransformStreamCloseReadable(
                         this._controlledTransformStream
                       );
-                    },
+                    }
                   },
                   {
                     key: 'error',
@@ -12508,7 +12507,7 @@
                         this._controlledTransformStream,
                         reason
                       );
-                    },
+                    }
                   },
                   {
                     key: 'desiredSize',
@@ -12525,8 +12524,8 @@
                       return ReadableStreamDefaultControllerGetDesiredSize(
                         readableController
                       );
-                    },
-                  },
+                    }
+                  }
                 ]);
 
                 return TransformStreamDefaultController;
@@ -12574,7 +12573,7 @@
                   TransformStreamSetBackpressure(this, desiredSize <= 0);
                   var transformStream = this;
                   var startResult = InvokeOrNoop(transformer, 'start', [
-                    transformStream._transformStreamController,
+                    transformStream._transformStreamController
                   ]);
                   startPromise_resolve(startResult);
                   startPromise['catch'](function (e) {
@@ -12594,7 +12593,7 @@
                       }
 
                       return this._readable;
-                    },
+                    }
                   },
                   {
                     key: 'writable',
@@ -12604,15 +12603,15 @@
                       }
 
                       return this._writable;
-                    },
-                  },
+                    }
+                  }
                 ]);
 
                 return TransformStream;
               })();
 
               module.exports = {
-                TransformStream: TransformStream,
+                TransformStream: TransformStream
               };
 
               function defaultControllerBrandCheckException(name) {
@@ -12633,7 +12632,7 @@
             },
             function (module, exports, __w_pdfjs_require__) {
               module.exports = __w_pdfjs_require__(5);
-            },
+            }
           ])
         );
 
@@ -13334,8 +13333,8 @@
               return this._isInvalid
                 ? ''
                 : this._port
-                ? this._host + ':' + this._port
-                : this._host;
+                  ? this._host + ':' + this._port
+                  : this._host;
             },
 
             set host(value) {
@@ -13374,8 +13373,8 @@
               return this._isInvalid
                 ? ''
                 : this._isRelative
-                ? '/' + this._path.join('/')
-                : this._schemeData;
+                  ? '/' + this._path.join('/')
+                  : this._schemeData;
             },
 
             set pathname(value) {
@@ -13458,7 +13457,7 @@
               }
 
               return this._scheme + '://' + host;
-            },
+            }
           };
           exports.URL = JURL;
         })();
@@ -13470,7 +13469,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.clearPrimitiveCaches = clearPrimitiveCaches;
         exports.isEOF = isEOF;
@@ -13680,7 +13679,7 @@
               for (var key in this._map) {
                 callback(key, this.get(key));
               }
-            },
+            }
           };
           Dict.empty = new Dict(null);
 
@@ -13726,7 +13725,7 @@
               }
 
               return ''.concat(this.num, 'R').concat(this.gen);
-            },
+            }
           };
 
           Ref.get = function (num, gen) {
@@ -13759,7 +13758,7 @@
             },
             remove: function RefSet_remove(ref) {
               delete this.dict[ref.toString()];
-            },
+            }
           };
           return RefSet;
         })();
@@ -13791,7 +13790,7 @@
             },
             clear: function RefSetCache_clear() {
               this.dict = Object.create(null);
-            },
+            }
           };
           return RefSetCache;
         })();
@@ -13846,7 +13845,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.NetworkPdfManager = exports.LocalPdfManager = void 0;
 
@@ -13927,8 +13926,8 @@
               constructor: {
                 value: subClass,
                 writable: true,
-                configurable: true,
-              },
+                configurable: true
+              }
             }
           );
           if (superClass) _setPrototypeOf(subClass, superClass);
@@ -14040,72 +14039,69 @@
                   (0, _util.unreachable)(
                     'Abstract method `onLoadedStream` called'
                   );
-                },
+                }
               },
               {
                 key: 'ensureDoc',
                 value: function ensureDoc(prop, args) {
                   return this.ensure(this.pdfDocument, prop, args);
-                },
+                }
               },
               {
                 key: 'ensureXRef',
                 value: function ensureXRef(prop, args) {
                   return this.ensure(this.pdfDocument.xref, prop, args);
-                },
+                }
               },
               {
                 key: 'ensureCatalog',
                 value: function ensureCatalog(prop, args) {
                   return this.ensure(this.pdfDocument.catalog, prop, args);
-                },
+                }
               },
               {
                 key: 'getPage',
                 value: function getPage(pageIndex) {
                   return this.pdfDocument.getPage(pageIndex);
-                },
+                }
               },
               {
                 key: 'fontFallback',
                 value: function fontFallback(id, handler) {
                   return this.pdfDocument.fontFallback(id, handler);
-                },
+                }
               },
               {
                 key: 'cleanup',
                 value: function cleanup() {
                   return this.pdfDocument.cleanup();
-                },
+                }
               },
               {
                 key: 'ensure',
                 value: (function () {
                   var _ensure = _asyncToGenerator(
                     /*#__PURE__*/
-                    _regenerator['default'].mark(function _callee(
-                      obj,
-                      prop,
-                      args
-                    ) {
-                      return _regenerator['default'].wrap(function _callee$(
-                        _context
-                      ) {
-                        while (1) {
-                          switch ((_context.prev = _context.next)) {
-                            case 0:
-                              (0, _util.unreachable)(
-                                'Abstract method `ensure` called'
-                              );
+                    _regenerator['default'].mark(
+                      function _callee(obj, prop, args) {
+                        return _regenerator['default'].wrap(function _callee$(
+                          _context
+                        ) {
+                          while (1) {
+                            switch ((_context.prev = _context.next)) {
+                              case 0:
+                                (0, _util.unreachable)(
+                                  'Abstract method `ensure` called'
+                                );
 
-                            case 1:
-                            case 'end':
-                              return _context.stop();
+                              case 1:
+                              case 'end':
+                                return _context.stop();
+                            }
                           }
-                        }
-                      },
-                      _callee);
-                    })
+                        }, _callee);
+                      }
+                    )
                   );
 
                   function ensure(_x, _x2, _x3) {
@@ -14113,7 +14109,7 @@
                   }
 
                   return ensure;
-                })(),
+                })()
               },
               {
                 key: 'requestRange',
@@ -14121,7 +14117,7 @@
                   (0, _util.unreachable)(
                     'Abstract method `requestRange` called'
                   );
-                },
+                }
               },
               {
                 key: 'requestLoadedStream',
@@ -14129,7 +14125,7 @@
                   (0, _util.unreachable)(
                     'Abstract method `requestLoadedStream` called'
                   );
-                },
+                }
               },
               {
                 key: 'sendProgressiveData',
@@ -14137,31 +14133,31 @@
                   (0, _util.unreachable)(
                     'Abstract method `sendProgressiveData` called'
                   );
-                },
+                }
               },
               {
                 key: 'updatePassword',
                 value: function updatePassword(password) {
                   this._password = password;
-                },
+                }
               },
               {
                 key: 'terminate',
                 value: function terminate() {
                   (0, _util.unreachable)('Abstract method `terminate` called');
-                },
+                }
               },
               {
                 key: 'docId',
                 get: function get() {
                   return this._docId;
-                },
+                }
               },
               {
                 key: 'password',
                 get: function get() {
                   return this._password;
-                },
+                }
               },
               {
                 key: 'docBaseUrl',
@@ -14186,8 +14182,8 @@
                   }
 
                   return (0, _util.shadow)(this, 'docBaseUrl', docBaseUrl);
-                },
-              },
+                }
+              }
             ]);
 
             return BasePdfManager;
@@ -14232,41 +14228,38 @@
                 value: (function () {
                   var _ensure2 = _asyncToGenerator(
                     /*#__PURE__*/
-                    _regenerator['default'].mark(function _callee2(
-                      obj,
-                      prop,
-                      args
-                    ) {
-                      var value;
-                      return _regenerator['default'].wrap(function _callee2$(
-                        _context2
-                      ) {
-                        while (1) {
-                          switch ((_context2.prev = _context2.next)) {
-                            case 0:
-                              value = obj[prop];
+                    _regenerator['default'].mark(
+                      function _callee2(obj, prop, args) {
+                        var value;
+                        return _regenerator['default'].wrap(function _callee2$(
+                          _context2
+                        ) {
+                          while (1) {
+                            switch ((_context2.prev = _context2.next)) {
+                              case 0:
+                                value = obj[prop];
 
-                              if (!(typeof value === 'function')) {
-                                _context2.next = 3;
-                                break;
-                              }
+                                if (!(typeof value === 'function')) {
+                                  _context2.next = 3;
+                                  break;
+                                }
 
-                              return _context2.abrupt(
-                                'return',
-                                value.apply(obj, args)
-                              );
+                                return _context2.abrupt(
+                                  'return',
+                                  value.apply(obj, args)
+                                );
 
-                            case 3:
-                              return _context2.abrupt('return', value);
+                              case 3:
+                                return _context2.abrupt('return', value);
 
-                            case 4:
-                            case 'end':
-                              return _context2.stop();
+                              case 4:
+                              case 'end':
+                                return _context2.stop();
+                            }
                           }
-                        }
-                      },
-                      _callee2);
-                    })
+                        }, _callee2);
+                      }
+                    )
                   );
 
                   function ensure(_x4, _x5, _x6) {
@@ -14274,28 +14267,28 @@
                   }
 
                   return ensure;
-                })(),
+                })()
               },
               {
                 key: 'requestRange',
                 value: function requestRange(begin, end) {
                   return Promise.resolve();
-                },
+                }
               },
               {
                 key: 'requestLoadedStream',
-                value: function requestLoadedStream() {},
+                value: function requestLoadedStream() {}
               },
               {
                 key: 'onLoadedStream',
                 value: function onLoadedStream() {
                   return this._loadedStreamPromise;
-                },
+                }
               },
               {
                 key: 'terminate',
-                value: function terminate() {},
-              },
+                value: function terminate() {}
+              }
             ]);
 
             return LocalPdfManager;
@@ -14334,7 +14327,7 @@
                   msgHandler: args.msgHandler,
                   length: args.length,
                   disableAutoFetch: args.disableAutoFetch,
-                  rangeChunkSize: args.rangeChunkSize,
+                  rangeChunkSize: args.rangeChunkSize
                 }
               );
               _this2.pdfDocument = new _document.PDFDocument(
@@ -14350,71 +14343,69 @@
                 value: (function () {
                   var _ensure3 = _asyncToGenerator(
                     /*#__PURE__*/
-                    _regenerator['default'].mark(function _callee3(
-                      obj,
-                      prop,
-                      args
-                    ) {
-                      var value;
-                      return _regenerator['default'].wrap(
-                        function _callee3$(_context3) {
-                          while (1) {
-                            switch ((_context3.prev = _context3.next)) {
-                              case 0:
-                                _context3.prev = 0;
-                                value = obj[prop];
+                    _regenerator['default'].mark(
+                      function _callee3(obj, prop, args) {
+                        var value;
+                        return _regenerator['default'].wrap(
+                          function _callee3$(_context3) {
+                            while (1) {
+                              switch ((_context3.prev = _context3.next)) {
+                                case 0:
+                                  _context3.prev = 0;
+                                  value = obj[prop];
 
-                                if (!(typeof value === 'function')) {
-                                  _context3.next = 4;
-                                  break;
-                                }
+                                  if (!(typeof value === 'function')) {
+                                    _context3.next = 4;
+                                    break;
+                                  }
 
-                                return _context3.abrupt(
-                                  'return',
-                                  value.apply(obj, args)
-                                );
+                                  return _context3.abrupt(
+                                    'return',
+                                    value.apply(obj, args)
+                                  );
 
-                              case 4:
-                                return _context3.abrupt('return', value);
+                                case 4:
+                                  return _context3.abrupt('return', value);
 
-                              case 7:
-                                _context3.prev = 7;
-                                _context3.t0 = _context3['catch'](0);
+                                case 7:
+                                  _context3.prev = 7;
+                                  _context3.t0 = _context3['catch'](0);
 
-                                if (
-                                  _context3.t0 instanceof
-                                  _core_utils.MissingDataException
-                                ) {
-                                  _context3.next = 11;
-                                  break;
-                                }
+                                  if (
+                                    _context3.t0 instanceof
+                                    _core_utils.MissingDataException
+                                  ) {
+                                    _context3.next = 11;
+                                    break;
+                                  }
 
-                                throw _context3.t0;
+                                  throw _context3.t0;
 
-                              case 11:
-                                _context3.next = 13;
-                                return this.requestRange(
-                                  _context3.t0.begin,
-                                  _context3.t0.end
-                                );
+                                case 11:
+                                  _context3.next = 13;
+                                  return this.requestRange(
+                                    _context3.t0.begin,
+                                    _context3.t0.end
+                                  );
 
-                              case 13:
-                                return _context3.abrupt(
-                                  'return',
-                                  this.ensure(obj, prop, args)
-                                );
+                                case 13:
+                                  return _context3.abrupt(
+                                    'return',
+                                    this.ensure(obj, prop, args)
+                                  );
 
-                              case 14:
-                              case 'end':
-                                return _context3.stop();
+                                case 14:
+                                case 'end':
+                                  return _context3.stop();
+                              }
                             }
-                          }
-                        },
-                        _callee3,
-                        this,
-                        [[0, 7]]
-                      );
-                    })
+                          },
+                          _callee3,
+                          this,
+                          [[0, 7]]
+                        );
+                      }
+                    )
                   );
 
                   function ensure(_x7, _x8, _x9) {
@@ -14422,40 +14413,40 @@
                   }
 
                   return ensure;
-                })(),
+                })()
               },
               {
                 key: 'requestRange',
                 value: function requestRange(begin, end) {
                   return this.streamManager.requestRange(begin, end);
-                },
+                }
               },
               {
                 key: 'requestLoadedStream',
                 value: function requestLoadedStream() {
                   this.streamManager.requestAllChunks();
-                },
+                }
               },
               {
                 key: 'sendProgressiveData',
                 value: function sendProgressiveData(chunk) {
                   this.streamManager.onReceiveData({
-                    chunk: chunk,
+                    chunk: chunk
                   });
-                },
+                }
               },
               {
                 key: 'onLoadedStream',
                 value: function onLoadedStream() {
                   return this.streamManager.onLoadedStream();
-                },
+                }
               },
               {
                 key: 'terminate',
                 value: function terminate() {
                   this.streamManager.abort();
-                },
-              },
+                }
+              }
             ]);
 
             return NetworkPdfManager;
@@ -14470,7 +14461,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.ChunkedStreamManager = exports.ChunkedStream = void 0;
 
@@ -14532,19 +14523,19 @@
                   }
 
                   return chunks;
-                },
+                }
               },
               {
                 key: 'getBaseStreams',
                 value: function getBaseStreams() {
                   return [this];
-                },
+                }
               },
               {
                 key: 'allChunksLoaded',
                 value: function allChunksLoaded() {
                   return this.numChunksLoaded === this.numChunks;
-                },
+                }
               },
               {
                 key: 'onReceiveData',
@@ -14575,7 +14566,7 @@
                       ++this.numChunksLoaded;
                     }
                   }
-                },
+                }
               },
               {
                 key: 'onReceiveProgressiveData',
@@ -14600,7 +14591,7 @@
                       ++this.numChunksLoaded;
                     }
                   }
-                },
+                }
               },
               {
                 key: 'ensureByte',
@@ -14620,7 +14611,7 @@
                   }
 
                   this.lastSuccessfulEnsureByteChunk = chunk;
-                },
+                }
               },
               {
                 key: 'ensureRange',
@@ -14642,7 +14633,7 @@
                       throw new _core_utils.MissingDataException(begin, end);
                     }
                   }
-                },
+                }
               },
               {
                 key: 'nextEmptyChunk',
@@ -14658,13 +14649,13 @@
                   }
 
                   return null;
-                },
+                }
               },
               {
                 key: 'hasChunk',
                 value: function hasChunk(chunk) {
                   return !!this.loadedChunks[chunk];
-                },
+                }
               },
               {
                 key: 'getByte',
@@ -14677,7 +14668,7 @@
 
                   this.ensureByte(pos);
                   return this.bytes[this.pos++];
-                },
+                }
               },
               {
                 key: 'getUint16',
@@ -14690,7 +14681,7 @@
                   }
 
                   return (b0 << 8) + b1;
-                },
+                }
               },
               {
                 key: 'getInt32',
@@ -14700,7 +14691,7 @@
                   var b2 = this.getByte();
                   var b3 = this.getByte();
                   return (b0 << 24) + (b1 << 16) + (b2 << 8) + b3;
-                },
+                }
               },
               {
                 key: 'getBytes',
@@ -14735,7 +14726,7 @@
                   return forceClamped
                     ? new Uint8ClampedArray(subarray)
                     : subarray;
-                },
+                }
               },
               {
                 key: 'peekByte',
@@ -14743,7 +14734,7 @@
                   var peekedByte = this.getByte();
                   this.pos--;
                   return peekedByte;
-                },
+                }
               },
               {
                 key: 'peekBytes',
@@ -14755,14 +14746,14 @@
                   var bytes = this.getBytes(length, forceClamped);
                   this.pos -= bytes.length;
                   return bytes;
-                },
+                }
               },
               {
                 key: 'getByteRange',
                 value: function getByteRange(begin, end) {
                   this.ensureRange(begin, end);
                   return this.bytes.subarray(begin, end);
-                },
+                }
               },
               {
                 key: 'skip',
@@ -14772,19 +14763,19 @@
                   }
 
                   this.pos += n;
-                },
+                }
               },
               {
                 key: 'reset',
                 value: function reset() {
                   this.pos = this.start;
-                },
+                }
               },
               {
                 key: 'moveStart',
                 value: function moveStart() {
                   this.start = this.pos;
-                },
+                }
               },
               {
                 key: 'makeSubStream',
@@ -14820,20 +14811,20 @@
                   subStream.end = start + length || this.end;
                   subStream.dict = dict;
                   return subStream;
-                },
+                }
               },
               {
                 key: 'length',
                 get: function get() {
                   return this.end - this.start;
-                },
+                }
               },
               {
                 key: 'isEmpty',
                 get: function get() {
                   return this.length === 0;
-                },
-              },
+                }
+              }
             ]);
 
             return ChunkedStream;
@@ -14872,7 +14863,7 @@
                 key: 'onLoadedStream',
                 value: function onLoadedStream() {
                   return this._loadedStreamCapability.promise;
-                },
+                }
               },
               {
                 key: 'sendRequest',
@@ -14900,7 +14891,7 @@
 
                           if (rangeReader.isStreamingSupported) {
                             _this.onProgress({
-                              loaded: loaded,
+                              loaded: loaded
                             });
                           }
 
@@ -14925,10 +14916,10 @@
 
                     _this.onReceiveData({
                       chunk: data,
-                      begin: begin,
+                      begin: begin
                     });
                   });
-                },
+                }
               },
               {
                 key: 'requestAllChunks',
@@ -14938,7 +14929,7 @@
                   this._requestChunks(missingChunks);
 
                   return this._loadedStreamCapability.promise;
-                },
+                }
               },
               {
                 key: '_requestChunks',
@@ -15046,13 +15037,13 @@
                   }
 
                   return capability.promise;
-                },
+                }
               },
               {
                 key: 'getStream',
                 value: function getStream() {
                   return this.stream;
-                },
+                }
               },
               {
                 key: 'requestRange',
@@ -15067,7 +15058,7 @@
                   }
 
                   return this._requestChunks(chunks);
-                },
+                }
               },
               {
                 key: 'requestRanges',
@@ -15120,7 +15111,7 @@
                     return a - b;
                   });
                   return this._requestChunks(chunksToRequest);
-                },
+                }
               },
               {
                 key: 'groupChunks',
@@ -15139,7 +15130,7 @@
                     if (prevChunk >= 0 && prevChunk + 1 !== chunk) {
                       groupedChunks.push({
                         beginChunk: beginChunk,
-                        endChunk: prevChunk + 1,
+                        endChunk: prevChunk + 1
                       });
                       beginChunk = chunk;
                     }
@@ -15147,7 +15138,7 @@
                     if (i + 1 === chunks.length) {
                       groupedChunks.push({
                         beginChunk: beginChunk,
-                        endChunk: chunk + 1,
+                        endChunk: chunk + 1
                       });
                     }
 
@@ -15155,7 +15146,7 @@
                   }
 
                   return groupedChunks;
-                },
+                }
               },
               {
                 key: 'onProgress',
@@ -15164,9 +15155,9 @@
                     loaded:
                       this.stream.numChunksLoaded * this.chunkSize +
                       args.loaded,
-                    total: this.length,
+                    total: this.length
                   });
-                },
+                }
               },
               {
                 key: 'onReceiveData',
@@ -15281,27 +15272,27 @@
 
                   this.msgHandler.send('DocProgress', {
                     loaded: this.stream.numChunksLoaded * this.chunkSize,
-                    total: this.length,
+                    total: this.length
                   });
-                },
+                }
               },
               {
                 key: 'onError',
                 value: function onError(err) {
                   this._loadedStreamCapability.reject(err);
-                },
+                }
               },
               {
                 key: 'getBeginChunk',
                 value: function getBeginChunk(begin) {
                   return Math.floor(begin / this.chunkSize);
-                },
+                }
               },
               {
                 key: 'getEndChunk',
                 value: function getEndChunk(end) {
                   return Math.floor((end - 1) / this.chunkSize) + 1;
-                },
+                }
               },
               {
                 key: 'abort',
@@ -15317,8 +15308,8 @@
                       new Error('Request was aborted')
                     );
                   }
-                },
-              },
+                }
+              }
             ]);
 
             return ChunkedStreamManager;
@@ -15333,7 +15324,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.getLookupTableFactory = getLookupTableFactory;
         exports.getInheritableProperty = getInheritableProperty;
@@ -15474,7 +15465,7 @@
           'VI',
           'VII',
           'VIII',
-          'IX',
+          'IX'
         ];
 
         function toRomanNumerals(number) {
@@ -15512,7 +15503,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.PDFDocument = exports.Page = void 0;
 
@@ -15641,7 +15632,7 @@
               this.evaluatorOptions = pdfManager.evaluatorOptions;
               this.resourcesPromise = null;
               var idCounters = {
-                obj: 0,
+                obj: 0
               };
               this.idFactory = {
                 createObjId: function createObjId() {
@@ -15649,7 +15640,7 @@
                 },
                 getDocId: function getDocId() {
                   return 'g_'.concat(pdfManager.docId);
-                },
+                }
               };
             }
 
@@ -15665,7 +15656,7 @@
                     dict: this.pageDict,
                     key: key,
                     getArray: getArray,
-                    stopWhenFound: false,
+                    stopWhenFound: false
                   });
 
                   if (!Array.isArray(value)) {
@@ -15680,7 +15671,7 @@
                   }
 
                   return _primitives.Dict.merge(this.xref, value);
-                },
+                }
               },
               {
                 key: 'getContentStream',
@@ -15731,7 +15722,7 @@
                   }
 
                   return stream;
-                },
+                }
               },
               {
                 key: 'loadResources',
@@ -15753,7 +15744,7 @@
                     );
                     return objectLoader.load();
                   });
-                },
+                }
               },
               {
                 key: 'getOperatorList',
@@ -15774,7 +15765,7 @@
                     'Pattern',
                     'Shading',
                     'XObject',
-                    'Font',
+                    'Font'
                   ]);
                   var partialEvaluator = new _evaluator.PartialEvaluator({
                     xref: this.xref,
@@ -15784,11 +15775,11 @@
                     fontCache: this.fontCache,
                     builtInCMapCache: this.builtInCMapCache,
                     options: this.evaluatorOptions,
-                    pdfFunctionFactory: this.pdfFunctionFactory,
+                    pdfFunctionFactory: this.pdfFunctionFactory
                   });
                   var dataPromises = Promise.all([
                     contentStreamPromise,
-                    resourcesPromise,
+                    resourcesPromise
                   ]);
                   var pageListPromise = dataPromises.then(function (_ref3) {
                     var _ref4 = _slicedToArray(_ref3, 1),
@@ -15804,14 +15795,14 @@
                         _this2.resources
                       ),
                       pageIndex: _this2.pageIndex,
-                      intent: intent,
+                      intent: intent
                     });
                     return partialEvaluator
                       .getOperatorList({
                         stream: contentStream,
                         task: task,
                         resources: _this2.resources,
-                        operatorList: opList,
+                        operatorList: opList
                       })
                       .then(function () {
                         return opList;
@@ -15819,7 +15810,7 @@
                   });
                   return Promise.all([
                     pageListPromise,
-                    this._parsedAnnotations,
+                    this._parsedAnnotations
                   ]).then(function (_ref5) {
                     var _ref6 = _slicedToArray(_ref5, 2),
                       pageOpList = _ref6[0],
@@ -15911,7 +15902,7 @@
                       return pageOpList;
                     });
                   });
-                },
+                }
               },
               {
                 key: 'extractTextContent',
@@ -15930,11 +15921,11 @@
                   var resourcesPromise = this.loadResources([
                     'ExtGState',
                     'XObject',
-                    'Font',
+                    'Font'
                   ]);
                   var dataPromises = Promise.all([
                     contentStreamPromise,
-                    resourcesPromise,
+                    resourcesPromise
                   ]);
                   return dataPromises.then(function (_ref8) {
                     var _ref9 = _slicedToArray(_ref8, 1),
@@ -15948,7 +15939,7 @@
                       fontCache: _this3.fontCache,
                       builtInCMapCache: _this3.builtInCMapCache,
                       options: _this3.evaluatorOptions,
-                      pdfFunctionFactory: _this3.pdfFunctionFactory,
+                      pdfFunctionFactory: _this3.pdfFunctionFactory
                     });
                     return partialEvaluator.getTextContent({
                       stream: contentStream,
@@ -15956,10 +15947,10 @@
                       resources: _this3.resources,
                       normalizeWhitespace: normalizeWhitespace,
                       combineTextItems: combineTextItems,
-                      sink: sink,
+                      sink: sink
                     });
                   });
-                },
+                }
               },
               {
                 key: 'getAnnotationsData',
@@ -15978,13 +15969,13 @@
 
                     return annotationsData;
                   });
-                },
+                }
               },
               {
                 key: 'content',
                 get: function get() {
                   return this.pageDict.get('Contents');
-                },
+                }
               },
               {
                 key: 'resources',
@@ -15995,7 +15986,7 @@
                     this._getInheritableProperty('Resources') ||
                       _primitives.Dict.empty
                   );
-                },
+                }
               },
               {
                 key: 'mediaBox',
@@ -16011,7 +16002,7 @@
                   }
 
                   return (0, _util.shadow)(this, 'mediaBox', mediaBox);
-                },
+                }
               },
               {
                 key: 'cropBox',
@@ -16023,7 +16014,7 @@
                   }
 
                   return (0, _util.shadow)(this, 'cropBox', cropBox);
-                },
+                }
               },
               {
                 key: 'userUnit',
@@ -16035,7 +16026,7 @@
                   }
 
                   return (0, _util.shadow)(this, 'userUnit', obj);
-                },
+                }
               },
               {
                 key: 'view',
@@ -16054,7 +16045,7 @@
                     'view',
                     intersection || mediaBox
                   );
-                },
+                }
               },
               {
                 key: 'rotate',
@@ -16070,7 +16061,7 @@
                   }
 
                   return (0, _util.shadow)(this, 'rotate', rotate);
-                },
+                }
               },
               {
                 key: 'annotations',
@@ -16080,7 +16071,7 @@
                     'annotations',
                     this._getInheritableProperty('Annots') || []
                   );
-                },
+                }
               },
               {
                 key: '_parsedAnnotations',
@@ -16106,11 +16097,11 @@
 
                       return Promise.all(annotationPromises).then(
                         function (annotations) {
-                          return annotations.filter(function isDefined(
-                            annotation
-                          ) {
-                            return !!annotation;
-                          });
+                          return annotations.filter(
+                            function isDefined(annotation) {
+                              return !!annotation;
+                            }
+                          );
                         },
                         function (reason) {
                           (0, _util.warn)(
@@ -16125,8 +16116,8 @@
                     '_parsedAnnotations',
                     parsedAnnotations
                   );
-                },
-              },
+                }
+              }
             ]);
 
             return Page;
@@ -16183,7 +16174,7 @@
               this.xref = new _obj.XRef(stream, pdfManager);
               this.pdfFunctionFactory = new _function.PDFFunctionFactory({
                 xref: this.xref,
-                isEvalSupported: pdfManager.evaluatorOptions.isEvalSupported,
+                isEvalSupported: pdfManager.evaluatorOptions.isEvalSupported
               });
               this._pagePromises = [];
             }
@@ -16240,7 +16231,7 @@
 
                     (0, _util.info)('Cannot fetch Collection dictionary.');
                   }
-                },
+                }
               },
               {
                 key: 'checkHeader',
@@ -16268,20 +16259,20 @@
                   if (!this.pdfFormatVersion) {
                     this.pdfFormatVersion = version.substring(5);
                   }
-                },
+                }
               },
               {
                 key: 'parseStartXRef',
                 value: function parseStartXRef() {
                   this.xref.setStartXRef(this.startXRef);
-                },
+                }
               },
               {
                 key: 'setup',
                 value: function setup(recoveryMode) {
                   this.xref.parse(recoveryMode);
                   this.catalog = new _obj.Catalog(this.pdfManager, this.xref);
-                },
+                }
               },
               {
                 key: '_getLinearizationPage',
@@ -16322,7 +16313,7 @@
                       (0, _util.info)(reason);
                       return catalog.getPageDict(pageIndex);
                     });
-                },
+                }
               },
               {
                 key: 'getPage',
@@ -16353,11 +16344,11 @@
                         ref: ref,
                         fontCache: catalog.fontCache,
                         builtInCMapCache: catalog.builtInCMapCache,
-                        pdfFunctionFactory: _this5.pdfFunctionFactory,
+                        pdfFunctionFactory: _this5.pdfFunctionFactory
                       });
                     }
                   ));
-                },
+                }
               },
               {
                 key: 'checkFirstPage',
@@ -16373,19 +16364,19 @@
                       throw new _core_utils.XRefParseException();
                     }
                   });
-                },
+                }
               },
               {
                 key: 'fontFallback',
                 value: function fontFallback(id, handler) {
                   return this.catalog.fontFallback(id, handler);
-                },
+                }
               },
               {
                 key: 'cleanup',
                 value: function cleanup() {
                   return this.catalog.cleanup();
-                },
+                }
               },
               {
                 key: 'linearization',
@@ -16407,7 +16398,7 @@
                     'linearization',
                     linearization
                   );
-                },
+                }
               },
               {
                 key: 'startXRef',
@@ -16462,7 +16453,7 @@
                   }
 
                   return (0, _util.shadow)(this, 'startXRef', startXRef);
-                },
+                }
               },
               {
                 key: 'numPages',
@@ -16472,7 +16463,7 @@
                     ? linearization.numPages
                     : this.catalog.numPages;
                   return (0, _util.shadow)(this, 'numPages', num);
-                },
+                }
               },
               {
                 key: 'documentInfo',
@@ -16486,14 +16477,14 @@
                     Producer: _util.isString,
                     CreationDate: _util.isString,
                     ModDate: _util.isString,
-                    Trapped: _primitives.isName,
+                    Trapped: _primitives.isName
                   };
                   var docInfo = {
                     PDFFormatVersion: this.pdfFormatVersion,
                     IsLinearized: !!this.linearization,
                     IsAcroFormPresent: !!this.acroForm,
                     IsXFAPresent: !!this.xfa,
-                    IsCollectionPresent: !!this.collection,
+                    IsCollectionPresent: !!this.collection
                   };
                   var infoDict;
 
@@ -16587,7 +16578,7 @@
                   }
 
                   return (0, _util.shadow)(this, 'documentInfo', docInfo);
-                },
+                }
               },
               {
                 key: 'fingerprint',
@@ -16625,8 +16616,8 @@
                   }
 
                   return (0, _util.shadow)(this, 'fingerprint', fingerprint);
-                },
-              },
+                }
+              }
             ]);
 
             return PDFDocument;
@@ -16641,7 +16632,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.FileSpec =
           exports.XRef =
@@ -16709,8 +16700,8 @@
               constructor: {
                 value: subClass,
                 writable: true,
-                configurable: true,
-              },
+                configurable: true
+              }
             }
           );
           if (superClass) _setPrototypeOf(subClass, superClass);
@@ -16914,13 +16905,13 @@
                     }
 
                     var root = {
-                      items: [],
+                      items: []
                     };
                     var queue = [
                       {
                         obj: obj,
-                        parent: root,
-                      },
+                        parent: root
+                      }
                     ];
                     var processed = new _primitives.RefSet();
                     processed.put(obj);
@@ -16943,12 +16934,12 @@
 
                       var data = {
                         url: null,
-                        dest: null,
+                        dest: null
                       };
                       Catalog.parseDestDictionary({
                         destDict: outlineDict,
                         resultObj: data,
-                        docBaseUrl: this.pdfManager.docBaseUrl,
+                        docBaseUrl: this.pdfManager.docBaseUrl
                       });
                       var title = outlineDict.get('Title');
                       var flags = outlineDict.get('F') || 0;
@@ -16977,7 +16968,7 @@
                         count: Number.isInteger(count) ? count : undefined,
                         bold: !!(flags & 2),
                         italic: !!(flags & 1),
-                        items: [],
+                        items: []
                       };
                       i.parent.items.push(outlineItem);
                       obj = outlineDict.getRaw('First');
@@ -16985,7 +16976,7 @@
                       if ((0, _primitives.isRef)(obj) && !processed.has(obj)) {
                         queue.push({
                           obj: obj,
-                          parent: outlineItem,
+                          parent: outlineItem
                         });
                         processed.put(obj);
                       }
@@ -16995,14 +16986,14 @@
                       if ((0, _primitives.isRef)(obj) && !processed.has(obj)) {
                         queue.push({
                           obj: obj,
-                          parent: i.parent,
+                          parent: i.parent
                         });
                         processed.put(obj);
                       }
                     }
 
                     return root.items.length > 0 ? root.items : null;
-                  },
+                  }
                 },
                 {
                   key: '_readPermissions',
@@ -17031,7 +17022,7 @@
                     }
 
                     return permissions;
-                  },
+                  }
                 },
                 {
                   key: 'getDestination',
@@ -17046,7 +17037,7 @@
                     }
 
                     return null;
-                  },
+                  }
                 },
                 {
                   key: '_readDests',
@@ -17060,7 +17051,7 @@
                     }
 
                     return undefined;
-                  },
+                  }
                 },
                 {
                   key: '_readPageLabels',
@@ -17199,7 +17190,7 @@
                     }
 
                     return pageLabels;
-                  },
+                  }
                 },
                 {
                   key: 'fontFallback',
@@ -17208,47 +17199,47 @@
                     this.fontCache.forEach(function (promise) {
                       promises.push(promise);
                     });
-                    return Promise.all(promises).then(function (
-                      translatedFonts
-                    ) {
-                      var _iteratorNormalCompletion = true;
-                      var _didIteratorError = false;
-                      var _iteratorError = undefined;
+                    return Promise.all(promises).then(
+                      function (translatedFonts) {
+                        var _iteratorNormalCompletion = true;
+                        var _didIteratorError = false;
+                        var _iteratorError = undefined;
 
-                      try {
-                        for (
-                          var _iterator = translatedFonts[Symbol.iterator](),
-                            _step;
-                          !(_iteratorNormalCompletion = (_step =
-                            _iterator.next()).done);
-                          _iteratorNormalCompletion = true
-                        ) {
-                          var translatedFont = _step.value;
-
-                          if (translatedFont.loadedName === id) {
-                            translatedFont.fallback(handler);
-                            return;
-                          }
-                        }
-                      } catch (err) {
-                        _didIteratorError = true;
-                        _iteratorError = err;
-                      } finally {
                         try {
-                          if (
-                            !_iteratorNormalCompletion &&
-                            _iterator['return'] != null
+                          for (
+                            var _iterator = translatedFonts[Symbol.iterator](),
+                              _step;
+                            !(_iteratorNormalCompletion = (_step =
+                              _iterator.next()).done);
+                            _iteratorNormalCompletion = true
                           ) {
-                            _iterator['return']();
+                            var translatedFont = _step.value;
+
+                            if (translatedFont.loadedName === id) {
+                              translatedFont.fallback(handler);
+                              return;
+                            }
                           }
+                        } catch (err) {
+                          _didIteratorError = true;
+                          _iteratorError = err;
                         } finally {
-                          if (_didIteratorError) {
-                            throw _iteratorError;
+                          try {
+                            if (
+                              !_iteratorNormalCompletion &&
+                              _iterator['return'] != null
+                            ) {
+                              _iterator['return']();
+                            }
+                          } finally {
+                            if (_didIteratorError) {
+                              throw _iteratorError;
+                            }
                           }
                         }
                       }
-                    });
-                  },
+                    );
+                  }
                 },
                 {
                   key: 'cleanup',
@@ -17261,23 +17252,23 @@
                     this.fontCache.forEach(function (promise) {
                       promises.push(promise);
                     });
-                    return Promise.all(promises).then(function (
-                      translatedFonts
-                    ) {
-                      for (
-                        var i = 0, ii = translatedFonts.length;
-                        i < ii;
-                        i++
-                      ) {
-                        var font = translatedFonts[i].dict;
-                        delete font.translated;
+                    return Promise.all(promises).then(
+                      function (translatedFonts) {
+                        for (
+                          var i = 0, ii = translatedFonts.length;
+                          i < ii;
+                          i++
+                        ) {
+                          var font = translatedFonts[i].dict;
+                          delete font.translated;
+                        }
+
+                        _this.fontCache.clear();
+
+                        _this.builtInCMapCache.clear();
                       }
-
-                      _this.fontCache.clear();
-
-                      _this.builtInCMapCache.clear();
-                    });
-                  },
+                    );
+                  }
                 },
                 {
                   key: 'getPageDict',
@@ -17330,7 +17321,7 @@
                             next();
                           }, capability.reject);
                           return {
-                            v: void 0,
+                            v: void 0
                           };
                         }
 
@@ -17341,7 +17332,7 @@
                             )
                           );
                           return {
-                            v: void 0,
+                            v: void 0
                           };
                         }
 
@@ -17374,7 +17365,7 @@
                             if (currentPageIndex === pageIndex) {
                               capability.resolve([currentNode, null]);
                               return {
-                                v: void 0,
+                                v: void 0
                               };
                             }
 
@@ -17388,7 +17379,7 @@
                             )
                           );
                           return {
-                            v: void 0,
+                            v: void 0
                           };
                         }
 
@@ -17418,7 +17409,7 @@
 
                     next();
                     return capability.promise;
-                  },
+                  }
                 },
                 {
                   key: 'getPageIndex',
@@ -17540,7 +17531,7 @@
                     }
 
                     return next(pageRef);
-                  },
+                  }
                 },
                 {
                   key: 'metadata',
@@ -17580,7 +17571,7 @@
                     }
 
                     return (0, _util.shadow)(this, 'metadata', metadata);
-                  },
+                  }
                 },
                 {
                   key: 'toplevelPagesDict',
@@ -17598,7 +17589,7 @@
                       'toplevelPagesDict',
                       pagesObj
                     );
-                  },
+                  }
                 },
                 {
                   key: 'documentOutline',
@@ -17616,7 +17607,7 @@
                     }
 
                     return (0, _util.shadow)(this, 'documentOutline', obj);
-                  },
+                  }
                 },
                 {
                   key: 'permissions',
@@ -17634,7 +17625,7 @@
                     }
 
                     return (0, _util.shadow)(this, 'permissions', permissions);
-                  },
+                  }
                 },
                 {
                   key: 'numPages',
@@ -17648,7 +17639,7 @@
                     }
 
                     return (0, _util.shadow)(this, 'numPages', obj);
-                  },
+                  }
                 },
                 {
                   key: 'destinations',
@@ -17671,7 +17662,7 @@
                     }
 
                     return (0, _util.shadow)(this, 'destinations', dests);
-                  },
+                  }
                 },
                 {
                   key: 'pageLabels',
@@ -17689,7 +17680,7 @@
                     }
 
                     return (0, _util.shadow)(this, 'pageLabels', obj);
-                  },
+                  }
                 },
                 {
                   key: 'pageLayout',
@@ -17710,7 +17701,7 @@
                     }
 
                     return (0, _util.shadow)(this, 'pageLayout', pageLayout);
-                  },
+                  }
                 },
                 {
                   key: 'pageMode',
@@ -17731,7 +17722,7 @@
                     }
 
                     return (0, _util.shadow)(this, 'pageMode', pageMode);
-                  },
+                  }
                 },
                 {
                   key: 'viewerPreferences',
@@ -17755,7 +17746,7 @@
                       Duplex: _primitives.isName,
                       PickTrayByPDFSize: _util.isBool,
                       PrintPageRange: Array.isArray,
-                      NumCopies: Number.isInteger,
+                      NumCopies: Number.isInteger
                     };
                     var obj = this.catDict.get('ViewerPreferences');
                     var prefs = Object.create(null);
@@ -17903,7 +17894,7 @@
                     }
 
                     return (0, _util.shadow)(this, 'viewerPreferences', prefs);
-                  },
+                  }
                 },
                 {
                   key: 'openActionDestination',
@@ -17916,11 +17907,11 @@
                       destDict.set('A', obj);
                       var resultObj = {
                         url: null,
-                        dest: null,
+                        dest: null
                       };
                       Catalog.parseDestDictionary({
                         destDict: destDict,
-                        resultObj: resultObj,
+                        resultObj: resultObj
                       });
 
                       if (Array.isArray(resultObj.dest)) {
@@ -17935,7 +17926,7 @@
                       'openActionDestination',
                       openActionDest
                     );
-                  },
+                  }
                 },
                 {
                   key: 'attachments',
@@ -17963,7 +17954,7 @@
                     }
 
                     return (0, _util.shadow)(this, 'attachments', attachments);
-                  },
+                  }
                 },
                 {
                   key: 'javaScript',
@@ -18030,8 +18021,8 @@
                     }
 
                     return (0, _util.shadow)(this, 'javaScript', javaScript);
-                  },
-                },
+                  }
+                }
               ],
               [
                 {
@@ -18168,7 +18159,7 @@
                           if (js) {
                             var URL_OPEN_METHODS = [
                               'app.launchURL',
-                              'window.open',
+                              'window.open'
                             ];
                             var regex = new RegExp(
                               '^\\s*(' +
@@ -18232,8 +18223,8 @@
                         resultObj.dest = dest;
                       }
                     }
-                  },
-                },
+                  }
+                }
               ]
             );
 
@@ -18251,7 +18242,7 @@
             this.cache = [];
             this.stats = {
               streamTypes: [],
-              fontTypes: [],
+              fontTypes: []
             };
           }
 
@@ -18326,7 +18317,7 @@
                   entryNum: 0,
                   streamPos: parser.lexer.stream.pos,
                   parserBuf1: parser.buf1,
-                  parserBuf2: parser.buf2,
+                  parserBuf2: parser.buf2
                 };
               }
 
@@ -18458,7 +18449,7 @@
                   entryRanges: range,
                   byteWidths: byteWidths,
                   entryNum: 0,
-                  streamPos: stream.pos,
+                  streamPos: stream.pos
                 };
               }
 
@@ -18605,10 +18596,10 @@
               var nestedObjRegExp = /\s+(\d+\s+\d+\s+obj[\b\s<])$/;
               var CHECK_CONTENT_LENGTH = 25;
               var trailerBytes = new Uint8Array([
-                116, 114, 97, 105, 108, 101, 114,
+                116, 114, 97, 105, 108, 101, 114
               ]);
               var startxrefBytes = new Uint8Array([
-                115, 116, 97, 114, 116, 120, 114, 101, 102,
+                115, 116, 97, 114, 116, 120, 114, 101, 102
               ]);
               var objBytes = new Uint8Array([111, 98, 106]);
               var xrefBytes = new Uint8Array([47, 88, 82, 101, 102]);
@@ -18661,7 +18652,7 @@
                     this.entries[num] = {
                       offset: position - stream.start,
                       gen: gen,
-                      uncompressed: true,
+                      uncompressed: true
                     };
                   }
 
@@ -18739,7 +18730,7 @@
                   lexer: new _parser.Lexer(stream),
                   xref: this,
                   allowStreams: true,
-                  recoveryMode: true,
+                  recoveryMode: true
                 });
                 var obj = parser.getObj();
 
@@ -18806,7 +18797,7 @@
                   var parser = new _parser.Parser({
                     lexer: new _parser.Lexer(stream),
                     xref: this,
-                    allowStreams: true,
+                    allowStreams: true
                   });
                   var obj = parser.getObj();
                   var dict;
@@ -18960,7 +18951,7 @@
               var parser = new _parser.Parser({
                 lexer: new _parser.Lexer(stream),
                 xref: this,
-                allowStreams: true,
+                allowStreams: true
               });
               var obj1 = parser.getObj();
               var obj2 = parser.getObj();
@@ -19036,7 +19027,7 @@
               var parser = new _parser.Parser({
                 lexer: new _parser.Lexer(stream),
                 xref: this,
-                allowStreams: true,
+                allowStreams: true
               });
               var i,
                 entries = [],
@@ -19092,38 +19083,37 @@
             fetchIfRefAsync: (function () {
               var _fetchIfRefAsync = _asyncToGenerator(
                 /*#__PURE__*/
-                _regenerator['default'].mark(function _callee(
-                  obj,
-                  suppressEncryption
-                ) {
-                  return _regenerator['default'].wrap(
-                    function _callee$(_context) {
-                      while (1) {
-                        switch ((_context.prev = _context.next)) {
-                          case 0:
-                            if ((0, _primitives.isRef)(obj)) {
-                              _context.next = 2;
-                              break;
-                            }
+                _regenerator['default'].mark(
+                  function _callee(obj, suppressEncryption) {
+                    return _regenerator['default'].wrap(
+                      function _callee$(_context) {
+                        while (1) {
+                          switch ((_context.prev = _context.next)) {
+                            case 0:
+                              if ((0, _primitives.isRef)(obj)) {
+                                _context.next = 2;
+                                break;
+                              }
 
-                            return _context.abrupt('return', obj);
+                              return _context.abrupt('return', obj);
 
-                          case 2:
-                            return _context.abrupt(
-                              'return',
-                              this.fetchAsync(obj, suppressEncryption)
-                            );
+                            case 2:
+                              return _context.abrupt(
+                                'return',
+                                this.fetchAsync(obj, suppressEncryption)
+                              );
 
-                          case 3:
-                          case 'end':
-                            return _context.stop();
+                            case 3:
+                            case 'end':
+                              return _context.stop();
+                          }
                         }
-                      }
-                    },
-                    _callee,
-                    this
-                  );
-                })
+                      },
+                      _callee,
+                      this
+                    );
+                  }
+                )
               );
 
               function fetchIfRefAsync(_x, _x2) {
@@ -19135,59 +19125,58 @@
             fetchAsync: (function () {
               var _fetchAsync = _asyncToGenerator(
                 /*#__PURE__*/
-                _regenerator['default'].mark(function _callee2(
-                  ref,
-                  suppressEncryption
-                ) {
-                  return _regenerator['default'].wrap(
-                    function _callee2$(_context2) {
-                      while (1) {
-                        switch ((_context2.prev = _context2.next)) {
-                          case 0:
-                            _context2.prev = 0;
-                            return _context2.abrupt(
-                              'return',
-                              this.fetch(ref, suppressEncryption)
-                            );
+                _regenerator['default'].mark(
+                  function _callee2(ref, suppressEncryption) {
+                    return _regenerator['default'].wrap(
+                      function _callee2$(_context2) {
+                        while (1) {
+                          switch ((_context2.prev = _context2.next)) {
+                            case 0:
+                              _context2.prev = 0;
+                              return _context2.abrupt(
+                                'return',
+                                this.fetch(ref, suppressEncryption)
+                              );
 
-                          case 4:
-                            _context2.prev = 4;
-                            _context2.t0 = _context2['catch'](0);
+                            case 4:
+                              _context2.prev = 4;
+                              _context2.t0 = _context2['catch'](0);
 
-                            if (
-                              _context2.t0 instanceof
-                              _core_utils.MissingDataException
-                            ) {
-                              _context2.next = 8;
-                              break;
-                            }
+                              if (
+                                _context2.t0 instanceof
+                                _core_utils.MissingDataException
+                              ) {
+                                _context2.next = 8;
+                                break;
+                              }
 
-                            throw _context2.t0;
+                              throw _context2.t0;
 
-                          case 8:
-                            _context2.next = 10;
-                            return this.pdfManager.requestRange(
-                              _context2.t0.begin,
-                              _context2.t0.end
-                            );
+                            case 8:
+                              _context2.next = 10;
+                              return this.pdfManager.requestRange(
+                                _context2.t0.begin,
+                                _context2.t0.end
+                              );
 
-                          case 10:
-                            return _context2.abrupt(
-                              'return',
-                              this.fetchAsync(ref, suppressEncryption)
-                            );
+                            case 10:
+                              return _context2.abrupt(
+                                'return',
+                                this.fetchAsync(ref, suppressEncryption)
+                              );
 
-                          case 11:
-                          case 'end':
-                            return _context2.stop();
+                            case 11:
+                            case 'end':
+                              return _context2.stop();
+                          }
                         }
-                      }
-                    },
-                    _callee2,
-                    this,
-                    [[0, 4]]
-                  );
-                })
+                      },
+                      _callee2,
+                      this,
+                      [[0, 4]]
+                    );
+                  }
+                )
               );
 
               function fetchAsync(_x3, _x4) {
@@ -19198,7 +19187,7 @@
             })(),
             getCatalogObj: function XRef_getCatalogObj() {
               return this.root;
-            },
+            }
           };
           return XRef;
         })();
@@ -19277,7 +19266,7 @@
                   }
 
                   return dict;
-                },
+                }
               },
               {
                 key: 'get',
@@ -19379,8 +19368,8 @@
                   }
 
                   return null;
-                },
-              },
+                }
+              }
             ]);
 
             return NameOrNumberTree;
@@ -19515,9 +19504,9 @@
             get serializable() {
               return {
                 filename: this.filename,
-                content: this.content,
+                content: this.content
               };
-            },
+            }
           };
           return FileSpec;
         })();
@@ -19622,7 +19611,7 @@
                     nodesToRevisit.push(currentNode);
                     pendingRequests.push({
                       begin: ex.begin,
-                      end: ex.end,
+                      end: ex.end
                     });
                   }
                 }
@@ -19641,7 +19630,7 @@
                       foundMissingData = true;
                       pendingRequests.push({
                         begin: stream.start,
-                        end: stream.end,
+                        end: stream.end
                       });
                     }
                   }
@@ -19677,7 +19666,7 @@
 
               this.refSet = null;
               this.capability.resolve();
-            },
+            }
           };
           return ObjectLoader;
         })();
@@ -19691,7 +19680,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.Parser = exports.Linearization = exports.Lexer = void 0;
 
@@ -19778,7 +19767,7 @@
                 value: function refill() {
                   this.buf1 = this.lexer.getObj();
                   this.buf2 = this.lexer.getObj();
-                },
+                }
               },
               {
                 key: 'shift',
@@ -19790,7 +19779,7 @@
                     this.buf1 = this.buf2;
                     this.buf2 = this.lexer.getObj();
                   }
-                },
+                }
               },
               {
                 key: 'tryShift',
@@ -19805,7 +19794,7 @@
 
                     return false;
                   }
-                },
+                }
               },
               {
                 key: 'getObj',
@@ -19918,7 +19907,7 @@
                   }
 
                   return buf1;
-                },
+                }
               },
               {
                 key: 'findDefaultInlineStreamEnd',
@@ -20001,7 +19990,7 @@
                   }
 
                   return stream.pos - endOffset - startPos;
-                },
+                }
               },
               {
                 key: 'findDCTDecodeInlineStreamEnd',
@@ -20096,7 +20085,7 @@
 
                   this.inlineStreamSkipEI(stream);
                   return length;
-                },
+                }
               },
               {
                 key: 'findASCII85DecodeInlineStreamEnd',
@@ -20136,7 +20125,7 @@
 
                   this.inlineStreamSkipEI(stream);
                   return length;
-                },
+                }
               },
               {
                 key: 'findASCIIHexDecodeInlineStreamEnd',
@@ -20165,7 +20154,7 @@
 
                   this.inlineStreamSkipEI(stream);
                   return length;
-                },
+                }
               },
               {
                 key: 'inlineStreamSkipEI',
@@ -20184,7 +20173,7 @@
                       break;
                     }
                   }
-                },
+                }
               },
               {
                 key: 'makeInlineImage',
@@ -20301,7 +20290,7 @@
                   this.buf2 = _primitives.Cmd.get('EI');
                   this.shift();
                   return imageStream;
-                },
+                }
               },
               {
                 key: '_findStreamLength',
@@ -20343,7 +20332,7 @@
                   }
 
                   return -1;
-                },
+                }
               },
               {
                 key: 'makeStream',
@@ -20371,7 +20360,7 @@
                     this.shift();
                   } else {
                     var ENDSTREAM_SIGNATURE = new Uint8Array([
-                      0x65, 0x6e, 0x64, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6d,
+                      0x65, 0x6e, 0x64, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6d
                     ]);
 
                     var actualLength = this._findStreamLength(
@@ -20435,7 +20424,7 @@
                   stream = this.filter(stream, dict, length);
                   stream.dict = dict;
                   return stream;
-                },
+                }
               },
               {
                 key: 'filter',
@@ -20486,7 +20475,7 @@
                   }
 
                   return stream;
-                },
+                }
               },
               {
                 key: 'makeFilter',
@@ -20606,8 +20595,8 @@
                     (0, _util.warn)('Invalid stream: "'.concat(ex, '"'));
                     return new _stream.NullStream();
                   }
-                },
-              },
+                }
+              }
             ]);
 
             return Parser;
@@ -20626,7 +20615,7 @@
           0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
           0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
           0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-          0, 0, 0,
+          0, 0, 0
         ];
 
         function toHexDigit(ch) {
@@ -20664,13 +20653,13 @@
                 key: 'nextChar',
                 value: function nextChar() {
                   return (this.currentChar = this.stream.getByte());
-                },
+                }
               },
               {
                 key: 'peekChar',
                 value: function peekChar() {
                   return this.stream.peekByte();
-                },
+                }
               },
               {
                 key: 'getNumber',
@@ -20775,7 +20764,7 @@
                   }
 
                   return sign * baseValue;
-                },
+                }
               },
               {
                 key: 'getString',
@@ -20902,7 +20891,7 @@
                   }
 
                   return strBuf.join('');
-                },
+                }
               },
               {
                 key: 'getName',
@@ -20966,7 +20955,7 @@
                   }
 
                   return _primitives.Name.get(strBuf.join(''));
-                },
+                }
               },
               {
                 key: 'getHexString',
@@ -21026,7 +21015,7 @@
                   }
 
                   return strBuf.join('');
-                },
+                }
               },
               {
                 key: 'getObj',
@@ -21160,7 +21149,7 @@
                   }
 
                   return _primitives.Cmd.get(str);
-                },
+                }
               },
               {
                 key: 'skipToNextLine',
@@ -21183,8 +21172,8 @@
 
                     ch = this.nextChar();
                   }
-                },
-              },
+                }
+              }
             ]);
 
             return Lexer;
@@ -21256,7 +21245,7 @@
 
                   var parser = new Parser({
                     lexer: new Lexer(stream),
-                    xref: null,
+                    xref: null
                   });
                   var obj1 = parser.getObj();
                   var obj2 = parser.getObj();
@@ -21291,12 +21280,10 @@
                     endFirst: getInt(linDict, 'E'),
                     numPages: getInt(linDict, 'N'),
                     mainXRefEntriesOffset: getInt(linDict, 'T'),
-                    pageFirst: linDict.has('P')
-                      ? getInt(linDict, 'P', true)
-                      : 0,
+                    pageFirst: linDict.has('P') ? getInt(linDict, 'P', true) : 0
                   };
-                },
-              },
+                }
+              }
             ]);
 
             return Linearization;
@@ -21311,7 +21298,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.LZWStream =
           exports.StringStream =
@@ -21463,7 +21450,7 @@
             },
             makeSubStream: function Stream_makeSubStream(start, length, dict) {
               return new Stream(this.bytes.buffer, start, length, dict);
-            },
+            }
           };
           return Stream;
         })();
@@ -21634,7 +21621,7 @@
               }
 
               return [];
-            },
+            }
           };
           return DecodeStream;
         })();
@@ -21706,21 +21693,21 @@
 
         var FlateStream = (function FlateStreamClosure() {
           var codeLenCodeMap = new Int32Array([
-            16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15,
+            16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15
           ]);
           var lengthDecode = new Int32Array([
             0x00003, 0x00004, 0x00005, 0x00006, 0x00007, 0x00008, 0x00009,
             0x0000a, 0x1000b, 0x1000d, 0x1000f, 0x10011, 0x20013, 0x20017,
             0x2001b, 0x2001f, 0x30023, 0x3002b, 0x30033, 0x3003b, 0x40043,
             0x40053, 0x40063, 0x40073, 0x50083, 0x500a3, 0x500c3, 0x500e3,
-            0x00102, 0x00102, 0x00102,
+            0x00102, 0x00102, 0x00102
           ]);
           var distDecode = new Int32Array([
             0x00001, 0x00002, 0x00003, 0x00004, 0x10005, 0x10007, 0x20009,
             0x2000d, 0x30011, 0x30019, 0x40021, 0x40031, 0x50041, 0x50061,
             0x60081, 0x600c1, 0x70101, 0x70181, 0x80201, 0x80301, 0x90401,
             0x90601, 0xa0801, 0xa0c01, 0xb1001, 0xb1801, 0xc2001, 0xc3001,
-            0xd4001, 0xd6001,
+            0xd4001, 0xd6001
           ]);
           var fixedLitCodeTab = [
             new Int32Array([
@@ -21797,9 +21784,9 @@
               0x80027, 0x900af, 0x80007, 0x80087, 0x80047, 0x900ef, 0x70107,
               0x8005f, 0x8001f, 0x9009f, 0x70117, 0x8007f, 0x8003f, 0x900df,
               0x7010f, 0x8006f, 0x8002f, 0x900bf, 0x8000f, 0x8008f, 0x8004f,
-              0x900ff,
+              0x900ff
             ]),
-            9,
+            9
           ];
           var fixedDistCodeTab = [
             new Int32Array([
@@ -21807,9 +21794,9 @@
               0x5001c, 0x50002, 0x50012, 0x5000a, 0x5001a, 0x50006, 0x50016,
               0x5000e, 0x00000, 0x50001, 0x50011, 0x50009, 0x50019, 0x50005,
               0x50015, 0x5000d, 0x5001d, 0x50003, 0x50013, 0x5000b, 0x5001b,
-              0x50007, 0x50017, 0x5000f, 0x00000,
+              0x50007, 0x50017, 0x5000f, 0x00000
             ]),
-            5,
+            5
           ];
 
           function FlateStream(str, maybeLength) {
@@ -22672,7 +22659,7 @@
               dictionaryLengths: new Uint16Array(maxLzwDictionarySize),
               dictionaryPrevCodes: new Uint16Array(maxLzwDictionarySize),
               currentSequence: new Uint8Array(maxLzwDictionarySize),
-              currentSequenceLength: 0,
+              currentSequenceLength: 0
             };
 
             for (var i = 0; i < 256; ++i) {
@@ -22826,7 +22813,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.CCITTFaxStream = void 0;
 
@@ -22848,7 +22835,7 @@
             var source = {
               next: function next() {
                 return str.getByte();
-              },
+              }
             };
             this.ccittFaxDecoder = new _ccitt.CCITTFaxDecoder(source, {
               K: params.get('K'),
@@ -22857,7 +22844,7 @@
               Columns: params.get('Columns'),
               Rows: params.get('Rows'),
               EndOfBlock: params.get('EndOfBlock'),
-              BlackIs1: params.get('BlackIs1'),
+              BlackIs1: params.get('BlackIs1')
             });
 
             _stream.DecodeStream.call(this, maybeLength);
@@ -22893,7 +22880,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.CCITTFaxDecoder = void 0;
 
@@ -23039,7 +23026,7 @@
             [1, twoDimVert0],
             [1, twoDimVert0],
             [1, twoDimVert0],
-            [1, twoDimVert0],
+            [1, twoDimVert0]
           ];
           var whiteTable1 = [
             [-1, -1],
@@ -23073,7 +23060,7 @@
             [12, 2368],
             [12, 2432],
             [12, 2496],
-            [12, 2560],
+            [12, 2560]
           ];
           var whiteTable2 = [
             [-1, -1],
@@ -23587,7 +23574,7 @@
             [4, 7],
             [4, 7],
             [4, 7],
-            [4, 7],
+            [4, 7]
           ];
           var blackTable1 = [
             [-1, -1],
@@ -23717,7 +23704,7 @@
             [10, 64],
             [10, 64],
             [10, 64],
-            [10, 64],
+            [10, 64]
           ];
           var blackTable2 = [
             [8, 13],
@@ -23911,7 +23898,7 @@
             [7, 12],
             [7, 12],
             [7, 12],
-            [7, 12],
+            [7, 12]
           ];
           var blackTable3 = [
             [-1, -1],
@@ -23977,7 +23964,7 @@
             [2, 2],
             [2, 2],
             [2, 2],
-            [2, 2],
+            [2, 2]
           ];
 
           function CCITTFaxDecoder(source) {
@@ -24685,7 +24672,7 @@
               if ((this.inputBits -= n) < 0) {
                 this.inputBits = 0;
               }
-            },
+            }
           };
           return CCITTFaxDecoder;
         })();
@@ -24699,7 +24686,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.Jbig2Stream = void 0;
 
@@ -24730,7 +24717,7 @@
                 this.stream.getBytes(this.maybeLength)
               );
             },
-            configurable: true,
+            configurable: true
           });
 
           Jbig2Stream.prototype.ensureBuffer = function (requested) {};
@@ -24751,7 +24738,7 @@
                 chunks.push({
                   data: globals,
                   start: 0,
-                  end: globals.length,
+                  end: globals.length
                 });
               }
             }
@@ -24759,7 +24746,7 @@
             chunks.push({
               data: this.bytes,
               start: 0,
-              end: this.bytes.length,
+              end: this.bytes.length
             });
             var data = jbig2Image.parseChunks(chunks);
             var dataLength = data.length;
@@ -24785,7 +24772,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.Jbig2Image = void 0;
 
@@ -24816,7 +24803,7 @@
               }
 
               return (this[id] = new Int8Array(1 << 16));
-            },
+            }
           };
 
           function DecodingContext(data, start, end) {
@@ -24838,7 +24825,7 @@
             get contextCache() {
               var cache = new ContextCache();
               return (0, _util.shadow)(this, 'contextCache', cache);
-            },
+            }
           };
 
           function decodeInteger(contextCache, procedure, decoder) {
@@ -24954,283 +24941,283 @@
             null,
             null,
             null,
-            'Extension',
+            'Extension'
           ];
           var CodingTemplates = [
             [
               {
                 x: -1,
-                y: -2,
+                y: -2
               },
               {
                 x: 0,
-                y: -2,
+                y: -2
               },
               {
                 x: 1,
-                y: -2,
+                y: -2
               },
               {
                 x: -2,
-                y: -1,
+                y: -1
               },
               {
                 x: -1,
-                y: -1,
+                y: -1
               },
               {
                 x: 0,
-                y: -1,
+                y: -1
               },
               {
                 x: 1,
-                y: -1,
+                y: -1
               },
               {
                 x: 2,
-                y: -1,
+                y: -1
               },
               {
                 x: -4,
-                y: 0,
+                y: 0
               },
               {
                 x: -3,
-                y: 0,
+                y: 0
               },
               {
                 x: -2,
-                y: 0,
+                y: 0
               },
               {
                 x: -1,
-                y: 0,
-              },
+                y: 0
+              }
             ],
             [
               {
                 x: -1,
-                y: -2,
+                y: -2
               },
               {
                 x: 0,
-                y: -2,
+                y: -2
               },
               {
                 x: 1,
-                y: -2,
+                y: -2
               },
               {
                 x: 2,
-                y: -2,
+                y: -2
               },
               {
                 x: -2,
-                y: -1,
+                y: -1
               },
               {
                 x: -1,
-                y: -1,
+                y: -1
               },
               {
                 x: 0,
-                y: -1,
+                y: -1
               },
               {
                 x: 1,
-                y: -1,
+                y: -1
               },
               {
                 x: 2,
-                y: -1,
+                y: -1
               },
               {
                 x: -3,
-                y: 0,
+                y: 0
               },
               {
                 x: -2,
-                y: 0,
+                y: 0
               },
               {
                 x: -1,
-                y: 0,
-              },
+                y: 0
+              }
             ],
             [
               {
                 x: -1,
-                y: -2,
+                y: -2
               },
               {
                 x: 0,
-                y: -2,
+                y: -2
               },
               {
                 x: 1,
-                y: -2,
+                y: -2
               },
               {
                 x: -2,
-                y: -1,
+                y: -1
               },
               {
                 x: -1,
-                y: -1,
+                y: -1
               },
               {
                 x: 0,
-                y: -1,
+                y: -1
               },
               {
                 x: 1,
-                y: -1,
+                y: -1
               },
               {
                 x: -2,
-                y: 0,
+                y: 0
               },
               {
                 x: -1,
-                y: 0,
-              },
+                y: 0
+              }
             ],
             [
               {
                 x: -3,
-                y: -1,
+                y: -1
               },
               {
                 x: -2,
-                y: -1,
+                y: -1
               },
               {
                 x: -1,
-                y: -1,
+                y: -1
               },
               {
                 x: 0,
-                y: -1,
+                y: -1
               },
               {
                 x: 1,
-                y: -1,
+                y: -1
               },
               {
                 x: -4,
-                y: 0,
+                y: 0
               },
               {
                 x: -3,
-                y: 0,
+                y: 0
               },
               {
                 x: -2,
-                y: 0,
+                y: 0
               },
               {
                 x: -1,
-                y: 0,
-              },
-            ],
+                y: 0
+              }
+            ]
           ];
           var RefinementTemplates = [
             {
               coding: [
                 {
                   x: 0,
-                  y: -1,
+                  y: -1
                 },
                 {
                   x: 1,
-                  y: -1,
+                  y: -1
                 },
                 {
                   x: -1,
-                  y: 0,
-                },
+                  y: 0
+                }
               ],
               reference: [
                 {
                   x: 0,
-                  y: -1,
+                  y: -1
                 },
                 {
                   x: 1,
-                  y: -1,
+                  y: -1
                 },
                 {
                   x: -1,
-                  y: 0,
+                  y: 0
                 },
                 {
                   x: 0,
-                  y: 0,
+                  y: 0
                 },
                 {
                   x: 1,
-                  y: 0,
+                  y: 0
                 },
                 {
                   x: -1,
-                  y: 1,
+                  y: 1
                 },
                 {
                   x: 0,
-                  y: 1,
+                  y: 1
                 },
                 {
                   x: 1,
-                  y: 1,
-                },
-              ],
+                  y: 1
+                }
+              ]
             },
             {
               coding: [
                 {
                   x: -1,
-                  y: -1,
+                  y: -1
                 },
                 {
                   x: 0,
-                  y: -1,
+                  y: -1
                 },
                 {
                   x: 1,
-                  y: -1,
+                  y: -1
                 },
                 {
                   x: -1,
-                  y: 0,
-                },
+                  y: 0
+                }
               ],
               reference: [
                 {
                   x: 0,
-                  y: -1,
+                  y: -1
                 },
                 {
                   x: -1,
-                  y: 0,
+                  y: 0
                 },
                 {
                   x: 0,
-                  y: 0,
+                  y: 0
                 },
                 {
                   x: 1,
-                  y: 0,
+                  y: 0
                 },
                 {
                   x: 0,
-                  y: 1,
+                  y: 1
                 },
                 {
                   x: 1,
-                  y: 1,
-                },
-              ],
-            },
+                  y: 1
+                }
+              ]
+            }
           ];
           var ReusedContexts = [0x9b25, 0x0795, 0x00e5, 0x0195];
           var RefinementReusedContexts = [0x0020, 0x0008];
@@ -25964,21 +25951,21 @@
             if (!mmr) {
               at.push({
                 x: -patternWidth,
-                y: 0,
+                y: 0
               });
 
               if (template === 0) {
                 at.push({
                   x: -3,
-                  y: -1,
+                  y: -1
                 });
                 at.push({
                   x: 2,
-                  y: -2,
+                  y: -2
                 });
                 at.push({
                   x: -2,
-                  y: -2,
+                  y: -2
                 });
               }
             }
@@ -26073,21 +26060,21 @@
             if (!mmr) {
               at.push({
                 x: template <= 1 ? 3 : 2,
-                y: -1,
+                y: -1
               });
 
               if (template === 0) {
                 at.push({
                   x: -3,
-                  y: -1,
+                  y: -1
                 });
                 at.push({
                   x: 2,
-                  y: -2,
+                  y: -2
                 });
                 at.push({
                   x: -2,
-                  y: -2,
+                  y: -2
                 });
               }
             }
@@ -26228,8 +26215,8 @@
               segmentHeader.number <= 256
                 ? 1
                 : segmentHeader.number <= 65536
-                ? 2
-                : 4;
+                  ? 2
+                  : 4;
             var referredTo = [];
             var i, ii;
 
@@ -26238,8 +26225,8 @@
                 referredToSegmentNumberSize === 1
                   ? data[position]
                   : referredToSegmentNumberSize === 2
-                  ? (0, _util.readUint16)(data, position)
-                  : (0, _util.readUint32)(data, position);
+                    ? (0, _util.readUint16)(data, position)
+                    : (0, _util.readUint32)(data, position);
               referredTo.push(number);
               position += referredToSegmentNumberSize;
             }
@@ -26318,7 +26305,7 @@
               position = segmentHeader.headerEnd;
               var segment = {
                 header: segmentHeader,
-                data: data,
+                data: data
               };
 
               if (!header.randomAccess) {
@@ -26351,7 +26338,7 @@
               height: (0, _util.readUint32)(data, start + 4),
               x: (0, _util.readUint32)(data, start + 8),
               y: (0, _util.readUint32)(data, start + 12),
-              combinationOperator: data[start + 16] & 7,
+              combinationOperator: data[start + 16] & 7
             };
           }
 
@@ -26390,7 +26377,7 @@
                   for (i = 0; i < atLength; i++) {
                     at.push({
                       x: (0, _util.readInt8)(data, position),
-                      y: (0, _util.readInt8)(data, position + 1),
+                      y: (0, _util.readInt8)(data, position + 1)
                     });
                     position += 2;
                   }
@@ -26404,7 +26391,7 @@
                   for (i = 0; i < 2; i++) {
                     at.push({
                       x: (0, _util.readInt8)(data, position),
-                      y: (0, _util.readInt8)(data, position + 1),
+                      y: (0, _util.readInt8)(data, position + 1)
                     });
                     position += 2;
                   }
@@ -26428,7 +26415,7 @@
                   header.referredTo,
                   data,
                   position,
-                  end,
+                  end
                 ];
                 break;
 
@@ -26484,7 +26471,7 @@
                   for (i = 0; i < 2; i++) {
                     at.push({
                       x: (0, _util.readInt8)(data, position),
-                      y: (0, _util.readInt8)(data, position + 1),
+                      y: (0, _util.readInt8)(data, position + 1)
                     });
                     position += 2;
                   }
@@ -26580,7 +26567,7 @@
                   for (i = 0; i < atLength; i++) {
                     at.push({
                       x: (0, _util.readInt8)(data, position),
-                      y: (0, _util.readInt8)(data, position + 1),
+                      y: (0, _util.readInt8)(data, position + 1)
                     });
                     position += 2;
                   }
@@ -26596,7 +26583,7 @@
                   width: (0, _util.readUint32)(data, position),
                   height: (0, _util.readUint32)(data, position + 4),
                   resolutionX: (0, _util.readUint32)(data, position + 8),
-                  resolutionY: (0, _util.readUint32)(data, position + 12),
+                  resolutionY: (0, _util.readUint32)(data, position + 12)
                 };
 
                 if (pageInfo.height === 0xffffffff) {
@@ -26726,7 +26713,7 @@
             return {
               imgData: imgData,
               width: width,
-              height: height,
+              height: height
             };
           }
 
@@ -27024,7 +27011,7 @@
                 start,
                 end
               );
-            },
+            }
           };
 
           function HuffmanLine(lineData) {
@@ -27094,7 +27081,7 @@
               }
 
               return node.decodeNode(reader);
-            },
+            }
           };
 
           function HuffmanTable(lines, prefixCodesDone) {
@@ -27163,7 +27150,7 @@
 
                 currentLength++;
               }
-            },
+            }
           };
 
           function decodeTablesSegment(data, start, end) {
@@ -27221,7 +27208,7 @@
                   [0, 1, 4, 0x0],
                   [16, 2, 8, 0x2],
                   [272, 3, 16, 0x6],
-                  [65808, 3, 32, 0x7],
+                  [65808, 3, 32, 0x7]
                 ];
                 break;
 
@@ -27233,7 +27220,7 @@
                   [3, 4, 3, 0xe],
                   [11, 5, 6, 0x1e],
                   [75, 6, 32, 0x3e],
-                  [6, 0x3f],
+                  [6, 0x3f]
                 ];
                 break;
 
@@ -27247,7 +27234,7 @@
                   [11, 5, 6, 0x1e],
                   [-257, 8, 32, 0xff, 'lower'],
                   [75, 7, 32, 0x7e],
-                  [6, 0x3e],
+                  [6, 0x3e]
                 ];
                 break;
 
@@ -27258,7 +27245,7 @@
                   [3, 3, 0, 0x6],
                   [4, 4, 3, 0xe],
                   [12, 5, 6, 0x1e],
-                  [76, 5, 32, 0x1f],
+                  [76, 5, 32, 0x1f]
                 ];
                 break;
 
@@ -27271,7 +27258,7 @@
                   [4, 4, 3, 0xe],
                   [12, 5, 6, 0x1e],
                   [-256, 7, 32, 0x7f, 'lower'],
-                  [76, 6, 32, 0x3e],
+                  [76, 6, 32, 0x3e]
                 ];
                 break;
 
@@ -27290,7 +27277,7 @@
                   [512, 4, 9, 0xc],
                   [1024, 4, 10, 0xd],
                   [-2049, 6, 32, 0x3e, 'lower'],
-                  [2048, 6, 32, 0x3f],
+                  [2048, 6, 32, 0x3f]
                 ];
                 break;
 
@@ -27310,7 +27297,7 @@
                   [512, 3, 9, 0x2],
                   [1024, 3, 10, 0x3],
                   [-1025, 5, 32, 0x1e, 'lower'],
-                  [2048, 5, 32, 0x1f],
+                  [2048, 5, 32, 0x1f]
                 ];
                 break;
 
@@ -27336,7 +27323,7 @@
                   [646, 6, 10, 0x3d],
                   [-16, 9, 32, 0x1fe, 'lower'],
                   [1670, 9, 32, 0x1ff],
-                  [2, 0x1],
+                  [2, 0x1]
                 ];
                 break;
 
@@ -27363,7 +27350,7 @@
                   [1291, 6, 11, 0x3d],
                   [-32, 9, 32, 0x1fe, 'lower'],
                   [3339, 9, 32, 0x1ff],
-                  [2, 0x0],
+                  [2, 0x0]
                 ];
                 break;
 
@@ -27389,7 +27376,7 @@
                   [2118, 7, 11, 0x7d],
                   [-22, 8, 32, 0xfe, 'lower'],
                   [4166, 8, 32, 0xff],
-                  [2, 0x2],
+                  [2, 0x2]
                 ];
                 break;
 
@@ -27407,7 +27394,7 @@
                   [29, 7, 4, 0x7c],
                   [45, 7, 5, 0x7d],
                   [77, 7, 6, 0x7e],
-                  [141, 7, 32, 0x7f],
+                  [141, 7, 32, 0x7f]
                 ];
                 break;
 
@@ -27425,7 +27412,7 @@
                   [17, 7, 3, 0x7d],
                   [25, 7, 4, 0x7e],
                   [41, 8, 5, 0xfe],
-                  [73, 8, 32, 0xff],
+                  [73, 8, 32, 0xff]
                 ];
                 break;
 
@@ -27443,7 +27430,7 @@
                   [29, 6, 4, 0x3d],
                   [45, 6, 5, 0x3e],
                   [77, 7, 6, 0x7e],
-                  [141, 7, 32, 0x7f],
+                  [141, 7, 32, 0x7f]
                 ];
                 break;
 
@@ -27453,7 +27440,7 @@
                   [-1, 3, 0, 0x5],
                   [0, 1, 0, 0x0],
                   [1, 3, 0, 0x6],
-                  [2, 3, 0, 0x7],
+                  [2, 3, 0, 0x7]
                 ];
                 break;
 
@@ -27471,7 +27458,7 @@
                   [5, 6, 2, 0x3d],
                   [9, 7, 4, 0x7d],
                   [-25, 7, 32, 0x7e, 'lower'],
-                  [25, 7, 32, 0x7f],
+                  [25, 7, 32, 0x7f]
                 ];
                 break;
 
@@ -27536,7 +27523,7 @@
               }
 
               return this.data[this.position++];
-            },
+            }
           };
 
           function getCustomHuffmanTable(index, referredTo, customTables) {
@@ -27699,7 +27686,7 @@
               symbolIDTable: symbolIDTable,
               tableFirstS: tableFirstS,
               tableDeltaS: tableDeltaS,
-              tableDeltaT: tableDeltaT,
+              tableDeltaT: tableDeltaT
             };
           }
 
@@ -27781,7 +27768,7 @@
               tableDeltaHeight: tableDeltaHeight,
               tableDeltaWidth: tableDeltaWidth,
               tableBitmapSize: tableBitmapSize,
-              tableAggregateInstances: tableAggregateInstances,
+              tableAggregateInstances: tableAggregateInstances
             };
           }
 
@@ -27811,7 +27798,7 @@
               Columns: width,
               Rows: height,
               BlackIs1: true,
-              EndOfBlock: endOfBlock,
+              EndOfBlock: endOfBlock
             };
             var decoder = new _ccitt.CCITTFaxDecoder(input, params);
             var bitmap = [],
@@ -27872,7 +27859,7 @@
               this.width = width;
               this.height = height;
               return imgData;
-            },
+            }
           };
           return Jbig2Image;
         })();
@@ -27886,7 +27873,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.ArithmeticDecoder = void 0;
 
@@ -27917,284 +27904,284 @@
             qe: 0x5601,
             nmps: 1,
             nlps: 1,
-            switchFlag: 1,
+            switchFlag: 1
           },
           {
             qe: 0x3401,
             nmps: 2,
             nlps: 6,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x1801,
             nmps: 3,
             nlps: 9,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x0ac1,
             nmps: 4,
             nlps: 12,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x0521,
             nmps: 5,
             nlps: 29,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x0221,
             nmps: 38,
             nlps: 33,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x5601,
             nmps: 7,
             nlps: 6,
-            switchFlag: 1,
+            switchFlag: 1
           },
           {
             qe: 0x5401,
             nmps: 8,
             nlps: 14,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x4801,
             nmps: 9,
             nlps: 14,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x3801,
             nmps: 10,
             nlps: 14,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x3001,
             nmps: 11,
             nlps: 17,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x2401,
             nmps: 12,
             nlps: 18,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x1c01,
             nmps: 13,
             nlps: 20,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x1601,
             nmps: 29,
             nlps: 21,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x5601,
             nmps: 15,
             nlps: 14,
-            switchFlag: 1,
+            switchFlag: 1
           },
           {
             qe: 0x5401,
             nmps: 16,
             nlps: 14,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x5101,
             nmps: 17,
             nlps: 15,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x4801,
             nmps: 18,
             nlps: 16,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x3801,
             nmps: 19,
             nlps: 17,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x3401,
             nmps: 20,
             nlps: 18,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x3001,
             nmps: 21,
             nlps: 19,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x2801,
             nmps: 22,
             nlps: 19,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x2401,
             nmps: 23,
             nlps: 20,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x2201,
             nmps: 24,
             nlps: 21,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x1c01,
             nmps: 25,
             nlps: 22,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x1801,
             nmps: 26,
             nlps: 23,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x1601,
             nmps: 27,
             nlps: 24,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x1401,
             nmps: 28,
             nlps: 25,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x1201,
             nmps: 29,
             nlps: 26,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x1101,
             nmps: 30,
             nlps: 27,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x0ac1,
             nmps: 31,
             nlps: 28,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x09c1,
             nmps: 32,
             nlps: 29,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x08a1,
             nmps: 33,
             nlps: 30,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x0521,
             nmps: 34,
             nlps: 31,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x0441,
             nmps: 35,
             nlps: 32,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x02a1,
             nmps: 36,
             nlps: 33,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x0221,
             nmps: 37,
             nlps: 34,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x0141,
             nmps: 38,
             nlps: 35,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x0111,
             nmps: 39,
             nlps: 36,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x0085,
             nmps: 40,
             nlps: 37,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x0049,
             nmps: 41,
             nlps: 38,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x0025,
             nmps: 42,
             nlps: 39,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x0015,
             nmps: 43,
             nlps: 40,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x0009,
             nmps: 44,
             nlps: 41,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x0005,
             nmps: 45,
             nlps: 42,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x0001,
             nmps: 45,
             nlps: 43,
-            switchFlag: 0,
+            switchFlag: 0
           },
           {
             qe: 0x5601,
             nmps: 46,
             nlps: 46,
-            switchFlag: 0,
-          },
+            switchFlag: 0
+          }
         ];
 
         var ArithmeticDecoder =
@@ -28244,7 +28231,7 @@
                     this.chigh += this.clow >> 16;
                     this.clow &= 0xffff;
                   }
-                },
+                }
               },
               {
                 key: 'readBit',
@@ -28308,8 +28295,8 @@
                   this.a = a;
                   contexts[pos] = (cx_index << 1) | cx_mps;
                   return d;
-                },
-              },
+                }
+              }
             ]);
 
             return ArithmeticDecoder;
@@ -28324,7 +28311,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.JpegStream = void 0;
 
@@ -28364,7 +28351,7 @@
                 this.stream.getBytes(this.maybeLength)
               );
             },
-            configurable: true,
+            configurable: true
           });
 
           JpegStream.prototype.ensureBuffer = function (requested) {};
@@ -28376,7 +28363,7 @@
 
             var jpegOptions = {
               decodeTransform: undefined,
-              colorTransform: undefined,
+              colorTransform: undefined
             };
             var decodeArr = this.dict.getArray('Decode', 'D');
 
@@ -28415,7 +28402,7 @@
               width: this.drawWidth,
               height: this.drawHeight,
               forceRGB: this.forceRGB,
-              isSourcePDF: true,
+              isSourcePDF: true
             });
             this.buffer = data;
             this.bufferLength = data.length;
@@ -28446,7 +28433,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.JpegImage = void 0;
 
@@ -28512,7 +28499,7 @@
             0, 1, 8, 16, 9, 2, 3, 10, 17, 24, 32, 25, 18, 11, 4, 5, 12, 19, 26,
             33, 40, 48, 41, 34, 27, 20, 13, 6, 7, 14, 21, 28, 35, 42, 49, 56,
             57, 50, 43, 36, 29, 22, 15, 23, 30, 37, 44, 51, 58, 59, 52, 45, 38,
-            31, 39, 46, 53, 60, 61, 54, 47, 55, 62, 63,
+            31, 39, 46, 53, 60, 61, 54, 47, 55, 62, 63
           ]);
           var dctCos1 = 4017;
           var dctSin1 = 799;
@@ -28552,7 +28539,7 @@
 
             code.push({
               children: [],
-              index: 0,
+              index: 0
             });
             var p = code[0],
               q;
@@ -28573,7 +28560,7 @@
                   code.push(
                     (q = {
                       children: [],
-                      index: 0,
+                      index: 0
                     })
                   );
                   p.children[p.index] = q.children;
@@ -28587,7 +28574,7 @@
                 code.push(
                   (q = {
                     children: [],
-                    index: 0,
+                    index: 0
                   })
                 );
                 p.children[p.index] = q.children;
@@ -29179,7 +29166,7 @@
               return {
                 invalid: null,
                 marker: currentMarker,
-                offset: currentPos,
+                offset: currentPos
               };
             }
 
@@ -29196,7 +29183,7 @@
             return {
               invalid: currentMarker.toString(16),
               marker: newMarker,
-              offset: newPos,
+              offset: newPos
             };
           }
 
@@ -29312,7 +29299,7 @@
                         jfif = {
                           version: {
                             major: appData[5],
-                            minor: appData[6],
+                            minor: appData[6]
                           },
                           densityUnits: appData[7],
                           xDensity: (appData[8] << 8) | appData[9],
@@ -29322,7 +29309,7 @@
                           thumbData: appData.subarray(
                             14,
                             14 + 3 * appData[12] * appData[13]
-                          ),
+                          )
                         };
                       }
                     }
@@ -29339,7 +29326,7 @@
                           version: (appData[5] << 8) | appData[6],
                           flags0: (appData[7] << 8) | appData[8],
                           flags1: (appData[9] << 8) | appData[10],
-                          transformCode: appData[11],
+                          transformCode: appData[11]
                         };
                       }
                     }
@@ -29416,7 +29403,7 @@
                         h: h,
                         v: v,
                         quantizationId: qId,
-                        quantizationTable: null,
+                        quantizationTable: null
                       });
                       frame.componentIds[componentId] = l - 1;
                       offset += 3;
@@ -29504,7 +29491,7 @@
                           )
                         );
                         return this.parse(data, {
-                          dnlScanLines: ex.scanLines,
+                          dnlScanLines: ex.scanLines
                         });
                       } else if (ex instanceof EOIMarkerError) {
                         (0, _util.warn)(
@@ -29581,7 +29568,7 @@
                   scaleX: component.h / frame.maxH,
                   scaleY: component.v / frame.maxV,
                   blocksPerLine: component.blocksPerLine,
-                  blocksPerColumn: component.blocksPerColumn,
+                  blocksPerColumn: component.blocksPerColumn
                 });
               }
 
@@ -29640,7 +29627,7 @@
 
               if (!isSourcePDF && numComponents === 4 && !transform) {
                 transform = new Int32Array([
-                  -256, 255, -256, 255, -256, 255, -256, 255,
+                  -256, 255, -256, 255, -256, 255, -256, 255
                 ]);
               }
 
@@ -29889,7 +29876,7 @@
               }
 
               return data;
-            },
+            }
           };
           return JpegImage;
         })();
@@ -29903,7 +29890,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.JpxStream = void 0;
 
@@ -29932,7 +29919,7 @@
                 this.stream.getBytes(this.maybeLength)
               );
             },
-            configurable: true,
+            configurable: true
           });
 
           JpxStream.prototype.ensureBuffer = function (requested) {};
@@ -29999,7 +29986,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.JpxImage = void 0;
 
@@ -30023,7 +30010,7 @@
             LL: 0,
             LH: 1,
             HL: 1,
-            HH: 2,
+            HH: 2
           };
 
           function JpxImage() {
@@ -30219,7 +30206,7 @@
                           precision: (data[j] & 0x7f) + 1,
                           isSigned: !!(data[j] & 0x80),
                           XRsiz: data[j + 1],
-                          YRsiz: data[j + 2],
+                          YRsiz: data[j + 2]
                         };
                         j += 3;
                         calculateComponentDimensions(component, siz);
@@ -30386,7 +30373,7 @@
                           var precinctsSize = data[j++];
                           precinctsSizes.push({
                             PPx: precinctsSize & 0xf,
-                            PPy: precinctsSize >> 4,
+                            PPy: precinctsSize >> 4
                           });
                         }
 
@@ -30497,7 +30484,7 @@
               this.width = context.SIZ.Xsiz - context.SIZ.XOsiz;
               this.height = context.SIZ.Ysiz - context.SIZ.YOsiz;
               this.componentsCount = context.SIZ.Csiz;
-            },
+            }
           };
 
           function calculateComponentDimensions(component, siz) {
@@ -30599,7 +30586,7 @@
               numprecinctshigh: numprecinctshigh,
               numprecincts: numprecincts,
               precinctWidthInSubband: precinctWidthInSubband,
-              precinctHeightInSubband: precinctHeightInSubband,
+              precinctHeightInSubband: precinctHeightInSubband
             };
           }
 
@@ -30625,7 +30612,7 @@
                   tbx0: codeblockWidth * i,
                   tby0: codeblockHeight * j,
                   tbx1: codeblockWidth * (i + 1),
-                  tby1: codeblockHeight * (j + 1),
+                  tby1: codeblockHeight * (j + 1)
                 };
                 codeblock.tbx0_ = Math.max(subband.tbx0, codeblock.tbx0);
                 codeblock.tby0_ = Math.max(subband.tby0, codeblock.tby0);
@@ -30671,7 +30658,7 @@
                     cbxMin: i,
                     cbyMin: j,
                     cbxMax: i,
-                    cbyMax: j,
+                    cbyMax: j
                   };
                 }
 
@@ -30683,7 +30670,7 @@
               codeblockWidth: xcb_,
               codeblockHeight: ycb_,
               numcodeblockwide: cbx1 - cbx0 + 1,
-              numcodeblockhigh: cby1 - cby0 + 1,
+              numcodeblockhigh: cby1 - cby0 + 1
             };
             subband.codeblocks = codeblocks;
             subband.precincts = precincts;
@@ -30710,7 +30697,7 @@
 
             return {
               layerNumber: layerNumber,
-              codeblocks: precinctCodeblocks,
+              codeblocks: precinctCodeblocks
             };
           }
 
@@ -31097,7 +31084,7 @@
                 );
                 sizePerResolution[r] = {
                   width: widthCurrentResolution,
-                  height: heightCurrentResolution,
+                  height: heightCurrentResolution
                 };
                 scale <<= 1;
               }
@@ -31111,7 +31098,7 @@
                 minWidth: minWidthCurrentComponent,
                 minHeight: minHeightCurrentComponent,
                 maxNumWide: maxNumWideCurrentComponent,
-                maxNumHigh: maxNumHighCurrentComponent,
+                maxNumHigh: maxNumHighCurrentComponent
               };
             }
 
@@ -31120,7 +31107,7 @@
               minWidth: minWidth,
               minHeight: minHeight,
               maxNumWide: maxNumWide,
-              maxNumHigh: maxNumHigh,
+              maxNumHigh: maxNumHigh
             };
           }
 
@@ -31442,7 +31429,7 @@
                 queue.push({
                   codeblock: codeblock,
                   codingpasses: codingpasses,
-                  dataLength: codedDataLength,
+                  dataLength: codedDataLength
                 });
               }
 
@@ -31464,7 +31451,7 @@
                   data: data,
                   start: offset + position,
                   end: offset + position + packetItem.dataLength,
-                  codingpasses: packetItem.codingpasses,
+                  codingpasses: packetItem.codingpasses
                 });
                 position += packetItem.dataLength;
               }
@@ -31669,7 +31656,7 @@
               subbandCoefficients.push({
                 width: width,
                 height: height,
-                items: coefficients,
+                items: coefficients
               });
             }
 
@@ -31683,7 +31670,7 @@
               top: component.tcy0,
               width: result.width,
               height: result.height,
-              items: result.items,
+              items: result.items
             };
           }
 
@@ -31711,7 +31698,7 @@
                 top: tile0.top,
                 width: tile0.width,
                 height: tile0.height,
-                items: out,
+                items: out
               };
               var shift, offset;
               var pos = 0,
@@ -31813,7 +31800,7 @@
                 var level = {
                   width: width,
                   height: height,
-                  items: [],
+                  items: []
                 };
                 this.levels.push(level);
                 width = Math.ceil(width / 2);
@@ -31867,7 +31854,7 @@
                 level = this.levels[currentLevel];
                 level.items[level.index] = value;
                 return true;
-              },
+              }
             };
             return TagTree;
           })();
@@ -31887,7 +31874,7 @@
                 var level = {
                   width: width,
                   height: height,
-                  items: items,
+                  items: items
                 };
                 this.levels.push(level);
                 width = Math.ceil(width / 2);
@@ -31953,7 +31940,7 @@
                 level = this.levels[currentLevel];
                 level.items[level.index] = value;
                 return true;
-              },
+              }
             };
             return InclusionTree;
           })();
@@ -31965,19 +31952,19 @@
               0, 5, 8, 0, 3, 7, 8, 0, 4, 7, 8, 0, 0, 0, 0, 0, 1, 6, 8, 0, 3, 7,
               8, 0, 4, 7, 8, 0, 0, 0, 0, 0, 2, 6, 8, 0, 3, 7, 8, 0, 4, 7, 8, 0,
               0, 0, 0, 0, 2, 6, 8, 0, 3, 7, 8, 0, 4, 7, 8, 0, 0, 0, 0, 0, 2, 6,
-              8, 0, 3, 7, 8, 0, 4, 7, 8,
+              8, 0, 3, 7, 8, 0, 4, 7, 8
             ]);
             var HLContextLabel = new Uint8Array([
               0, 3, 4, 0, 5, 7, 7, 0, 8, 8, 8, 0, 0, 0, 0, 0, 1, 3, 4, 0, 6, 7,
               7, 0, 8, 8, 8, 0, 0, 0, 0, 0, 2, 3, 4, 0, 6, 7, 7, 0, 8, 8, 8, 0,
               0, 0, 0, 0, 2, 3, 4, 0, 6, 7, 7, 0, 8, 8, 8, 0, 0, 0, 0, 0, 2, 3,
-              4, 0, 6, 7, 7, 0, 8, 8, 8,
+              4, 0, 6, 7, 7, 0, 8, 8, 8
             ]);
             var HHContextLabel = new Uint8Array([
               0, 1, 2, 0, 1, 2, 2, 0, 2, 2, 2, 0, 0, 0, 0, 0, 3, 4, 5, 0, 4, 5,
               5, 0, 5, 5, 5, 0, 0, 0, 0, 0, 6, 7, 7, 0, 7, 7, 7, 0, 7, 7, 7, 0,
               0, 0, 0, 0, 8, 8, 8, 0, 8, 8, 8, 0, 8, 8, 8, 0, 0, 0, 0, 0, 8, 8,
-              8, 0, 8, 8, 8, 0, 8, 8, 8,
+              8, 0, 8, 8, 8, 0, 8, 8, 8
             ]);
 
             function BitModel(width, height, subband, zeroBitPlanes, mb) {
@@ -31987,8 +31974,8 @@
                 subband === 'HH'
                   ? HHContextLabel
                   : subband === 'HL'
-                  ? HLContextLabel
-                  : LLAndLHContextsLabel;
+                    ? HLContextLabel
+                    : LLAndLHContextsLabel;
               var coefficientCount = width * height;
               this.neighborsSignificance = new Uint8Array(coefficientCount);
               this.coefficentsSign = new Uint8Array(coefficientCount);
@@ -31996,8 +31983,8 @@
                 mb > 14
                   ? new Uint32Array(coefficientCount)
                   : mb > 6
-                  ? new Uint16Array(coefficientCount)
-                  : new Uint8Array(coefficientCount);
+                    ? new Uint16Array(coefficientCount)
+                    : new Uint8Array(coefficientCount);
               this.processingFlags = new Uint8Array(coefficientCount);
               var bitsDecoded = new Uint8Array(coefficientCount);
 
@@ -32357,7 +32344,7 @@
                   if (symbol !== 0xa) {
                     throw new JpxError('Invalid segmentation symbol');
                   }
-                },
+                }
             };
             return BitModel;
           })();
@@ -32489,7 +32476,7 @@
               return {
                 width: width,
                 height: height,
-                items: items,
+                items: items
               };
             };
 
@@ -32629,7 +32616,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.calculateSHA512 =
           exports.calculateSHA384 =
@@ -32710,8 +32697,8 @@
               constructor: {
                 value: subClass,
                 writable: true,
-                configurable: true,
-              },
+                configurable: true
+              }
             }
           );
           if (superClass) _setPrototypeOf(subClass, superClass);
@@ -32797,7 +32784,7 @@
               this.a = a;
               this.b = b;
               return output;
-            },
+            }
           };
           ARCFourCipher.prototype.decryptBlock =
             ARCFourCipher.prototype.encryptBlock;
@@ -32811,7 +32798,7 @@
             7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22, 5, 9,
             14, 20, 5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20, 4, 11, 16, 23, 4,
             11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23, 6, 10, 15, 21, 6, 10, 15,
-            21, 6, 10, 15, 21, 6, 10, 15, 21,
+            21, 6, 10, 15, 21, 6, 10, 15, 21
           ]);
           var k = new Int32Array([
             -680876936, -389564586, 606105819, -1044525330, -176418897,
@@ -32826,7 +32813,7 @@
             -995338651, -198630844, 1126891415, -1416354905, -57434055,
             1700485571, -1894986606, -1051523, -2054922799, 1873313359,
             -30611744, -1560198380, 1309151649, -145523070, -1120210379,
-            718787259, -343485551,
+            718787259, -343485551
           ]);
 
           function hash(data, offset, length) {
@@ -32924,7 +32911,7 @@
               h3 & 0xff,
               (h3 >> 8) & 0xff,
               (h3 >> 16) & 0xff,
-              (h3 >>> 24) & 0xff,
+              (h3 >>> 24) & 0xff
             ]);
           }
 
@@ -33014,7 +33001,7 @@
             assign: function Word64_assign(word) {
               this.high = word.high;
               this.low = word.low;
-            },
+            }
           };
           return Word64;
         })();
@@ -33061,7 +33048,7 @@
             0xd6990624, 0xf40e3585, 0x106aa070, 0x19a4c116, 0x1e376c08,
             0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f,
             0x682e6ff3, 0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208,
-            0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2,
+            0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2
           ];
 
           function hash(data, offset, length) {
@@ -33183,7 +33170,7 @@
               (h7 >> 24) & 0xff,
               (h7 >> 16) & 0xff,
               (h7 >> 8) & 0xff,
-              h7 & 0xff,
+              h7 & 0xff
             ]);
           }
 
@@ -33337,7 +33324,7 @@
             new Word64(0x4cc5d4be, 0xcb3e42b6),
             new Word64(0x597f299c, 0xfc657e2a),
             new Word64(0x5fcb6fab, 0x3ad6faec),
-            new Word64(0x6c44198c, 0x4a475817),
+            new Word64(0x6c44198c, 0x4a475817)
           ];
 
           function hash(data, offset, length, mode384) {
@@ -33529,7 +33516,7 @@
           NullCipher.prototype = {
             decryptBlock: function NullCipher_decryptBlock(data) {
               return data;
-            },
+            }
           };
           return NullCipher;
         })();
@@ -33570,7 +33557,7 @@
                 0x86, 0xc1, 0x1d, 0x9e, 0xe1, 0xf8, 0x98, 0x11, 0x69, 0xd9,
                 0x8e, 0x94, 0x9b, 0x1e, 0x87, 0xe9, 0xce, 0x55, 0x28, 0xdf,
                 0x8c, 0xa1, 0x89, 0x0d, 0xbf, 0xe6, 0x42, 0x68, 0x41, 0x99,
-                0x2d, 0x0f, 0xb0, 0x54, 0xbb, 0x16,
+                0x2d, 0x0f, 0xb0, 0x54, 0xbb, 0x16
               ]);
               this._inv_s = new Uint8Array([
                 0x52, 0x09, 0x6a, 0xd5, 0x30, 0x36, 0xa5, 0x38, 0xbf, 0x40,
@@ -33598,7 +33585,7 @@
                 0x93, 0xc9, 0x9c, 0xef, 0xa0, 0xe0, 0x3b, 0x4d, 0xae, 0x2a,
                 0xf5, 0xb0, 0xc8, 0xeb, 0xbb, 0x3c, 0x83, 0x53, 0x99, 0x61,
                 0x17, 0x2b, 0x04, 0x7e, 0xba, 0x77, 0xd6, 0x26, 0xe1, 0x69,
-                0x14, 0x63, 0x55, 0x21, 0x0c, 0x7d,
+                0x14, 0x63, 0x55, 0x21, 0x0c, 0x7d
               ]);
               this._mix = new Uint32Array([
                 0x00000000, 0x0e090d0b, 0x1c121a16, 0x121b171d, 0x3824342c,
@@ -33652,7 +33639,7 @@
                 0xd731dcca, 0xd938d1c1, 0xcb23c6dc, 0xc52acbd7, 0xef15e8e6,
                 0xe11ce5ed, 0xf307f2f0, 0xfd0efffb, 0xa779b492, 0xa970b999,
                 0xbb6bae84, 0xb562a38f, 0x9f5d80be, 0x91548db5, 0x834f9aa8,
-                0x8d4697a3,
+                0x8d4697a3
               ]);
               this._mixCol = new Uint8Array(256);
 
@@ -33675,7 +33662,7 @@
                   (0, _util.unreachable)(
                     'Cannot call `_expandKey` on the base class'
                   );
-                },
+                }
               },
               {
                 key: '_decrypt',
@@ -33761,7 +33748,7 @@
                   }
 
                   return state;
-                },
+                }
               },
               {
                 key: '_encrypt',
@@ -33848,7 +33835,7 @@
                   }
 
                   return state;
-                },
+                }
               },
               {
                 key: '_decryptBlock2',
@@ -33920,7 +33907,7 @@
                   }
 
                   return output;
-                },
+                }
               },
               {
                 key: 'decryptBlock',
@@ -33957,7 +33944,7 @@
                   this.bufferLength = 0;
                   this.decryptBlock = this._decryptBlock2;
                   return this.decryptBlock(data, finalize);
-                },
+                }
               },
               {
                 key: 'encrypt',
@@ -34011,8 +33998,8 @@
                   }
 
                   return output;
-                },
-              },
+                }
+              }
             ]);
 
             return AESBaseCipher;
@@ -34060,7 +34047,7 @@
                 0x2f, 0x5e, 0xbc, 0x63, 0xc6, 0x97, 0x35, 0x6a, 0xd4, 0xb3,
                 0x7d, 0xfa, 0xef, 0xc5, 0x91, 0x39, 0x72, 0xe4, 0xd3, 0xbd,
                 0x61, 0xc2, 0x9f, 0x25, 0x4a, 0x94, 0x33, 0x66, 0xcc, 0x83,
-                0x1d, 0x3a, 0x74, 0xe8, 0xcb, 0x8d,
+                0x1d, 0x3a, 0x74, 0xe8, 0xcb, 0x8d
               ]);
               _this._key = _this._expandKey(key);
               return _this;
@@ -34100,8 +34087,8 @@
                   }
 
                   return result;
-                },
-              },
+                }
+              }
             ]);
 
             return AES128Cipher;
@@ -34175,8 +34162,8 @@
                   }
 
                   return result;
-                },
-              },
+                }
+              }
             ]);
 
             return AES256Cipher;
@@ -34262,7 +34249,7 @@
                 false,
                 new Uint8Array(16)
               );
-            },
+            }
           };
           return PDF17;
         })();
@@ -34397,7 +34384,7 @@
                 false,
                 new Uint8Array(16)
               );
-            },
+            }
           };
           return PDF20;
         })();
@@ -34432,7 +34419,7 @@
               var data = (0, _util.stringToBytes)(s);
               data = cipher.decryptBlock(data, true);
               return (0, _util.bytesToString)(data);
-            },
+            }
           };
           return CipherTransform;
         })();
@@ -34441,7 +34428,7 @@
           var defaultPasswordBytes = new Uint8Array([
             0x28, 0xbf, 0x4e, 0x5e, 0x4e, 0x75, 0x8a, 0x41, 0x64, 0x00, 0x4e,
             0x56, 0xff, 0xfa, 0x01, 0x08, 0x2e, 0x2e, 0x00, 0xb6, 0xd0, 0x68,
-            0x3e, 0x80, 0x2f, 0x0c, 0xa9, 0xfe, 0x64, 0x53, 0x69, 0x7a,
+            0x3e, 0x80, 0x2f, 0x0c, 0xa9, 0xfe, 0x64, 0x53, 0x69, 0x7a
           ]);
 
           function createEncryptionKey20(
@@ -34944,7 +34931,7 @@
                   cipherConstructor,
                   cipherConstructor
                 );
-              },
+              }
           };
           return CipherTransformFactory;
         })();
@@ -34958,7 +34945,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.ColorSpace = void 0;
 
@@ -35027,8 +35014,8 @@
               constructor: {
                 value: subClass,
                 writable: true,
-                configurable: true,
-              },
+                configurable: true
+              }
             }
           );
           if (superClass) _setPrototypeOf(subClass, superClass);
@@ -35116,7 +35103,7 @@
                     var rgb = new Uint8ClampedArray(3);
                     this.getRgbItem(src, srcOffset, rgb, 0);
                     return rgb;
-                  },
+                  }
                 },
                 {
                   key: 'getRgbItem',
@@ -35124,7 +35111,7 @@
                     (0, _util.unreachable)(
                       'Should not call ColorSpace.getRgbItem'
                     );
-                  },
+                  }
                 },
                 {
                   key: 'getRgbBuffer',
@@ -35140,7 +35127,7 @@
                     (0, _util.unreachable)(
                       'Should not call ColorSpace.getRgbBuffer'
                     );
-                  },
+                  }
                 },
                 {
                   key: 'getOutputLength',
@@ -35148,19 +35135,19 @@
                     (0, _util.unreachable)(
                       'Should not call ColorSpace.getOutputLength'
                     );
-                  },
+                  }
                 },
                 {
                   key: 'isPassthrough',
                   value: function isPassthrough(bits) {
                     return false;
-                  },
+                  }
                 },
                 {
                   key: 'isDefaultDecode',
                   value: function isDefaultDecode(decodeMap, bpc) {
                     return ColorSpace.isDefaultDecode(decodeMap, this.numComps);
-                  },
+                  }
                 },
                 {
                   key: 'fillRgb',
@@ -35277,14 +35264,14 @@
                         }
                       }
                     }
-                  },
+                  }
                 },
                 {
                   key: 'usesZeroToOneRange',
                   get: function get() {
                     return (0, _util.shadow)(this, 'usesZeroToOneRange', true);
-                  },
-                },
+                  }
+                }
               ],
               [
                 {
@@ -35292,7 +35279,7 @@
                   value: function parse(cs, xref, res, pdfFunctionFactory) {
                     var IR = this.parseToIR(cs, xref, res, pdfFunctionFactory);
                     return this.fromIR(IR);
-                  },
+                  }
                 },
                 {
                   key: 'fromIR',
@@ -35368,7 +35355,7 @@
                           'Unknown colorspace name: '.concat(name)
                         );
                     }
-                  },
+                  }
                 },
                 {
                   key: 'parseToIR',
@@ -35462,7 +35449,7 @@
                             whitePoint,
                             blackPoint,
                             gamma,
-                            matrix,
+                            matrix
                           ];
 
                         case 'ICCBased':
@@ -35565,7 +35552,7 @@
                     throw new _util.FormatError(
                       'unrecognized color space object: "'.concat(cs, '"')
                     );
-                  },
+                  }
                 },
                 {
                   key: 'isDefaultDecode',
@@ -35588,7 +35575,7 @@
                     }
 
                     return true;
-                  },
+                  }
                 },
                 {
                   key: 'singletons',
@@ -35616,10 +35603,10 @@
                           'cmyk',
                           new DeviceCmykCS()
                         );
-                      },
+                      }
                     });
-                  },
-                },
+                  }
+                }
               ]
             );
 
@@ -35655,7 +35642,7 @@
                   var tmpBuf = this.tmpBuf;
                   this.tintFn(src, srcOffset, tmpBuf, 0);
                   this.base.getRgbItem(tmpBuf, 0, dest, destOffset);
-                },
+                }
               },
               {
                 key: 'getRgbBuffer',
@@ -35713,7 +35700,7 @@
                       alpha01
                     );
                   }
-                },
+                }
               },
               {
                 key: 'getOutputLength',
@@ -35722,8 +35709,8 @@
                     (inputLength * this.base.numComps) / this.numComps,
                     alpha01
                   );
-                },
-              },
+                }
+              }
             ]);
 
             return AlternateCS;
@@ -35754,8 +35741,8 @@
                   (0, _util.unreachable)(
                     'Should not call PatternCS.isDefaultDecode'
                   );
-                },
-              },
+                }
+              }
             ]);
 
             return PatternCS;
@@ -35817,7 +35804,7 @@
                     8,
                     0
                   );
-                },
+                }
               },
               {
                 key: 'getRgbBuffer',
@@ -35848,7 +35835,7 @@
                     );
                     destOffset += outputDelta;
                   }
-                },
+                }
               },
               {
                 key: 'getOutputLength',
@@ -35857,7 +35844,7 @@
                     inputLength * this.base.numComps,
                     alpha01
                   );
-                },
+                }
               },
               {
                 key: 'isDefaultDecode',
@@ -35877,8 +35864,8 @@
                   }
 
                   return decodeMap[0] === 0 && decodeMap[1] === (1 << bpc) - 1;
-                },
-              },
+                }
+              }
             ]);
 
             return IndexedCS;
@@ -35907,7 +35894,7 @@
                     dest[destOffset + 1] =
                     dest[destOffset + 2] =
                       c;
-                },
+                }
               },
               {
                 key: 'getRgbBuffer',
@@ -35931,14 +35918,14 @@
                     dest[q++] = c;
                     q += alpha01;
                   }
-                },
+                }
               },
               {
                 key: 'getOutputLength',
                 value: function getOutputLength(inputLength, alpha01) {
                   return inputLength * (3 + alpha01);
-                },
-              },
+                }
+              }
             ]);
 
             return DeviceGrayCS;
@@ -35965,7 +35952,7 @@
                   dest[destOffset] = src[srcOffset] * 255;
                   dest[destOffset + 1] = src[srcOffset + 1] * 255;
                   dest[destOffset + 2] = src[srcOffset + 2] * 255;
-                },
+                }
               },
               {
                 key: 'getRgbBuffer',
@@ -35996,20 +35983,20 @@
                     dest[q++] = scale * src[j++];
                     q += alpha01;
                   }
-                },
+                }
               },
               {
                 key: 'getOutputLength',
                 value: function getOutputLength(inputLength, alpha01) {
                   return ((inputLength * (3 + alpha01)) / 3) | 0;
-                },
+                }
               },
               {
                 key: 'isPassthrough',
                 value: function isPassthrough(bits) {
                   return bits === 8;
-                },
-              },
+                }
+              }
             ]);
 
             return DeviceRgbCS;
@@ -36096,7 +36083,7 @@
                   key: 'getRgbItem',
                   value: function getRgbItem(src, srcOffset, dest, destOffset) {
                     convertToRgb(src, srcOffset, 1, dest, destOffset);
-                  },
+                  }
                 },
                 {
                   key: 'getRgbBuffer',
@@ -36116,14 +36103,14 @@
                       srcOffset += 4;
                       destOffset += 3 + alpha01;
                     }
-                  },
+                  }
                 },
                 {
                   key: 'getOutputLength',
                   value: function getOutputLength(inputLength, alpha01) {
                     return ((inputLength / 4) * (3 + alpha01)) | 0;
-                  },
-                },
+                  }
+                }
               ]);
 
               return DeviceCmykCS;
@@ -36224,7 +36211,7 @@
                   key: 'getRgbItem',
                   value: function getRgbItem(src, srcOffset, dest, destOffset) {
                     convertToRgb(this, src, srcOffset, dest, destOffset, 1);
-                  },
+                  }
                 },
                 {
                   key: 'getRgbBuffer',
@@ -36251,14 +36238,14 @@
                       srcOffset += 1;
                       destOffset += 3 + alpha01;
                     }
-                  },
+                  }
                 },
                 {
                   key: 'getOutputLength',
                   value: function getOutputLength(inputLength, alpha01) {
                     return inputLength * (3 + alpha01);
-                  },
-                },
+                  }
+                }
               ]);
 
               return CalGrayCS;
@@ -36270,15 +36257,15 @@
         var CalRGBCS = (function CalRGBCSClosure() {
           var BRADFORD_SCALE_MATRIX = new Float32Array([
             0.8951, 0.2664, -0.1614, -0.7502, 1.7135, 0.0367, 0.0389, -0.0685,
-            1.0296,
+            1.0296
           ]);
           var BRADFORD_SCALE_INVERSE_MATRIX = new Float32Array([
             0.9869929, -0.1470543, 0.1599627, 0.4323053, 0.5183603, 0.0492912,
-            -0.0085287, 0.0400428, 0.9684867,
+            -0.0085287, 0.0400428, 0.9684867
           ]);
           var SRGB_D65_XYZ_TO_RGB_MATRIX = new Float32Array([
             3.2404542, -1.5371385, -0.4985314, -0.969266, 1.8760108, 0.041556,
-            0.0556434, -0.2040259, 1.0572252,
+            0.0556434, -0.2040259, 1.0572252
           ]);
           var FLAT_WHITEPOINT_MATRIX = new Float32Array([1, 1, 1]);
           var tempNormalizeMatrix = new Float32Array(3);
@@ -36502,7 +36489,7 @@
                   key: 'getRgbItem',
                   value: function getRgbItem(src, srcOffset, dest, destOffset) {
                     convertToRgb(this, src, srcOffset, dest, destOffset, 1);
-                  },
+                  }
                 },
                 {
                   key: 'getRgbBuffer',
@@ -36529,14 +36516,14 @@
                       srcOffset += 3;
                       destOffset += 3 + alpha01;
                     }
-                  },
+                  }
                 },
                 {
                   key: 'getOutputLength',
                   value: function getOutputLength(inputLength, alpha01) {
                     return ((inputLength * (3 + alpha01)) / 3) | 0;
-                  },
-                },
+                  }
+                }
               ]);
 
               return CalRGBCS;
@@ -36661,7 +36648,7 @@
                   key: 'getRgbItem',
                   value: function getRgbItem(src, srcOffset, dest, destOffset) {
                     convertToRgb(this, src, srcOffset, false, dest, destOffset);
-                  },
+                  }
                 },
                 {
                   key: 'getRgbBuffer',
@@ -36688,26 +36675,26 @@
                       srcOffset += 3;
                       destOffset += 3 + alpha01;
                     }
-                  },
+                  }
                 },
                 {
                   key: 'getOutputLength',
                   value: function getOutputLength(inputLength, alpha01) {
                     return ((inputLength * (3 + alpha01)) / 3) | 0;
-                  },
+                  }
                 },
                 {
                   key: 'isDefaultDecode',
                   value: function isDefaultDecode(decodeMap, bpc) {
                     return true;
-                  },
+                  }
                 },
                 {
                   key: 'usesZeroToOneRange',
                   get: function get() {
                     return (0, _util.shadow)(this, 'usesZeroToOneRange', false);
-                  },
-                },
+                  }
+                }
               ]);
 
               return LabCS;
@@ -36723,7 +36710,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.MarkupAnnotation =
           exports.AnnotationFactory =
@@ -36831,8 +36818,8 @@
               constructor: {
                 value: subClass,
                 writable: true,
-                configurable: true,
-              },
+                configurable: true
+              }
             }
           );
           if (superClass) _setPrototypeOf(subClass, superClass);
@@ -36885,9 +36872,9 @@
                     xref,
                     ref,
                     pdfManager,
-                    idFactory,
+                    idFactory
                   ]);
-                },
+                }
               },
               {
                 key: '_create',
@@ -36910,7 +36897,7 @@
                     dict: dict,
                     subtype: subtype,
                     id: id,
-                    pdfManager: pdfManager,
+                    pdfManager: pdfManager
                   };
 
                   switch (subtype) {
@@ -36923,7 +36910,7 @@
                     case 'Widget':
                       var fieldType = (0, _core_utils.getInheritableProperty)({
                         dict: dict,
-                        key: 'FT',
+                        key: 'FT'
                       });
                       fieldType = (0, _primitives.isName)(fieldType)
                         ? fieldType.name
@@ -37009,8 +36996,8 @@
 
                       return new Annotation(parameters);
                   }
-                },
-              },
+                }
+              }
             ]);
 
             return AnnotationFactory;
@@ -37038,7 +37025,7 @@
             0,
             yRatio,
             rect[0] - minX * xRatio,
-            rect[1] - minY * yRatio,
+            rect[1] - minY * yRatio
           ];
         }
 
@@ -37065,7 +37052,7 @@
                 id: params.id,
                 modificationDate: this.modificationDate,
                 rect: this.rectangle,
-                subtype: params.subtype,
+                subtype: params.subtype
               };
             }
 
@@ -37074,7 +37061,7 @@
                 key: '_hasFlag',
                 value: function _hasFlag(flags, flag) {
                   return !!(flags & flag);
-                },
+                }
               },
               {
                 key: '_isViewable',
@@ -37084,7 +37071,7 @@
                     !this._hasFlag(flags, _util.AnnotationFlag.HIDDEN) &&
                     !this._hasFlag(flags, _util.AnnotationFlag.NOVIEW)
                   );
-                },
+                }
               },
               {
                 key: '_isPrintable',
@@ -37094,13 +37081,13 @@
                     !this._hasFlag(flags, _util.AnnotationFlag.INVISIBLE) &&
                     !this._hasFlag(flags, _util.AnnotationFlag.HIDDEN)
                   );
-                },
+                }
               },
               {
                 key: 'setContents',
                 value: function setContents(contents) {
                   this.contents = (0, _util.stringToPDFString)(contents || '');
-                },
+                }
               },
               {
                 key: 'setModificationDate',
@@ -37108,19 +37095,19 @@
                   this.modificationDate = (0, _util.isString)(modificationDate)
                     ? modificationDate
                     : null;
-                },
+                }
               },
               {
                 key: 'setFlags',
                 value: function setFlags(flags) {
                   this.flags = Number.isInteger(flags) && flags > 0 ? flags : 0;
-                },
+                }
               },
               {
                 key: 'hasFlag',
                 value: function hasFlag(flag) {
                   return this._hasFlag(this.flags, flag);
-                },
+                }
               },
               {
                 key: 'setRectangle',
@@ -37130,7 +37117,7 @@
                   } else {
                     this.rectangle = [0, 0, 0, 0];
                   }
-                },
+                }
               },
               {
                 key: 'setColor',
@@ -37184,7 +37171,7 @@
                       this.color = rgbColor;
                       break;
                   }
-                },
+                }
               },
               {
                 key: 'setBorderStyle',
@@ -37222,7 +37209,7 @@
                   } else {
                     this.borderStyle.setWidth(0);
                   }
-                },
+                }
               },
               {
                 key: 'setAppearance',
@@ -37255,7 +37242,7 @@
                   }
 
                   this.appearance = normalAppearanceState.get(as.name);
-                },
+                }
               },
               {
                 key: 'loadResources',
@@ -37276,7 +37263,7 @@
                         return resources;
                       });
                     });
-                },
+                }
               },
               {
                 key: 'getOperatorList',
@@ -37295,11 +37282,11 @@
                     'Pattern',
                     'Shading',
                     'XObject',
-                    'Font',
+                    'Font'
                   ]);
                   var bbox = appearanceDict.getArray('BBox') || [0, 0, 1, 1];
                   var matrix = appearanceDict.getArray('Matrix') || [
-                    1, 0, 0, 1, 0, 0,
+                    1, 0, 0, 1, 0, 0
                   ];
                   var transform = getTransformMatrix(data.rect, bbox, matrix);
                   return resourcesPromise.then(function (resources) {
@@ -37307,14 +37294,14 @@
                     opList.addOp(_util.OPS.beginAnnotation, [
                       data.rect,
                       transform,
-                      matrix,
+                      matrix
                     ]);
                     return evaluator
                       .getOperatorList({
                         stream: _this.appearance,
                         task: task,
                         resources: resources,
-                        operatorList: opList,
+                        operatorList: opList
                       })
                       .then(function () {
                         opList.addOp(_util.OPS.endAnnotation, []);
@@ -37324,7 +37311,7 @@
                         return opList;
                       });
                   });
-                },
+                }
               },
               {
                 key: 'viewable',
@@ -37334,7 +37321,7 @@
                   }
 
                   return this._isViewable(this.flags);
-                },
+                }
               },
               {
                 key: 'printable',
@@ -37344,8 +37331,8 @@
                   }
 
                   return this._isPrintable(this.flags);
-                },
-              },
+                }
+              }
             ]);
 
             return Annotation;
@@ -37401,7 +37388,7 @@
 
                     this.width = width;
                   }
-                },
+                }
               },
               {
                 key: 'setStyle',
@@ -37434,7 +37421,7 @@
                     default:
                       break;
                   }
-                },
+                }
               },
               {
                 key: 'setDashArray',
@@ -37463,7 +37450,7 @@
                   } else if (dashArray) {
                     this.width = 0;
                   }
-                },
+                }
               },
               {
                 key: 'setHorizontalCornerRadius',
@@ -37471,7 +37458,7 @@
                   if (Number.isInteger(radius)) {
                     this.horizontalCornerRadius = radius;
                   }
-                },
+                }
               },
               {
                 key: 'setVerticalCornerRadius',
@@ -37479,8 +37466,8 @@
                   if (Number.isInteger(radius)) {
                     this.verticalCornerRadius = radius;
                   }
-                },
-              },
+                }
+              }
             ]);
 
             return AnnotationBorderStyle;
@@ -37525,8 +37512,8 @@
                   this.creationDate = (0, _util.isString)(creationDate)
                     ? creationDate
                     : null;
-                },
-              },
+                }
+              }
             ]);
 
             return MarkupAnnotation;
@@ -37555,7 +37542,7 @@
               data.fieldValue = (0, _core_utils.getInheritableProperty)({
                 dict: dict,
                 key: 'V',
-                getArray: true,
+                getArray: true
               });
               data.alternativeText = (0, _util.stringToPDFString)(
                 dict.get('TU') || ''
@@ -37563,11 +37550,11 @@
               data.defaultAppearance =
                 (0, _core_utils.getInheritableProperty)({
                   dict: dict,
-                  key: 'DA',
+                  key: 'DA'
                 }) || '';
               var fieldType = (0, _core_utils.getInheritableProperty)({
                 dict: dict,
-                key: 'FT',
+                key: 'FT'
               });
               data.fieldType = (0, _primitives.isName)(fieldType)
                 ? fieldType.name
@@ -37575,11 +37562,11 @@
               _this3.fieldResources =
                 (0, _core_utils.getInheritableProperty)({
                   dict: dict,
-                  key: 'DR',
+                  key: 'DR'
                 }) || _primitives.Dict.empty;
               data.fieldFlags = (0, _core_utils.getInheritableProperty)({
                 dict: dict,
-                key: 'Ff',
+                key: 'Ff'
               });
 
               if (!Number.isInteger(data.fieldFlags) || data.fieldFlags < 0) {
@@ -37639,13 +37626,13 @@
                   }
 
                   return fieldName.join('.');
-                },
+                }
               },
               {
                 key: 'hasFieldFlag',
                 value: function hasFieldFlag(flag) {
                   return !!(this.data.fieldFlags & flag);
-                },
+                }
               },
               {
                 key: 'getOperatorList',
@@ -37659,8 +37646,8 @@
                     'getOperatorList',
                     this
                   ).call(this, evaluator, task, renderForms);
-                },
-              },
+                }
+              }
             ]);
 
             return WidgetAnnotation;
@@ -37686,7 +37673,7 @@
               );
               var alignment = (0, _core_utils.getInheritableProperty)({
                 dict: dict,
-                key: 'Q',
+                key: 'Q'
               });
 
               if (
@@ -37700,7 +37687,7 @@
               _this4.data.textAlignment = alignment;
               var maximumLength = (0, _core_utils.getInheritableProperty)({
                 dict: dict,
-                key: 'MaxLen',
+                key: 'MaxLen'
               });
 
               if (!Number.isInteger(maximumLength) || maximumLength < 0) {
@@ -37746,13 +37733,13 @@
                       stream: stream,
                       task: task,
                       resources: this.fieldResources,
-                      operatorList: operatorList,
+                      operatorList: operatorList
                     })
                     .then(function () {
                       return operatorList;
                     });
-                },
-              },
+                }
+              }
             ]);
 
             return TextWidgetAnnotation;
@@ -37828,7 +37815,7 @@
                     exportValues[0] === 'Off'
                       ? exportValues[1]
                       : exportValues[0];
-                },
+                }
               },
               {
                 key: '_processRadioButton',
@@ -37867,7 +37854,7 @@
                       break;
                     }
                   }
-                },
+                }
               },
               {
                 key: '_processPushButton',
@@ -37882,10 +37869,10 @@
                   _obj.Catalog.parseDestDictionary({
                     destDict: params.dict,
                     resultObj: this.data,
-                    docBaseUrl: params.pdfManager.docBaseUrl,
+                    docBaseUrl: params.pdfManager.docBaseUrl
                   });
-                },
-              },
+                }
+              }
             ]);
 
             return ButtonWidgetAnnotation;
@@ -37908,7 +37895,7 @@
               _this6.data.options = [];
               var options = (0, _core_utils.getInheritableProperty)({
                 dict: params.dict,
-                key: 'Opt',
+                key: 'Opt'
               });
 
               if (Array.isArray(options)) {
@@ -37923,7 +37910,7 @@
                       : option,
                     displayValue: (0, _util.stringToPDFString)(
                       isOptionArray ? xref.fetchIfRef(option[1]) : option
-                    ),
+                    )
                   };
                 }
               }
@@ -37996,7 +37983,7 @@
               _obj.Catalog.parseDestDictionary({
                 destDict: params.dict,
                 resultObj: _this8.data,
-                docBaseUrl: params.pdfManager.docBaseUrl,
+                docBaseUrl: params.pdfManager.docBaseUrl
               });
 
               return _this8;
@@ -38182,7 +38169,7 @@
               for (var i = 0, ii = rawVertices.length; i < ii; i += 2) {
                 _this14.data.vertices.push({
                   x: rawVertices[i],
-                  y: rawVertices[i + 1],
+                  y: rawVertices[i + 1]
                 });
               }
 
@@ -38264,7 +38251,7 @@
                 ) {
                   _this17.data.inkLists[i].push({
                     x: xref.fetchIfRef(originalInkLists[i][j]),
-                    y: xref.fetchIfRef(originalInkLists[i][j + 1]),
+                    y: xref.fetchIfRef(originalInkLists[i][j + 1])
                   });
                 }
               }
@@ -38413,7 +38400,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.OperatorList = void 0;
 
@@ -38437,7 +38424,7 @@
             state[pattern[pattern.length - 1]] = {
               checkFn: checkFn,
               iterateFn: iterateFn,
-              processFn: processFn,
+              processFn: processFn
             };
           }
 
@@ -38478,7 +38465,7 @@
               _util.OPS.save,
               _util.OPS.transform,
               _util.OPS.paintInlineImageXObject,
-              _util.OPS.restore,
+              _util.OPS.restore
             ],
             null,
             function iterateInlineImageGroup(context, i) {
@@ -38547,7 +38534,7 @@
                   x: currentX,
                   y: currentY,
                   w: img.width,
-                  h: img.height,
+                  h: img.height
                 });
                 currentX += img.width + 2 * IMAGE_PADDING;
                 maxLineHeight = Math.max(maxLineHeight, img.height);
@@ -38602,9 +38589,9 @@
                   width: imgWidth,
                   height: imgHeight,
                   kind: _util.ImageKind.RGBA_32BPP,
-                  data: imgData,
+                  data: imgData
                 },
-                map,
+                map
               ]);
               return iFirstSave + 1;
             }
@@ -38615,7 +38602,7 @@
               _util.OPS.save,
               _util.OPS.transform,
               _util.OPS.paintImageMaskXObject,
-              _util.OPS.restore,
+              _util.OPS.restore
             ],
             null,
             function iterateImageMaskGroup(context, i) {
@@ -38719,7 +38706,7 @@
                   firstPIMXOArg0,
                   firstTransformArg0,
                   firstTransformArg3,
-                  positions,
+                  positions
                 ]);
               } else {
                 count = Math.min(count, MAX_IMAGES_IN_MASKS_BLOCK);
@@ -38732,7 +38719,7 @@
                     data: maskParams.data,
                     width: maskParams.width,
                     height: maskParams.height,
-                    transform: transformArgs,
+                    transform: transformArgs
                   });
                 }
 
@@ -38753,7 +38740,7 @@
               _util.OPS.save,
               _util.OPS.transform,
               _util.OPS.paintImageXObject,
-              _util.OPS.restore,
+              _util.OPS.restore
             ],
             function (context) {
               var argsArray = context.argsArray;
@@ -38847,7 +38834,7 @@
                 firstPIXOArg0,
                 firstTransformArg0,
                 firstTransformArg3,
-                positions,
+                positions
               ];
               fnArray.splice(
                 iFirstSave,
@@ -38865,7 +38852,7 @@
               _util.OPS.setFont,
               _util.OPS.setTextMatrix,
               _util.OPS.showText,
-              _util.OPS.endText,
+              _util.OPS.endText
             ],
             null,
             function iterateShowTextGroup(context, i) {
@@ -38965,7 +38952,7 @@
             this.context = {
               iCurr: 0,
               fnArray: queue.fnArray,
-              argsArray: queue.argsArray,
+              argsArray: queue.argsArray
             };
             this.match = null;
             this.lastProcessed = 0;
@@ -39056,7 +39043,7 @@
               this.state = null;
               this.match = null;
               this.lastProcessed = 0;
-            },
+            }
           };
           return QueueOptimizer;
         })();
@@ -39072,7 +39059,7 @@
               this.queue.argsArray.push(args);
             },
             flush: function flush() {},
-            reset: function reset() {},
+            reset: function reset() {}
           };
           return NullOptimizer;
         })();
@@ -39147,7 +39134,7 @@
               return {
                 fnArray: this.fnArray,
                 argsArray: this.argsArray,
-                length: this.length,
+                length: this.length
               };
             },
 
@@ -39189,10 +39176,10 @@
                     fnArray: this.fnArray,
                     argsArray: this.argsArray,
                     lastChunk: lastChunk,
-                    length: length,
+                    length: length
                   },
                   pageIndex: this.pageIndex,
-                  intent: this.intent,
+                  intent: this.intent
                 },
                 this._transfers
               );
@@ -39201,7 +39188,7 @@
               this.argsArray.length = 0;
               this.weight = 0;
               this.optimizer.reset();
-            },
+            }
           };
           return OperatorList;
         })();
@@ -39215,7 +39202,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.PartialEvaluator = void 0;
 
@@ -39330,7 +39317,7 @@
             disableFontFace: false,
             nativeImageDecoderSupport: _util.NativeImageDecoding.DECODE,
             ignoreErrors: false,
-            isEvalSupported: true,
+            isEvalSupported: true
           };
 
           function PartialEvaluator(_ref) {
@@ -39383,7 +39370,7 @@
                             return _this.handler.sendWithPromise(
                               'FetchBuiltInCMap',
                               {
-                                name: name,
+                                name: name
                               }
                             );
 
@@ -39404,8 +39391,7 @@
                             return _context.stop();
                         }
                       }
-                    },
-                    _callee);
+                    }, _callee);
                   })
                 );
 
@@ -39434,7 +39420,7 @@
             reset: function TimeSlotManager_reset() {
               this.endTime = Date.now() + TIME_SLOT_DURATION_MS;
               this.checked = 0;
-            },
+            }
           };
 
           function normalizeBlendMode(value) {
@@ -39618,7 +39604,7 @@
                   bbox: bbox,
                   smask: smask,
                   isolated: false,
-                  knockout: false,
+                  knockout: false
                 };
                 var groupSubtype = group.get('S');
                 var colorSpace = null;
@@ -39648,14 +39634,14 @@
 
               operatorList.addOp(_util.OPS.paintFormXObjectBegin, [
                 matrix,
-                bbox,
+                bbox
               ]);
               return this.getOperatorList({
                 stream: xobj,
                 task: task,
                 resources: dict.get('Resources') || resources,
                 operatorList: operatorList,
-                initialState: initialState,
+                initialState: initialState
               }).then(function () {
                 operatorList.addOp(_util.OPS.paintFormXObjectEnd, []);
 
@@ -39777,7 +39763,7 @@
                               height: height,
                               imageIsFromDecodeStream:
                                 image instanceof _stream.DecodeStream,
-                              inverseDecode: !!decode && decode[0] > 0,
+                              inverseDecode: !!decode && decode[0] > 0
                             });
                             imgData.cached = !!cacheKey;
                             args = [imgData];
@@ -39789,7 +39775,7 @@
                             if (cacheKey) {
                               imageCache[cacheKey] = {
                                 fn: _util.OPS.paintImageMaskXObject,
-                                args: args,
+                                args: args
                               };
                             }
 
@@ -39818,7 +39804,7 @@
                               res: resources,
                               image: image,
                               isInline: isInline,
-                              pdfFunctionFactory: this.pdfFunctionFactory,
+                              pdfFunctionFactory: this.pdfFunctionFactory
                             });
                             imgData = imageObj.createImageData(true);
                             operatorList.addOp(
@@ -39871,7 +39857,7 @@
                                   objId,
                                   this.pageIndex,
                                   'JpegStream',
-                                  image.getIR(this.options.forceDataSchema),
+                                  image.getIR(this.options.forceDataSchema)
                                 ])
                                 .then(
                                   function () {
@@ -39885,7 +39871,7 @@
                                     if (cacheKey) {
                                       imageCache[cacheKey] = {
                                         fn: _util.OPS.paintJpegXObject,
-                                        args: args,
+                                        args: args
                                       };
                                     }
                                   },
@@ -39901,7 +39887,7 @@
                                       operatorList: operatorList,
                                       cacheKey: cacheKey,
                                       imageCache: imageCache,
-                                      forceDisableNativeImageDecoder: true,
+                                      forceDisableNativeImageDecoder: true
                                     });
                                   }
                                 )
@@ -39923,7 +39909,7 @@
                                   resources: resources,
                                   handler: this.handler,
                                   forceDataSchema: this.options.forceDataSchema,
-                                  pdfFunctionFactory: this.pdfFunctionFactory,
+                                  pdfFunctionFactory: this.pdfFunctionFactory
                                 });
                             }
 
@@ -39936,7 +39922,7 @@
                               image: image,
                               isInline: isInline,
                               nativeDecoder: nativeImageDecoder,
-                              pdfFunctionFactory: this.pdfFunctionFactory,
+                              pdfFunctionFactory: this.pdfFunctionFactory
                             })
                               .then(function (imageObj) {
                                 var imgData = imageObj.createImageData(false);
@@ -39958,8 +39944,9 @@
                                 return undefined;
                               })
                               ['catch'](function (reason) {
-                                (0,
-                                _util.warn)('Unable to decode image: ' + reason);
+                                (0, _util.warn)(
+                                  'Unable to decode image: ' + reason
+                                );
 
                                 if (_this2.parsingType3Font) {
                                   return _this2.handler.sendWithPromise(
@@ -39972,7 +39959,7 @@
                                   objId,
                                   _this2.pageIndex,
                                   'Image',
-                                  null,
+                                  null
                                 ]);
 
                                 return undefined;
@@ -39995,7 +39982,7 @@
                             if (cacheKey) {
                               imageCache[cacheKey] = {
                                 fn: _util.OPS.paintImageXObject,
-                                args: args,
+                                args: args
                               };
                             }
 
@@ -40029,7 +40016,7 @@
               var smaskContent = smask.get('G');
               var smaskOptions = {
                 subtype: smask.get('S').name,
-                backdrop: smask.get('BC'),
+                backdrop: smask.get('BC')
               };
               var transferObj = smask.get('TR');
 
@@ -40079,13 +40066,13 @@
                 stream: pattern,
                 task: task,
                 resources: patternResources,
-                operatorList: tilingOpList,
+                operatorList: tilingOpList
               })
                 .then(function () {
                   return (0, _pattern.getTilingPatternIR)(
                     {
                       fnArray: tilingOpList.fnArray,
-                      argsArray: tilingOpList.argsArray,
+                      argsArray: tilingOpList.argsArray
                     },
                     patternDict,
                     args
@@ -40099,7 +40086,7 @@
                   function (reason) {
                     if (_this3.options.ignoreErrors) {
                       _this3.handler.send('UnsupportedFeature', {
-                        featureId: _util.UNSUPPORTED_FEATURES.unknown,
+                        featureId: _util.UNSUPPORTED_FEATURES.unknown
                       });
 
                       (0, _util.warn)(
@@ -40145,7 +40132,7 @@
                     })
                     ['catch'](function (reason) {
                       _this4.handler.send('UnsupportedFeature', {
-                        featureId: _util.UNSUPPORTED_FEATURES.font,
+                        featureId: _util.UNSUPPORTED_FEATURES.font
                       });
 
                       return new TranslatedFont(
@@ -40385,7 +40372,7 @@
                   }
                 } else {
                   fontAliases[hash] = {
-                    fontID: _fonts.Font.getFontID(),
+                    fontID: _fonts.Font.getFontID()
                   };
                 }
 
@@ -40435,7 +40422,7 @@
                 })
                 ['catch'](function (reason) {
                   _this6.handler.send('UnsupportedFeature', {
-                    featureId: _util.UNSUPPORTED_FEATURES.font,
+                    featureId: _util.UNSUPPORTED_FEATURES.font
                   });
 
                   try {
@@ -40500,102 +40487,104 @@
             handleColorN: (function () {
               var _handleColorN = _asyncToGenerator(
                 /*#__PURE__*/
-                _regenerator['default'].mark(function _callee3(
-                  operatorList,
-                  fn,
-                  args,
-                  cs,
-                  patterns,
-                  resources,
-                  task
-                ) {
-                  var patternName,
-                    pattern,
-                    dict,
-                    typeNum,
-                    color,
-                    shading,
-                    matrix;
-                  return _regenerator['default'].wrap(
-                    function _callee3$(_context3) {
-                      while (1) {
-                        switch ((_context3.prev = _context3.next)) {
-                          case 0:
-                            patternName = args[args.length - 1];
+                _regenerator['default'].mark(
+                  function _callee3(
+                    operatorList,
+                    fn,
+                    args,
+                    cs,
+                    patterns,
+                    resources,
+                    task
+                  ) {
+                    var patternName,
+                      pattern,
+                      dict,
+                      typeNum,
+                      color,
+                      shading,
+                      matrix;
+                    return _regenerator['default'].wrap(
+                      function _callee3$(_context3) {
+                        while (1) {
+                          switch ((_context3.prev = _context3.next)) {
+                            case 0:
+                              patternName = args[args.length - 1];
 
-                            if (
-                              !(
-                                (0, _primitives.isName)(patternName) &&
-                                (pattern = patterns.get(patternName.name))
-                              )
-                            ) {
-                              _context3.next = 16;
-                              break;
-                            }
+                              if (
+                                !(
+                                  (0, _primitives.isName)(patternName) &&
+                                  (pattern = patterns.get(patternName.name))
+                                )
+                              ) {
+                                _context3.next = 16;
+                                break;
+                              }
 
-                            dict = (0, _primitives.isStream)(pattern)
-                              ? pattern.dict
-                              : pattern;
-                            typeNum = dict.get('PatternType');
+                              dict = (0, _primitives.isStream)(pattern)
+                                ? pattern.dict
+                                : pattern;
+                              typeNum = dict.get('PatternType');
 
-                            if (!(typeNum === TILING_PATTERN)) {
-                              _context3.next = 9;
-                              break;
-                            }
+                              if (!(typeNum === TILING_PATTERN)) {
+                                _context3.next = 9;
+                                break;
+                              }
 
-                            color = cs.base ? cs.base.getRgb(args, 0) : null;
-                            return _context3.abrupt(
-                              'return',
-                              this.handleTilingType(
-                                fn,
-                                color,
+                              color = cs.base ? cs.base.getRgb(args, 0) : null;
+                              return _context3.abrupt(
+                                'return',
+                                this.handleTilingType(
+                                  fn,
+                                  color,
+                                  resources,
+                                  pattern,
+                                  dict,
+                                  operatorList,
+                                  task
+                                )
+                              );
+
+                            case 9:
+                              if (!(typeNum === SHADING_PATTERN)) {
+                                _context3.next = 15;
+                                break;
+                              }
+
+                              shading = dict.get('Shading');
+                              matrix = dict.getArray('Matrix');
+                              pattern = _pattern.Pattern.parseShading(
+                                shading,
+                                matrix,
+                                this.xref,
                                 resources,
-                                pattern,
-                                dict,
-                                operatorList,
-                                task
-                              )
-                            );
+                                this.handler,
+                                this.pdfFunctionFactory
+                              );
+                              operatorList.addOp(fn, pattern.getIR());
+                              return _context3.abrupt('return', undefined);
 
-                          case 9:
-                            if (!(typeNum === SHADING_PATTERN)) {
-                              _context3.next = 15;
-                              break;
-                            }
+                            case 15:
+                              throw new _util.FormatError(
+                                'Unknown PatternType: '.concat(typeNum)
+                              );
 
-                            shading = dict.get('Shading');
-                            matrix = dict.getArray('Matrix');
-                            pattern = _pattern.Pattern.parseShading(
-                              shading,
-                              matrix,
-                              this.xref,
-                              resources,
-                              this.handler,
-                              this.pdfFunctionFactory
-                            );
-                            operatorList.addOp(fn, pattern.getIR());
-                            return _context3.abrupt('return', undefined);
+                            case 16:
+                              throw new _util.FormatError(
+                                'Unknown PatternName: '.concat(patternName)
+                              );
 
-                          case 15:
-                            throw new _util.FormatError(
-                              'Unknown PatternType: '.concat(typeNum)
-                            );
-
-                          case 16:
-                            throw new _util.FormatError(
-                              'Unknown PatternName: '.concat(patternName)
-                            );
-
-                          case 17:
-                          case 'end':
-                            return _context3.stop();
+                            case 17:
+                            case 'end':
+                              return _context3.stop();
+                          }
                         }
-                      }
-                    },
-                    _callee3,
-                    this
-                  );
-                })
+                      },
+                      _callee3,
+                      this
+                    );
+                  }
+                )
               );
 
               function handleColorN(_x3, _x4, _x5, _x6, _x7, _x8, _x9) {
@@ -40745,7 +40734,7 @@
                                 image: xobj,
                                 operatorList: operatorList,
                                 cacheKey: name,
-                                imageCache: imageCache,
+                                imageCache: imageCache
                               })
                               .then(resolveXObject, rejectXObject);
                             return;
@@ -40761,7 +40750,7 @@
                         })['catch'](function (reason) {
                           if (self.options.ignoreErrors) {
                             self.handler.send('UnsupportedFeature', {
-                              featureId: _util.UNSUPPORTED_FEATURES.unknown,
+                              featureId: _util.UNSUPPORTED_FEATURES.unknown
                             });
                             (0, _util.warn)(
                               'getOperatorList - ignoring XObject: "'.concat(
@@ -40793,7 +40782,7 @@
                             operatorList.addDependency(loadedName);
                             operatorList.addOp(_util.OPS.setFont, [
                               loadedName,
-                              fontSize,
+                              fontSize
                             ]);
                           })
                       );
@@ -40827,7 +40816,7 @@
                           isInline: true,
                           operatorList: operatorList,
                           cacheKey: cacheKey,
-                          imageCache: imageCache,
+                          imageCache: imageCache
                         })
                       );
                       return;
@@ -40868,10 +40857,10 @@
                     case _util.OPS.nextLineSetSpacingShowText:
                       operatorList.addOp(_util.OPS.nextLine);
                       operatorList.addOp(_util.OPS.setWordSpacing, [
-                        args.shift(),
+                        args.shift()
                       ]);
                       operatorList.addOp(_util.OPS.setCharSpacing, [
-                        args.shift(),
+                        args.shift()
                       ]);
                       args[0] = self.handleText(args[0], stateManager.state);
                       fn = _util.OPS.showText;
@@ -41116,7 +41105,7 @@
               })['catch'](function (reason) {
                 if (_this7.options.ignoreErrors) {
                   _this7.handler.send('UnsupportedFeature', {
-                    featureId: _util.UNSUPPORTED_FEATURES.unknown,
+                    featureId: _util.UNSUPPORTED_FEATURES.unknown
                   });
 
                   (0, _util.warn)(
@@ -41162,7 +41151,7 @@
               var WhitespaceRegexp = /\s/g;
               var textContent = {
                 items: [],
-                styles: Object.create(null),
+                styles: Object.create(null)
               };
               var textContentItem = {
                 initialized: false,
@@ -41179,7 +41168,7 @@
                 fakeMultiSpaceMax: -0,
                 textRunBreakAllowed: false,
                 transform: null,
-                fontName: null,
+                fontName: null
               };
               var SPACE_FACTOR = 0.3;
               var MULTI_SPACE_FACTOR = 1.5;
@@ -41208,7 +41197,7 @@
                     fontFamily: font.fallbackName,
                     ascent: font.ascent,
                     descent: font.descent,
-                    vertical: !!font.vertical,
+                    vertical: !!font.vertical
                   };
                 }
 
@@ -41219,7 +41208,7 @@
                   0,
                   textState.fontSize,
                   0,
-                  textState.textRise,
+                  textState.textRise
                 ];
 
                 if (
@@ -41316,7 +41305,7 @@
                   width: textChunk.width,
                   height: textChunk.height,
                   transform: textChunk.transform,
-                  fontName: textChunk.fontName,
+                  fontName: textChunk.fontName
                 };
               }
 
@@ -41749,7 +41738,7 @@
 
                             get ready() {
                               return sink.ready;
-                            },
+                            }
                           };
                           self
                             .getTextContent({
@@ -41761,7 +41750,7 @@
                               normalizeWhitespace: normalizeWhitespace,
                               combineTextItems: combineTextItems,
                               sink: sinkWrapper,
-                              seenStyles: seenStyles,
+                              seenStyles: seenStyles
                             })
                             .then(function () {
                               if (!sinkWrapper.enqueueInvoked) {
@@ -41881,7 +41870,7 @@
                       ordering: (0, _util.stringToPDFString)(
                         cidSystemInfo.get('Ordering')
                       ),
-                      supplement: cidSystemInfo.get('Supplement'),
+                      supplement: cidSystemInfo.get('Supplement')
                     };
                   }
 
@@ -42134,7 +42123,7 @@
                 return _cmap.CMapFactory.create({
                   encoding: ucs2CMapName,
                   fetchBuiltInCMap: this.fetchBuiltInCMap,
-                  useCMap: null,
+                  useCMap: null
                 }).then(function (ucs2CMap) {
                   var cMap = properties.cMap;
                   var toUnicode = [];
@@ -42169,7 +42158,7 @@
                 return _cmap.CMapFactory.create({
                   encoding: cmapObj,
                   fetchBuiltInCMap: this.fetchBuiltInCMap,
-                  useCMap: null,
+                  useCMap: null
                 }).then(function (cmap) {
                   if (cmap instanceof _cmap.IdentityCMap) {
                     return new _fonts.IdentityToUnicodeMap(0, 0xffff);
@@ -42181,7 +42170,7 @@
                 return _cmap.CMapFactory.create({
                   encoding: cmapObj,
                   fetchBuiltInCMap: this.fetchBuiltInCMap,
-                  useCMap: null,
+                  useCMap: null
                 }).then(function (cmap) {
                   if (cmap instanceof _cmap.IdentityCMap) {
                     return new _fonts.IdentityToUnicodeMap(0, 0xffff);
@@ -42270,7 +42259,7 @@
                   defaultVMetrics = [
                     vmetrics[1],
                     defaultWidth * 0.5,
-                    vmetrics[0],
+                    vmetrics[0]
                   ];
                   vmetrics = dict.get('W2');
 
@@ -42284,14 +42273,14 @@
                           glyphsVMetrics[start++] = [
                             xref.fetchIfRef(code[j++]),
                             xref.fetchIfRef(code[j++]),
-                            xref.fetchIfRef(code[j]),
+                            xref.fetchIfRef(code[j])
                           ];
                         }
                       } else {
                         var vmetric = [
                           xref.fetchIfRef(vmetrics[++i]),
                           xref.fetchIfRef(vmetrics[++i]),
-                          xref.fetchIfRef(vmetrics[++i]),
+                          xref.fetchIfRef(vmetrics[++i])
                         ];
 
                         for (j = start; j <= code; j++) {
@@ -42395,7 +42384,7 @@
               return {
                 defaultWidth: defaultWidth,
                 monospace: monospace,
-                widths: widths,
+                widths: widths
               };
             },
             buildCharCodeToWidth:
@@ -42538,7 +42527,7 @@
                 baseDict: baseDict,
                 composite: composite,
                 type: type.name,
-                hash: hash ? hash.hexdigest() : '',
+                hash: hash ? hash.hexdigest() : ''
               };
             },
             translateFont: function PartialEvaluator_translateFont(
@@ -42584,7 +42573,7 @@
                     defaultWidth: metrics.defaultWidth,
                     flags: flags,
                     firstChar: 0,
-                    lastChar: maxCharIndex,
+                    lastChar: maxCharIndex
                   };
                   return this.extractDataStructures(
                     dict,
@@ -42688,7 +42677,7 @@
                 capHeight: descriptor.get('CapHeight'),
                 flags: descriptor.get('Flags'),
                 italicAngle: descriptor.get('ItalicAngle'),
-                isType3Font: false,
+                isType3Font: false
               };
               var cMapPromise;
 
@@ -42702,7 +42691,7 @@
                 cMapPromise = _cmap.CMapFactory.create({
                   encoding: cidEncoding,
                   fetchBuiltInCMap: this.fetchBuiltInCMap,
-                  useCMap: null,
+                  useCMap: null
                 }).then(function (cMap) {
                   properties.cMap = cMap;
                   properties.vertical = properties.cMap.vertical;
@@ -42728,7 +42717,7 @@
 
                   return new _fonts.Font(fontName.name, fontFile, properties);
                 });
-            },
+            }
           };
 
           PartialEvaluator.buildFontPaths = function (font, glyphs, handler) {
@@ -42740,7 +42729,7 @@
               handler.send('commonobj', [
                 ''.concat(font.loadedName, '_path_').concat(fontChar),
                 'FontPath',
-                font.renderer.getPathJs(fontChar),
+                font.renderer.getPathJs(fontChar)
               ]);
             }
 
@@ -42802,7 +42791,7 @@
               handler.send('commonobj', [
                 this.loadedName,
                 'Font',
-                this.font.exportData(),
+                this.font.exportData()
               ]);
             },
             fallback: function fallback(handler) {
@@ -42851,7 +42840,7 @@
                       stream: glyphStream,
                       task: task,
                       resources: fontResources,
-                      operatorList: operatorList,
+                      operatorList: operatorList
                     })
                     .then(function () {
                       charProcOperatorList[key] = operatorList.getIR();
@@ -42860,8 +42849,12 @@
                       );
                     })
                     ['catch'](function (reason) {
-                      (0,
-                      _util.warn)('Type3 font resource "'.concat(key, '" is not available.'));
+                      (0, _util.warn)(
+                        'Type3 font resource "'.concat(
+                          key,
+                          '" is not available.'
+                        )
+                      );
                       var operatorList = new _operator_list.OperatorList();
                       charProcOperatorList[key] = operatorList.getIR();
                     });
@@ -42876,7 +42869,7 @@
                 translatedFont.charProcOperatorList = charProcOperatorList;
               });
               return this.type3Loaded;
-            },
+            }
           };
           return TranslatedFont;
         })();
@@ -42902,7 +42895,7 @@
             },
             transform: function transform(args) {
               this.state.ctm = _util.Util.transform(this.state.ctm, args);
-            },
+            }
           };
           return StateManager;
         })();
@@ -43001,7 +42994,7 @@
                 return {
                   width: tx,
                   height: ty,
-                  value: font.vertical ? ty : tx,
+                  value: font.vertical ? ty : tx
                 };
               },
             calcRenderMatrix: function TextState_calcRendeMatrix(ctm) {
@@ -43011,7 +43004,7 @@
                 0,
                 this.fontSize,
                 0,
-                this.textRise,
+                this.textRise
               ];
               return _util.Util.transform(
                 ctm,
@@ -43028,7 +43021,7 @@
               clone.textLineMatrix = this.textLineMatrix.slice();
               clone.fontMatrix = this.fontMatrix.slice();
               return clone;
-            },
+            }
           };
           return TextState;
         })();
@@ -43045,7 +43038,7 @@
           EvalState.prototype = {
             clone: function CanvasExtraState_clone() {
               return Object.create(this);
-            },
+            }
           };
           return EvalState;
         })();
@@ -43055,367 +43048,367 @@
             t['w'] = {
               id: _util.OPS.setLineWidth,
               numArgs: 1,
-              variableArgs: false,
+              variableArgs: false
             };
             t['J'] = {
               id: _util.OPS.setLineCap,
               numArgs: 1,
-              variableArgs: false,
+              variableArgs: false
             };
             t['j'] = {
               id: _util.OPS.setLineJoin,
               numArgs: 1,
-              variableArgs: false,
+              variableArgs: false
             };
             t['M'] = {
               id: _util.OPS.setMiterLimit,
               numArgs: 1,
-              variableArgs: false,
+              variableArgs: false
             };
             t['d'] = {
               id: _util.OPS.setDash,
               numArgs: 2,
-              variableArgs: false,
+              variableArgs: false
             };
             t['ri'] = {
               id: _util.OPS.setRenderingIntent,
               numArgs: 1,
-              variableArgs: false,
+              variableArgs: false
             };
             t['i'] = {
               id: _util.OPS.setFlatness,
               numArgs: 1,
-              variableArgs: false,
+              variableArgs: false
             };
             t['gs'] = {
               id: _util.OPS.setGState,
               numArgs: 1,
-              variableArgs: false,
+              variableArgs: false
             };
             t['q'] = {
               id: _util.OPS.save,
               numArgs: 0,
-              variableArgs: false,
+              variableArgs: false
             };
             t['Q'] = {
               id: _util.OPS.restore,
               numArgs: 0,
-              variableArgs: false,
+              variableArgs: false
             };
             t['cm'] = {
               id: _util.OPS.transform,
               numArgs: 6,
-              variableArgs: false,
+              variableArgs: false
             };
             t['m'] = {
               id: _util.OPS.moveTo,
               numArgs: 2,
-              variableArgs: false,
+              variableArgs: false
             };
             t['l'] = {
               id: _util.OPS.lineTo,
               numArgs: 2,
-              variableArgs: false,
+              variableArgs: false
             };
             t['c'] = {
               id: _util.OPS.curveTo,
               numArgs: 6,
-              variableArgs: false,
+              variableArgs: false
             };
             t['v'] = {
               id: _util.OPS.curveTo2,
               numArgs: 4,
-              variableArgs: false,
+              variableArgs: false
             };
             t['y'] = {
               id: _util.OPS.curveTo3,
               numArgs: 4,
-              variableArgs: false,
+              variableArgs: false
             };
             t['h'] = {
               id: _util.OPS.closePath,
               numArgs: 0,
-              variableArgs: false,
+              variableArgs: false
             };
             t['re'] = {
               id: _util.OPS.rectangle,
               numArgs: 4,
-              variableArgs: false,
+              variableArgs: false
             };
             t['S'] = {
               id: _util.OPS.stroke,
               numArgs: 0,
-              variableArgs: false,
+              variableArgs: false
             };
             t['s'] = {
               id: _util.OPS.closeStroke,
               numArgs: 0,
-              variableArgs: false,
+              variableArgs: false
             };
             t['f'] = {
               id: _util.OPS.fill,
               numArgs: 0,
-              variableArgs: false,
+              variableArgs: false
             };
             t['F'] = {
               id: _util.OPS.fill,
               numArgs: 0,
-              variableArgs: false,
+              variableArgs: false
             };
             t['f*'] = {
               id: _util.OPS.eoFill,
               numArgs: 0,
-              variableArgs: false,
+              variableArgs: false
             };
             t['B'] = {
               id: _util.OPS.fillStroke,
               numArgs: 0,
-              variableArgs: false,
+              variableArgs: false
             };
             t['B*'] = {
               id: _util.OPS.eoFillStroke,
               numArgs: 0,
-              variableArgs: false,
+              variableArgs: false
             };
             t['b'] = {
               id: _util.OPS.closeFillStroke,
               numArgs: 0,
-              variableArgs: false,
+              variableArgs: false
             };
             t['b*'] = {
               id: _util.OPS.closeEOFillStroke,
               numArgs: 0,
-              variableArgs: false,
+              variableArgs: false
             };
             t['n'] = {
               id: _util.OPS.endPath,
               numArgs: 0,
-              variableArgs: false,
+              variableArgs: false
             };
             t['W'] = {
               id: _util.OPS.clip,
               numArgs: 0,
-              variableArgs: false,
+              variableArgs: false
             };
             t['W*'] = {
               id: _util.OPS.eoClip,
               numArgs: 0,
-              variableArgs: false,
+              variableArgs: false
             };
             t['BT'] = {
               id: _util.OPS.beginText,
               numArgs: 0,
-              variableArgs: false,
+              variableArgs: false
             };
             t['ET'] = {
               id: _util.OPS.endText,
               numArgs: 0,
-              variableArgs: false,
+              variableArgs: false
             };
             t['Tc'] = {
               id: _util.OPS.setCharSpacing,
               numArgs: 1,
-              variableArgs: false,
+              variableArgs: false
             };
             t['Tw'] = {
               id: _util.OPS.setWordSpacing,
               numArgs: 1,
-              variableArgs: false,
+              variableArgs: false
             };
             t['Tz'] = {
               id: _util.OPS.setHScale,
               numArgs: 1,
-              variableArgs: false,
+              variableArgs: false
             };
             t['TL'] = {
               id: _util.OPS.setLeading,
               numArgs: 1,
-              variableArgs: false,
+              variableArgs: false
             };
             t['Tf'] = {
               id: _util.OPS.setFont,
               numArgs: 2,
-              variableArgs: false,
+              variableArgs: false
             };
             t['Tr'] = {
               id: _util.OPS.setTextRenderingMode,
               numArgs: 1,
-              variableArgs: false,
+              variableArgs: false
             };
             t['Ts'] = {
               id: _util.OPS.setTextRise,
               numArgs: 1,
-              variableArgs: false,
+              variableArgs: false
             };
             t['Td'] = {
               id: _util.OPS.moveText,
               numArgs: 2,
-              variableArgs: false,
+              variableArgs: false
             };
             t['TD'] = {
               id: _util.OPS.setLeadingMoveText,
               numArgs: 2,
-              variableArgs: false,
+              variableArgs: false
             };
             t['Tm'] = {
               id: _util.OPS.setTextMatrix,
               numArgs: 6,
-              variableArgs: false,
+              variableArgs: false
             };
             t['T*'] = {
               id: _util.OPS.nextLine,
               numArgs: 0,
-              variableArgs: false,
+              variableArgs: false
             };
             t['Tj'] = {
               id: _util.OPS.showText,
               numArgs: 1,
-              variableArgs: false,
+              variableArgs: false
             };
             t['TJ'] = {
               id: _util.OPS.showSpacedText,
               numArgs: 1,
-              variableArgs: false,
+              variableArgs: false
             };
             t["'"] = {
               id: _util.OPS.nextLineShowText,
               numArgs: 1,
-              variableArgs: false,
+              variableArgs: false
             };
             t['"'] = {
               id: _util.OPS.nextLineSetSpacingShowText,
               numArgs: 3,
-              variableArgs: false,
+              variableArgs: false
             };
             t['d0'] = {
               id: _util.OPS.setCharWidth,
               numArgs: 2,
-              variableArgs: false,
+              variableArgs: false
             };
             t['d1'] = {
               id: _util.OPS.setCharWidthAndBounds,
               numArgs: 6,
-              variableArgs: false,
+              variableArgs: false
             };
             t['CS'] = {
               id: _util.OPS.setStrokeColorSpace,
               numArgs: 1,
-              variableArgs: false,
+              variableArgs: false
             };
             t['cs'] = {
               id: _util.OPS.setFillColorSpace,
               numArgs: 1,
-              variableArgs: false,
+              variableArgs: false
             };
             t['SC'] = {
               id: _util.OPS.setStrokeColor,
               numArgs: 4,
-              variableArgs: true,
+              variableArgs: true
             };
             t['SCN'] = {
               id: _util.OPS.setStrokeColorN,
               numArgs: 33,
-              variableArgs: true,
+              variableArgs: true
             };
             t['sc'] = {
               id: _util.OPS.setFillColor,
               numArgs: 4,
-              variableArgs: true,
+              variableArgs: true
             };
             t['scn'] = {
               id: _util.OPS.setFillColorN,
               numArgs: 33,
-              variableArgs: true,
+              variableArgs: true
             };
             t['G'] = {
               id: _util.OPS.setStrokeGray,
               numArgs: 1,
-              variableArgs: false,
+              variableArgs: false
             };
             t['g'] = {
               id: _util.OPS.setFillGray,
               numArgs: 1,
-              variableArgs: false,
+              variableArgs: false
             };
             t['RG'] = {
               id: _util.OPS.setStrokeRGBColor,
               numArgs: 3,
-              variableArgs: false,
+              variableArgs: false
             };
             t['rg'] = {
               id: _util.OPS.setFillRGBColor,
               numArgs: 3,
-              variableArgs: false,
+              variableArgs: false
             };
             t['K'] = {
               id: _util.OPS.setStrokeCMYKColor,
               numArgs: 4,
-              variableArgs: false,
+              variableArgs: false
             };
             t['k'] = {
               id: _util.OPS.setFillCMYKColor,
               numArgs: 4,
-              variableArgs: false,
+              variableArgs: false
             };
             t['sh'] = {
               id: _util.OPS.shadingFill,
               numArgs: 1,
-              variableArgs: false,
+              variableArgs: false
             };
             t['BI'] = {
               id: _util.OPS.beginInlineImage,
               numArgs: 0,
-              variableArgs: false,
+              variableArgs: false
             };
             t['ID'] = {
               id: _util.OPS.beginImageData,
               numArgs: 0,
-              variableArgs: false,
+              variableArgs: false
             };
             t['EI'] = {
               id: _util.OPS.endInlineImage,
               numArgs: 1,
-              variableArgs: false,
+              variableArgs: false
             };
             t['Do'] = {
               id: _util.OPS.paintXObject,
               numArgs: 1,
-              variableArgs: false,
+              variableArgs: false
             };
             t['MP'] = {
               id: _util.OPS.markPoint,
               numArgs: 1,
-              variableArgs: false,
+              variableArgs: false
             };
             t['DP'] = {
               id: _util.OPS.markPointProps,
               numArgs: 2,
-              variableArgs: false,
+              variableArgs: false
             };
             t['BMC'] = {
               id: _util.OPS.beginMarkedContent,
               numArgs: 1,
-              variableArgs: false,
+              variableArgs: false
             };
             t['BDC'] = {
               id: _util.OPS.beginMarkedContentProps,
               numArgs: 2,
-              variableArgs: false,
+              variableArgs: false
             };
             t['EMC'] = {
               id: _util.OPS.endMarkedContent,
               numArgs: 0,
-              variableArgs: false,
+              variableArgs: false
             };
             t['BX'] = {
               id: _util.OPS.beginCompat,
               numArgs: 0,
-              variableArgs: false,
+              variableArgs: false
             };
             t['EX'] = {
               id: _util.OPS.endCompat,
               numArgs: 0,
-              variableArgs: false,
+              variableArgs: false
             };
             t['BM'] = null;
             t['BD'] = null;
@@ -43434,7 +43427,7 @@
             this.opMap = getOPMap();
             this.parser = new _parser.Parser({
               lexer: new _parser.Lexer(stream, this.opMap),
-              xref: xref,
+              xref: xref
             });
             this.stateManager = stateManager;
             this.nonProcessedArgs = [];
@@ -43561,7 +43554,7 @@
                   this.stateManager.transform(args);
                   break;
               }
-            },
+            }
           };
           return EvaluatorPreprocessor;
         })();
@@ -43573,7 +43566,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.CMapFactory = exports.IdentityCMap = exports.CMap = void 0;
 
@@ -43648,8 +43641,8 @@
               constructor: {
                 value: subClass,
                 writable: true,
-                configurable: true,
-              },
+                configurable: true
+              }
             }
           );
           if (superClass) _setPrototypeOf(subClass, superClass);
@@ -43855,7 +43848,7 @@
           'UniKS-UTF8-H',
           'UniKS-UTF8-V',
           'V',
-          'WP-Symbol',
+          'WP-Symbol'
         ];
 
         var CMap =
@@ -43884,7 +43877,7 @@
                 value: function addCodespaceRange(n, low, high) {
                   this.codespaceRanges[n - 1].push(low, high);
                   this.numCodespaceRanges++;
-                },
+                }
               },
               {
                 key: 'mapCidRange',
@@ -43892,7 +43885,7 @@
                   while (low <= high) {
                     this._map[low++] = dstLow++;
                   }
-                },
+                }
               },
               {
                 key: 'mapBfRange',
@@ -43905,7 +43898,7 @@
                       dstLow.substring(0, lastByte) +
                       String.fromCharCode(dstLow.charCodeAt(lastByte) + 1);
                   }
-                },
+                }
               },
               {
                 key: 'mapBfRangeToArray',
@@ -43917,25 +43910,25 @@
                     this._map[low] = array[i++];
                     ++low;
                   }
-                },
+                }
               },
               {
                 key: 'mapOne',
                 value: function mapOne(src, dst) {
                   this._map[src] = dst;
-                },
+                }
               },
               {
                 key: 'lookup',
                 value: function lookup(code) {
                   return this._map[code];
-                },
+                }
               },
               {
                 key: 'contains',
                 value: function contains(code) {
                   return this._map[code] !== undefined;
-                },
+                }
               },
               {
                 key: 'forEach',
@@ -43954,7 +43947,7 @@
                       callback(_i, map[_i]);
                     }
                   }
-                },
+                }
               },
               {
                 key: 'charCodeOf',
@@ -43972,13 +43965,13 @@
                   }
 
                   return -1;
-                },
+                }
               },
               {
                 key: 'getMap',
                 value: function getMap() {
                   return this._map;
-                },
+                }
               },
               {
                 key: 'readCharCode',
@@ -44004,13 +43997,13 @@
 
                   out.charcode = 0;
                   out.length = 1;
-                },
+                }
               },
               {
                 key: 'length',
                 get: function get() {
                   return this._map.length;
-                },
+                }
               },
               {
                 key: 'isIdentityCMap',
@@ -44032,8 +44025,8 @@
                   }
 
                   return true;
-                },
-              },
+                }
+              }
             ]);
 
             return CMap;
@@ -44067,25 +44060,25 @@
                 key: 'mapCidRange',
                 value: function mapCidRange(low, high, dstLow) {
                   (0, _util.unreachable)('should not call mapCidRange');
-                },
+                }
               },
               {
                 key: 'mapBfRange',
                 value: function mapBfRange(low, high, dstLow) {
                   (0, _util.unreachable)('should not call mapBfRange');
-                },
+                }
               },
               {
                 key: 'mapBfRangeToArray',
                 value: function mapBfRangeToArray(low, high, array) {
                   (0, _util.unreachable)('should not call mapBfRangeToArray');
-                },
+                }
               },
               {
                 key: 'mapOne',
                 value: function mapOne(src, dst) {
                   (0, _util.unreachable)('should not call mapCidOne');
-                },
+                }
               },
               {
                 key: 'lookup',
@@ -44093,13 +44086,13 @@
                   return Number.isInteger(code) && code <= 0xffff
                     ? code
                     : undefined;
-                },
+                }
               },
               {
                 key: 'contains',
                 value: function contains(code) {
                   return Number.isInteger(code) && code <= 0xffff;
-                },
+                }
               },
               {
                 key: 'forEach',
@@ -44107,7 +44100,7 @@
                   for (var i = 0; i <= 0xffff; i++) {
                     callback(i, i);
                   }
-                },
+                }
               },
               {
                 key: 'charCodeOf',
@@ -44115,7 +44108,7 @@
                   return Number.isInteger(value) && value <= 0xffff
                     ? value
                     : -1;
-                },
+                }
               },
               {
                 key: 'getMap',
@@ -44127,20 +44120,20 @@
                   }
 
                   return map;
-                },
+                }
               },
               {
                 key: 'length',
                 get: function get() {
                   return 0x10000;
-                },
+                }
               },
               {
                 key: 'isIdentityCMap',
                 get: function get() {
                   (0, _util.unreachable)('should not access .isIdentityCMap');
-                },
-              },
+                }
+              }
             ]);
 
             return IdentityCMap;
@@ -44285,7 +44278,7 @@
               }
 
               return s;
-            },
+            }
           };
 
           function processBinaryCMap(data, cMap, extend) {
@@ -44507,7 +44500,7 @@
           function BinaryCMapReader() {}
 
           BinaryCMapReader.prototype = {
-            process: processBinaryCMap,
+            process: processBinaryCMap
           };
           return BinaryCMapReader;
         })();
@@ -44765,28 +44758,28 @@
           }
 
           function extendCMap(cMap, fetchBuiltInCMap, useCMap) {
-            return createBuiltInCMap(useCMap, fetchBuiltInCMap).then(function (
-              newCMap
-            ) {
-              cMap.useCMap = newCMap;
+            return createBuiltInCMap(useCMap, fetchBuiltInCMap).then(
+              function (newCMap) {
+                cMap.useCMap = newCMap;
 
-              if (cMap.numCodespaceRanges === 0) {
-                var useCodespaceRanges = cMap.useCMap.codespaceRanges;
+                if (cMap.numCodespaceRanges === 0) {
+                  var useCodespaceRanges = cMap.useCMap.codespaceRanges;
 
-                for (var i = 0; i < useCodespaceRanges.length; i++) {
-                  cMap.codespaceRanges[i] = useCodespaceRanges[i].slice();
+                  for (var i = 0; i < useCodespaceRanges.length; i++) {
+                    cMap.codespaceRanges[i] = useCodespaceRanges[i].slice();
+                  }
+
+                  cMap.numCodespaceRanges = cMap.useCMap.numCodespaceRanges;
                 }
 
-                cMap.numCodespaceRanges = cMap.useCMap.numCodespaceRanges;
+                cMap.useCMap.forEach(function (key, value) {
+                  if (!cMap.contains(key)) {
+                    cMap.mapOne(key, cMap.useCMap.lookup(key));
+                  }
+                });
+                return cMap;
               }
-
-              cMap.useCMap.forEach(function (key, value) {
-                if (!cMap.contains(key)) {
-                  cMap.mapOne(key, cMap.useCMap.lookup(key));
-                }
-              });
-              return cMap;
-            });
+            );
           }
 
           function createBuiltInCMap(name, fetchBuiltInCMap) {
@@ -44860,7 +44853,7 @@
               }
 
               return Promise.reject(new Error('Encoding required.'));
-            },
+            }
           };
         })();
 
@@ -44873,7 +44866,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.getFontType = getFontType;
         exports.IdentityToUnicodeMap =
@@ -44953,7 +44946,7 @@
 
         var PRIVATE_USE_AREAS = [
           [0xe000, 0xf8ff],
-          [0x100000, 0x10fffd],
+          [0x100000, 0x10fffd]
         ];
         var PDF_GLYPH_SPACE_UNITS = 1000;
         var SEAC_ANALYSIS_ENABLED = true;
@@ -44967,7 +44960,7 @@
           Italic: 64,
           AllCap: 65536,
           SmallCap: 131072,
-          ForceBold: 262144,
+          ForceBold: 262144
         };
         exports.FontFlags = FontFlags;
         var MacStandardGlyphOrdering = [
@@ -45228,7 +45221,7 @@
           'cacute',
           'Ccaron',
           'ccaron',
-          'dcroat',
+          'dcroat'
         ];
 
         function adjustWidths(properties) {
@@ -45431,7 +45424,7 @@
               for (var charCode in map) {
                 this._map[charCode] = map[charCode];
               }
-            },
+            }
           };
           return ToUnicodeMap;
         })();
@@ -45473,7 +45466,7 @@
             },
             amend: function amend(map) {
               (0, _util.unreachable)('Should not call amend()');
-            },
+            }
           };
           return IdentityToUnicodeMap;
         })();
@@ -45531,7 +45524,7 @@
               return {
                 range: searchRange,
                 entry: log2,
-                rangeShift: entrySize * entriesCount - searchRange,
+                rangeShift: entrySize * entriesCount - searchRange
               };
             };
 
@@ -45611,7 +45604,7 @@
               }
 
               this.tables[tag] = data;
-            },
+            }
           };
           return OpenTypeFileBuilder;
         })();
@@ -45635,8 +45628,8 @@
             this.fallbackName = this.isMonospace
               ? 'monospace'
               : this.isSerifFont
-              ? 'serif'
-              : 'sans-serif';
+                ? 'serif'
+                : 'sans-serif';
             this.differences = properties.differences;
             this.widths = properties.widths;
             this.defaultWidth = properties.defaultWidth;
@@ -45949,7 +45942,7 @@
             return {
               toFontChar: toFontChar,
               charCodeToGlyphId: newMap,
-              nextAvailableFontCharCode: nextAvailableFontCharCode,
+              nextAvailableFontCharCode: nextAvailableFontCharCode
             };
           }
 
@@ -45963,14 +45956,14 @@
 
               codes.push({
                 fontCharCode: charCode | 0,
-                glyphId: glyphs[charCode],
+                glyphId: glyphs[charCode]
               });
             }
 
             if (codes.length === 0) {
               codes.push({
                 fontCharCode: 0,
-                glyphId: 0,
+                glyphId: 0
               });
             }
 
@@ -46173,7 +46166,7 @@
               yMax: 0,
               yMin: 0,
               ascent: 0,
-              descent: 0,
+              descent: 0
             };
             var ulUnicodeRange1 = 0;
             var ulUnicodeRange2 = 0;
@@ -46312,7 +46305,7 @@
               proto[0][6] || '',
               proto[0][7] || 'Unknown',
               proto[0][8] || 'Unknown',
-              proto[0][9] || 'Unknown',
+              proto[0][9] || 'Unknown'
             ];
             var stringsUnicode = [];
             var i, ii, j, jj, str;
@@ -46520,7 +46513,7 @@
                 'fpgm',
                 'prep',
                 'cvt ',
-                'CFF ',
+                'CFF '
               ];
 
               function readTables(file, numTables) {
@@ -46572,7 +46565,7 @@
                   checksum: checksum,
                   length: length,
                   offset: offset,
-                  data: data,
+                  data: data
                 };
               }
 
@@ -46582,7 +46575,7 @@
                   numTables: ttf.getUint16(),
                   searchRange: ttf.getUint16(),
                   entrySelector: ttf.getUint16(),
-                  rangeShift: ttf.getUint16(),
+                  rangeShift: ttf.getUint16()
                 };
               }
 
@@ -46606,7 +46599,7 @@
                   majorVersion: majorVersion,
                   minorVersion: minorVersion,
                   numFonts: numFonts,
-                  offsetTable: offsetTable,
+                  offsetTable: offsetTable
                 };
 
                 switch (majorVersion) {
@@ -46659,7 +46652,7 @@
                       ) {
                         return {
                           header: potentialHeader,
-                          tables: potentialTables,
+                          tables: potentialTables
                         };
                       }
                     }
@@ -46681,7 +46674,7 @@
                     platformId: -1,
                     encodingId: -1,
                     mappings: [],
-                    hasShortCmap: false,
+                    hasShortCmap: false
                   };
                 }
 
@@ -46734,7 +46727,7 @@
                     potentialTable = {
                       platformId: platformId,
                       encodingId: encodingId,
-                      offset: offset,
+                      offset: offset
                     };
                   }
 
@@ -46753,7 +46746,7 @@
                     platformId: -1,
                     encodingId: -1,
                     mappings: [],
-                    hasShortCmap: false,
+                    hasShortCmap: false
                   };
                 }
 
@@ -46774,7 +46767,7 @@
 
                     mappings.push({
                       charCode: j,
-                      glyphId: index,
+                      glyphId: index
                     });
                   }
 
@@ -46787,7 +46780,7 @@
 
                   for (segIndex = 0; segIndex < segCount; segIndex++) {
                     segments.push({
-                      end: font.getUint16(),
+                      end: font.getUint16()
                     });
                   }
 
@@ -46844,7 +46837,7 @@
                       glyphId = (glyphId + delta) & 0xffff;
                       mappings.push({
                         charCode: j,
-                        glyphId: glyphId,
+                        glyphId: glyphId
                       });
                     }
                   }
@@ -46857,7 +46850,7 @@
                     var charCode = firstCode + j;
                     mappings.push({
                       charCode: charCode,
-                      glyphId: glyphId,
+                      glyphId: glyphId
                     });
                   }
                 } else {
@@ -46868,7 +46861,7 @@
                     platformId: -1,
                     encodingId: -1,
                     mappings: [],
-                    hasShortCmap: false,
+                    hasShortCmap: false
                   };
                 }
 
@@ -46887,7 +46880,7 @@
                   platformId: potentialTable.platformId,
                   encodingId: potentialTable.encodingId,
                   mappings: mappings,
-                  hasShortCmap: hasShortCmap,
+                  hasShortCmap: hasShortCmap
                 };
               }
 
@@ -46964,7 +46957,7 @@
               ) {
                 var glyphProfile = {
                   length: 0,
-                  sizeOfInstructions: 0,
+                  sizeOfInstructions: 0
                 };
 
                 if (sourceEnd - sourceStart <= 12) {
@@ -47199,7 +47192,7 @@
 
                 if (writeOffset === 0) {
                   var simpleGlyph = new Uint8Array([
-                    0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 49, 0,
+                    0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 49, 0
                   ]);
 
                   for (
@@ -47239,7 +47232,7 @@
 
                 return {
                   missingGlyphs: missingGlyphs,
-                  maxSizeOfInstructions: maxSizeOfInstructions,
+                  maxSizeOfInstructions: maxSizeOfInstructions
                 };
               }
 
@@ -47363,7 +47356,7 @@
                     language: font.getUint16(),
                     name: font.getUint16(),
                     length: font.getUint16(),
-                    offset: font.getUint16(),
+                    offset: font.getUint16()
                   };
 
                   if (
@@ -47421,7 +47414,7 @@
                 -1, -1, 0, 0, -1, 0, -1, -1, 0, -999, -1, -1, -1, -1, -1, -1, 0,
                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -2, -999, -999, -999, -999,
                 -999, -1, -1, -2, -2, 0, 0, 0, 0, -1, -1, -999, -2, -2, 0, 0,
-                -1, -2, -2, 0, 0, 0, -1, -1, -1, -2,
+                -1, -2, -2, 0, 0, 0, -1, -1, -1, -2
               ];
 
               function sanitizeTTProgram(table, ttContext) {
@@ -47520,7 +47513,7 @@
                           callstack.push({
                             data: data,
                             i: i,
-                            stackTop: stack.length - 1,
+                            stackTop: stack.length - 1
                           });
                           functionsCalled.push(funcId);
                           pc = ttContext.functionsDefined[funcId];
@@ -47547,7 +47540,7 @@
                     funcId = stack.pop();
                     ttContext.functionsDefined[funcId] = {
                       data: data,
-                      i: i,
+                      i: i
                     };
                   } else if (op === 0x2d) {
                     if (inFDEF) {
@@ -47601,10 +47594,10 @@
                       op <= 0x8e
                         ? TTOpsStackDeltas[op]
                         : op >= 0xc0 && op <= 0xdf
-                        ? -1
-                        : op >= 0xe0
-                        ? -2
-                        : 0;
+                          ? -1
+                          : op >= 0xe0
+                            ? -2
+                            : 0;
 
                     if (op >= 0x71 && op <= 0x75) {
                       n = stack.pop();
@@ -47704,7 +47697,7 @@
                   functionsUsed: [],
                   functionsStackDeltas: [],
                   tooComplexToFollowFunctions: false,
-                  hintsValid: true,
+                  hintsValid: true
                 };
 
                 if (fpgm) {
@@ -47781,7 +47774,7 @@
                   );
                   tables['glyf'] = {
                     tag: 'glyf',
-                    data: new Uint8Array(0),
+                    data: new Uint8Array(0)
                   };
                 }
 
@@ -47914,7 +47907,7 @@
                 descent: signedInt16(
                   tables['hhea'].data[6],
                   tables['hhea'].data[7]
-                ),
+                )
               };
               this.ascent = metricsOverride.ascent / metricsOverride.unitsPerEm;
               this.descent =
@@ -47926,7 +47919,7 @@
 
               tables['post'] = {
                 tag: 'post',
-                data: createPostTable(properties),
+                data: createPostTable(properties)
               };
               var charCodeToGlyphId = [],
                 charCode;
@@ -48091,7 +48084,7 @@
                 data: createCmapTable(
                   newMapping.charCodeToGlyphId,
                   numGlyphsOut
-                ),
+                )
               };
 
               if (!tables['OS/2'] || !validateOS2Table(tables['OS/2'])) {
@@ -48101,7 +48094,7 @@
                     properties,
                     newMapping.charCodeToGlyphId,
                     metricsOverride
-                  ),
+                  )
                 };
               }
 
@@ -48127,7 +48120,7 @@
               if (!tables['name']) {
                 tables['name'] = {
                   tag: 'name',
-                  data: createNameTable(this.name),
+                  data: createNameTable(this.name)
                 };
               } else {
                 var namePrototype = readNameTable(tables['name']);
@@ -48215,7 +48208,7 @@
 
                   var accentOffset = {
                     x: seac[0] * matrix[0] + seac[1] * matrix[2] + matrix[4],
-                    y: seac[0] * matrix[1] + seac[1] * matrix[3] + matrix[5],
+                    y: seac[0] * matrix[1] + seac[1] * matrix[3] + matrix[5]
                   };
                   var charCodes = getCharCodes(mapping, glyphId);
 
@@ -48237,7 +48230,7 @@
                     seacMap[charCode] = {
                       baseFontCharCode: baseFontCharCode,
                       accentFontCharCode: accentFontCharCode,
-                      accentOffset: accentOffset,
+                      accentOffset: accentOffset
                     };
                   }
                 }
@@ -48341,7 +48334,7 @@
                 'minus',
                 'one',
                 'i',
-                'I',
+                'I'
               ];
               var width;
 
@@ -48428,7 +48421,7 @@
                 fontCharCode = seac.baseFontCharCode;
                 accent = {
                   fontChar: String.fromCodePoint(seac.accentFontCharCode),
-                  offset: seac.accentOffset,
+                  offset: seac.accentOffset
                 };
               }
 
@@ -48513,7 +48506,7 @@
 
             get glyphCacheValues() {
               return Object.values(this.glyphCache);
-            },
+            }
           };
           return Font;
         })();
@@ -48533,9 +48526,9 @@
             },
             exportData: function ErrorFont_exportData() {
               return {
-                error: this.error,
+                error: this.error
               };
-            },
+            }
           };
           return ErrorFont;
         })();
@@ -48655,7 +48648,7 @@
 
             return {
               found: found,
-              length: i,
+              length: i
             };
           }
 
@@ -48683,7 +48676,7 @@
               if (block.found && block.length === suggestedLength) {
                 return {
                   stream: new _stream.Stream(headerBytes),
-                  length: suggestedLength,
+                  length: suggestedLength
                 };
               }
             }
@@ -48716,7 +48709,7 @@
             if (actualLength) {
               return {
                 stream: new _stream.Stream(stream.getBytes(actualLength)),
-                length: actualLength,
+                length: actualLength
               };
             }
 
@@ -48725,7 +48718,7 @@
             );
             return {
               stream: new _stream.Stream(stream.getBytes(suggestedLength)),
-              length: suggestedLength,
+              length: suggestedLength
             };
           }
 
@@ -48733,7 +48726,7 @@
             var eexecBytes = stream.getBytes();
             return {
               stream: new _stream.Stream(eexecBytes),
-              length: eexecBytes.length,
+              length: eexecBytes.length
             };
           }
 
@@ -48975,7 +48968,7 @@
                 'ExpansionFactor',
                 'ForceBold',
                 'StdHW',
-                'StdVW',
+                'StdVW'
               ];
 
               for (i = 0, ii = fields.length; i < ii; i++) {
@@ -49006,7 +48999,7 @@
               privateDict.subrsIndex = subrIndex;
               var compiler = new _cff_parser.CFFCompiler(cff);
               return compiler.compile();
-            },
+            }
           };
           return Type1Font;
         })();
@@ -49083,7 +49076,7 @@
             },
             hasGlyphId: function CFFFont_hasGlyphID(id) {
               return this.cff.hasGlyphId(id);
-            },
+            }
           };
           return CFFFont;
         })();
@@ -49095,7 +49088,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.CFFFDSelect =
           exports.CFFCompiler =
@@ -49508,7 +49501,7 @@
           'Medium',
           'Regular',
           'Roman',
-          'Semibold',
+          'Semibold'
         ];
         exports.CFFStandardStrings = CFFStandardStrings;
         var NUM_STANDARD_CFF_STRINGS = 391;
@@ -49520,57 +49513,57 @@
               id: 'hstem',
               min: 2,
               stackClearing: true,
-              stem: true,
+              stem: true
             },
             null,
             {
               id: 'vstem',
               min: 2,
               stackClearing: true,
-              stem: true,
+              stem: true
             },
             {
               id: 'vmoveto',
               min: 1,
-              stackClearing: true,
+              stackClearing: true
             },
             {
               id: 'rlineto',
               min: 2,
-              resetStack: true,
+              resetStack: true
             },
             {
               id: 'hlineto',
               min: 1,
-              resetStack: true,
+              resetStack: true
             },
             {
               id: 'vlineto',
               min: 1,
-              resetStack: true,
+              resetStack: true
             },
             {
               id: 'rrcurveto',
               min: 6,
-              resetStack: true,
+              resetStack: true
             },
             null,
             {
               id: 'callsubr',
               min: 1,
-              undefStack: true,
+              undefStack: true
             },
             {
               id: 'return',
               min: 0,
-              undefStack: true,
+              undefStack: true
             },
             null,
             null,
             {
               id: 'endchar',
               min: 0,
-              stackClearing: true,
+              stackClearing: true
             },
             null,
             null,
@@ -49579,70 +49572,70 @@
               id: 'hstemhm',
               min: 2,
               stackClearing: true,
-              stem: true,
+              stem: true
             },
             {
               id: 'hintmask',
               min: 0,
-              stackClearing: true,
+              stackClearing: true
             },
             {
               id: 'cntrmask',
               min: 0,
-              stackClearing: true,
+              stackClearing: true
             },
             {
               id: 'rmoveto',
               min: 2,
-              stackClearing: true,
+              stackClearing: true
             },
             {
               id: 'hmoveto',
               min: 1,
-              stackClearing: true,
+              stackClearing: true
             },
             {
               id: 'vstemhm',
               min: 2,
               stackClearing: true,
-              stem: true,
+              stem: true
             },
             {
               id: 'rcurveline',
               min: 8,
-              resetStack: true,
+              resetStack: true
             },
             {
               id: 'rlinecurve',
               min: 8,
-              resetStack: true,
+              resetStack: true
             },
             {
               id: 'vvcurveto',
               min: 4,
-              resetStack: true,
+              resetStack: true
             },
             {
               id: 'hhcurveto',
               min: 4,
-              resetStack: true,
+              resetStack: true
             },
             null,
             {
               id: 'callgsubr',
               min: 1,
-              undefStack: true,
+              undefStack: true
             },
             {
               id: 'vhcurveto',
               min: 4,
-              resetStack: true,
+              resetStack: true
             },
             {
               id: 'hvcurveto',
               min: 4,
-              resetStack: true,
-            },
+              resetStack: true
+            }
           ];
           var CharstringValidationData12 = [
             null,
@@ -49651,17 +49644,17 @@
             {
               id: 'and',
               min: 2,
-              stackDelta: -1,
+              stackDelta: -1
             },
             {
               id: 'or',
               min: 2,
-              stackDelta: -1,
+              stackDelta: -1
             },
             {
               id: 'not',
               min: 1,
-              stackDelta: 0,
+              stackDelta: 0
             },
             null,
             null,
@@ -49669,7 +49662,7 @@
             {
               id: 'abs',
               min: 1,
-              stackDelta: 0,
+              stackDelta: 0
             },
             {
               id: 'add',
@@ -49677,7 +49670,7 @@
               stackDelta: -1,
               stackFn: function stack_div(stack, index) {
                 stack[index - 2] = stack[index - 2] + stack[index - 1];
-              },
+              }
             },
             {
               id: 'sub',
@@ -49685,7 +49678,7 @@
               stackDelta: -1,
               stackFn: function stack_div(stack, index) {
                 stack[index - 2] = stack[index - 2] - stack[index - 1];
-              },
+              }
             },
             {
               id: 'div',
@@ -49693,7 +49686,7 @@
               stackDelta: -1,
               stackFn: function stack_div(stack, index) {
                 stack[index - 2] = stack[index - 2] / stack[index - 1];
-              },
+              }
             },
             null,
             {
@@ -49702,40 +49695,40 @@
               stackDelta: 0,
               stackFn: function stack_div(stack, index) {
                 stack[index - 1] = -stack[index - 1];
-              },
+              }
             },
             {
               id: 'eq',
               min: 2,
-              stackDelta: -1,
+              stackDelta: -1
             },
             null,
             null,
             {
               id: 'drop',
               min: 1,
-              stackDelta: -1,
+              stackDelta: -1
             },
             null,
             {
               id: 'put',
               min: 2,
-              stackDelta: -2,
+              stackDelta: -2
             },
             {
               id: 'get',
               min: 1,
-              stackDelta: 0,
+              stackDelta: 0
             },
             {
               id: 'ifelse',
               min: 4,
-              stackDelta: -3,
+              stackDelta: -3
             },
             {
               id: 'random',
               min: 0,
-              stackDelta: 1,
+              stackDelta: 1
             },
             {
               id: 'mul',
@@ -49743,33 +49736,33 @@
               stackDelta: -1,
               stackFn: function stack_div(stack, index) {
                 stack[index - 2] = stack[index - 2] * stack[index - 1];
-              },
+              }
             },
             null,
             {
               id: 'sqrt',
               min: 1,
-              stackDelta: 0,
+              stackDelta: 0
             },
             {
               id: 'dup',
               min: 1,
-              stackDelta: 1,
+              stackDelta: 1
             },
             {
               id: 'exch',
               min: 2,
-              stackDelta: 0,
+              stackDelta: 0
             },
             {
               id: 'index',
               min: 2,
-              stackDelta: 0,
+              stackDelta: 0
             },
             {
               id: 'roll',
               min: 3,
-              stackDelta: -2,
+              stackDelta: -2
             },
             null,
             null,
@@ -49777,23 +49770,23 @@
             {
               id: 'hflex',
               min: 7,
-              resetStack: true,
+              resetStack: true
             },
             {
               id: 'flex',
               min: 13,
-              resetStack: true,
+              resetStack: true
             },
             {
               id: 'hflex1',
               min: 9,
-              resetStack: true,
+              resetStack: true
             },
             {
               id: 'flex1',
               min: 11,
-              resetStack: true,
-            },
+              resetStack: true
+            }
           ];
 
           function CFFParser(file, properties, seacAnalysisEnabled) {
@@ -49893,7 +49886,7 @@
                 globalSubrIndex: globalSubrIndex.obj,
                 fdSelect: cff.fdSelect,
                 fdArray: cff.fdArray,
-                privateDict: topDict.privateDict,
+                privateDict: topDict.privateDict
               });
               cff.charStrings = charStringsAndSeacs.charStrings;
               cff.seacs = charStringsAndSeacs.seacs;
@@ -49926,7 +49919,7 @@
               var header = new CFFHeader(major, minor, hdrSize, offSize);
               return {
                 obj: header,
-                endPos: hdrSize,
+                endPos: hdrSize
               };
             },
             parseDict: function CFFParser_parseDict(dict) {
@@ -49979,7 +49972,7 @@
                   'E',
                   'E-',
                   null,
-                  '-',
+                  '-'
                 ];
                 var length = dict.length;
 
@@ -50061,7 +50054,7 @@
 
               return {
                 obj: cffIndex,
-                endPos: end,
+                endPos: end
               };
             },
             parseNameIndex: function CFFParser_parseNameIndex(index) {
@@ -50322,7 +50315,7 @@
                   firstStackClearing: true,
                   seac: null,
                   width: null,
-                  hasVStems: false,
+                  hasVStems: false
                 };
                 var valid = true;
                 var localSubrToUse = null;
@@ -50380,7 +50373,7 @@
               return {
                 charStrings: charStrings,
                 seacs: seacs,
-                widths: widths,
+                widths: widths
               };
             },
             emptyPrivateDictionary: function CFFParser_emptyPrivateDictionary(
@@ -50651,7 +50644,7 @@
               }
 
               return new CFFFDSelect(format, fdSelect);
-            },
+            }
           };
           return CFFParser;
         })();
@@ -50696,7 +50689,7 @@
 
               var glyph = this.charStrings.get(id);
               return glyph.length > 0;
-            },
+            }
           };
           return CFF;
         })();
@@ -50754,7 +50747,7 @@
 
             get count() {
               return this.strings.length;
-            },
+            }
           };
           return CFFStrings;
         })();
@@ -50782,7 +50775,7 @@
 
             get count() {
               return this.objects.length;
-            },
+            }
           };
           return CFFIndex;
         })();
@@ -50864,7 +50857,7 @@
             },
             removeByName: function CFFDict_removeByName(name) {
               delete this.values[this.nameToKeyMap[name]];
-            },
+            }
           };
 
           CFFDict.createTables = function CFFDict_createTables(layout) {
@@ -50874,7 +50867,7 @@
               defaults: {},
               types: {},
               opcodes: {},
-              order: [],
+              order: []
             };
 
             for (var i = 0, ii = layout.length; i < ii; ++i) {
@@ -50918,7 +50911,7 @@
               [12, 7],
               'FontMatrix',
               ['num', 'num', 'num', 'num', 'num', 'num'],
-              [0.001, 0, 0, 0.001, 0, 0],
+              [0.001, 0, 0, 0.001, 0, 0]
             ],
             [13, 'UniqueID', 'num', null],
             [5, 'FontBBox', ['num', 'num', 'num', 'num'], [0, 0, 0, 0]],
@@ -50938,7 +50931,7 @@
             [[12, 35], 'UIDBase', 'num', null],
             [[12, 37], 'FDSelect', 'offset', null],
             [[12, 36], 'FDArray', 'offset', null],
-            [[12, 38], 'FontName', 'sid', null],
+            [[12, 38], 'FontName', 'sid', null]
           ];
           var tables = null;
 
@@ -50976,7 +50969,7 @@
             [[12, 19], 'initialRandomSeed', 'num', 0],
             [20, 'defaultWidthX', 'num', 0],
             [21, 'nominalWidthX', 'num', 0],
-            [19, 'Subrs', 'offset', null],
+            [19, 'Subrs', 'offset', null]
           ];
           var tables = null;
 
@@ -50997,7 +50990,7 @@
         var CFFCharsetPredefinedTypes = {
           ISO_ADOBE: 0,
           EXPERT: 1,
-          EXPERT_SUBSET: 2,
+          EXPERT_SUBSET: 2
         };
 
         var CFFCharset = (function CFFCharsetClosure() {
@@ -51037,7 +51030,7 @@
               }
 
               return this.fdSelect[glyphIndex];
-            },
+            }
           };
           return CFFFDSelect;
         })();
@@ -51108,7 +51101,7 @@
                 data[offset3] = (value >> 8) & 0xff;
                 data[offset4] = value & 0xff;
               }
-            },
+            }
           };
           return CFFOffsetTracker;
         })();
@@ -51127,7 +51120,7 @@
                 add: function CFFCompiler_add(data) {
                   this.data = this.data.concat(data);
                   this.length = this.data.length;
-                },
+                }
               };
               var header = this.compileHeader(cff.header);
               output.add(header);
@@ -51298,7 +51291,7 @@
                   (value >> 24) & 0xff,
                   (value >> 16) & 0xff,
                   (value >> 8) & 0xff,
-                  value & 0xff,
+                  value & 0xff
                 ];
               }
 
@@ -51309,7 +51302,7 @@
                 header.major,
                 header.minor,
                 header.hdrSize,
-                header.offSize,
+                header.offSize
               ];
             },
             compileNameIndex: function CFFCompiler_compileNameIndex(names) {
@@ -51383,7 +51376,7 @@
               fdArrayIndex = this.compileIndex(fdArrayIndex, fontDictTrackers);
               return {
                 trackers: fontDictTrackers,
-                output: fdArrayIndex,
+                output: fdArrayIndex
               };
             },
             compilePrivateDicts: function CFFCompiler_compilePrivateDicts(
@@ -51548,7 +51541,7 @@
                   0,
                   0,
                   (numGlyphsLessNotDef >> 8) & 0xff,
-                  numGlyphsLessNotDef & 0xff,
+                  numGlyphsLessNotDef & 0xff
                 ]);
               } else {
                 var length = 1 + numGlyphsLessNotDef * 2;
@@ -51611,7 +51604,7 @@
                     0,
                     (start >> 8) & 0xff,
                     start & 0xff,
-                    lastFD,
+                    lastFD
                   ];
 
                   for (i = 1; i < fdSelect.fdSelect.length; i++) {
@@ -51713,7 +51706,7 @@
               }
 
               return data;
-            },
+            }
           };
           return CFFCompiler;
         })();
@@ -51727,7 +51720,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.ExpertSubsetCharset =
           exports.ExpertCharset =
@@ -51962,7 +51955,7 @@
           'ugrave',
           'yacute',
           'ydieresis',
-          'zcaron',
+          'zcaron'
         ];
         exports.ISOAdobeCharset = ISOAdobeCharset;
         var ExpertCharset = [
@@ -52131,7 +52124,7 @@
           'Udieresissmall',
           'Yacutesmall',
           'Thornsmall',
-          'Ydieresissmall',
+          'Ydieresissmall'
         ];
         exports.ExpertCharset = ExpertCharset;
         var ExpertSubsetCharset = [
@@ -52221,7 +52214,7 @@
           'centinferior',
           'dollarinferior',
           'periodinferior',
-          'commainferior',
+          'commainferior'
         ];
         exports.ExpertSubsetCharset = ExpertSubsetCharset;
 
@@ -52232,7 +52225,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.getEncoding = getEncoding;
         exports.ExpertEncoding =
@@ -52498,7 +52491,7 @@
           'Udieresissmall',
           'Yacutesmall',
           'Thornsmall',
-          'Ydieresissmall',
+          'Ydieresissmall'
         ];
         exports.ExpertEncoding = ExpertEncoding;
         var MacExpertEncoding = [
@@ -52757,7 +52750,7 @@
           '',
           '',
           '',
-          '',
+          ''
         ];
         var MacRomanEncoding = [
           '',
@@ -53015,7 +53008,7 @@
           'cedilla',
           'hungarumlaut',
           'ogonek',
-          'caron',
+          'caron'
         ];
         exports.MacRomanEncoding = MacRomanEncoding;
         var StandardEncoding = [
@@ -53274,7 +53267,7 @@
           '',
           '',
           '',
-          '',
+          ''
         ];
         exports.StandardEncoding = StandardEncoding;
         var WinAnsiEncoding = [
@@ -53533,7 +53526,7 @@
           'udieresis',
           'yacute',
           'thorn',
-          'ydieresis',
+          'ydieresis'
         ];
         exports.WinAnsiEncoding = WinAnsiEncoding;
         var SymbolSetEncoding = [
@@ -53792,7 +53785,7 @@
           'bracerighttp',
           'bracerightmid',
           'bracerightbt',
-          '',
+          ''
         ];
         exports.SymbolSetEncoding = SymbolSetEncoding;
         var ZapfDingbatsEncoding = [
@@ -54051,7 +54044,7 @@
           'a189',
           'a190',
           'a191',
-          '',
+          ''
         ];
         exports.ZapfDingbatsEncoding = ZapfDingbatsEncoding;
 
@@ -58627,7 +58620,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.getSupplementalGlyphMapForCalibri =
           exports.getSupplementalGlyphMapForArialBlack =
@@ -58640,252 +58633,252 @@
 
         var _core_utils = __w_pdfjs_require__(154);
 
-        var getStdFontMap = (0, _core_utils.getLookupTableFactory)(function (
-          t
-        ) {
-          t['ArialNarrow'] = 'Helvetica';
-          t['ArialNarrow-Bold'] = 'Helvetica-Bold';
-          t['ArialNarrow-BoldItalic'] = 'Helvetica-BoldOblique';
-          t['ArialNarrow-Italic'] = 'Helvetica-Oblique';
-          t['ArialBlack'] = 'Helvetica';
-          t['ArialBlack-Bold'] = 'Helvetica-Bold';
-          t['ArialBlack-BoldItalic'] = 'Helvetica-BoldOblique';
-          t['ArialBlack-Italic'] = 'Helvetica-Oblique';
-          t['Arial-Black'] = 'Helvetica';
-          t['Arial-Black-Bold'] = 'Helvetica-Bold';
-          t['Arial-Black-BoldItalic'] = 'Helvetica-BoldOblique';
-          t['Arial-Black-Italic'] = 'Helvetica-Oblique';
-          t['Arial'] = 'Helvetica';
-          t['Arial-Bold'] = 'Helvetica-Bold';
-          t['Arial-BoldItalic'] = 'Helvetica-BoldOblique';
-          t['Arial-Italic'] = 'Helvetica-Oblique';
-          t['Arial-BoldItalicMT'] = 'Helvetica-BoldOblique';
-          t['Arial-BoldMT'] = 'Helvetica-Bold';
-          t['Arial-ItalicMT'] = 'Helvetica-Oblique';
-          t['ArialMT'] = 'Helvetica';
-          t['Courier-Bold'] = 'Courier-Bold';
-          t['Courier-BoldItalic'] = 'Courier-BoldOblique';
-          t['Courier-Italic'] = 'Courier-Oblique';
-          t['CourierNew'] = 'Courier';
-          t['CourierNew-Bold'] = 'Courier-Bold';
-          t['CourierNew-BoldItalic'] = 'Courier-BoldOblique';
-          t['CourierNew-Italic'] = 'Courier-Oblique';
-          t['CourierNewPS-BoldItalicMT'] = 'Courier-BoldOblique';
-          t['CourierNewPS-BoldMT'] = 'Courier-Bold';
-          t['CourierNewPS-ItalicMT'] = 'Courier-Oblique';
-          t['CourierNewPSMT'] = 'Courier';
-          t['Helvetica'] = 'Helvetica';
-          t['Helvetica-Bold'] = 'Helvetica-Bold';
-          t['Helvetica-BoldItalic'] = 'Helvetica-BoldOblique';
-          t['Helvetica-BoldOblique'] = 'Helvetica-BoldOblique';
-          t['Helvetica-Italic'] = 'Helvetica-Oblique';
-          t['Helvetica-Oblique'] = 'Helvetica-Oblique';
-          t['SegoeUISymbol'] = 'Helvetica';
-          t['Symbol-Bold'] = 'Symbol';
-          t['Symbol-BoldItalic'] = 'Symbol';
-          t['Symbol-Italic'] = 'Symbol';
-          t['TimesNewRoman'] = 'Times-Roman';
-          t['TimesNewRoman-Bold'] = 'Times-Bold';
-          t['TimesNewRoman-BoldItalic'] = 'Times-BoldItalic';
-          t['TimesNewRoman-Italic'] = 'Times-Italic';
-          t['TimesNewRomanPS'] = 'Times-Roman';
-          t['TimesNewRomanPS-Bold'] = 'Times-Bold';
-          t['TimesNewRomanPS-BoldItalic'] = 'Times-BoldItalic';
-          t['TimesNewRomanPS-BoldItalicMT'] = 'Times-BoldItalic';
-          t['TimesNewRomanPS-BoldMT'] = 'Times-Bold';
-          t['TimesNewRomanPS-Italic'] = 'Times-Italic';
-          t['TimesNewRomanPS-ItalicMT'] = 'Times-Italic';
-          t['TimesNewRomanPSMT'] = 'Times-Roman';
-          t['TimesNewRomanPSMT-Bold'] = 'Times-Bold';
-          t['TimesNewRomanPSMT-BoldItalic'] = 'Times-BoldItalic';
-          t['TimesNewRomanPSMT-Italic'] = 'Times-Italic';
-        });
+        var getStdFontMap = (0, _core_utils.getLookupTableFactory)(
+          function (t) {
+            t['ArialNarrow'] = 'Helvetica';
+            t['ArialNarrow-Bold'] = 'Helvetica-Bold';
+            t['ArialNarrow-BoldItalic'] = 'Helvetica-BoldOblique';
+            t['ArialNarrow-Italic'] = 'Helvetica-Oblique';
+            t['ArialBlack'] = 'Helvetica';
+            t['ArialBlack-Bold'] = 'Helvetica-Bold';
+            t['ArialBlack-BoldItalic'] = 'Helvetica-BoldOblique';
+            t['ArialBlack-Italic'] = 'Helvetica-Oblique';
+            t['Arial-Black'] = 'Helvetica';
+            t['Arial-Black-Bold'] = 'Helvetica-Bold';
+            t['Arial-Black-BoldItalic'] = 'Helvetica-BoldOblique';
+            t['Arial-Black-Italic'] = 'Helvetica-Oblique';
+            t['Arial'] = 'Helvetica';
+            t['Arial-Bold'] = 'Helvetica-Bold';
+            t['Arial-BoldItalic'] = 'Helvetica-BoldOblique';
+            t['Arial-Italic'] = 'Helvetica-Oblique';
+            t['Arial-BoldItalicMT'] = 'Helvetica-BoldOblique';
+            t['Arial-BoldMT'] = 'Helvetica-Bold';
+            t['Arial-ItalicMT'] = 'Helvetica-Oblique';
+            t['ArialMT'] = 'Helvetica';
+            t['Courier-Bold'] = 'Courier-Bold';
+            t['Courier-BoldItalic'] = 'Courier-BoldOblique';
+            t['Courier-Italic'] = 'Courier-Oblique';
+            t['CourierNew'] = 'Courier';
+            t['CourierNew-Bold'] = 'Courier-Bold';
+            t['CourierNew-BoldItalic'] = 'Courier-BoldOblique';
+            t['CourierNew-Italic'] = 'Courier-Oblique';
+            t['CourierNewPS-BoldItalicMT'] = 'Courier-BoldOblique';
+            t['CourierNewPS-BoldMT'] = 'Courier-Bold';
+            t['CourierNewPS-ItalicMT'] = 'Courier-Oblique';
+            t['CourierNewPSMT'] = 'Courier';
+            t['Helvetica'] = 'Helvetica';
+            t['Helvetica-Bold'] = 'Helvetica-Bold';
+            t['Helvetica-BoldItalic'] = 'Helvetica-BoldOblique';
+            t['Helvetica-BoldOblique'] = 'Helvetica-BoldOblique';
+            t['Helvetica-Italic'] = 'Helvetica-Oblique';
+            t['Helvetica-Oblique'] = 'Helvetica-Oblique';
+            t['SegoeUISymbol'] = 'Helvetica';
+            t['Symbol-Bold'] = 'Symbol';
+            t['Symbol-BoldItalic'] = 'Symbol';
+            t['Symbol-Italic'] = 'Symbol';
+            t['TimesNewRoman'] = 'Times-Roman';
+            t['TimesNewRoman-Bold'] = 'Times-Bold';
+            t['TimesNewRoman-BoldItalic'] = 'Times-BoldItalic';
+            t['TimesNewRoman-Italic'] = 'Times-Italic';
+            t['TimesNewRomanPS'] = 'Times-Roman';
+            t['TimesNewRomanPS-Bold'] = 'Times-Bold';
+            t['TimesNewRomanPS-BoldItalic'] = 'Times-BoldItalic';
+            t['TimesNewRomanPS-BoldItalicMT'] = 'Times-BoldItalic';
+            t['TimesNewRomanPS-BoldMT'] = 'Times-Bold';
+            t['TimesNewRomanPS-Italic'] = 'Times-Italic';
+            t['TimesNewRomanPS-ItalicMT'] = 'Times-Italic';
+            t['TimesNewRomanPSMT'] = 'Times-Roman';
+            t['TimesNewRomanPSMT-Bold'] = 'Times-Bold';
+            t['TimesNewRomanPSMT-BoldItalic'] = 'Times-BoldItalic';
+            t['TimesNewRomanPSMT-Italic'] = 'Times-Italic';
+          }
+        );
         exports.getStdFontMap = getStdFontMap;
-        var getNonStdFontMap = (0, _core_utils.getLookupTableFactory)(function (
-          t
-        ) {
-          t['Calibri'] = 'Helvetica';
-          t['Calibri-Bold'] = 'Helvetica-Bold';
-          t['Calibri-BoldItalic'] = 'Helvetica-BoldOblique';
-          t['Calibri-Italic'] = 'Helvetica-Oblique';
-          t['CenturyGothic'] = 'Helvetica';
-          t['CenturyGothic-Bold'] = 'Helvetica-Bold';
-          t['CenturyGothic-BoldItalic'] = 'Helvetica-BoldOblique';
-          t['CenturyGothic-Italic'] = 'Helvetica-Oblique';
-          t['ComicSansMS'] = 'Comic Sans MS';
-          t['ComicSansMS-Bold'] = 'Comic Sans MS-Bold';
-          t['ComicSansMS-BoldItalic'] = 'Comic Sans MS-BoldItalic';
-          t['ComicSansMS-Italic'] = 'Comic Sans MS-Italic';
-          t['LucidaConsole'] = 'Courier';
-          t['LucidaConsole-Bold'] = 'Courier-Bold';
-          t['LucidaConsole-BoldItalic'] = 'Courier-BoldOblique';
-          t['LucidaConsole-Italic'] = 'Courier-Oblique';
-          t['LucidaSans-Demi'] = 'Helvetica-Bold';
-          t['MS-Gothic'] = 'MS Gothic';
-          t['MS-Gothic-Bold'] = 'MS Gothic-Bold';
-          t['MS-Gothic-BoldItalic'] = 'MS Gothic-BoldItalic';
-          t['MS-Gothic-Italic'] = 'MS Gothic-Italic';
-          t['MS-Mincho'] = 'MS Mincho';
-          t['MS-Mincho-Bold'] = 'MS Mincho-Bold';
-          t['MS-Mincho-BoldItalic'] = 'MS Mincho-BoldItalic';
-          t['MS-Mincho-Italic'] = 'MS Mincho-Italic';
-          t['MS-PGothic'] = 'MS PGothic';
-          t['MS-PGothic-Bold'] = 'MS PGothic-Bold';
-          t['MS-PGothic-BoldItalic'] = 'MS PGothic-BoldItalic';
-          t['MS-PGothic-Italic'] = 'MS PGothic-Italic';
-          t['MS-PMincho'] = 'MS PMincho';
-          t['MS-PMincho-Bold'] = 'MS PMincho-Bold';
-          t['MS-PMincho-BoldItalic'] = 'MS PMincho-BoldItalic';
-          t['MS-PMincho-Italic'] = 'MS PMincho-Italic';
-          t['NuptialScript'] = 'Times-Italic';
-          t['Wingdings'] = 'ZapfDingbats';
-        });
+        var getNonStdFontMap = (0, _core_utils.getLookupTableFactory)(
+          function (t) {
+            t['Calibri'] = 'Helvetica';
+            t['Calibri-Bold'] = 'Helvetica-Bold';
+            t['Calibri-BoldItalic'] = 'Helvetica-BoldOblique';
+            t['Calibri-Italic'] = 'Helvetica-Oblique';
+            t['CenturyGothic'] = 'Helvetica';
+            t['CenturyGothic-Bold'] = 'Helvetica-Bold';
+            t['CenturyGothic-BoldItalic'] = 'Helvetica-BoldOblique';
+            t['CenturyGothic-Italic'] = 'Helvetica-Oblique';
+            t['ComicSansMS'] = 'Comic Sans MS';
+            t['ComicSansMS-Bold'] = 'Comic Sans MS-Bold';
+            t['ComicSansMS-BoldItalic'] = 'Comic Sans MS-BoldItalic';
+            t['ComicSansMS-Italic'] = 'Comic Sans MS-Italic';
+            t['LucidaConsole'] = 'Courier';
+            t['LucidaConsole-Bold'] = 'Courier-Bold';
+            t['LucidaConsole-BoldItalic'] = 'Courier-BoldOblique';
+            t['LucidaConsole-Italic'] = 'Courier-Oblique';
+            t['LucidaSans-Demi'] = 'Helvetica-Bold';
+            t['MS-Gothic'] = 'MS Gothic';
+            t['MS-Gothic-Bold'] = 'MS Gothic-Bold';
+            t['MS-Gothic-BoldItalic'] = 'MS Gothic-BoldItalic';
+            t['MS-Gothic-Italic'] = 'MS Gothic-Italic';
+            t['MS-Mincho'] = 'MS Mincho';
+            t['MS-Mincho-Bold'] = 'MS Mincho-Bold';
+            t['MS-Mincho-BoldItalic'] = 'MS Mincho-BoldItalic';
+            t['MS-Mincho-Italic'] = 'MS Mincho-Italic';
+            t['MS-PGothic'] = 'MS PGothic';
+            t['MS-PGothic-Bold'] = 'MS PGothic-Bold';
+            t['MS-PGothic-BoldItalic'] = 'MS PGothic-BoldItalic';
+            t['MS-PGothic-Italic'] = 'MS PGothic-Italic';
+            t['MS-PMincho'] = 'MS PMincho';
+            t['MS-PMincho-Bold'] = 'MS PMincho-Bold';
+            t['MS-PMincho-BoldItalic'] = 'MS PMincho-BoldItalic';
+            t['MS-PMincho-Italic'] = 'MS PMincho-Italic';
+            t['NuptialScript'] = 'Times-Italic';
+            t['Wingdings'] = 'ZapfDingbats';
+          }
+        );
         exports.getNonStdFontMap = getNonStdFontMap;
-        var getSerifFonts = (0, _core_utils.getLookupTableFactory)(function (
-          t
-        ) {
-          t['Adobe Jenson'] = true;
-          t['Adobe Text'] = true;
-          t['Albertus'] = true;
-          t['Aldus'] = true;
-          t['Alexandria'] = true;
-          t['Algerian'] = true;
-          t['American Typewriter'] = true;
-          t['Antiqua'] = true;
-          t['Apex'] = true;
-          t['Arno'] = true;
-          t['Aster'] = true;
-          t['Aurora'] = true;
-          t['Baskerville'] = true;
-          t['Bell'] = true;
-          t['Bembo'] = true;
-          t['Bembo Schoolbook'] = true;
-          t['Benguiat'] = true;
-          t['Berkeley Old Style'] = true;
-          t['Bernhard Modern'] = true;
-          t['Berthold City'] = true;
-          t['Bodoni'] = true;
-          t['Bauer Bodoni'] = true;
-          t['Book Antiqua'] = true;
-          t['Bookman'] = true;
-          t['Bordeaux Roman'] = true;
-          t['Californian FB'] = true;
-          t['Calisto'] = true;
-          t['Calvert'] = true;
-          t['Capitals'] = true;
-          t['Cambria'] = true;
-          t['Cartier'] = true;
-          t['Caslon'] = true;
-          t['Catull'] = true;
-          t['Centaur'] = true;
-          t['Century Old Style'] = true;
-          t['Century Schoolbook'] = true;
-          t['Chaparral'] = true;
-          t['Charis SIL'] = true;
-          t['Cheltenham'] = true;
-          t['Cholla Slab'] = true;
-          t['Clarendon'] = true;
-          t['Clearface'] = true;
-          t['Cochin'] = true;
-          t['Colonna'] = true;
-          t['Computer Modern'] = true;
-          t['Concrete Roman'] = true;
-          t['Constantia'] = true;
-          t['Cooper Black'] = true;
-          t['Corona'] = true;
-          t['Ecotype'] = true;
-          t['Egyptienne'] = true;
-          t['Elephant'] = true;
-          t['Excelsior'] = true;
-          t['Fairfield'] = true;
-          t['FF Scala'] = true;
-          t['Folkard'] = true;
-          t['Footlight'] = true;
-          t['FreeSerif'] = true;
-          t['Friz Quadrata'] = true;
-          t['Garamond'] = true;
-          t['Gentium'] = true;
-          t['Georgia'] = true;
-          t['Gloucester'] = true;
-          t['Goudy Old Style'] = true;
-          t['Goudy Schoolbook'] = true;
-          t['Goudy Pro Font'] = true;
-          t['Granjon'] = true;
-          t['Guardian Egyptian'] = true;
-          t['Heather'] = true;
-          t['Hercules'] = true;
-          t['High Tower Text'] = true;
-          t['Hiroshige'] = true;
-          t['Hoefler Text'] = true;
-          t['Humana Serif'] = true;
-          t['Imprint'] = true;
-          t['Ionic No. 5'] = true;
-          t['Janson'] = true;
-          t['Joanna'] = true;
-          t['Korinna'] = true;
-          t['Lexicon'] = true;
-          t['Liberation Serif'] = true;
-          t['Linux Libertine'] = true;
-          t['Literaturnaya'] = true;
-          t['Lucida'] = true;
-          t['Lucida Bright'] = true;
-          t['Melior'] = true;
-          t['Memphis'] = true;
-          t['Miller'] = true;
-          t['Minion'] = true;
-          t['Modern'] = true;
-          t['Mona Lisa'] = true;
-          t['Mrs Eaves'] = true;
-          t['MS Serif'] = true;
-          t['Museo Slab'] = true;
-          t['New York'] = true;
-          t['Nimbus Roman'] = true;
-          t['NPS Rawlinson Roadway'] = true;
-          t['NuptialScript'] = true;
-          t['Palatino'] = true;
-          t['Perpetua'] = true;
-          t['Plantin'] = true;
-          t['Plantin Schoolbook'] = true;
-          t['Playbill'] = true;
-          t['Poor Richard'] = true;
-          t['Rawlinson Roadway'] = true;
-          t['Renault'] = true;
-          t['Requiem'] = true;
-          t['Rockwell'] = true;
-          t['Roman'] = true;
-          t['Rotis Serif'] = true;
-          t['Sabon'] = true;
-          t['Scala'] = true;
-          t['Seagull'] = true;
-          t['Sistina'] = true;
-          t['Souvenir'] = true;
-          t['STIX'] = true;
-          t['Stone Informal'] = true;
-          t['Stone Serif'] = true;
-          t['Sylfaen'] = true;
-          t['Times'] = true;
-          t['Trajan'] = true;
-          t['Trinité'] = true;
-          t['Trump Mediaeval'] = true;
-          t['Utopia'] = true;
-          t['Vale Type'] = true;
-          t['Bitstream Vera'] = true;
-          t['Vera Serif'] = true;
-          t['Versailles'] = true;
-          t['Wanted'] = true;
-          t['Weiss'] = true;
-          t['Wide Latin'] = true;
-          t['Windsor'] = true;
-          t['XITS'] = true;
-        });
+        var getSerifFonts = (0, _core_utils.getLookupTableFactory)(
+          function (t) {
+            t['Adobe Jenson'] = true;
+            t['Adobe Text'] = true;
+            t['Albertus'] = true;
+            t['Aldus'] = true;
+            t['Alexandria'] = true;
+            t['Algerian'] = true;
+            t['American Typewriter'] = true;
+            t['Antiqua'] = true;
+            t['Apex'] = true;
+            t['Arno'] = true;
+            t['Aster'] = true;
+            t['Aurora'] = true;
+            t['Baskerville'] = true;
+            t['Bell'] = true;
+            t['Bembo'] = true;
+            t['Bembo Schoolbook'] = true;
+            t['Benguiat'] = true;
+            t['Berkeley Old Style'] = true;
+            t['Bernhard Modern'] = true;
+            t['Berthold City'] = true;
+            t['Bodoni'] = true;
+            t['Bauer Bodoni'] = true;
+            t['Book Antiqua'] = true;
+            t['Bookman'] = true;
+            t['Bordeaux Roman'] = true;
+            t['Californian FB'] = true;
+            t['Calisto'] = true;
+            t['Calvert'] = true;
+            t['Capitals'] = true;
+            t['Cambria'] = true;
+            t['Cartier'] = true;
+            t['Caslon'] = true;
+            t['Catull'] = true;
+            t['Centaur'] = true;
+            t['Century Old Style'] = true;
+            t['Century Schoolbook'] = true;
+            t['Chaparral'] = true;
+            t['Charis SIL'] = true;
+            t['Cheltenham'] = true;
+            t['Cholla Slab'] = true;
+            t['Clarendon'] = true;
+            t['Clearface'] = true;
+            t['Cochin'] = true;
+            t['Colonna'] = true;
+            t['Computer Modern'] = true;
+            t['Concrete Roman'] = true;
+            t['Constantia'] = true;
+            t['Cooper Black'] = true;
+            t['Corona'] = true;
+            t['Ecotype'] = true;
+            t['Egyptienne'] = true;
+            t['Elephant'] = true;
+            t['Excelsior'] = true;
+            t['Fairfield'] = true;
+            t['FF Scala'] = true;
+            t['Folkard'] = true;
+            t['Footlight'] = true;
+            t['FreeSerif'] = true;
+            t['Friz Quadrata'] = true;
+            t['Garamond'] = true;
+            t['Gentium'] = true;
+            t['Georgia'] = true;
+            t['Gloucester'] = true;
+            t['Goudy Old Style'] = true;
+            t['Goudy Schoolbook'] = true;
+            t['Goudy Pro Font'] = true;
+            t['Granjon'] = true;
+            t['Guardian Egyptian'] = true;
+            t['Heather'] = true;
+            t['Hercules'] = true;
+            t['High Tower Text'] = true;
+            t['Hiroshige'] = true;
+            t['Hoefler Text'] = true;
+            t['Humana Serif'] = true;
+            t['Imprint'] = true;
+            t['Ionic No. 5'] = true;
+            t['Janson'] = true;
+            t['Joanna'] = true;
+            t['Korinna'] = true;
+            t['Lexicon'] = true;
+            t['Liberation Serif'] = true;
+            t['Linux Libertine'] = true;
+            t['Literaturnaya'] = true;
+            t['Lucida'] = true;
+            t['Lucida Bright'] = true;
+            t['Melior'] = true;
+            t['Memphis'] = true;
+            t['Miller'] = true;
+            t['Minion'] = true;
+            t['Modern'] = true;
+            t['Mona Lisa'] = true;
+            t['Mrs Eaves'] = true;
+            t['MS Serif'] = true;
+            t['Museo Slab'] = true;
+            t['New York'] = true;
+            t['Nimbus Roman'] = true;
+            t['NPS Rawlinson Roadway'] = true;
+            t['NuptialScript'] = true;
+            t['Palatino'] = true;
+            t['Perpetua'] = true;
+            t['Plantin'] = true;
+            t['Plantin Schoolbook'] = true;
+            t['Playbill'] = true;
+            t['Poor Richard'] = true;
+            t['Rawlinson Roadway'] = true;
+            t['Renault'] = true;
+            t['Requiem'] = true;
+            t['Rockwell'] = true;
+            t['Roman'] = true;
+            t['Rotis Serif'] = true;
+            t['Sabon'] = true;
+            t['Scala'] = true;
+            t['Seagull'] = true;
+            t['Sistina'] = true;
+            t['Souvenir'] = true;
+            t['STIX'] = true;
+            t['Stone Informal'] = true;
+            t['Stone Serif'] = true;
+            t['Sylfaen'] = true;
+            t['Times'] = true;
+            t['Trajan'] = true;
+            t['Trinité'] = true;
+            t['Trump Mediaeval'] = true;
+            t['Utopia'] = true;
+            t['Vale Type'] = true;
+            t['Bitstream Vera'] = true;
+            t['Vera Serif'] = true;
+            t['Versailles'] = true;
+            t['Wanted'] = true;
+            t['Weiss'] = true;
+            t['Wide Latin'] = true;
+            t['Windsor'] = true;
+            t['XITS'] = true;
+          }
+        );
         exports.getSerifFonts = getSerifFonts;
-        var getSymbolsFonts = (0, _core_utils.getLookupTableFactory)(function (
-          t
-        ) {
-          t['Dingbats'] = true;
-          t['Symbol'] = true;
-          t['ZapfDingbats'] = true;
-        });
+        var getSymbolsFonts = (0, _core_utils.getLookupTableFactory)(
+          function (t) {
+            t['Dingbats'] = true;
+            t['Symbol'] = true;
+            t['ZapfDingbats'] = true;
+          }
+        );
         exports.getSymbolsFonts = getSymbolsFonts;
         var getGlyphMapForStandardFonts = (0,
         _core_utils.getLookupTableFactory)(function (t) {
@@ -59454,496 +59447,496 @@
         var UnicodeRanges = [
           {
             begin: 0x0000,
-            end: 0x007f,
+            end: 0x007f
           },
           {
             begin: 0x0080,
-            end: 0x00ff,
+            end: 0x00ff
           },
           {
             begin: 0x0100,
-            end: 0x017f,
+            end: 0x017f
           },
           {
             begin: 0x0180,
-            end: 0x024f,
+            end: 0x024f
           },
           {
             begin: 0x0250,
-            end: 0x02af,
+            end: 0x02af
           },
           {
             begin: 0x02b0,
-            end: 0x02ff,
+            end: 0x02ff
           },
           {
             begin: 0x0300,
-            end: 0x036f,
+            end: 0x036f
           },
           {
             begin: 0x0370,
-            end: 0x03ff,
+            end: 0x03ff
           },
           {
             begin: 0x2c80,
-            end: 0x2cff,
+            end: 0x2cff
           },
           {
             begin: 0x0400,
-            end: 0x04ff,
+            end: 0x04ff
           },
           {
             begin: 0x0530,
-            end: 0x058f,
+            end: 0x058f
           },
           {
             begin: 0x0590,
-            end: 0x05ff,
+            end: 0x05ff
           },
           {
             begin: 0xa500,
-            end: 0xa63f,
+            end: 0xa63f
           },
           {
             begin: 0x0600,
-            end: 0x06ff,
+            end: 0x06ff
           },
           {
             begin: 0x07c0,
-            end: 0x07ff,
+            end: 0x07ff
           },
           {
             begin: 0x0900,
-            end: 0x097f,
+            end: 0x097f
           },
           {
             begin: 0x0980,
-            end: 0x09ff,
+            end: 0x09ff
           },
           {
             begin: 0x0a00,
-            end: 0x0a7f,
+            end: 0x0a7f
           },
           {
             begin: 0x0a80,
-            end: 0x0aff,
+            end: 0x0aff
           },
           {
             begin: 0x0b00,
-            end: 0x0b7f,
+            end: 0x0b7f
           },
           {
             begin: 0x0b80,
-            end: 0x0bff,
+            end: 0x0bff
           },
           {
             begin: 0x0c00,
-            end: 0x0c7f,
+            end: 0x0c7f
           },
           {
             begin: 0x0c80,
-            end: 0x0cff,
+            end: 0x0cff
           },
           {
             begin: 0x0d00,
-            end: 0x0d7f,
+            end: 0x0d7f
           },
           {
             begin: 0x0e00,
-            end: 0x0e7f,
+            end: 0x0e7f
           },
           {
             begin: 0x0e80,
-            end: 0x0eff,
+            end: 0x0eff
           },
           {
             begin: 0x10a0,
-            end: 0x10ff,
+            end: 0x10ff
           },
           {
             begin: 0x1b00,
-            end: 0x1b7f,
+            end: 0x1b7f
           },
           {
             begin: 0x1100,
-            end: 0x11ff,
+            end: 0x11ff
           },
           {
             begin: 0x1e00,
-            end: 0x1eff,
+            end: 0x1eff
           },
           {
             begin: 0x1f00,
-            end: 0x1fff,
+            end: 0x1fff
           },
           {
             begin: 0x2000,
-            end: 0x206f,
+            end: 0x206f
           },
           {
             begin: 0x2070,
-            end: 0x209f,
+            end: 0x209f
           },
           {
             begin: 0x20a0,
-            end: 0x20cf,
+            end: 0x20cf
           },
           {
             begin: 0x20d0,
-            end: 0x20ff,
+            end: 0x20ff
           },
           {
             begin: 0x2100,
-            end: 0x214f,
+            end: 0x214f
           },
           {
             begin: 0x2150,
-            end: 0x218f,
+            end: 0x218f
           },
           {
             begin: 0x2190,
-            end: 0x21ff,
+            end: 0x21ff
           },
           {
             begin: 0x2200,
-            end: 0x22ff,
+            end: 0x22ff
           },
           {
             begin: 0x2300,
-            end: 0x23ff,
+            end: 0x23ff
           },
           {
             begin: 0x2400,
-            end: 0x243f,
+            end: 0x243f
           },
           {
             begin: 0x2440,
-            end: 0x245f,
+            end: 0x245f
           },
           {
             begin: 0x2460,
-            end: 0x24ff,
+            end: 0x24ff
           },
           {
             begin: 0x2500,
-            end: 0x257f,
+            end: 0x257f
           },
           {
             begin: 0x2580,
-            end: 0x259f,
+            end: 0x259f
           },
           {
             begin: 0x25a0,
-            end: 0x25ff,
+            end: 0x25ff
           },
           {
             begin: 0x2600,
-            end: 0x26ff,
+            end: 0x26ff
           },
           {
             begin: 0x2700,
-            end: 0x27bf,
+            end: 0x27bf
           },
           {
             begin: 0x3000,
-            end: 0x303f,
+            end: 0x303f
           },
           {
             begin: 0x3040,
-            end: 0x309f,
+            end: 0x309f
           },
           {
             begin: 0x30a0,
-            end: 0x30ff,
+            end: 0x30ff
           },
           {
             begin: 0x3100,
-            end: 0x312f,
+            end: 0x312f
           },
           {
             begin: 0x3130,
-            end: 0x318f,
+            end: 0x318f
           },
           {
             begin: 0xa840,
-            end: 0xa87f,
+            end: 0xa87f
           },
           {
             begin: 0x3200,
-            end: 0x32ff,
+            end: 0x32ff
           },
           {
             begin: 0x3300,
-            end: 0x33ff,
+            end: 0x33ff
           },
           {
             begin: 0xac00,
-            end: 0xd7af,
+            end: 0xd7af
           },
           {
             begin: 0xd800,
-            end: 0xdfff,
+            end: 0xdfff
           },
           {
             begin: 0x10900,
-            end: 0x1091f,
+            end: 0x1091f
           },
           {
             begin: 0x4e00,
-            end: 0x9fff,
+            end: 0x9fff
           },
           {
             begin: 0xe000,
-            end: 0xf8ff,
+            end: 0xf8ff
           },
           {
             begin: 0x31c0,
-            end: 0x31ef,
+            end: 0x31ef
           },
           {
             begin: 0xfb00,
-            end: 0xfb4f,
+            end: 0xfb4f
           },
           {
             begin: 0xfb50,
-            end: 0xfdff,
+            end: 0xfdff
           },
           {
             begin: 0xfe20,
-            end: 0xfe2f,
+            end: 0xfe2f
           },
           {
             begin: 0xfe10,
-            end: 0xfe1f,
+            end: 0xfe1f
           },
           {
             begin: 0xfe50,
-            end: 0xfe6f,
+            end: 0xfe6f
           },
           {
             begin: 0xfe70,
-            end: 0xfeff,
+            end: 0xfeff
           },
           {
             begin: 0xff00,
-            end: 0xffef,
+            end: 0xffef
           },
           {
             begin: 0xfff0,
-            end: 0xffff,
+            end: 0xffff
           },
           {
             begin: 0x0f00,
-            end: 0x0fff,
+            end: 0x0fff
           },
           {
             begin: 0x0700,
-            end: 0x074f,
+            end: 0x074f
           },
           {
             begin: 0x0780,
-            end: 0x07bf,
+            end: 0x07bf
           },
           {
             begin: 0x0d80,
-            end: 0x0dff,
+            end: 0x0dff
           },
           {
             begin: 0x1000,
-            end: 0x109f,
+            end: 0x109f
           },
           {
             begin: 0x1200,
-            end: 0x137f,
+            end: 0x137f
           },
           {
             begin: 0x13a0,
-            end: 0x13ff,
+            end: 0x13ff
           },
           {
             begin: 0x1400,
-            end: 0x167f,
+            end: 0x167f
           },
           {
             begin: 0x1680,
-            end: 0x169f,
+            end: 0x169f
           },
           {
             begin: 0x16a0,
-            end: 0x16ff,
+            end: 0x16ff
           },
           {
             begin: 0x1780,
-            end: 0x17ff,
+            end: 0x17ff
           },
           {
             begin: 0x1800,
-            end: 0x18af,
+            end: 0x18af
           },
           {
             begin: 0x2800,
-            end: 0x28ff,
+            end: 0x28ff
           },
           {
             begin: 0xa000,
-            end: 0xa48f,
+            end: 0xa48f
           },
           {
             begin: 0x1700,
-            end: 0x171f,
+            end: 0x171f
           },
           {
             begin: 0x10300,
-            end: 0x1032f,
+            end: 0x1032f
           },
           {
             begin: 0x10330,
-            end: 0x1034f,
+            end: 0x1034f
           },
           {
             begin: 0x10400,
-            end: 0x1044f,
+            end: 0x1044f
           },
           {
             begin: 0x1d000,
-            end: 0x1d0ff,
+            end: 0x1d0ff
           },
           {
             begin: 0x1d400,
-            end: 0x1d7ff,
+            end: 0x1d7ff
           },
           {
             begin: 0xff000,
-            end: 0xffffd,
+            end: 0xffffd
           },
           {
             begin: 0xfe00,
-            end: 0xfe0f,
+            end: 0xfe0f
           },
           {
             begin: 0xe0000,
-            end: 0xe007f,
+            end: 0xe007f
           },
           {
             begin: 0x1900,
-            end: 0x194f,
+            end: 0x194f
           },
           {
             begin: 0x1950,
-            end: 0x197f,
+            end: 0x197f
           },
           {
             begin: 0x1980,
-            end: 0x19df,
+            end: 0x19df
           },
           {
             begin: 0x1a00,
-            end: 0x1a1f,
+            end: 0x1a1f
           },
           {
             begin: 0x2c00,
-            end: 0x2c5f,
+            end: 0x2c5f
           },
           {
             begin: 0x2d30,
-            end: 0x2d7f,
+            end: 0x2d7f
           },
           {
             begin: 0x4dc0,
-            end: 0x4dff,
+            end: 0x4dff
           },
           {
             begin: 0xa800,
-            end: 0xa82f,
+            end: 0xa82f
           },
           {
             begin: 0x10000,
-            end: 0x1007f,
+            end: 0x1007f
           },
           {
             begin: 0x10140,
-            end: 0x1018f,
+            end: 0x1018f
           },
           {
             begin: 0x10380,
-            end: 0x1039f,
+            end: 0x1039f
           },
           {
             begin: 0x103a0,
-            end: 0x103df,
+            end: 0x103df
           },
           {
             begin: 0x10450,
-            end: 0x1047f,
+            end: 0x1047f
           },
           {
             begin: 0x10480,
-            end: 0x104af,
+            end: 0x104af
           },
           {
             begin: 0x10800,
-            end: 0x1083f,
+            end: 0x1083f
           },
           {
             begin: 0x10a00,
-            end: 0x10a5f,
+            end: 0x10a5f
           },
           {
             begin: 0x1d300,
-            end: 0x1d35f,
+            end: 0x1d35f
           },
           {
             begin: 0x12000,
-            end: 0x123ff,
+            end: 0x123ff
           },
           {
             begin: 0x1d360,
-            end: 0x1d37f,
+            end: 0x1d37f
           },
           {
             begin: 0x1b80,
-            end: 0x1bbf,
+            end: 0x1bbf
           },
           {
             begin: 0x1c00,
-            end: 0x1c4f,
+            end: 0x1c4f
           },
           {
             begin: 0x1c50,
-            end: 0x1c7f,
+            end: 0x1c7f
           },
           {
             begin: 0xa880,
-            end: 0xa8df,
+            end: 0xa8df
           },
           {
             begin: 0xa900,
-            end: 0xa92f,
+            end: 0xa92f
           },
           {
             begin: 0xa930,
-            end: 0xa95f,
+            end: 0xa95f
           },
           {
             begin: 0xaa00,
-            end: 0xaa5f,
+            end: 0xaa5f
           },
           {
             begin: 0x10190,
-            end: 0x101cf,
+            end: 0x101cf
           },
           {
             begin: 0x101d0,
-            end: 0x101ff,
+            end: 0x101ff
           },
           {
             begin: 0x102a0,
-            end: 0x102df,
+            end: 0x102df
           },
           {
             begin: 0x1f030,
-            end: 0x1f09f,
-          },
+            end: 0x1f09f
+          }
         ];
         function getUnicodeRangeFor(value) {
           for (var i = 0, ii = UnicodeRanges.length; i < ii; i++) {
@@ -61368,7 +61361,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.FontRendererFactory = void 0;
 
@@ -61443,8 +61436,8 @@
               constructor: {
                 value: subClass,
                 writable: true,
-                configurable: true,
-              },
+                configurable: true
+              }
             }
           );
           if (superClass) _setPrototypeOf(subClass, superClass);
@@ -61512,7 +61505,7 @@
 
               for (i = 0; i < segCount; i++, p += 2) {
                 ranges[i] = {
-                  end: getUshort(data, p),
+                  end: getUshort(data, p)
                 };
               }
 
@@ -61556,7 +61549,7 @@
                 ranges.push({
                   start: getLong(data, p),
                   end: getLong(data, p + 4),
-                  idDelta: getLong(data, p + 8) - getLong(data, p),
+                  idDelta: getLong(data, p + 8) - getLong(data, p)
                 });
                 p += 12;
               }
@@ -61584,7 +61577,7 @@
               gsubrs: cff.globalSubrIndex && cff.globalSubrIndex.objects,
               isCFFCIDFont: cff.isCIDFont,
               fdSelect: cff.fdSelect,
-              fdArray: cff.fdArray,
+              fdArray: cff.fdArray
             };
           }
 
@@ -61649,7 +61642,7 @@
 
             return {
               charCode: code,
-              glyphId: gid,
+              glyphId: gid
             };
           }
 
@@ -61657,21 +61650,21 @@
             function moveTo(x, y) {
               cmds.push({
                 cmd: 'moveTo',
-                args: [x, y],
+                args: [x, y]
               });
             }
 
             function lineTo(x, y) {
               cmds.push({
                 cmd: 'lineTo',
-                args: [x, y],
+                args: [x, y]
               });
             }
 
             function quadraticCurveTo(xa, ya, x, y) {
               cmds.push({
                 cmd: 'quadraticCurveTo',
-                args: [xa, ya, x, y],
+                args: [xa, ya, x, y]
               });
             }
 
@@ -61736,15 +61729,15 @@
 
                 if (subglyph) {
                   cmds.push({
-                    cmd: 'save',
+                    cmd: 'save'
                   });
                   cmds.push({
                     cmd: 'transform',
-                    args: [scaleX, scale01, scale10, scaleY, x, y],
+                    args: [scaleX, scale01, scale10, scaleY, x, y]
                   });
                   compileGlyf(subglyph, cmds, font);
                   cmds.push({
-                    cmd: 'restore',
+                    cmd: 'restore'
                   });
                 }
               } while (flags & 0x20);
@@ -61773,7 +61766,7 @@
 
                 while (repeat-- > 0) {
                   points.push({
-                    flags: flags,
+                    flags: flags
                   });
                 }
               }
@@ -61830,7 +61823,7 @@
                   var p = {
                     flags: 1,
                     x: (contour[0].x + contour[contour.length - 1].x) / 2,
-                    y: (contour[0].y + contour[contour.length - 1].y) / 2,
+                    y: (contour[0].y + contour[contour.length - 1].y) / 2
                   };
                   contour.unshift(p);
                   contour.push(p);
@@ -61873,21 +61866,21 @@
             function moveTo(x, y) {
               cmds.push({
                 cmd: 'moveTo',
-                args: [x, y],
+                args: [x, y]
               });
             }
 
             function lineTo(x, y) {
               cmds.push({
                 cmd: 'lineTo',
-                args: [x, y],
+                args: [x, y]
               });
             }
 
             function bezierCurveTo(x1, y1, x2, y2, x, y) {
               cmds.push({
                 cmd: 'bezierCurveTo',
-                args: [x1, y1, x2, y2, x, y],
+                args: [x1, y1, x2, y2, x, y]
               });
             }
 
@@ -61992,8 +61985,8 @@
                             numSubrs < 1240
                               ? 107
                               : numSubrs < 33900
-                              ? 1131
-                              : 32768;
+                                ? 1131
+                                : 32768;
                           subrCode = subrs[n];
                         }
                       } else {
@@ -62101,11 +62094,11 @@
                       y = stack.pop();
                       x = stack.pop();
                       cmds.push({
-                        cmd: 'save',
+                        cmd: 'save'
                       });
                       cmds.push({
                         cmd: 'translate',
-                        args: [x, y],
+                        args: [x, y]
                       });
                       var cmap = lookupCmap(
                         font.cmap,
@@ -62120,7 +62113,7 @@
                         cmap.glyphId
                       );
                       cmds.push({
-                        cmd: 'restore',
+                        cmd: 'restore'
                       });
                       cmap = lookupCmap(
                         font.cmap,
@@ -62381,7 +62374,7 @@
                     }
 
                     return fn;
-                  },
+                  }
                 },
                 {
                   key: 'compileGlyph',
@@ -62407,22 +62400,22 @@
 
                     var cmds = [];
                     cmds.push({
-                      cmd: 'save',
+                      cmd: 'save'
                     });
                     cmds.push({
                       cmd: 'transform',
-                      args: fontMatrix.slice(),
+                      args: fontMatrix.slice()
                     });
                     cmds.push({
                       cmd: 'scale',
-                      args: ['size', '-size'],
+                      args: ['size', '-size']
                     });
                     this.compileGlyphImpl(code, cmds, glyphId);
                     cmds.push({
-                      cmd: 'restore',
+                      cmd: 'restore'
                     });
                     return cmds;
-                  },
+                  }
                 },
                 {
                   key: 'compileGlyphImpl',
@@ -62430,7 +62423,7 @@
                     (0, _util.unreachable)(
                       'Children classes should implement this.'
                     );
-                  },
+                  }
                 },
                 {
                   key: 'hasBuiltPath',
@@ -62441,8 +62434,8 @@
                       this.compiledCharCodeToGlyphId[cmap.charCode] !==
                         undefined
                     );
-                  },
-                },
+                  }
+                }
               ]);
 
               return CompiledFont;
@@ -62475,8 +62468,8 @@
                   key: 'compileGlyphImpl',
                   value: function compileGlyphImpl(code, cmds) {
                     compileGlyf(code, cmds, this);
-                  },
-                },
+                  }
+                }
               ]);
 
               return TrueTypeCompiled;
@@ -62509,14 +62502,14 @@
                   _this2.gsubrs.length < 1240
                     ? 107
                     : _this2.gsubrs.length < 33900
-                    ? 1131
-                    : 32768;
+                      ? 1131
+                      : 32768;
                 _this2.subrsBias =
                   _this2.subrs.length < 1240
                     ? 107
                     : _this2.subrs.length < 33900
-                    ? 1131
-                    : 32768;
+                      ? 1131
+                      : 32768;
                 _this2.isCFFCIDFont = cffInfo.isCFFCIDFont;
                 _this2.fdSelect = cffInfo.fdSelect;
                 _this2.fdArray = cffInfo.fdArray;
@@ -62528,8 +62521,8 @@
                   key: 'compileGlyphImpl',
                   value: function compileGlyphImpl(code, cmds, glyphId) {
                     compileCharString(code, cmds, this, glyphId);
-                  },
-                },
+                  }
+                }
               ]);
 
               return Type2Compiled;
@@ -62595,7 +62588,7 @@
                 font.fontMatrix,
                 font.glyphNameMap
               );
-            },
+            }
           };
         })();
 
@@ -62608,7 +62601,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.Type1Parser = void 0;
 
@@ -62636,7 +62629,7 @@
             rmoveto: [21],
             hmoveto: [22],
             vhcurveto: [30],
-            hvcurveto: [31],
+            hvcurveto: [31]
           };
 
           function Type1CharString() {
@@ -62959,7 +62952,7 @@
               }
 
               return false;
-            },
+            }
           };
           return Type1CharString;
         })();
@@ -63157,8 +63150,8 @@
                 subrs: [],
                 charstrings: [],
                 properties: {
-                  privateData: privateData,
-                },
+                  privateData: privateData
+                }
               };
               var token, length, data, lenIV, encoded;
 
@@ -63205,7 +63198,7 @@
 
                       charstrings.push({
                         glyph: glyph,
-                        encoded: encoded,
+                        encoded: encoded
                       });
                     }
 
@@ -63300,7 +63293,7 @@
                   charstring: output,
                   width: charString.width,
                   lsb: charString.lsb,
-                  seac: charString.seac,
+                  seac: charString.seac
                 });
               }
 
@@ -63369,7 +63362,7 @@
                     break;
                 }
               }
-            },
+            }
           };
           return Type1Parser;
         })();
@@ -63383,7 +63376,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.getTilingPatternIR = getTilingPatternIR;
         exports.Pattern = void 0;
@@ -63403,7 +63396,7 @@
           FREE_FORM_MESH: 4,
           LATTICE_FORM_MESH: 5,
           COONS_PATCH_MESH: 6,
-          TENSOR_PATCH_MESH: 7,
+          TENSOR_PATCH_MESH: 7
         };
 
         var Pattern = (function PatternClosure() {
@@ -63416,7 +63409,7 @@
               (0, _util.unreachable)(
                 'Should not call Pattern.getStyle: '.concat(ctx)
               );
-            },
+            }
           };
 
           Pattern.parseShading = function (
@@ -63467,7 +63460,7 @@
               }
 
               handler.send('UnsupportedFeature', {
-                featureId: _util.UNSUPPORTED_FEATURES.shadingPattern,
+                featureId: _util.UNSUPPORTED_FEATURES.shadingPattern
               });
               (0, _util.warn)(ex);
               return new Shadings.Dummy();
@@ -63626,7 +63619,7 @@
               }
 
               return ['RadialAxial', type, this.colorStops, p0, p1, r0, r1];
-            },
+            }
           };
           return RadialAxial;
         })();
@@ -63727,7 +63720,7 @@
                   : 2.3283064365386963e-10;
               return [
                 xi * scale * (decode[1] - decode[0]) + decode[0],
-                yi * scale * (decode[3] - decode[2]) + decode[2],
+                yi * scale * (decode[3] - decode[2]) + decode[2]
               ];
             },
             readComponents: function MeshStreamReader_readComponents() {
@@ -63753,7 +63746,7 @@
               }
 
               return this.context.colorSpace.getRgb(color, 0);
-            },
+            }
           };
 
           function decodeType4Shading(mesh, reader) {
@@ -63802,7 +63795,7 @@
             mesh.figures.push({
               type: 'triangles',
               coords: new Int32Array(ps),
-              colors: new Int32Array(ps),
+              colors: new Int32Array(ps)
             });
           }
 
@@ -63823,7 +63816,7 @@
               type: 'lattice',
               coords: new Int32Array(ps),
               colors: new Int32Array(ps),
-              verticesPerRow: verticesPerRow,
+              verticesPerRow: verticesPerRow
             });
           }
 
@@ -63843,7 +63836,7 @@
                     t_ * t_ * t_,
                     3 * t * t_ * t_,
                     3 * t * t * t_,
-                    t * t * t,
+                    t * t * t
                   ])
                 );
               }
@@ -63978,7 +63971,7 @@
               type: 'lattice',
               coords: figureCoords,
               colors: figureColors,
-              verticesPerRow: verticesPerRow,
+              verticesPerRow: verticesPerRow
             };
           }
 
@@ -64110,7 +64103,7 @@
                   6 * (coords[ps[4]][1] + coords[ps[1]][1]) -
                   2 * (coords[ps[12]][1] + coords[ps[3]][1]) +
                   3 * (coords[ps[13]][1] + coords[ps[7]][1])) /
-                  9,
+                  9
               ]);
               ps[6] = coords.length;
               coords.push([
@@ -64125,7 +64118,7 @@
                   6 * (coords[ps[2]][1] + coords[ps[7]][1]) -
                   2 * (coords[ps[0]][1] + coords[ps[15]][1]) +
                   3 * (coords[ps[4]][1] + coords[ps[14]][1])) /
-                  9,
+                  9
               ]);
               ps[9] = coords.length;
               coords.push([
@@ -64140,7 +64133,7 @@
                   6 * (coords[ps[8]][1] + coords[ps[13]][1]) -
                   2 * (coords[ps[0]][1] + coords[ps[15]][1]) +
                   3 * (coords[ps[11]][1] + coords[ps[1]][1])) /
-                  9,
+                  9
               ]);
               ps[10] = coords.length;
               coords.push([
@@ -64155,12 +64148,12 @@
                   6 * (coords[ps[11]][1] + coords[ps[14]][1]) -
                   2 * (coords[ps[12]][1] + coords[ps[3]][1]) +
                   3 * (coords[ps[2]][1] + coords[ps[8]][1])) /
-                  9,
+                  9
               ]);
               mesh.figures.push({
                 type: 'patch',
                 coords: new Int32Array(ps),
-                colors: new Int32Array(cs),
+                colors: new Int32Array(cs)
               });
             }
           }
@@ -64299,7 +64292,7 @@
               mesh.figures.push({
                 type: 'patch',
                 coords: new Int32Array(ps),
-                colors: new Int32Array(cs),
+                colors: new Int32Array(cs)
               });
             }
           }
@@ -64392,7 +64385,7 @@
               decode: dict.getArray('Decode'),
               colorFn: fn,
               colorSpace: cs,
-              numComps: fn ? 1 : cs.numComps,
+              numComps: fn ? 1 : cs.numComps
             };
             var reader = new MeshStreamReader(stream, decodeContext);
             var patchMesh = false;
@@ -64450,9 +64443,9 @@
                 this.bounds,
                 this.matrix,
                 this.bbox,
-                this.background,
+                this.background
               ];
-            },
+            }
           };
           return Mesh;
         })();
@@ -64465,7 +64458,7 @@
           Dummy.prototype = {
             getIR: function Dummy_getIR() {
               return ['Dummy'];
-            },
+            }
           };
           return Dummy;
         })();
@@ -64495,7 +64488,7 @@
             xstep,
             ystep,
             paintType,
-            tilingType,
+            tilingType
           ];
         }
 
@@ -64506,7 +64499,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.bidi = bidi;
 
@@ -64768,7 +64761,7 @@
           'L',
           'L',
           'L',
-          'L',
+          'L'
         ];
         var arabicTypes = [
           'AN',
@@ -65026,7 +65019,7 @@
           'AL',
           'AL',
           'AL',
-          'AL',
+          'AL'
         ];
 
         function isOdd(i) {
@@ -65064,7 +65057,7 @@
         function createBidiText(str, isLTR, vertical) {
           return {
             str: str,
-            dir: vertical ? 'ttb' : isLTR ? 'ltr' : 'rtl',
+            dir: vertical ? 'ttb' : isLTR ? 'ltr' : 'rtl'
           };
         }
 
@@ -65333,7 +65326,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.getMetrics = void 0;
 
@@ -66810,644 +66803,644 @@
             t['bracerightbt'] = 494;
             t['apple'] = 790;
           });
-          t['Times-Roman'] = (0, _core_utils.getLookupTableFactory)(function (
-            t
-          ) {
-            t['space'] = 250;
-            t['exclam'] = 333;
-            t['quotedbl'] = 408;
-            t['numbersign'] = 500;
-            t['dollar'] = 500;
-            t['percent'] = 833;
-            t['ampersand'] = 778;
-            t['quoteright'] = 333;
-            t['parenleft'] = 333;
-            t['parenright'] = 333;
-            t['asterisk'] = 500;
-            t['plus'] = 564;
-            t['comma'] = 250;
-            t['hyphen'] = 333;
-            t['period'] = 250;
-            t['slash'] = 278;
-            t['zero'] = 500;
-            t['one'] = 500;
-            t['two'] = 500;
-            t['three'] = 500;
-            t['four'] = 500;
-            t['five'] = 500;
-            t['six'] = 500;
-            t['seven'] = 500;
-            t['eight'] = 500;
-            t['nine'] = 500;
-            t['colon'] = 278;
-            t['semicolon'] = 278;
-            t['less'] = 564;
-            t['equal'] = 564;
-            t['greater'] = 564;
-            t['question'] = 444;
-            t['at'] = 921;
-            t['A'] = 722;
-            t['B'] = 667;
-            t['C'] = 667;
-            t['D'] = 722;
-            t['E'] = 611;
-            t['F'] = 556;
-            t['G'] = 722;
-            t['H'] = 722;
-            t['I'] = 333;
-            t['J'] = 389;
-            t['K'] = 722;
-            t['L'] = 611;
-            t['M'] = 889;
-            t['N'] = 722;
-            t['O'] = 722;
-            t['P'] = 556;
-            t['Q'] = 722;
-            t['R'] = 667;
-            t['S'] = 556;
-            t['T'] = 611;
-            t['U'] = 722;
-            t['V'] = 722;
-            t['W'] = 944;
-            t['X'] = 722;
-            t['Y'] = 722;
-            t['Z'] = 611;
-            t['bracketleft'] = 333;
-            t['backslash'] = 278;
-            t['bracketright'] = 333;
-            t['asciicircum'] = 469;
-            t['underscore'] = 500;
-            t['quoteleft'] = 333;
-            t['a'] = 444;
-            t['b'] = 500;
-            t['c'] = 444;
-            t['d'] = 500;
-            t['e'] = 444;
-            t['f'] = 333;
-            t['g'] = 500;
-            t['h'] = 500;
-            t['i'] = 278;
-            t['j'] = 278;
-            t['k'] = 500;
-            t['l'] = 278;
-            t['m'] = 778;
-            t['n'] = 500;
-            t['o'] = 500;
-            t['p'] = 500;
-            t['q'] = 500;
-            t['r'] = 333;
-            t['s'] = 389;
-            t['t'] = 278;
-            t['u'] = 500;
-            t['v'] = 500;
-            t['w'] = 722;
-            t['x'] = 500;
-            t['y'] = 500;
-            t['z'] = 444;
-            t['braceleft'] = 480;
-            t['bar'] = 200;
-            t['braceright'] = 480;
-            t['asciitilde'] = 541;
-            t['exclamdown'] = 333;
-            t['cent'] = 500;
-            t['sterling'] = 500;
-            t['fraction'] = 167;
-            t['yen'] = 500;
-            t['florin'] = 500;
-            t['section'] = 500;
-            t['currency'] = 500;
-            t['quotesingle'] = 180;
-            t['quotedblleft'] = 444;
-            t['guillemotleft'] = 500;
-            t['guilsinglleft'] = 333;
-            t['guilsinglright'] = 333;
-            t['fi'] = 556;
-            t['fl'] = 556;
-            t['endash'] = 500;
-            t['dagger'] = 500;
-            t['daggerdbl'] = 500;
-            t['periodcentered'] = 250;
-            t['paragraph'] = 453;
-            t['bullet'] = 350;
-            t['quotesinglbase'] = 333;
-            t['quotedblbase'] = 444;
-            t['quotedblright'] = 444;
-            t['guillemotright'] = 500;
-            t['ellipsis'] = 1000;
-            t['perthousand'] = 1000;
-            t['questiondown'] = 444;
-            t['grave'] = 333;
-            t['acute'] = 333;
-            t['circumflex'] = 333;
-            t['tilde'] = 333;
-            t['macron'] = 333;
-            t['breve'] = 333;
-            t['dotaccent'] = 333;
-            t['dieresis'] = 333;
-            t['ring'] = 333;
-            t['cedilla'] = 333;
-            t['hungarumlaut'] = 333;
-            t['ogonek'] = 333;
-            t['caron'] = 333;
-            t['emdash'] = 1000;
-            t['AE'] = 889;
-            t['ordfeminine'] = 276;
-            t['Lslash'] = 611;
-            t['Oslash'] = 722;
-            t['OE'] = 889;
-            t['ordmasculine'] = 310;
-            t['ae'] = 667;
-            t['dotlessi'] = 278;
-            t['lslash'] = 278;
-            t['oslash'] = 500;
-            t['oe'] = 722;
-            t['germandbls'] = 500;
-            t['Idieresis'] = 333;
-            t['eacute'] = 444;
-            t['abreve'] = 444;
-            t['uhungarumlaut'] = 500;
-            t['ecaron'] = 444;
-            t['Ydieresis'] = 722;
-            t['divide'] = 564;
-            t['Yacute'] = 722;
-            t['Acircumflex'] = 722;
-            t['aacute'] = 444;
-            t['Ucircumflex'] = 722;
-            t['yacute'] = 500;
-            t['scommaaccent'] = 389;
-            t['ecircumflex'] = 444;
-            t['Uring'] = 722;
-            t['Udieresis'] = 722;
-            t['aogonek'] = 444;
-            t['Uacute'] = 722;
-            t['uogonek'] = 500;
-            t['Edieresis'] = 611;
-            t['Dcroat'] = 722;
-            t['commaaccent'] = 250;
-            t['copyright'] = 760;
-            t['Emacron'] = 611;
-            t['ccaron'] = 444;
-            t['aring'] = 444;
-            t['Ncommaaccent'] = 722;
-            t['lacute'] = 278;
-            t['agrave'] = 444;
-            t['Tcommaaccent'] = 611;
-            t['Cacute'] = 667;
-            t['atilde'] = 444;
-            t['Edotaccent'] = 611;
-            t['scaron'] = 389;
-            t['scedilla'] = 389;
-            t['iacute'] = 278;
-            t['lozenge'] = 471;
-            t['Rcaron'] = 667;
-            t['Gcommaaccent'] = 722;
-            t['ucircumflex'] = 500;
-            t['acircumflex'] = 444;
-            t['Amacron'] = 722;
-            t['rcaron'] = 333;
-            t['ccedilla'] = 444;
-            t['Zdotaccent'] = 611;
-            t['Thorn'] = 556;
-            t['Omacron'] = 722;
-            t['Racute'] = 667;
-            t['Sacute'] = 556;
-            t['dcaron'] = 588;
-            t['Umacron'] = 722;
-            t['uring'] = 500;
-            t['threesuperior'] = 300;
-            t['Ograve'] = 722;
-            t['Agrave'] = 722;
-            t['Abreve'] = 722;
-            t['multiply'] = 564;
-            t['uacute'] = 500;
-            t['Tcaron'] = 611;
-            t['partialdiff'] = 476;
-            t['ydieresis'] = 500;
-            t['Nacute'] = 722;
-            t['icircumflex'] = 278;
-            t['Ecircumflex'] = 611;
-            t['adieresis'] = 444;
-            t['edieresis'] = 444;
-            t['cacute'] = 444;
-            t['nacute'] = 500;
-            t['umacron'] = 500;
-            t['Ncaron'] = 722;
-            t['Iacute'] = 333;
-            t['plusminus'] = 564;
-            t['brokenbar'] = 200;
-            t['registered'] = 760;
-            t['Gbreve'] = 722;
-            t['Idotaccent'] = 333;
-            t['summation'] = 600;
-            t['Egrave'] = 611;
-            t['racute'] = 333;
-            t['omacron'] = 500;
-            t['Zacute'] = 611;
-            t['Zcaron'] = 611;
-            t['greaterequal'] = 549;
-            t['Eth'] = 722;
-            t['Ccedilla'] = 667;
-            t['lcommaaccent'] = 278;
-            t['tcaron'] = 326;
-            t['eogonek'] = 444;
-            t['Uogonek'] = 722;
-            t['Aacute'] = 722;
-            t['Adieresis'] = 722;
-            t['egrave'] = 444;
-            t['zacute'] = 444;
-            t['iogonek'] = 278;
-            t['Oacute'] = 722;
-            t['oacute'] = 500;
-            t['amacron'] = 444;
-            t['sacute'] = 389;
-            t['idieresis'] = 278;
-            t['Ocircumflex'] = 722;
-            t['Ugrave'] = 722;
-            t['Delta'] = 612;
-            t['thorn'] = 500;
-            t['twosuperior'] = 300;
-            t['Odieresis'] = 722;
-            t['mu'] = 500;
-            t['igrave'] = 278;
-            t['ohungarumlaut'] = 500;
-            t['Eogonek'] = 611;
-            t['dcroat'] = 500;
-            t['threequarters'] = 750;
-            t['Scedilla'] = 556;
-            t['lcaron'] = 344;
-            t['Kcommaaccent'] = 722;
-            t['Lacute'] = 611;
-            t['trademark'] = 980;
-            t['edotaccent'] = 444;
-            t['Igrave'] = 333;
-            t['Imacron'] = 333;
-            t['Lcaron'] = 611;
-            t['onehalf'] = 750;
-            t['lessequal'] = 549;
-            t['ocircumflex'] = 500;
-            t['ntilde'] = 500;
-            t['Uhungarumlaut'] = 722;
-            t['Eacute'] = 611;
-            t['emacron'] = 444;
-            t['gbreve'] = 500;
-            t['onequarter'] = 750;
-            t['Scaron'] = 556;
-            t['Scommaaccent'] = 556;
-            t['Ohungarumlaut'] = 722;
-            t['degree'] = 400;
-            t['ograve'] = 500;
-            t['Ccaron'] = 667;
-            t['ugrave'] = 500;
-            t['radical'] = 453;
-            t['Dcaron'] = 722;
-            t['rcommaaccent'] = 333;
-            t['Ntilde'] = 722;
-            t['otilde'] = 500;
-            t['Rcommaaccent'] = 667;
-            t['Lcommaaccent'] = 611;
-            t['Atilde'] = 722;
-            t['Aogonek'] = 722;
-            t['Aring'] = 722;
-            t['Otilde'] = 722;
-            t['zdotaccent'] = 444;
-            t['Ecaron'] = 611;
-            t['Iogonek'] = 333;
-            t['kcommaaccent'] = 500;
-            t['minus'] = 564;
-            t['Icircumflex'] = 333;
-            t['ncaron'] = 500;
-            t['tcommaaccent'] = 278;
-            t['logicalnot'] = 564;
-            t['odieresis'] = 500;
-            t['udieresis'] = 500;
-            t['notequal'] = 549;
-            t['gcommaaccent'] = 500;
-            t['eth'] = 500;
-            t['zcaron'] = 444;
-            t['ncommaaccent'] = 500;
-            t['onesuperior'] = 300;
-            t['imacron'] = 278;
-            t['Euro'] = 500;
-          });
-          t['Times-Bold'] = (0, _core_utils.getLookupTableFactory)(function (
-            t
-          ) {
-            t['space'] = 250;
-            t['exclam'] = 333;
-            t['quotedbl'] = 555;
-            t['numbersign'] = 500;
-            t['dollar'] = 500;
-            t['percent'] = 1000;
-            t['ampersand'] = 833;
-            t['quoteright'] = 333;
-            t['parenleft'] = 333;
-            t['parenright'] = 333;
-            t['asterisk'] = 500;
-            t['plus'] = 570;
-            t['comma'] = 250;
-            t['hyphen'] = 333;
-            t['period'] = 250;
-            t['slash'] = 278;
-            t['zero'] = 500;
-            t['one'] = 500;
-            t['two'] = 500;
-            t['three'] = 500;
-            t['four'] = 500;
-            t['five'] = 500;
-            t['six'] = 500;
-            t['seven'] = 500;
-            t['eight'] = 500;
-            t['nine'] = 500;
-            t['colon'] = 333;
-            t['semicolon'] = 333;
-            t['less'] = 570;
-            t['equal'] = 570;
-            t['greater'] = 570;
-            t['question'] = 500;
-            t['at'] = 930;
-            t['A'] = 722;
-            t['B'] = 667;
-            t['C'] = 722;
-            t['D'] = 722;
-            t['E'] = 667;
-            t['F'] = 611;
-            t['G'] = 778;
-            t['H'] = 778;
-            t['I'] = 389;
-            t['J'] = 500;
-            t['K'] = 778;
-            t['L'] = 667;
-            t['M'] = 944;
-            t['N'] = 722;
-            t['O'] = 778;
-            t['P'] = 611;
-            t['Q'] = 778;
-            t['R'] = 722;
-            t['S'] = 556;
-            t['T'] = 667;
-            t['U'] = 722;
-            t['V'] = 722;
-            t['W'] = 1000;
-            t['X'] = 722;
-            t['Y'] = 722;
-            t['Z'] = 667;
-            t['bracketleft'] = 333;
-            t['backslash'] = 278;
-            t['bracketright'] = 333;
-            t['asciicircum'] = 581;
-            t['underscore'] = 500;
-            t['quoteleft'] = 333;
-            t['a'] = 500;
-            t['b'] = 556;
-            t['c'] = 444;
-            t['d'] = 556;
-            t['e'] = 444;
-            t['f'] = 333;
-            t['g'] = 500;
-            t['h'] = 556;
-            t['i'] = 278;
-            t['j'] = 333;
-            t['k'] = 556;
-            t['l'] = 278;
-            t['m'] = 833;
-            t['n'] = 556;
-            t['o'] = 500;
-            t['p'] = 556;
-            t['q'] = 556;
-            t['r'] = 444;
-            t['s'] = 389;
-            t['t'] = 333;
-            t['u'] = 556;
-            t['v'] = 500;
-            t['w'] = 722;
-            t['x'] = 500;
-            t['y'] = 500;
-            t['z'] = 444;
-            t['braceleft'] = 394;
-            t['bar'] = 220;
-            t['braceright'] = 394;
-            t['asciitilde'] = 520;
-            t['exclamdown'] = 333;
-            t['cent'] = 500;
-            t['sterling'] = 500;
-            t['fraction'] = 167;
-            t['yen'] = 500;
-            t['florin'] = 500;
-            t['section'] = 500;
-            t['currency'] = 500;
-            t['quotesingle'] = 278;
-            t['quotedblleft'] = 500;
-            t['guillemotleft'] = 500;
-            t['guilsinglleft'] = 333;
-            t['guilsinglright'] = 333;
-            t['fi'] = 556;
-            t['fl'] = 556;
-            t['endash'] = 500;
-            t['dagger'] = 500;
-            t['daggerdbl'] = 500;
-            t['periodcentered'] = 250;
-            t['paragraph'] = 540;
-            t['bullet'] = 350;
-            t['quotesinglbase'] = 333;
-            t['quotedblbase'] = 500;
-            t['quotedblright'] = 500;
-            t['guillemotright'] = 500;
-            t['ellipsis'] = 1000;
-            t['perthousand'] = 1000;
-            t['questiondown'] = 500;
-            t['grave'] = 333;
-            t['acute'] = 333;
-            t['circumflex'] = 333;
-            t['tilde'] = 333;
-            t['macron'] = 333;
-            t['breve'] = 333;
-            t['dotaccent'] = 333;
-            t['dieresis'] = 333;
-            t['ring'] = 333;
-            t['cedilla'] = 333;
-            t['hungarumlaut'] = 333;
-            t['ogonek'] = 333;
-            t['caron'] = 333;
-            t['emdash'] = 1000;
-            t['AE'] = 1000;
-            t['ordfeminine'] = 300;
-            t['Lslash'] = 667;
-            t['Oslash'] = 778;
-            t['OE'] = 1000;
-            t['ordmasculine'] = 330;
-            t['ae'] = 722;
-            t['dotlessi'] = 278;
-            t['lslash'] = 278;
-            t['oslash'] = 500;
-            t['oe'] = 722;
-            t['germandbls'] = 556;
-            t['Idieresis'] = 389;
-            t['eacute'] = 444;
-            t['abreve'] = 500;
-            t['uhungarumlaut'] = 556;
-            t['ecaron'] = 444;
-            t['Ydieresis'] = 722;
-            t['divide'] = 570;
-            t['Yacute'] = 722;
-            t['Acircumflex'] = 722;
-            t['aacute'] = 500;
-            t['Ucircumflex'] = 722;
-            t['yacute'] = 500;
-            t['scommaaccent'] = 389;
-            t['ecircumflex'] = 444;
-            t['Uring'] = 722;
-            t['Udieresis'] = 722;
-            t['aogonek'] = 500;
-            t['Uacute'] = 722;
-            t['uogonek'] = 556;
-            t['Edieresis'] = 667;
-            t['Dcroat'] = 722;
-            t['commaaccent'] = 250;
-            t['copyright'] = 747;
-            t['Emacron'] = 667;
-            t['ccaron'] = 444;
-            t['aring'] = 500;
-            t['Ncommaaccent'] = 722;
-            t['lacute'] = 278;
-            t['agrave'] = 500;
-            t['Tcommaaccent'] = 667;
-            t['Cacute'] = 722;
-            t['atilde'] = 500;
-            t['Edotaccent'] = 667;
-            t['scaron'] = 389;
-            t['scedilla'] = 389;
-            t['iacute'] = 278;
-            t['lozenge'] = 494;
-            t['Rcaron'] = 722;
-            t['Gcommaaccent'] = 778;
-            t['ucircumflex'] = 556;
-            t['acircumflex'] = 500;
-            t['Amacron'] = 722;
-            t['rcaron'] = 444;
-            t['ccedilla'] = 444;
-            t['Zdotaccent'] = 667;
-            t['Thorn'] = 611;
-            t['Omacron'] = 778;
-            t['Racute'] = 722;
-            t['Sacute'] = 556;
-            t['dcaron'] = 672;
-            t['Umacron'] = 722;
-            t['uring'] = 556;
-            t['threesuperior'] = 300;
-            t['Ograve'] = 778;
-            t['Agrave'] = 722;
-            t['Abreve'] = 722;
-            t['multiply'] = 570;
-            t['uacute'] = 556;
-            t['Tcaron'] = 667;
-            t['partialdiff'] = 494;
-            t['ydieresis'] = 500;
-            t['Nacute'] = 722;
-            t['icircumflex'] = 278;
-            t['Ecircumflex'] = 667;
-            t['adieresis'] = 500;
-            t['edieresis'] = 444;
-            t['cacute'] = 444;
-            t['nacute'] = 556;
-            t['umacron'] = 556;
-            t['Ncaron'] = 722;
-            t['Iacute'] = 389;
-            t['plusminus'] = 570;
-            t['brokenbar'] = 220;
-            t['registered'] = 747;
-            t['Gbreve'] = 778;
-            t['Idotaccent'] = 389;
-            t['summation'] = 600;
-            t['Egrave'] = 667;
-            t['racute'] = 444;
-            t['omacron'] = 500;
-            t['Zacute'] = 667;
-            t['Zcaron'] = 667;
-            t['greaterequal'] = 549;
-            t['Eth'] = 722;
-            t['Ccedilla'] = 722;
-            t['lcommaaccent'] = 278;
-            t['tcaron'] = 416;
-            t['eogonek'] = 444;
-            t['Uogonek'] = 722;
-            t['Aacute'] = 722;
-            t['Adieresis'] = 722;
-            t['egrave'] = 444;
-            t['zacute'] = 444;
-            t['iogonek'] = 278;
-            t['Oacute'] = 778;
-            t['oacute'] = 500;
-            t['amacron'] = 500;
-            t['sacute'] = 389;
-            t['idieresis'] = 278;
-            t['Ocircumflex'] = 778;
-            t['Ugrave'] = 722;
-            t['Delta'] = 612;
-            t['thorn'] = 556;
-            t['twosuperior'] = 300;
-            t['Odieresis'] = 778;
-            t['mu'] = 556;
-            t['igrave'] = 278;
-            t['ohungarumlaut'] = 500;
-            t['Eogonek'] = 667;
-            t['dcroat'] = 556;
-            t['threequarters'] = 750;
-            t['Scedilla'] = 556;
-            t['lcaron'] = 394;
-            t['Kcommaaccent'] = 778;
-            t['Lacute'] = 667;
-            t['trademark'] = 1000;
-            t['edotaccent'] = 444;
-            t['Igrave'] = 389;
-            t['Imacron'] = 389;
-            t['Lcaron'] = 667;
-            t['onehalf'] = 750;
-            t['lessequal'] = 549;
-            t['ocircumflex'] = 500;
-            t['ntilde'] = 556;
-            t['Uhungarumlaut'] = 722;
-            t['Eacute'] = 667;
-            t['emacron'] = 444;
-            t['gbreve'] = 500;
-            t['onequarter'] = 750;
-            t['Scaron'] = 556;
-            t['Scommaaccent'] = 556;
-            t['Ohungarumlaut'] = 778;
-            t['degree'] = 400;
-            t['ograve'] = 500;
-            t['Ccaron'] = 722;
-            t['ugrave'] = 556;
-            t['radical'] = 549;
-            t['Dcaron'] = 722;
-            t['rcommaaccent'] = 444;
-            t['Ntilde'] = 722;
-            t['otilde'] = 500;
-            t['Rcommaaccent'] = 722;
-            t['Lcommaaccent'] = 667;
-            t['Atilde'] = 722;
-            t['Aogonek'] = 722;
-            t['Aring'] = 722;
-            t['Otilde'] = 778;
-            t['zdotaccent'] = 444;
-            t['Ecaron'] = 667;
-            t['Iogonek'] = 389;
-            t['kcommaaccent'] = 556;
-            t['minus'] = 570;
-            t['Icircumflex'] = 389;
-            t['ncaron'] = 556;
-            t['tcommaaccent'] = 333;
-            t['logicalnot'] = 570;
-            t['odieresis'] = 500;
-            t['udieresis'] = 556;
-            t['notequal'] = 549;
-            t['gcommaaccent'] = 500;
-            t['eth'] = 500;
-            t['zcaron'] = 444;
-            t['ncommaaccent'] = 556;
-            t['onesuperior'] = 300;
-            t['imacron'] = 278;
-            t['Euro'] = 500;
-          });
+          t['Times-Roman'] = (0, _core_utils.getLookupTableFactory)(
+            function (t) {
+              t['space'] = 250;
+              t['exclam'] = 333;
+              t['quotedbl'] = 408;
+              t['numbersign'] = 500;
+              t['dollar'] = 500;
+              t['percent'] = 833;
+              t['ampersand'] = 778;
+              t['quoteright'] = 333;
+              t['parenleft'] = 333;
+              t['parenright'] = 333;
+              t['asterisk'] = 500;
+              t['plus'] = 564;
+              t['comma'] = 250;
+              t['hyphen'] = 333;
+              t['period'] = 250;
+              t['slash'] = 278;
+              t['zero'] = 500;
+              t['one'] = 500;
+              t['two'] = 500;
+              t['three'] = 500;
+              t['four'] = 500;
+              t['five'] = 500;
+              t['six'] = 500;
+              t['seven'] = 500;
+              t['eight'] = 500;
+              t['nine'] = 500;
+              t['colon'] = 278;
+              t['semicolon'] = 278;
+              t['less'] = 564;
+              t['equal'] = 564;
+              t['greater'] = 564;
+              t['question'] = 444;
+              t['at'] = 921;
+              t['A'] = 722;
+              t['B'] = 667;
+              t['C'] = 667;
+              t['D'] = 722;
+              t['E'] = 611;
+              t['F'] = 556;
+              t['G'] = 722;
+              t['H'] = 722;
+              t['I'] = 333;
+              t['J'] = 389;
+              t['K'] = 722;
+              t['L'] = 611;
+              t['M'] = 889;
+              t['N'] = 722;
+              t['O'] = 722;
+              t['P'] = 556;
+              t['Q'] = 722;
+              t['R'] = 667;
+              t['S'] = 556;
+              t['T'] = 611;
+              t['U'] = 722;
+              t['V'] = 722;
+              t['W'] = 944;
+              t['X'] = 722;
+              t['Y'] = 722;
+              t['Z'] = 611;
+              t['bracketleft'] = 333;
+              t['backslash'] = 278;
+              t['bracketright'] = 333;
+              t['asciicircum'] = 469;
+              t['underscore'] = 500;
+              t['quoteleft'] = 333;
+              t['a'] = 444;
+              t['b'] = 500;
+              t['c'] = 444;
+              t['d'] = 500;
+              t['e'] = 444;
+              t['f'] = 333;
+              t['g'] = 500;
+              t['h'] = 500;
+              t['i'] = 278;
+              t['j'] = 278;
+              t['k'] = 500;
+              t['l'] = 278;
+              t['m'] = 778;
+              t['n'] = 500;
+              t['o'] = 500;
+              t['p'] = 500;
+              t['q'] = 500;
+              t['r'] = 333;
+              t['s'] = 389;
+              t['t'] = 278;
+              t['u'] = 500;
+              t['v'] = 500;
+              t['w'] = 722;
+              t['x'] = 500;
+              t['y'] = 500;
+              t['z'] = 444;
+              t['braceleft'] = 480;
+              t['bar'] = 200;
+              t['braceright'] = 480;
+              t['asciitilde'] = 541;
+              t['exclamdown'] = 333;
+              t['cent'] = 500;
+              t['sterling'] = 500;
+              t['fraction'] = 167;
+              t['yen'] = 500;
+              t['florin'] = 500;
+              t['section'] = 500;
+              t['currency'] = 500;
+              t['quotesingle'] = 180;
+              t['quotedblleft'] = 444;
+              t['guillemotleft'] = 500;
+              t['guilsinglleft'] = 333;
+              t['guilsinglright'] = 333;
+              t['fi'] = 556;
+              t['fl'] = 556;
+              t['endash'] = 500;
+              t['dagger'] = 500;
+              t['daggerdbl'] = 500;
+              t['periodcentered'] = 250;
+              t['paragraph'] = 453;
+              t['bullet'] = 350;
+              t['quotesinglbase'] = 333;
+              t['quotedblbase'] = 444;
+              t['quotedblright'] = 444;
+              t['guillemotright'] = 500;
+              t['ellipsis'] = 1000;
+              t['perthousand'] = 1000;
+              t['questiondown'] = 444;
+              t['grave'] = 333;
+              t['acute'] = 333;
+              t['circumflex'] = 333;
+              t['tilde'] = 333;
+              t['macron'] = 333;
+              t['breve'] = 333;
+              t['dotaccent'] = 333;
+              t['dieresis'] = 333;
+              t['ring'] = 333;
+              t['cedilla'] = 333;
+              t['hungarumlaut'] = 333;
+              t['ogonek'] = 333;
+              t['caron'] = 333;
+              t['emdash'] = 1000;
+              t['AE'] = 889;
+              t['ordfeminine'] = 276;
+              t['Lslash'] = 611;
+              t['Oslash'] = 722;
+              t['OE'] = 889;
+              t['ordmasculine'] = 310;
+              t['ae'] = 667;
+              t['dotlessi'] = 278;
+              t['lslash'] = 278;
+              t['oslash'] = 500;
+              t['oe'] = 722;
+              t['germandbls'] = 500;
+              t['Idieresis'] = 333;
+              t['eacute'] = 444;
+              t['abreve'] = 444;
+              t['uhungarumlaut'] = 500;
+              t['ecaron'] = 444;
+              t['Ydieresis'] = 722;
+              t['divide'] = 564;
+              t['Yacute'] = 722;
+              t['Acircumflex'] = 722;
+              t['aacute'] = 444;
+              t['Ucircumflex'] = 722;
+              t['yacute'] = 500;
+              t['scommaaccent'] = 389;
+              t['ecircumflex'] = 444;
+              t['Uring'] = 722;
+              t['Udieresis'] = 722;
+              t['aogonek'] = 444;
+              t['Uacute'] = 722;
+              t['uogonek'] = 500;
+              t['Edieresis'] = 611;
+              t['Dcroat'] = 722;
+              t['commaaccent'] = 250;
+              t['copyright'] = 760;
+              t['Emacron'] = 611;
+              t['ccaron'] = 444;
+              t['aring'] = 444;
+              t['Ncommaaccent'] = 722;
+              t['lacute'] = 278;
+              t['agrave'] = 444;
+              t['Tcommaaccent'] = 611;
+              t['Cacute'] = 667;
+              t['atilde'] = 444;
+              t['Edotaccent'] = 611;
+              t['scaron'] = 389;
+              t['scedilla'] = 389;
+              t['iacute'] = 278;
+              t['lozenge'] = 471;
+              t['Rcaron'] = 667;
+              t['Gcommaaccent'] = 722;
+              t['ucircumflex'] = 500;
+              t['acircumflex'] = 444;
+              t['Amacron'] = 722;
+              t['rcaron'] = 333;
+              t['ccedilla'] = 444;
+              t['Zdotaccent'] = 611;
+              t['Thorn'] = 556;
+              t['Omacron'] = 722;
+              t['Racute'] = 667;
+              t['Sacute'] = 556;
+              t['dcaron'] = 588;
+              t['Umacron'] = 722;
+              t['uring'] = 500;
+              t['threesuperior'] = 300;
+              t['Ograve'] = 722;
+              t['Agrave'] = 722;
+              t['Abreve'] = 722;
+              t['multiply'] = 564;
+              t['uacute'] = 500;
+              t['Tcaron'] = 611;
+              t['partialdiff'] = 476;
+              t['ydieresis'] = 500;
+              t['Nacute'] = 722;
+              t['icircumflex'] = 278;
+              t['Ecircumflex'] = 611;
+              t['adieresis'] = 444;
+              t['edieresis'] = 444;
+              t['cacute'] = 444;
+              t['nacute'] = 500;
+              t['umacron'] = 500;
+              t['Ncaron'] = 722;
+              t['Iacute'] = 333;
+              t['plusminus'] = 564;
+              t['brokenbar'] = 200;
+              t['registered'] = 760;
+              t['Gbreve'] = 722;
+              t['Idotaccent'] = 333;
+              t['summation'] = 600;
+              t['Egrave'] = 611;
+              t['racute'] = 333;
+              t['omacron'] = 500;
+              t['Zacute'] = 611;
+              t['Zcaron'] = 611;
+              t['greaterequal'] = 549;
+              t['Eth'] = 722;
+              t['Ccedilla'] = 667;
+              t['lcommaaccent'] = 278;
+              t['tcaron'] = 326;
+              t['eogonek'] = 444;
+              t['Uogonek'] = 722;
+              t['Aacute'] = 722;
+              t['Adieresis'] = 722;
+              t['egrave'] = 444;
+              t['zacute'] = 444;
+              t['iogonek'] = 278;
+              t['Oacute'] = 722;
+              t['oacute'] = 500;
+              t['amacron'] = 444;
+              t['sacute'] = 389;
+              t['idieresis'] = 278;
+              t['Ocircumflex'] = 722;
+              t['Ugrave'] = 722;
+              t['Delta'] = 612;
+              t['thorn'] = 500;
+              t['twosuperior'] = 300;
+              t['Odieresis'] = 722;
+              t['mu'] = 500;
+              t['igrave'] = 278;
+              t['ohungarumlaut'] = 500;
+              t['Eogonek'] = 611;
+              t['dcroat'] = 500;
+              t['threequarters'] = 750;
+              t['Scedilla'] = 556;
+              t['lcaron'] = 344;
+              t['Kcommaaccent'] = 722;
+              t['Lacute'] = 611;
+              t['trademark'] = 980;
+              t['edotaccent'] = 444;
+              t['Igrave'] = 333;
+              t['Imacron'] = 333;
+              t['Lcaron'] = 611;
+              t['onehalf'] = 750;
+              t['lessequal'] = 549;
+              t['ocircumflex'] = 500;
+              t['ntilde'] = 500;
+              t['Uhungarumlaut'] = 722;
+              t['Eacute'] = 611;
+              t['emacron'] = 444;
+              t['gbreve'] = 500;
+              t['onequarter'] = 750;
+              t['Scaron'] = 556;
+              t['Scommaaccent'] = 556;
+              t['Ohungarumlaut'] = 722;
+              t['degree'] = 400;
+              t['ograve'] = 500;
+              t['Ccaron'] = 667;
+              t['ugrave'] = 500;
+              t['radical'] = 453;
+              t['Dcaron'] = 722;
+              t['rcommaaccent'] = 333;
+              t['Ntilde'] = 722;
+              t['otilde'] = 500;
+              t['Rcommaaccent'] = 667;
+              t['Lcommaaccent'] = 611;
+              t['Atilde'] = 722;
+              t['Aogonek'] = 722;
+              t['Aring'] = 722;
+              t['Otilde'] = 722;
+              t['zdotaccent'] = 444;
+              t['Ecaron'] = 611;
+              t['Iogonek'] = 333;
+              t['kcommaaccent'] = 500;
+              t['minus'] = 564;
+              t['Icircumflex'] = 333;
+              t['ncaron'] = 500;
+              t['tcommaaccent'] = 278;
+              t['logicalnot'] = 564;
+              t['odieresis'] = 500;
+              t['udieresis'] = 500;
+              t['notequal'] = 549;
+              t['gcommaaccent'] = 500;
+              t['eth'] = 500;
+              t['zcaron'] = 444;
+              t['ncommaaccent'] = 500;
+              t['onesuperior'] = 300;
+              t['imacron'] = 278;
+              t['Euro'] = 500;
+            }
+          );
+          t['Times-Bold'] = (0, _core_utils.getLookupTableFactory)(
+            function (t) {
+              t['space'] = 250;
+              t['exclam'] = 333;
+              t['quotedbl'] = 555;
+              t['numbersign'] = 500;
+              t['dollar'] = 500;
+              t['percent'] = 1000;
+              t['ampersand'] = 833;
+              t['quoteright'] = 333;
+              t['parenleft'] = 333;
+              t['parenright'] = 333;
+              t['asterisk'] = 500;
+              t['plus'] = 570;
+              t['comma'] = 250;
+              t['hyphen'] = 333;
+              t['period'] = 250;
+              t['slash'] = 278;
+              t['zero'] = 500;
+              t['one'] = 500;
+              t['two'] = 500;
+              t['three'] = 500;
+              t['four'] = 500;
+              t['five'] = 500;
+              t['six'] = 500;
+              t['seven'] = 500;
+              t['eight'] = 500;
+              t['nine'] = 500;
+              t['colon'] = 333;
+              t['semicolon'] = 333;
+              t['less'] = 570;
+              t['equal'] = 570;
+              t['greater'] = 570;
+              t['question'] = 500;
+              t['at'] = 930;
+              t['A'] = 722;
+              t['B'] = 667;
+              t['C'] = 722;
+              t['D'] = 722;
+              t['E'] = 667;
+              t['F'] = 611;
+              t['G'] = 778;
+              t['H'] = 778;
+              t['I'] = 389;
+              t['J'] = 500;
+              t['K'] = 778;
+              t['L'] = 667;
+              t['M'] = 944;
+              t['N'] = 722;
+              t['O'] = 778;
+              t['P'] = 611;
+              t['Q'] = 778;
+              t['R'] = 722;
+              t['S'] = 556;
+              t['T'] = 667;
+              t['U'] = 722;
+              t['V'] = 722;
+              t['W'] = 1000;
+              t['X'] = 722;
+              t['Y'] = 722;
+              t['Z'] = 667;
+              t['bracketleft'] = 333;
+              t['backslash'] = 278;
+              t['bracketright'] = 333;
+              t['asciicircum'] = 581;
+              t['underscore'] = 500;
+              t['quoteleft'] = 333;
+              t['a'] = 500;
+              t['b'] = 556;
+              t['c'] = 444;
+              t['d'] = 556;
+              t['e'] = 444;
+              t['f'] = 333;
+              t['g'] = 500;
+              t['h'] = 556;
+              t['i'] = 278;
+              t['j'] = 333;
+              t['k'] = 556;
+              t['l'] = 278;
+              t['m'] = 833;
+              t['n'] = 556;
+              t['o'] = 500;
+              t['p'] = 556;
+              t['q'] = 556;
+              t['r'] = 444;
+              t['s'] = 389;
+              t['t'] = 333;
+              t['u'] = 556;
+              t['v'] = 500;
+              t['w'] = 722;
+              t['x'] = 500;
+              t['y'] = 500;
+              t['z'] = 444;
+              t['braceleft'] = 394;
+              t['bar'] = 220;
+              t['braceright'] = 394;
+              t['asciitilde'] = 520;
+              t['exclamdown'] = 333;
+              t['cent'] = 500;
+              t['sterling'] = 500;
+              t['fraction'] = 167;
+              t['yen'] = 500;
+              t['florin'] = 500;
+              t['section'] = 500;
+              t['currency'] = 500;
+              t['quotesingle'] = 278;
+              t['quotedblleft'] = 500;
+              t['guillemotleft'] = 500;
+              t['guilsinglleft'] = 333;
+              t['guilsinglright'] = 333;
+              t['fi'] = 556;
+              t['fl'] = 556;
+              t['endash'] = 500;
+              t['dagger'] = 500;
+              t['daggerdbl'] = 500;
+              t['periodcentered'] = 250;
+              t['paragraph'] = 540;
+              t['bullet'] = 350;
+              t['quotesinglbase'] = 333;
+              t['quotedblbase'] = 500;
+              t['quotedblright'] = 500;
+              t['guillemotright'] = 500;
+              t['ellipsis'] = 1000;
+              t['perthousand'] = 1000;
+              t['questiondown'] = 500;
+              t['grave'] = 333;
+              t['acute'] = 333;
+              t['circumflex'] = 333;
+              t['tilde'] = 333;
+              t['macron'] = 333;
+              t['breve'] = 333;
+              t['dotaccent'] = 333;
+              t['dieresis'] = 333;
+              t['ring'] = 333;
+              t['cedilla'] = 333;
+              t['hungarumlaut'] = 333;
+              t['ogonek'] = 333;
+              t['caron'] = 333;
+              t['emdash'] = 1000;
+              t['AE'] = 1000;
+              t['ordfeminine'] = 300;
+              t['Lslash'] = 667;
+              t['Oslash'] = 778;
+              t['OE'] = 1000;
+              t['ordmasculine'] = 330;
+              t['ae'] = 722;
+              t['dotlessi'] = 278;
+              t['lslash'] = 278;
+              t['oslash'] = 500;
+              t['oe'] = 722;
+              t['germandbls'] = 556;
+              t['Idieresis'] = 389;
+              t['eacute'] = 444;
+              t['abreve'] = 500;
+              t['uhungarumlaut'] = 556;
+              t['ecaron'] = 444;
+              t['Ydieresis'] = 722;
+              t['divide'] = 570;
+              t['Yacute'] = 722;
+              t['Acircumflex'] = 722;
+              t['aacute'] = 500;
+              t['Ucircumflex'] = 722;
+              t['yacute'] = 500;
+              t['scommaaccent'] = 389;
+              t['ecircumflex'] = 444;
+              t['Uring'] = 722;
+              t['Udieresis'] = 722;
+              t['aogonek'] = 500;
+              t['Uacute'] = 722;
+              t['uogonek'] = 556;
+              t['Edieresis'] = 667;
+              t['Dcroat'] = 722;
+              t['commaaccent'] = 250;
+              t['copyright'] = 747;
+              t['Emacron'] = 667;
+              t['ccaron'] = 444;
+              t['aring'] = 500;
+              t['Ncommaaccent'] = 722;
+              t['lacute'] = 278;
+              t['agrave'] = 500;
+              t['Tcommaaccent'] = 667;
+              t['Cacute'] = 722;
+              t['atilde'] = 500;
+              t['Edotaccent'] = 667;
+              t['scaron'] = 389;
+              t['scedilla'] = 389;
+              t['iacute'] = 278;
+              t['lozenge'] = 494;
+              t['Rcaron'] = 722;
+              t['Gcommaaccent'] = 778;
+              t['ucircumflex'] = 556;
+              t['acircumflex'] = 500;
+              t['Amacron'] = 722;
+              t['rcaron'] = 444;
+              t['ccedilla'] = 444;
+              t['Zdotaccent'] = 667;
+              t['Thorn'] = 611;
+              t['Omacron'] = 778;
+              t['Racute'] = 722;
+              t['Sacute'] = 556;
+              t['dcaron'] = 672;
+              t['Umacron'] = 722;
+              t['uring'] = 556;
+              t['threesuperior'] = 300;
+              t['Ograve'] = 778;
+              t['Agrave'] = 722;
+              t['Abreve'] = 722;
+              t['multiply'] = 570;
+              t['uacute'] = 556;
+              t['Tcaron'] = 667;
+              t['partialdiff'] = 494;
+              t['ydieresis'] = 500;
+              t['Nacute'] = 722;
+              t['icircumflex'] = 278;
+              t['Ecircumflex'] = 667;
+              t['adieresis'] = 500;
+              t['edieresis'] = 444;
+              t['cacute'] = 444;
+              t['nacute'] = 556;
+              t['umacron'] = 556;
+              t['Ncaron'] = 722;
+              t['Iacute'] = 389;
+              t['plusminus'] = 570;
+              t['brokenbar'] = 220;
+              t['registered'] = 747;
+              t['Gbreve'] = 778;
+              t['Idotaccent'] = 389;
+              t['summation'] = 600;
+              t['Egrave'] = 667;
+              t['racute'] = 444;
+              t['omacron'] = 500;
+              t['Zacute'] = 667;
+              t['Zcaron'] = 667;
+              t['greaterequal'] = 549;
+              t['Eth'] = 722;
+              t['Ccedilla'] = 722;
+              t['lcommaaccent'] = 278;
+              t['tcaron'] = 416;
+              t['eogonek'] = 444;
+              t['Uogonek'] = 722;
+              t['Aacute'] = 722;
+              t['Adieresis'] = 722;
+              t['egrave'] = 444;
+              t['zacute'] = 444;
+              t['iogonek'] = 278;
+              t['Oacute'] = 778;
+              t['oacute'] = 500;
+              t['amacron'] = 500;
+              t['sacute'] = 389;
+              t['idieresis'] = 278;
+              t['Ocircumflex'] = 778;
+              t['Ugrave'] = 722;
+              t['Delta'] = 612;
+              t['thorn'] = 556;
+              t['twosuperior'] = 300;
+              t['Odieresis'] = 778;
+              t['mu'] = 556;
+              t['igrave'] = 278;
+              t['ohungarumlaut'] = 500;
+              t['Eogonek'] = 667;
+              t['dcroat'] = 556;
+              t['threequarters'] = 750;
+              t['Scedilla'] = 556;
+              t['lcaron'] = 394;
+              t['Kcommaaccent'] = 778;
+              t['Lacute'] = 667;
+              t['trademark'] = 1000;
+              t['edotaccent'] = 444;
+              t['Igrave'] = 389;
+              t['Imacron'] = 389;
+              t['Lcaron'] = 667;
+              t['onehalf'] = 750;
+              t['lessequal'] = 549;
+              t['ocircumflex'] = 500;
+              t['ntilde'] = 556;
+              t['Uhungarumlaut'] = 722;
+              t['Eacute'] = 667;
+              t['emacron'] = 444;
+              t['gbreve'] = 500;
+              t['onequarter'] = 750;
+              t['Scaron'] = 556;
+              t['Scommaaccent'] = 556;
+              t['Ohungarumlaut'] = 778;
+              t['degree'] = 400;
+              t['ograve'] = 500;
+              t['Ccaron'] = 722;
+              t['ugrave'] = 556;
+              t['radical'] = 549;
+              t['Dcaron'] = 722;
+              t['rcommaaccent'] = 444;
+              t['Ntilde'] = 722;
+              t['otilde'] = 500;
+              t['Rcommaaccent'] = 722;
+              t['Lcommaaccent'] = 667;
+              t['Atilde'] = 722;
+              t['Aogonek'] = 722;
+              t['Aring'] = 722;
+              t['Otilde'] = 778;
+              t['zdotaccent'] = 444;
+              t['Ecaron'] = 667;
+              t['Iogonek'] = 389;
+              t['kcommaaccent'] = 556;
+              t['minus'] = 570;
+              t['Icircumflex'] = 389;
+              t['ncaron'] = 556;
+              t['tcommaaccent'] = 333;
+              t['logicalnot'] = 570;
+              t['odieresis'] = 500;
+              t['udieresis'] = 556;
+              t['notequal'] = 549;
+              t['gcommaaccent'] = 500;
+              t['eth'] = 500;
+              t['zcaron'] = 444;
+              t['ncommaaccent'] = 556;
+              t['onesuperior'] = 300;
+              t['imacron'] = 278;
+              t['Euro'] = 500;
+            }
+          );
           t['Times-BoldItalic'] = (0, _core_utils.getLookupTableFactory)(
             function (t) {
               t['space'] = 250;
@@ -67767,531 +67760,531 @@
               t['Euro'] = 500;
             }
           );
-          t['Times-Italic'] = (0, _core_utils.getLookupTableFactory)(function (
-            t
-          ) {
-            t['space'] = 250;
-            t['exclam'] = 333;
-            t['quotedbl'] = 420;
-            t['numbersign'] = 500;
-            t['dollar'] = 500;
-            t['percent'] = 833;
-            t['ampersand'] = 778;
-            t['quoteright'] = 333;
-            t['parenleft'] = 333;
-            t['parenright'] = 333;
-            t['asterisk'] = 500;
-            t['plus'] = 675;
-            t['comma'] = 250;
-            t['hyphen'] = 333;
-            t['period'] = 250;
-            t['slash'] = 278;
-            t['zero'] = 500;
-            t['one'] = 500;
-            t['two'] = 500;
-            t['three'] = 500;
-            t['four'] = 500;
-            t['five'] = 500;
-            t['six'] = 500;
-            t['seven'] = 500;
-            t['eight'] = 500;
-            t['nine'] = 500;
-            t['colon'] = 333;
-            t['semicolon'] = 333;
-            t['less'] = 675;
-            t['equal'] = 675;
-            t['greater'] = 675;
-            t['question'] = 500;
-            t['at'] = 920;
-            t['A'] = 611;
-            t['B'] = 611;
-            t['C'] = 667;
-            t['D'] = 722;
-            t['E'] = 611;
-            t['F'] = 611;
-            t['G'] = 722;
-            t['H'] = 722;
-            t['I'] = 333;
-            t['J'] = 444;
-            t['K'] = 667;
-            t['L'] = 556;
-            t['M'] = 833;
-            t['N'] = 667;
-            t['O'] = 722;
-            t['P'] = 611;
-            t['Q'] = 722;
-            t['R'] = 611;
-            t['S'] = 500;
-            t['T'] = 556;
-            t['U'] = 722;
-            t['V'] = 611;
-            t['W'] = 833;
-            t['X'] = 611;
-            t['Y'] = 556;
-            t['Z'] = 556;
-            t['bracketleft'] = 389;
-            t['backslash'] = 278;
-            t['bracketright'] = 389;
-            t['asciicircum'] = 422;
-            t['underscore'] = 500;
-            t['quoteleft'] = 333;
-            t['a'] = 500;
-            t['b'] = 500;
-            t['c'] = 444;
-            t['d'] = 500;
-            t['e'] = 444;
-            t['f'] = 278;
-            t['g'] = 500;
-            t['h'] = 500;
-            t['i'] = 278;
-            t['j'] = 278;
-            t['k'] = 444;
-            t['l'] = 278;
-            t['m'] = 722;
-            t['n'] = 500;
-            t['o'] = 500;
-            t['p'] = 500;
-            t['q'] = 500;
-            t['r'] = 389;
-            t['s'] = 389;
-            t['t'] = 278;
-            t['u'] = 500;
-            t['v'] = 444;
-            t['w'] = 667;
-            t['x'] = 444;
-            t['y'] = 444;
-            t['z'] = 389;
-            t['braceleft'] = 400;
-            t['bar'] = 275;
-            t['braceright'] = 400;
-            t['asciitilde'] = 541;
-            t['exclamdown'] = 389;
-            t['cent'] = 500;
-            t['sterling'] = 500;
-            t['fraction'] = 167;
-            t['yen'] = 500;
-            t['florin'] = 500;
-            t['section'] = 500;
-            t['currency'] = 500;
-            t['quotesingle'] = 214;
-            t['quotedblleft'] = 556;
-            t['guillemotleft'] = 500;
-            t['guilsinglleft'] = 333;
-            t['guilsinglright'] = 333;
-            t['fi'] = 500;
-            t['fl'] = 500;
-            t['endash'] = 500;
-            t['dagger'] = 500;
-            t['daggerdbl'] = 500;
-            t['periodcentered'] = 250;
-            t['paragraph'] = 523;
-            t['bullet'] = 350;
-            t['quotesinglbase'] = 333;
-            t['quotedblbase'] = 556;
-            t['quotedblright'] = 556;
-            t['guillemotright'] = 500;
-            t['ellipsis'] = 889;
-            t['perthousand'] = 1000;
-            t['questiondown'] = 500;
-            t['grave'] = 333;
-            t['acute'] = 333;
-            t['circumflex'] = 333;
-            t['tilde'] = 333;
-            t['macron'] = 333;
-            t['breve'] = 333;
-            t['dotaccent'] = 333;
-            t['dieresis'] = 333;
-            t['ring'] = 333;
-            t['cedilla'] = 333;
-            t['hungarumlaut'] = 333;
-            t['ogonek'] = 333;
-            t['caron'] = 333;
-            t['emdash'] = 889;
-            t['AE'] = 889;
-            t['ordfeminine'] = 276;
-            t['Lslash'] = 556;
-            t['Oslash'] = 722;
-            t['OE'] = 944;
-            t['ordmasculine'] = 310;
-            t['ae'] = 667;
-            t['dotlessi'] = 278;
-            t['lslash'] = 278;
-            t['oslash'] = 500;
-            t['oe'] = 667;
-            t['germandbls'] = 500;
-            t['Idieresis'] = 333;
-            t['eacute'] = 444;
-            t['abreve'] = 500;
-            t['uhungarumlaut'] = 500;
-            t['ecaron'] = 444;
-            t['Ydieresis'] = 556;
-            t['divide'] = 675;
-            t['Yacute'] = 556;
-            t['Acircumflex'] = 611;
-            t['aacute'] = 500;
-            t['Ucircumflex'] = 722;
-            t['yacute'] = 444;
-            t['scommaaccent'] = 389;
-            t['ecircumflex'] = 444;
-            t['Uring'] = 722;
-            t['Udieresis'] = 722;
-            t['aogonek'] = 500;
-            t['Uacute'] = 722;
-            t['uogonek'] = 500;
-            t['Edieresis'] = 611;
-            t['Dcroat'] = 722;
-            t['commaaccent'] = 250;
-            t['copyright'] = 760;
-            t['Emacron'] = 611;
-            t['ccaron'] = 444;
-            t['aring'] = 500;
-            t['Ncommaaccent'] = 667;
-            t['lacute'] = 278;
-            t['agrave'] = 500;
-            t['Tcommaaccent'] = 556;
-            t['Cacute'] = 667;
-            t['atilde'] = 500;
-            t['Edotaccent'] = 611;
-            t['scaron'] = 389;
-            t['scedilla'] = 389;
-            t['iacute'] = 278;
-            t['lozenge'] = 471;
-            t['Rcaron'] = 611;
-            t['Gcommaaccent'] = 722;
-            t['ucircumflex'] = 500;
-            t['acircumflex'] = 500;
-            t['Amacron'] = 611;
-            t['rcaron'] = 389;
-            t['ccedilla'] = 444;
-            t['Zdotaccent'] = 556;
-            t['Thorn'] = 611;
-            t['Omacron'] = 722;
-            t['Racute'] = 611;
-            t['Sacute'] = 500;
-            t['dcaron'] = 544;
-            t['Umacron'] = 722;
-            t['uring'] = 500;
-            t['threesuperior'] = 300;
-            t['Ograve'] = 722;
-            t['Agrave'] = 611;
-            t['Abreve'] = 611;
-            t['multiply'] = 675;
-            t['uacute'] = 500;
-            t['Tcaron'] = 556;
-            t['partialdiff'] = 476;
-            t['ydieresis'] = 444;
-            t['Nacute'] = 667;
-            t['icircumflex'] = 278;
-            t['Ecircumflex'] = 611;
-            t['adieresis'] = 500;
-            t['edieresis'] = 444;
-            t['cacute'] = 444;
-            t['nacute'] = 500;
-            t['umacron'] = 500;
-            t['Ncaron'] = 667;
-            t['Iacute'] = 333;
-            t['plusminus'] = 675;
-            t['brokenbar'] = 275;
-            t['registered'] = 760;
-            t['Gbreve'] = 722;
-            t['Idotaccent'] = 333;
-            t['summation'] = 600;
-            t['Egrave'] = 611;
-            t['racute'] = 389;
-            t['omacron'] = 500;
-            t['Zacute'] = 556;
-            t['Zcaron'] = 556;
-            t['greaterequal'] = 549;
-            t['Eth'] = 722;
-            t['Ccedilla'] = 667;
-            t['lcommaaccent'] = 278;
-            t['tcaron'] = 300;
-            t['eogonek'] = 444;
-            t['Uogonek'] = 722;
-            t['Aacute'] = 611;
-            t['Adieresis'] = 611;
-            t['egrave'] = 444;
-            t['zacute'] = 389;
-            t['iogonek'] = 278;
-            t['Oacute'] = 722;
-            t['oacute'] = 500;
-            t['amacron'] = 500;
-            t['sacute'] = 389;
-            t['idieresis'] = 278;
-            t['Ocircumflex'] = 722;
-            t['Ugrave'] = 722;
-            t['Delta'] = 612;
-            t['thorn'] = 500;
-            t['twosuperior'] = 300;
-            t['Odieresis'] = 722;
-            t['mu'] = 500;
-            t['igrave'] = 278;
-            t['ohungarumlaut'] = 500;
-            t['Eogonek'] = 611;
-            t['dcroat'] = 500;
-            t['threequarters'] = 750;
-            t['Scedilla'] = 500;
-            t['lcaron'] = 300;
-            t['Kcommaaccent'] = 667;
-            t['Lacute'] = 556;
-            t['trademark'] = 980;
-            t['edotaccent'] = 444;
-            t['Igrave'] = 333;
-            t['Imacron'] = 333;
-            t['Lcaron'] = 611;
-            t['onehalf'] = 750;
-            t['lessequal'] = 549;
-            t['ocircumflex'] = 500;
-            t['ntilde'] = 500;
-            t['Uhungarumlaut'] = 722;
-            t['Eacute'] = 611;
-            t['emacron'] = 444;
-            t['gbreve'] = 500;
-            t['onequarter'] = 750;
-            t['Scaron'] = 500;
-            t['Scommaaccent'] = 500;
-            t['Ohungarumlaut'] = 722;
-            t['degree'] = 400;
-            t['ograve'] = 500;
-            t['Ccaron'] = 667;
-            t['ugrave'] = 500;
-            t['radical'] = 453;
-            t['Dcaron'] = 722;
-            t['rcommaaccent'] = 389;
-            t['Ntilde'] = 667;
-            t['otilde'] = 500;
-            t['Rcommaaccent'] = 611;
-            t['Lcommaaccent'] = 556;
-            t['Atilde'] = 611;
-            t['Aogonek'] = 611;
-            t['Aring'] = 611;
-            t['Otilde'] = 722;
-            t['zdotaccent'] = 389;
-            t['Ecaron'] = 611;
-            t['Iogonek'] = 333;
-            t['kcommaaccent'] = 444;
-            t['minus'] = 675;
-            t['Icircumflex'] = 333;
-            t['ncaron'] = 500;
-            t['tcommaaccent'] = 278;
-            t['logicalnot'] = 675;
-            t['odieresis'] = 500;
-            t['udieresis'] = 500;
-            t['notequal'] = 549;
-            t['gcommaaccent'] = 500;
-            t['eth'] = 500;
-            t['zcaron'] = 389;
-            t['ncommaaccent'] = 500;
-            t['onesuperior'] = 300;
-            t['imacron'] = 278;
-            t['Euro'] = 500;
-          });
-          t['ZapfDingbats'] = (0, _core_utils.getLookupTableFactory)(function (
-            t
-          ) {
-            t['space'] = 278;
-            t['a1'] = 974;
-            t['a2'] = 961;
-            t['a202'] = 974;
-            t['a3'] = 980;
-            t['a4'] = 719;
-            t['a5'] = 789;
-            t['a119'] = 790;
-            t['a118'] = 791;
-            t['a117'] = 690;
-            t['a11'] = 960;
-            t['a12'] = 939;
-            t['a13'] = 549;
-            t['a14'] = 855;
-            t['a15'] = 911;
-            t['a16'] = 933;
-            t['a105'] = 911;
-            t['a17'] = 945;
-            t['a18'] = 974;
-            t['a19'] = 755;
-            t['a20'] = 846;
-            t['a21'] = 762;
-            t['a22'] = 761;
-            t['a23'] = 571;
-            t['a24'] = 677;
-            t['a25'] = 763;
-            t['a26'] = 760;
-            t['a27'] = 759;
-            t['a28'] = 754;
-            t['a6'] = 494;
-            t['a7'] = 552;
-            t['a8'] = 537;
-            t['a9'] = 577;
-            t['a10'] = 692;
-            t['a29'] = 786;
-            t['a30'] = 788;
-            t['a31'] = 788;
-            t['a32'] = 790;
-            t['a33'] = 793;
-            t['a34'] = 794;
-            t['a35'] = 816;
-            t['a36'] = 823;
-            t['a37'] = 789;
-            t['a38'] = 841;
-            t['a39'] = 823;
-            t['a40'] = 833;
-            t['a41'] = 816;
-            t['a42'] = 831;
-            t['a43'] = 923;
-            t['a44'] = 744;
-            t['a45'] = 723;
-            t['a46'] = 749;
-            t['a47'] = 790;
-            t['a48'] = 792;
-            t['a49'] = 695;
-            t['a50'] = 776;
-            t['a51'] = 768;
-            t['a52'] = 792;
-            t['a53'] = 759;
-            t['a54'] = 707;
-            t['a55'] = 708;
-            t['a56'] = 682;
-            t['a57'] = 701;
-            t['a58'] = 826;
-            t['a59'] = 815;
-            t['a60'] = 789;
-            t['a61'] = 789;
-            t['a62'] = 707;
-            t['a63'] = 687;
-            t['a64'] = 696;
-            t['a65'] = 689;
-            t['a66'] = 786;
-            t['a67'] = 787;
-            t['a68'] = 713;
-            t['a69'] = 791;
-            t['a70'] = 785;
-            t['a71'] = 791;
-            t['a72'] = 873;
-            t['a73'] = 761;
-            t['a74'] = 762;
-            t['a203'] = 762;
-            t['a75'] = 759;
-            t['a204'] = 759;
-            t['a76'] = 892;
-            t['a77'] = 892;
-            t['a78'] = 788;
-            t['a79'] = 784;
-            t['a81'] = 438;
-            t['a82'] = 138;
-            t['a83'] = 277;
-            t['a84'] = 415;
-            t['a97'] = 392;
-            t['a98'] = 392;
-            t['a99'] = 668;
-            t['a100'] = 668;
-            t['a89'] = 390;
-            t['a90'] = 390;
-            t['a93'] = 317;
-            t['a94'] = 317;
-            t['a91'] = 276;
-            t['a92'] = 276;
-            t['a205'] = 509;
-            t['a85'] = 509;
-            t['a206'] = 410;
-            t['a86'] = 410;
-            t['a87'] = 234;
-            t['a88'] = 234;
-            t['a95'] = 334;
-            t['a96'] = 334;
-            t['a101'] = 732;
-            t['a102'] = 544;
-            t['a103'] = 544;
-            t['a104'] = 910;
-            t['a106'] = 667;
-            t['a107'] = 760;
-            t['a108'] = 760;
-            t['a112'] = 776;
-            t['a111'] = 595;
-            t['a110'] = 694;
-            t['a109'] = 626;
-            t['a120'] = 788;
-            t['a121'] = 788;
-            t['a122'] = 788;
-            t['a123'] = 788;
-            t['a124'] = 788;
-            t['a125'] = 788;
-            t['a126'] = 788;
-            t['a127'] = 788;
-            t['a128'] = 788;
-            t['a129'] = 788;
-            t['a130'] = 788;
-            t['a131'] = 788;
-            t['a132'] = 788;
-            t['a133'] = 788;
-            t['a134'] = 788;
-            t['a135'] = 788;
-            t['a136'] = 788;
-            t['a137'] = 788;
-            t['a138'] = 788;
-            t['a139'] = 788;
-            t['a140'] = 788;
-            t['a141'] = 788;
-            t['a142'] = 788;
-            t['a143'] = 788;
-            t['a144'] = 788;
-            t['a145'] = 788;
-            t['a146'] = 788;
-            t['a147'] = 788;
-            t['a148'] = 788;
-            t['a149'] = 788;
-            t['a150'] = 788;
-            t['a151'] = 788;
-            t['a152'] = 788;
-            t['a153'] = 788;
-            t['a154'] = 788;
-            t['a155'] = 788;
-            t['a156'] = 788;
-            t['a157'] = 788;
-            t['a158'] = 788;
-            t['a159'] = 788;
-            t['a160'] = 894;
-            t['a161'] = 838;
-            t['a163'] = 1016;
-            t['a164'] = 458;
-            t['a196'] = 748;
-            t['a165'] = 924;
-            t['a192'] = 748;
-            t['a166'] = 918;
-            t['a167'] = 927;
-            t['a168'] = 928;
-            t['a169'] = 928;
-            t['a170'] = 834;
-            t['a171'] = 873;
-            t['a172'] = 828;
-            t['a173'] = 924;
-            t['a162'] = 924;
-            t['a174'] = 917;
-            t['a175'] = 930;
-            t['a176'] = 931;
-            t['a177'] = 463;
-            t['a178'] = 883;
-            t['a179'] = 836;
-            t['a193'] = 836;
-            t['a180'] = 867;
-            t['a199'] = 867;
-            t['a181'] = 696;
-            t['a200'] = 696;
-            t['a182'] = 874;
-            t['a201'] = 874;
-            t['a183'] = 760;
-            t['a184'] = 946;
-            t['a197'] = 771;
-            t['a185'] = 865;
-            t['a194'] = 771;
-            t['a198'] = 888;
-            t['a186'] = 967;
-            t['a195'] = 888;
-            t['a187'] = 831;
-            t['a188'] = 873;
-            t['a189'] = 927;
-            t['a190'] = 970;
-            t['a191'] = 918;
-          });
+          t['Times-Italic'] = (0, _core_utils.getLookupTableFactory)(
+            function (t) {
+              t['space'] = 250;
+              t['exclam'] = 333;
+              t['quotedbl'] = 420;
+              t['numbersign'] = 500;
+              t['dollar'] = 500;
+              t['percent'] = 833;
+              t['ampersand'] = 778;
+              t['quoteright'] = 333;
+              t['parenleft'] = 333;
+              t['parenright'] = 333;
+              t['asterisk'] = 500;
+              t['plus'] = 675;
+              t['comma'] = 250;
+              t['hyphen'] = 333;
+              t['period'] = 250;
+              t['slash'] = 278;
+              t['zero'] = 500;
+              t['one'] = 500;
+              t['two'] = 500;
+              t['three'] = 500;
+              t['four'] = 500;
+              t['five'] = 500;
+              t['six'] = 500;
+              t['seven'] = 500;
+              t['eight'] = 500;
+              t['nine'] = 500;
+              t['colon'] = 333;
+              t['semicolon'] = 333;
+              t['less'] = 675;
+              t['equal'] = 675;
+              t['greater'] = 675;
+              t['question'] = 500;
+              t['at'] = 920;
+              t['A'] = 611;
+              t['B'] = 611;
+              t['C'] = 667;
+              t['D'] = 722;
+              t['E'] = 611;
+              t['F'] = 611;
+              t['G'] = 722;
+              t['H'] = 722;
+              t['I'] = 333;
+              t['J'] = 444;
+              t['K'] = 667;
+              t['L'] = 556;
+              t['M'] = 833;
+              t['N'] = 667;
+              t['O'] = 722;
+              t['P'] = 611;
+              t['Q'] = 722;
+              t['R'] = 611;
+              t['S'] = 500;
+              t['T'] = 556;
+              t['U'] = 722;
+              t['V'] = 611;
+              t['W'] = 833;
+              t['X'] = 611;
+              t['Y'] = 556;
+              t['Z'] = 556;
+              t['bracketleft'] = 389;
+              t['backslash'] = 278;
+              t['bracketright'] = 389;
+              t['asciicircum'] = 422;
+              t['underscore'] = 500;
+              t['quoteleft'] = 333;
+              t['a'] = 500;
+              t['b'] = 500;
+              t['c'] = 444;
+              t['d'] = 500;
+              t['e'] = 444;
+              t['f'] = 278;
+              t['g'] = 500;
+              t['h'] = 500;
+              t['i'] = 278;
+              t['j'] = 278;
+              t['k'] = 444;
+              t['l'] = 278;
+              t['m'] = 722;
+              t['n'] = 500;
+              t['o'] = 500;
+              t['p'] = 500;
+              t['q'] = 500;
+              t['r'] = 389;
+              t['s'] = 389;
+              t['t'] = 278;
+              t['u'] = 500;
+              t['v'] = 444;
+              t['w'] = 667;
+              t['x'] = 444;
+              t['y'] = 444;
+              t['z'] = 389;
+              t['braceleft'] = 400;
+              t['bar'] = 275;
+              t['braceright'] = 400;
+              t['asciitilde'] = 541;
+              t['exclamdown'] = 389;
+              t['cent'] = 500;
+              t['sterling'] = 500;
+              t['fraction'] = 167;
+              t['yen'] = 500;
+              t['florin'] = 500;
+              t['section'] = 500;
+              t['currency'] = 500;
+              t['quotesingle'] = 214;
+              t['quotedblleft'] = 556;
+              t['guillemotleft'] = 500;
+              t['guilsinglleft'] = 333;
+              t['guilsinglright'] = 333;
+              t['fi'] = 500;
+              t['fl'] = 500;
+              t['endash'] = 500;
+              t['dagger'] = 500;
+              t['daggerdbl'] = 500;
+              t['periodcentered'] = 250;
+              t['paragraph'] = 523;
+              t['bullet'] = 350;
+              t['quotesinglbase'] = 333;
+              t['quotedblbase'] = 556;
+              t['quotedblright'] = 556;
+              t['guillemotright'] = 500;
+              t['ellipsis'] = 889;
+              t['perthousand'] = 1000;
+              t['questiondown'] = 500;
+              t['grave'] = 333;
+              t['acute'] = 333;
+              t['circumflex'] = 333;
+              t['tilde'] = 333;
+              t['macron'] = 333;
+              t['breve'] = 333;
+              t['dotaccent'] = 333;
+              t['dieresis'] = 333;
+              t['ring'] = 333;
+              t['cedilla'] = 333;
+              t['hungarumlaut'] = 333;
+              t['ogonek'] = 333;
+              t['caron'] = 333;
+              t['emdash'] = 889;
+              t['AE'] = 889;
+              t['ordfeminine'] = 276;
+              t['Lslash'] = 556;
+              t['Oslash'] = 722;
+              t['OE'] = 944;
+              t['ordmasculine'] = 310;
+              t['ae'] = 667;
+              t['dotlessi'] = 278;
+              t['lslash'] = 278;
+              t['oslash'] = 500;
+              t['oe'] = 667;
+              t['germandbls'] = 500;
+              t['Idieresis'] = 333;
+              t['eacute'] = 444;
+              t['abreve'] = 500;
+              t['uhungarumlaut'] = 500;
+              t['ecaron'] = 444;
+              t['Ydieresis'] = 556;
+              t['divide'] = 675;
+              t['Yacute'] = 556;
+              t['Acircumflex'] = 611;
+              t['aacute'] = 500;
+              t['Ucircumflex'] = 722;
+              t['yacute'] = 444;
+              t['scommaaccent'] = 389;
+              t['ecircumflex'] = 444;
+              t['Uring'] = 722;
+              t['Udieresis'] = 722;
+              t['aogonek'] = 500;
+              t['Uacute'] = 722;
+              t['uogonek'] = 500;
+              t['Edieresis'] = 611;
+              t['Dcroat'] = 722;
+              t['commaaccent'] = 250;
+              t['copyright'] = 760;
+              t['Emacron'] = 611;
+              t['ccaron'] = 444;
+              t['aring'] = 500;
+              t['Ncommaaccent'] = 667;
+              t['lacute'] = 278;
+              t['agrave'] = 500;
+              t['Tcommaaccent'] = 556;
+              t['Cacute'] = 667;
+              t['atilde'] = 500;
+              t['Edotaccent'] = 611;
+              t['scaron'] = 389;
+              t['scedilla'] = 389;
+              t['iacute'] = 278;
+              t['lozenge'] = 471;
+              t['Rcaron'] = 611;
+              t['Gcommaaccent'] = 722;
+              t['ucircumflex'] = 500;
+              t['acircumflex'] = 500;
+              t['Amacron'] = 611;
+              t['rcaron'] = 389;
+              t['ccedilla'] = 444;
+              t['Zdotaccent'] = 556;
+              t['Thorn'] = 611;
+              t['Omacron'] = 722;
+              t['Racute'] = 611;
+              t['Sacute'] = 500;
+              t['dcaron'] = 544;
+              t['Umacron'] = 722;
+              t['uring'] = 500;
+              t['threesuperior'] = 300;
+              t['Ograve'] = 722;
+              t['Agrave'] = 611;
+              t['Abreve'] = 611;
+              t['multiply'] = 675;
+              t['uacute'] = 500;
+              t['Tcaron'] = 556;
+              t['partialdiff'] = 476;
+              t['ydieresis'] = 444;
+              t['Nacute'] = 667;
+              t['icircumflex'] = 278;
+              t['Ecircumflex'] = 611;
+              t['adieresis'] = 500;
+              t['edieresis'] = 444;
+              t['cacute'] = 444;
+              t['nacute'] = 500;
+              t['umacron'] = 500;
+              t['Ncaron'] = 667;
+              t['Iacute'] = 333;
+              t['plusminus'] = 675;
+              t['brokenbar'] = 275;
+              t['registered'] = 760;
+              t['Gbreve'] = 722;
+              t['Idotaccent'] = 333;
+              t['summation'] = 600;
+              t['Egrave'] = 611;
+              t['racute'] = 389;
+              t['omacron'] = 500;
+              t['Zacute'] = 556;
+              t['Zcaron'] = 556;
+              t['greaterequal'] = 549;
+              t['Eth'] = 722;
+              t['Ccedilla'] = 667;
+              t['lcommaaccent'] = 278;
+              t['tcaron'] = 300;
+              t['eogonek'] = 444;
+              t['Uogonek'] = 722;
+              t['Aacute'] = 611;
+              t['Adieresis'] = 611;
+              t['egrave'] = 444;
+              t['zacute'] = 389;
+              t['iogonek'] = 278;
+              t['Oacute'] = 722;
+              t['oacute'] = 500;
+              t['amacron'] = 500;
+              t['sacute'] = 389;
+              t['idieresis'] = 278;
+              t['Ocircumflex'] = 722;
+              t['Ugrave'] = 722;
+              t['Delta'] = 612;
+              t['thorn'] = 500;
+              t['twosuperior'] = 300;
+              t['Odieresis'] = 722;
+              t['mu'] = 500;
+              t['igrave'] = 278;
+              t['ohungarumlaut'] = 500;
+              t['Eogonek'] = 611;
+              t['dcroat'] = 500;
+              t['threequarters'] = 750;
+              t['Scedilla'] = 500;
+              t['lcaron'] = 300;
+              t['Kcommaaccent'] = 667;
+              t['Lacute'] = 556;
+              t['trademark'] = 980;
+              t['edotaccent'] = 444;
+              t['Igrave'] = 333;
+              t['Imacron'] = 333;
+              t['Lcaron'] = 611;
+              t['onehalf'] = 750;
+              t['lessequal'] = 549;
+              t['ocircumflex'] = 500;
+              t['ntilde'] = 500;
+              t['Uhungarumlaut'] = 722;
+              t['Eacute'] = 611;
+              t['emacron'] = 444;
+              t['gbreve'] = 500;
+              t['onequarter'] = 750;
+              t['Scaron'] = 500;
+              t['Scommaaccent'] = 500;
+              t['Ohungarumlaut'] = 722;
+              t['degree'] = 400;
+              t['ograve'] = 500;
+              t['Ccaron'] = 667;
+              t['ugrave'] = 500;
+              t['radical'] = 453;
+              t['Dcaron'] = 722;
+              t['rcommaaccent'] = 389;
+              t['Ntilde'] = 667;
+              t['otilde'] = 500;
+              t['Rcommaaccent'] = 611;
+              t['Lcommaaccent'] = 556;
+              t['Atilde'] = 611;
+              t['Aogonek'] = 611;
+              t['Aring'] = 611;
+              t['Otilde'] = 722;
+              t['zdotaccent'] = 389;
+              t['Ecaron'] = 611;
+              t['Iogonek'] = 333;
+              t['kcommaaccent'] = 444;
+              t['minus'] = 675;
+              t['Icircumflex'] = 333;
+              t['ncaron'] = 500;
+              t['tcommaaccent'] = 278;
+              t['logicalnot'] = 675;
+              t['odieresis'] = 500;
+              t['udieresis'] = 500;
+              t['notequal'] = 549;
+              t['gcommaaccent'] = 500;
+              t['eth'] = 500;
+              t['zcaron'] = 389;
+              t['ncommaaccent'] = 500;
+              t['onesuperior'] = 300;
+              t['imacron'] = 278;
+              t['Euro'] = 500;
+            }
+          );
+          t['ZapfDingbats'] = (0, _core_utils.getLookupTableFactory)(
+            function (t) {
+              t['space'] = 278;
+              t['a1'] = 974;
+              t['a2'] = 961;
+              t['a202'] = 974;
+              t['a3'] = 980;
+              t['a4'] = 719;
+              t['a5'] = 789;
+              t['a119'] = 790;
+              t['a118'] = 791;
+              t['a117'] = 690;
+              t['a11'] = 960;
+              t['a12'] = 939;
+              t['a13'] = 549;
+              t['a14'] = 855;
+              t['a15'] = 911;
+              t['a16'] = 933;
+              t['a105'] = 911;
+              t['a17'] = 945;
+              t['a18'] = 974;
+              t['a19'] = 755;
+              t['a20'] = 846;
+              t['a21'] = 762;
+              t['a22'] = 761;
+              t['a23'] = 571;
+              t['a24'] = 677;
+              t['a25'] = 763;
+              t['a26'] = 760;
+              t['a27'] = 759;
+              t['a28'] = 754;
+              t['a6'] = 494;
+              t['a7'] = 552;
+              t['a8'] = 537;
+              t['a9'] = 577;
+              t['a10'] = 692;
+              t['a29'] = 786;
+              t['a30'] = 788;
+              t['a31'] = 788;
+              t['a32'] = 790;
+              t['a33'] = 793;
+              t['a34'] = 794;
+              t['a35'] = 816;
+              t['a36'] = 823;
+              t['a37'] = 789;
+              t['a38'] = 841;
+              t['a39'] = 823;
+              t['a40'] = 833;
+              t['a41'] = 816;
+              t['a42'] = 831;
+              t['a43'] = 923;
+              t['a44'] = 744;
+              t['a45'] = 723;
+              t['a46'] = 749;
+              t['a47'] = 790;
+              t['a48'] = 792;
+              t['a49'] = 695;
+              t['a50'] = 776;
+              t['a51'] = 768;
+              t['a52'] = 792;
+              t['a53'] = 759;
+              t['a54'] = 707;
+              t['a55'] = 708;
+              t['a56'] = 682;
+              t['a57'] = 701;
+              t['a58'] = 826;
+              t['a59'] = 815;
+              t['a60'] = 789;
+              t['a61'] = 789;
+              t['a62'] = 707;
+              t['a63'] = 687;
+              t['a64'] = 696;
+              t['a65'] = 689;
+              t['a66'] = 786;
+              t['a67'] = 787;
+              t['a68'] = 713;
+              t['a69'] = 791;
+              t['a70'] = 785;
+              t['a71'] = 791;
+              t['a72'] = 873;
+              t['a73'] = 761;
+              t['a74'] = 762;
+              t['a203'] = 762;
+              t['a75'] = 759;
+              t['a204'] = 759;
+              t['a76'] = 892;
+              t['a77'] = 892;
+              t['a78'] = 788;
+              t['a79'] = 784;
+              t['a81'] = 438;
+              t['a82'] = 138;
+              t['a83'] = 277;
+              t['a84'] = 415;
+              t['a97'] = 392;
+              t['a98'] = 392;
+              t['a99'] = 668;
+              t['a100'] = 668;
+              t['a89'] = 390;
+              t['a90'] = 390;
+              t['a93'] = 317;
+              t['a94'] = 317;
+              t['a91'] = 276;
+              t['a92'] = 276;
+              t['a205'] = 509;
+              t['a85'] = 509;
+              t['a206'] = 410;
+              t['a86'] = 410;
+              t['a87'] = 234;
+              t['a88'] = 234;
+              t['a95'] = 334;
+              t['a96'] = 334;
+              t['a101'] = 732;
+              t['a102'] = 544;
+              t['a103'] = 544;
+              t['a104'] = 910;
+              t['a106'] = 667;
+              t['a107'] = 760;
+              t['a108'] = 760;
+              t['a112'] = 776;
+              t['a111'] = 595;
+              t['a110'] = 694;
+              t['a109'] = 626;
+              t['a120'] = 788;
+              t['a121'] = 788;
+              t['a122'] = 788;
+              t['a123'] = 788;
+              t['a124'] = 788;
+              t['a125'] = 788;
+              t['a126'] = 788;
+              t['a127'] = 788;
+              t['a128'] = 788;
+              t['a129'] = 788;
+              t['a130'] = 788;
+              t['a131'] = 788;
+              t['a132'] = 788;
+              t['a133'] = 788;
+              t['a134'] = 788;
+              t['a135'] = 788;
+              t['a136'] = 788;
+              t['a137'] = 788;
+              t['a138'] = 788;
+              t['a139'] = 788;
+              t['a140'] = 788;
+              t['a141'] = 788;
+              t['a142'] = 788;
+              t['a143'] = 788;
+              t['a144'] = 788;
+              t['a145'] = 788;
+              t['a146'] = 788;
+              t['a147'] = 788;
+              t['a148'] = 788;
+              t['a149'] = 788;
+              t['a150'] = 788;
+              t['a151'] = 788;
+              t['a152'] = 788;
+              t['a153'] = 788;
+              t['a154'] = 788;
+              t['a155'] = 788;
+              t['a156'] = 788;
+              t['a157'] = 788;
+              t['a158'] = 788;
+              t['a159'] = 788;
+              t['a160'] = 894;
+              t['a161'] = 838;
+              t['a163'] = 1016;
+              t['a164'] = 458;
+              t['a196'] = 748;
+              t['a165'] = 924;
+              t['a192'] = 748;
+              t['a166'] = 918;
+              t['a167'] = 927;
+              t['a168'] = 928;
+              t['a169'] = 928;
+              t['a170'] = 834;
+              t['a171'] = 873;
+              t['a172'] = 828;
+              t['a173'] = 924;
+              t['a162'] = 924;
+              t['a174'] = 917;
+              t['a175'] = 930;
+              t['a176'] = 931;
+              t['a177'] = 463;
+              t['a178'] = 883;
+              t['a179'] = 836;
+              t['a193'] = 836;
+              t['a180'] = 867;
+              t['a199'] = 867;
+              t['a181'] = 696;
+              t['a200'] = 696;
+              t['a182'] = 874;
+              t['a201'] = 874;
+              t['a183'] = 760;
+              t['a184'] = 946;
+              t['a197'] = 771;
+              t['a185'] = 865;
+              t['a194'] = 771;
+              t['a198'] = 888;
+              t['a186'] = 967;
+              t['a195'] = 888;
+              t['a187'] = 831;
+              t['a188'] = 873;
+              t['a189'] = 927;
+              t['a190'] = 970;
+              t['a191'] = 918;
+            }
+          );
         });
         exports.getMetrics = getMetrics;
 
@@ -68302,7 +68295,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.isPDFFunction = isPDFFunction;
         exports.PostScriptCompiler =
@@ -68366,7 +68359,7 @@
               'value',
               (0, _util.isEvalSupported)()
             );
-          },
+          }
         };
 
         var PDFFunctionFactory =
@@ -68391,9 +68384,9 @@
                   return PDFFunction.parse({
                     xref: this.xref,
                     isEvalSupported: this.isEvalSupported,
-                    fn: fn,
+                    fn: fn
                   });
-                },
+                }
               },
               {
                 key: 'createFromArray',
@@ -68401,10 +68394,10 @@
                   return PDFFunction.parseArray({
                     xref: this.xref,
                     isEvalSupported: this.isEvalSupported,
-                    fnObj: fnObj,
+                    fnObj: fnObj
                   });
-                },
-              },
+                }
+              }
             ]);
 
             return PDFFunctionFactory;
@@ -68490,7 +68483,7 @@
                 null,
                 this.constructInterpolated,
                 this.constructStiched,
-                this.constructPostScript,
+                this.constructPostScript
               ];
               var typeNum = dict.get('FunctionType');
               var typeFn = types[typeNum];
@@ -68503,7 +68496,7 @@
                 xref: xref,
                 isEvalSupported: isEvalSupported,
                 fn: fn,
-                dict: dict,
+                dict: dict
               });
             },
             fromIR: function fromIR(_ref3) {
@@ -68517,28 +68510,28 @@
                   return this.constructSampledFromIR({
                     xref: xref,
                     isEvalSupported: isEvalSupported,
-                    IR: IR,
+                    IR: IR
                   });
 
                 case CONSTRUCT_INTERPOLATED:
                   return this.constructInterpolatedFromIR({
                     xref: xref,
                     isEvalSupported: isEvalSupported,
-                    IR: IR,
+                    IR: IR
                   });
 
                 case CONSTRUCT_STICHED:
                   return this.constructStichedFromIR({
                     xref: xref,
                     isEvalSupported: isEvalSupported,
-                    IR: IR,
+                    IR: IR
                   });
 
                 default:
                   return this.constructPostScriptFromIR({
                     xref: xref,
                     isEvalSupported: isEvalSupported,
-                    IR: IR,
+                    IR: IR
                   });
               }
             },
@@ -68549,12 +68542,12 @@
               var IR = this.getIR({
                 xref: xref,
                 isEvalSupported: isEvalSupported,
-                fn: fn,
+                fn: fn
               });
               return this.fromIR({
                 xref: xref,
                 isEvalSupported: isEvalSupported,
-                IR: IR,
+                IR: IR
               });
             },
             parseArray: function parseArray(_ref5) {
@@ -68566,7 +68559,7 @@
                 return this.parse({
                   xref: xref,
                   isEvalSupported: isEvalSupported,
-                  fn: fnObj,
+                  fn: fnObj
                 });
               }
 
@@ -68577,7 +68570,7 @@
                   this.parse({
                     xref: xref,
                     isEvalSupported: isEvalSupported,
-                    fn: xref.fetchIfRef(fnObj[j]),
+                    fn: xref.fetchIfRef(fnObj[j])
                   })
                 );
               }
@@ -68659,7 +68652,7 @@
                 size,
                 outputSize,
                 Math.pow(2, bps) - 1,
-                range,
+                range
               ];
             },
             constructSampledFromIR: function constructSampledFromIR(_ref7) {
@@ -68813,7 +68806,7 @@
                   this.parse({
                     xref: xref,
                     isEvalSupported: isEvalSupported,
-                    fn: xref.fetchIfRef(fnRefs[i]),
+                    fn: xref.fetchIfRef(fnRefs[i])
                   })
                 );
               }
@@ -68984,7 +68977,7 @@
 
                 dest.set(output, destOffset);
               };
-            },
+            }
           };
         })();
 
@@ -69068,7 +69061,7 @@
                 stack[i] = stack[j];
                 stack[j] = t;
               }
-            },
+            }
           };
           return PostScriptStack;
         })();
@@ -69360,7 +69353,7 @@
               }
 
               return stack.stack;
-            },
+            }
           };
           return PostScriptEvaluator;
         })();
@@ -69500,7 +69493,7 @@
             },
             toString: function toString() {
               return this.parts.join('');
-            },
+            }
           };
 
           function buildAddOperation(num1, num2) {
@@ -69824,7 +69817,7 @@
                 result.push(out.join(''));
               });
               return result.join('\n');
-            },
+            }
           };
           return PostScriptCompiler;
         })();
@@ -69838,7 +69831,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.PostScriptParser = exports.PostScriptLexer = void 0;
 
@@ -69886,7 +69879,7 @@
                 value: function nextToken() {
                   this.prev = this.token;
                   this.token = this.lexer.getToken();
-                },
+                }
               },
               {
                 key: 'accept',
@@ -69897,7 +69890,7 @@
                   }
 
                   return false;
-                },
+                }
               },
               {
                 key: 'expect',
@@ -69911,7 +69904,7 @@
                       .concat(this.token.type, ' expected ')
                       .concat(type, '.')
                   );
-                },
+                }
               },
               {
                 key: 'parse',
@@ -69921,7 +69914,7 @@
                   this.parseBlock();
                   this.expect(PostScriptTokenTypes.RBRACE);
                   return this.operators;
-                },
+                }
               },
               {
                 key: 'parseBlock',
@@ -69937,7 +69930,7 @@
                       return;
                     }
                   }
-                },
+                }
               },
               {
                 key: 'parseCondition',
@@ -69966,8 +69959,8 @@
                       'PS Function: error parsing conditional.'
                     );
                   }
-                },
-              },
+                }
+              }
             ]);
 
             return PostScriptParser;
@@ -69980,7 +69973,7 @@
           NUMBER: 2,
           OPERATOR: 3,
           IF: 4,
-          IFELSE: 5,
+          IFELSE: 5
         };
 
         var PostScriptToken = (function PostScriptTokenClosure() {
@@ -70010,7 +70003,7 @@
                       PostScriptTokenTypes.OPERATOR,
                       op
                     ));
-                  },
+                  }
                 },
                 {
                   key: 'LBRACE',
@@ -70020,7 +70013,7 @@
                       'LBRACE',
                       new PostScriptToken(PostScriptTokenTypes.LBRACE, '{')
                     );
-                  },
+                  }
                 },
                 {
                   key: 'RBRACE',
@@ -70030,7 +70023,7 @@
                       'RBRACE',
                       new PostScriptToken(PostScriptTokenTypes.RBRACE, '}')
                     );
-                  },
+                  }
                 },
                 {
                   key: 'IF',
@@ -70040,7 +70033,7 @@
                       'IF',
                       new PostScriptToken(PostScriptTokenTypes.IF, 'IF')
                     );
-                  },
+                  }
                 },
                 {
                   key: 'IFELSE',
@@ -70050,8 +70043,8 @@
                       'IFELSE',
                       new PostScriptToken(PostScriptTokenTypes.IFELSE, 'IFELSE')
                     );
-                  },
-                },
+                  }
+                }
               ]);
 
               return PostScriptToken;
@@ -70076,7 +70069,7 @@
                 key: 'nextChar',
                 value: function nextChar() {
                   return (this.currentChar = this.stream.getByte());
-                },
+                }
               },
               {
                 key: 'getToken',
@@ -70153,7 +70146,7 @@
                     default:
                       return PostScriptToken.getOperator(str);
                   }
-                },
+                }
               },
               {
                 key: 'getNumber',
@@ -70184,8 +70177,8 @@
                   }
 
                   return value;
-                },
-              },
+                }
+              }
             ]);
 
             return PostScriptLexer;
@@ -70200,7 +70193,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.MurmurHash3_64 = void 0;
 
@@ -70328,7 +70321,7 @@
 
                   this.h1 = h1;
                   this.h2 = h2;
-                },
+                }
               },
               {
                 key: 'hexdigest',
@@ -70355,8 +70348,8 @@
                   var hex1 = (h1 >>> 0).toString(16),
                     hex2 = (h2 >>> 0).toString(16);
                   return hex1.padStart(8, '0') + hex2.padStart(8, '0');
-                },
-              },
+                }
+              }
             ]);
 
             return MurmurHash3_64;
@@ -70371,7 +70364,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.NativeImageDecoder = void 0;
 
@@ -70441,7 +70434,7 @@
                         this.pdfFunctionFactory
                       )
                     );
-                  },
+                  }
                 },
                 {
                   key: 'decode',
@@ -70457,7 +70450,7 @@
                     return this.handler
                       .sendWithPromise('JpegDecode', [
                         image.getIR(this.forceDataSchema),
-                        colorSpace.numComps,
+                        colorSpace.numComps
                       ])
                       .then(function (_ref2) {
                         var data = _ref2.data,
@@ -70465,8 +70458,8 @@
                           height = _ref2.height;
                         return new _stream.Stream(data, 0, data.length, dict);
                       });
-                  },
-                },
+                  }
+                }
               ],
               [
                 {
@@ -70494,7 +70487,7 @@
                       (cs.name === 'DeviceGray' || cs.name === 'DeviceRGB') &&
                       cs.isDefaultDecode(dict.getArray('Decode', 'D'))
                     );
-                  },
+                  }
                 },
                 {
                   key: 'isDecodable',
@@ -70522,8 +70515,8 @@
                       (cs.numComps === 1 || cs.numComps === 3) &&
                       cs.isDefaultDecode(dict.getArray('Decode', 'D'), bpc)
                     );
-                  },
-                },
+                  }
+                }
               ]
             );
 
@@ -70539,7 +70532,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.PDFImage = void 0;
 
@@ -70604,8 +70597,10 @@
           function handleImageData(image, nativeDecoder) {
             if (nativeDecoder && nativeDecoder.canDecode(image)) {
               return nativeDecoder.decode(image)['catch'](function (reason) {
-                (0,
-                _util.warn)('Native image decoding failed -- trying to recover: ' + (reason && reason.message));
+                (0, _util.warn)(
+                  'Native image decoding failed -- trying to recover: ' +
+                    (reason && reason.message)
+                );
                 return image;
               });
             }
@@ -70624,8 +70619,8 @@
               bpc <= 8
                 ? new Uint8Array(length)
                 : bpc <= 16
-                ? new Uint16Array(length)
-                : new Uint32Array(length);
+                  ? new Uint16Array(length)
+                  : new Uint32Array(length);
             var xRatio = w1 / w2;
             var yRatio = h1 / h2;
             var i,
@@ -70813,7 +70808,7 @@
                 res: res,
                 image: smask,
                 isInline: isInline,
-                pdfFunctionFactory: pdfFunctionFactory,
+                pdfFunctionFactory: pdfFunctionFactory
               });
             } else if (mask) {
               if ((0, _primitives.isStream)(mask)) {
@@ -70831,7 +70826,7 @@
                     image: mask,
                     isInline: isInline,
                     isMask: true,
-                    pdfFunctionFactory: pdfFunctionFactory,
+                    pdfFunctionFactory: pdfFunctionFactory
                   });
                 }
               } else {
@@ -70891,7 +70886,7 @@
                   isInline: isInline,
                   smask: smaskData,
                   mask: maskData,
-                  pdfFunctionFactory: pdfFunctionFactory,
+                  pdfFunctionFactory: pdfFunctionFactory
                 });
               }
             );
@@ -70931,7 +70926,7 @@
             return {
               data: data,
               width: width,
-              height: height,
+              height: height
             };
           };
 
@@ -70998,8 +70993,8 @@
                 bpc <= 8
                   ? new Uint8Array(length)
                   : bpc <= 16
-                  ? new Uint16Array(length)
-                  : new Uint32Array(length);
+                    ? new Uint16Array(length)
+                    : new Uint32Array(length);
               var rowComps = width * numComps;
               var max = (1 << bpc) - 1;
               var i = 0,
@@ -71196,7 +71191,7 @@
                 width: drawWidth,
                 height: drawHeight,
                 kind: 0,
-                data: null,
+                data: null
               };
               var numComps = this.numComps;
               var originalWidth = this.width;
@@ -71386,7 +71381,7 @@
               this.image.drawHeight = drawHeight || this.height;
               this.image.forceRGB = !!forceRGB;
               return this.image.getBytes(length, true);
-            },
+            }
           };
           return PDFImage;
         })();
@@ -71400,7 +71395,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.MessageHandler = MessageHandler;
 
@@ -71640,7 +71635,7 @@
                         targetName: _targetName,
                         isReply: true,
                         callbackId: data.callbackId,
-                        data: result,
+                        data: result
                       });
                     },
                     function (reason) {
@@ -71649,7 +71644,7 @@
                         targetName: _targetName,
                         isReply: true,
                         callbackId: data.callbackId,
-                        error: makeReasonSerializable(reason),
+                        error: makeReasonSerializable(reason)
                       });
                     }
                   );
@@ -71688,7 +71683,7 @@
               sourceName: this.sourceName,
               targetName: this.targetName,
               action: actionName,
-              data: data,
+              data: data
             };
             this.postMessage(message, transfers);
           },
@@ -71703,7 +71698,7 @@
               targetName: this.targetName,
               action: actionName,
               data: data,
-              callbackId: callbackId,
+              callbackId: callbackId
             };
             var capability = (0, _util.createPromiseCapability)();
             this.callbacksCapabilities[callbackId] = capability;
@@ -71734,7 +71729,7 @@
                   _this2.streamControllers[streamId] = {
                     controller: controller,
                     startCall: startCapability,
-                    isClosed: false,
+                    isClosed: false
                   };
 
                   _this2.postMessage({
@@ -71743,7 +71738,7 @@
                     action: actionName,
                     streamId: streamId,
                     data: data,
-                    desiredSize: controller.desiredSize,
+                    desiredSize: controller.desiredSize
                   });
 
                   return startCapability.promise;
@@ -71757,7 +71752,7 @@
                     targetName: targetName,
                     stream: 'pull',
                     streamId: streamId,
-                    desiredSize: controller.desiredSize,
+                    desiredSize: controller.desiredSize
                   });
 
                   return pullCapability.promise;
@@ -71773,11 +71768,11 @@
                     targetName: targetName,
                     stream: 'cancel',
                     reason: reason,
-                    streamId: streamId,
+                    streamId: streamId
                   });
 
                   return cancelCapability.promise;
-                },
+                }
               },
               queueingStrategy
             );
@@ -71808,7 +71803,7 @@
                   streamId: streamId,
                   chunk: chunk,
                   success: success,
-                  reason: reason,
+                  reason: reason
                 },
                 transfers
               );
@@ -71837,7 +71832,7 @@
                 sendStreamRequest({
                   stream: 'enqueue',
                   chunk: chunk,
-                  transfers: transfers,
+                  transfers: transfers
                 });
               },
               close: function close() {
@@ -71847,7 +71842,7 @@
 
                 this.isCancelled = true;
                 sendStreamRequest({
-                  stream: 'close',
+                  stream: 'close'
                 });
                 delete self.streamSinks[streamId];
               },
@@ -71859,7 +71854,7 @@
                 this.isCancelled = true;
                 sendStreamRequest({
                   stream: 'error',
-                  reason: reason,
+                  reason: reason
                 });
               },
               sinkCapability: capability,
@@ -71867,7 +71862,7 @@
               onCancel: null,
               isCancelled: false,
               desiredSize: desiredSize,
-              ready: null,
+              ready: null
             };
             streamSink.sinkCapability.resolve();
             streamSink.ready = streamSink.sinkCapability.promise;
@@ -71876,14 +71871,14 @@
               function () {
                 sendStreamRequest({
                   stream: 'start_complete',
-                  success: true,
+                  success: true
                 });
               },
               function (reason) {
                 sendStreamRequest({
                   stream: 'start_complete',
                   success: false,
-                  reason: reason,
+                  reason: reason
                 });
               }
             );
@@ -71906,7 +71901,7 @@
                 stream: stream,
                 success: success,
                 streamId: streamId,
-                reason: reason,
+                reason: reason
               });
             };
 
@@ -71915,7 +71910,7 @@
                 [
                   _this4.streamControllers[data.streamId].startCall,
                   _this4.streamControllers[data.streamId].pullCall,
-                  _this4.streamControllers[data.streamId].cancelCall,
+                  _this4.streamControllers[data.streamId].cancelCall
                 ].map(function (capability) {
                   return capability && finalize(capability.promise);
                 })
@@ -71945,7 +71940,7 @@
                 if (!this.streamSinks[data.streamId]) {
                   sendStreamResponse({
                     stream: 'pull_complete',
-                    success: true,
+                    success: true
                   });
                   break;
                 }
@@ -71962,14 +71957,14 @@
                   function () {
                     sendStreamResponse({
                       stream: 'pull_complete',
-                      success: true,
+                      success: true
                     });
                   },
                   function (reason) {
                     sendStreamResponse({
                       stream: 'pull_complete',
                       success: false,
-                      reason: reason,
+                      reason: reason
                     });
                   }
                 );
@@ -72030,19 +72025,19 @@
                 }
 
                 resolveCall(this.streamSinks[data.streamId].onCancel, [
-                  wrapReason(data.reason),
+                  wrapReason(data.reason)
                 ]).then(
                   function () {
                     sendStreamResponse({
                       stream: 'cancel_complete',
-                      success: true,
+                      success: true
                     });
                   },
                   function (reason) {
                     sendStreamResponse({
                       stream: 'cancel_complete',
                       success: false,
-                      reason: reason,
+                      reason: reason
                     });
                   }
                 );
@@ -72066,7 +72061,7 @@
           },
           destroy: function destroy() {
             this.comObj.removeEventListener('message', this._onComObjOnMessage);
-          },
+          }
         };
 
         /***/
@@ -72076,7 +72071,7 @@
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
-          value: true,
+          value: true
         });
         exports.PDFWorkerStream = void 0;
 
@@ -72187,7 +72182,7 @@
                     this._msgHandler
                   );
                   return this._fullRequestReader;
-                },
+                }
               },
               {
                 key: 'getRangeReader',
@@ -72201,7 +72196,7 @@
                   this._rangeRequestReaders.push(reader);
 
                   return reader;
-                },
+                }
               },
               {
                 key: 'cancelAllRequests',
@@ -72215,8 +72210,8 @@
                   readers.forEach(function (reader) {
                     reader.cancel(reason);
                   });
-                },
-              },
+                }
+              }
             ]);
 
             return PDFWorkerStream;
@@ -72279,13 +72274,13 @@
 
                                 return _context.abrupt('return', {
                                   value: undefined,
-                                  done: true,
+                                  done: true
                                 });
 
                               case 7:
                                 return _context.abrupt('return', {
                                   value: value.buffer,
-                                  done: false,
+                                  done: false
                                 });
 
                               case 8:
@@ -72305,38 +72300,38 @@
                   }
 
                   return read;
-                })(),
+                })()
               },
               {
                 key: 'cancel',
                 value: function cancel(reason) {
                   this._reader.cancel(reason);
-                },
+                }
               },
               {
                 key: 'headersReady',
                 get: function get() {
                   return this._headersReady;
-                },
+                }
               },
               {
                 key: 'contentLength',
                 get: function get() {
                   return this._contentLength;
-                },
+                }
               },
               {
                 key: 'isStreamingSupported',
                 get: function get() {
                   return this._isStreamingSupported;
-                },
+                }
               },
               {
                 key: 'isRangeSupported',
                 get: function get() {
                   return this._isRangeSupported;
-                },
-              },
+                }
+              }
             ]);
 
             return PDFWorkerStreamReader;
@@ -72355,7 +72350,7 @@
                 'GetRangeReader',
                 {
                   begin: begin,
-                  end: end,
+                  end: end
                 }
               );
 
@@ -72391,13 +72386,13 @@
 
                                 return _context2.abrupt('return', {
                                   value: undefined,
-                                  done: true,
+                                  done: true
                                 });
 
                               case 7:
                                 return _context2.abrupt('return', {
                                   value: value.buffer,
-                                  done: false,
+                                  done: false
                                 });
 
                               case 8:
@@ -72417,27 +72412,27 @@
                   }
 
                   return read;
-                })(),
+                })()
               },
               {
                 key: 'cancel',
                 value: function cancel(reason) {
                   this._reader.cancel(reason);
-                },
+                }
               },
               {
                 key: 'isStreamingSupported',
                 get: function get() {
                   return false;
-                },
-              },
+                }
+              }
             ]);
 
             return PDFWorkerStreamRangeReader;
           })();
 
         /***/
-      },
+      }
       /******/
     ]
   );

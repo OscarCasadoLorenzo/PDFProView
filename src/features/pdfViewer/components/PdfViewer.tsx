@@ -21,7 +21,7 @@ const PdfViewer: FC<PdfViewerProps> = ({
   itemCount,
   getPdfPage,
   gap,
-  windowRef,
+  windowRef
 }: PdfViewerProps) => {
   const [pages, setPages] = useState([]);
 
@@ -32,7 +32,7 @@ const PdfViewer: FC<PdfViewerProps> = ({
   const {
     ref,
     width: internalWidth = 400,
-    height: internalHeight = 600,
+    height: internalHeight = 600
   } = useResizeObserver();
 
   const fetchPage = useCallback(
@@ -86,7 +86,7 @@ const PdfViewer: FC<PdfViewerProps> = ({
     width,
     height,
     border: '1px solid #ccc',
-    background: '#ddd',
+    background: '#ddd'
   };
 
   return (
@@ -114,7 +114,7 @@ const PdfViewer: FC<PdfViewerProps> = ({
 PdfViewer.defaultProps = {
   width: '100%',
   height: '70vh',
-  gap: 40,
+  gap: 40
 };
 
 export default PdfViewer;

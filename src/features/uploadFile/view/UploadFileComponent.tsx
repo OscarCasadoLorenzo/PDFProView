@@ -6,7 +6,7 @@ type UploadFileComponentProps = {};
 const UploadFileComponent: FC<
   UploadFileComponentProps
 > = ({}: UploadFileComponentProps) => {
-  return <Droppable id='droppable' />;
+  return <Droppable id="droppable" />;
 };
 
 export default UploadFileComponent;
