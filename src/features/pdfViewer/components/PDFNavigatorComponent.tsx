@@ -2,7 +2,7 @@ import { Button } from '@chakra-ui/button';
 import { Input } from '@chakra-ui/input';
 import { Flex } from '@chakra-ui/layout';
 import { useAtom, useAtomValue } from 'jotai';
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import {
   pageAtom,
   scaleAtom,
@@ -36,16 +36,14 @@ const PDFNavigatorComponent: FC<PDFNavigatorComponentProps> = ({
 
   const totalPages = useAtomValue(totalPagesAtom);
 
-  const scrollToItem = () => {
+  const scrollToPage = (page:number) => {
     windowRef.current && windowRef.current.scrollToItem(page - 1, 'start');
+    setPage(page);
   };
 
   const nextPageDisabled = page >= totalPages;
   const prevPageDisabled = page <= 1;
 
-  useEffect(() => {
-    scrollToItem();
-  }, [page]);
 
   return (
     <Flex justifyContent="space-between">
@@ -83,8 +81,9 @@ const PDFNavigatorComponent: FC<PDFNavigatorComponentProps> = ({
           w={'80px'}
           mr="5px"
           onChange={(e) => {
-            setPage(Number(e.target.value));
+            scrollToPage(Number(e.target.value));
           }}
+          
           type="text"
         />
         of {totalPages}

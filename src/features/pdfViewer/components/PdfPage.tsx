@@ -1,8 +1,9 @@
-import { useAtom, useAtomValue } from 'jotai';
+import { useAtom, useAtomValue, useSetAtom } from 'jotai';
 import pdfjs from 'pdfjs-dist';
-import React, { useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import {
   enabledOCRMarkers,
+  pageAtom,
   scaleAtom,
   searchTextAtom
 } from '../../../data/atoms';
@@ -22,6 +23,7 @@ const PdfPage = React.memo((props: PdfPageProps) => {
   const canvasMarkersRef: any = useRef();
   const textLayerRef: any = useRef();
 
+  const setPageNumber = useSetAtom(pageAtom);
   const [enabledOCRMarkersValue, setEnabledOCRMarkers] =
     useAtom(enabledOCRMarkers);
 
@@ -117,15 +119,18 @@ const PdfPage = React.memo((props: PdfPageProps) => {
     }
   }, [page, scale]);
 
+
+  const handleChangePage = useCallback(()=>{setPageNumber(page.pageIndex+1)},[page]) 
+  
   return (
-    <div className="PdfPage" id="pdfPage">
+    <div className="PdfPage" id="pdfPage" onMouseEnter={handleChangePage}>
       <canvas
         id="canvasMarkers"
         className="PdfPage_canvasMarkers"
         ref={canvasMarkersRef}
       />
       <canvas id="canvasPDF" ref={canvasPDFRef} />
-      <div ref={textLayerRef} className="PdfPage__textLayer" />
+      <div ref={textLayerRef} className="PdfPage__textLayer"  />
     </div>
   );
 });
