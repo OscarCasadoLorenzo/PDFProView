@@ -13,7 +13,7 @@ type DroppableProps = {
   id: string
 }
 
-const Droppable: FC<DroppableProps> = (props: DroppableProps) => {
+const Droppable: FC<DroppableProps> = () => {
   const setFileAtom = useSetAtom(fileAtom)
 
   const [itemOver, setItemOver] = useState(false)
