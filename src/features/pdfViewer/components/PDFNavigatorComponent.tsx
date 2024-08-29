@@ -1,14 +1,14 @@
-import { Button } from '@chakra-ui/button';
-import { Input } from '@chakra-ui/input';
-import { Flex } from '@chakra-ui/layout';
-import { useAtom, useAtomValue } from 'jotai';
-import { FC } from 'react';
+import { Button } from '@chakra-ui/button'
+import { Input } from '@chakra-ui/input'
+import { Flex } from '@chakra-ui/layout'
+import { useAtom, useAtomValue } from 'jotai'
+import { FC } from 'react'
 import {
   pageAtom,
   scaleAtom,
   searchTextAtom,
   totalPagesAtom
-} from '../../../data/atoms';
+} from '../../../data/atoms'
 
 import {
   Box,
@@ -16,34 +16,33 @@ import {
   InputGroup,
   InputLeftElement,
   Select
-} from '@chakra-ui/react';
-import ArrowDownIcon from '../../../icons/ArrowDownIcon';
-import ArrowUpIcon from '../../../icons/ArrowUpIcon';
-import MagnifyingGlassIcon from '../../../icons/MagnifyingGlassIcon';
-import MinusIcon from '../../../icons/MinusIcon';
-import PlusIcon from '../../../icons/PlusIcon';
+} from '@chakra-ui/react'
+import ArrowDownIcon from '../../../icons/ArrowDownIcon'
+import ArrowUpIcon from '../../../icons/ArrowUpIcon'
+import MagnifyingGlassIcon from '../../../icons/MagnifyingGlassIcon'
+import MinusIcon from '../../../icons/MinusIcon'
+import PlusIcon from '../../../icons/PlusIcon'
 
 type PDFNavigatorComponentProps = {
-  windowRef?: any;
-};
+  windowRef?: any
+}
 
 const PDFNavigatorComponent: FC<PDFNavigatorComponentProps> = ({
   windowRef
 }) => {
-  const [page, setPage] = useAtom(pageAtom);
-  const [, setScale] = useAtom(scaleAtom);
-  const [text, setText] = useAtom(searchTextAtom);
+  const [page, setPage] = useAtom(pageAtom)
+  const [, setScale] = useAtom(scaleAtom)
+  const [text, setText] = useAtom(searchTextAtom)
 
-  const totalPages = useAtomValue(totalPagesAtom);
+  const totalPages = useAtomValue(totalPagesAtom)
 
-  const scrollToPage = (page:number) => {
-    windowRef.current && windowRef.current.scrollToItem(page - 1, 'start');
-    setPage(page);
-  };
+  const scrollToPage = (page: number) => {
+    windowRef.current && windowRef.current.scrollToItem(page - 1, 'start')
+    setPage(page)
+  }
 
-  const nextPageDisabled = page >= totalPages;
-  const prevPageDisabled = page <= 1;
-
+  const nextPageDisabled = page >= totalPages
+  const prevPageDisabled = page <= 1
 
   return (
     <Flex justifyContent="space-between">
@@ -81,9 +80,8 @@ const PDFNavigatorComponent: FC<PDFNavigatorComponentProps> = ({
           w={'80px'}
           mr="5px"
           onChange={(e) => {
-            scrollToPage(Number(e.target.value));
+            scrollToPage(Number(e.target.value))
           }}
-          
           type="text"
         />
         of {totalPages}
@@ -109,7 +107,7 @@ const PDFNavigatorComponent: FC<PDFNavigatorComponentProps> = ({
           ml="5px"
           minW="100px"
           onChange={(e) => {
-            setScale(Number(e.target.value));
+            setScale(Number(e.target.value))
           }}
         >
           <option value={1}>100%</option>
@@ -119,7 +117,7 @@ const PDFNavigatorComponent: FC<PDFNavigatorComponentProps> = ({
         </Select>
       </Box>
     </Flex>
-  );
-};
+  )
+}
 
-export default PDFNavigatorComponent;
+export default PDFNavigatorComponent

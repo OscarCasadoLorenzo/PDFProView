@@ -1,6 +1,6 @@
 // Custom scale color scheme was created with https://smart-swatch.netlify.app/
 
-import { extendTheme } from '@chakra-ui/react';
+import { extendTheme } from '@chakra-ui/react'
 
 const PDFProViewTheme = {
   colors: {
@@ -37,6 +37,6 @@ const PDFProViewTheme = {
     onSurface: '#111411',
     onError: '#F5F5F5'
   }
-};
+}
 
-export default extendTheme(PDFProViewTheme);
+export default extendTheme(PDFProViewTheme)

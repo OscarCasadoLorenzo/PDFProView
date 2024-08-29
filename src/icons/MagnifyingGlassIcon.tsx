@@ -1,6 +1,6 @@
-import { chakra } from '@chakra-ui/react';
-import { BsSearch } from 'react-icons/bs';
+import { chakra } from '@chakra-ui/react'
+import { BsSearch } from 'react-icons/bs'
 
-const MagnifyingGlassIcon = chakra(BsSearch);
+const MagnifyingGlassIcon = chakra(BsSearch)
 
-export default MagnifyingGlassIcon;
+export default MagnifyingGlassIcon

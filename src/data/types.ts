@@ -1,13 +1,13 @@
 export type FileInfoType = {
-  name: string;
-  url: string;
-};
+  name: string
+  url: string
+}
 
 export type OCRMark = {
-  x: number;
-  y: number;
-  page: number;
-  id: number;
-  description: string;
-  text: string;
-};
+  x: number
+  y: number
+  page: number
+  id: number
+  description: string
+  text: string
+}

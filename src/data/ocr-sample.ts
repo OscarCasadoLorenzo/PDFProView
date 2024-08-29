@@ -1,4 +1,4 @@
-import { OCRMark } from './types';
+import { OCRMark } from './types'
 
 const OCRMarkers: OCRMark[] = [
   {
@@ -17,6 +17,6 @@ const OCRMarkers: OCRMark[] = [
     description: 'Date',
     text: '10 JULY 2024'
   }
-];
+]
 
-export default OCRMarkers;
+export default OCRMarkers
