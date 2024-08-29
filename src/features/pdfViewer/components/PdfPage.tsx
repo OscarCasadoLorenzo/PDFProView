@@ -1,4 +1,4 @@
-import { useAtom, useAtomValue, useSetAtom } from 'jotai'
+import { useAtomValue, useSetAtom } from 'jotai'
 import pdfjs from 'pdfjs-dist'
 import React, { useCallback, useEffect, useRef } from 'react'
 import {
@@ -24,8 +24,8 @@ const PdfPage = React.memo((props: PdfPageProps) => {
   const textLayerRef: any = useRef()
 
   const setPageNumber = useSetAtom(pageAtom)
-  const [enabledOCRMarkersValue, setEnabledOCRMarkers] =
-    useAtom(enabledOCRMarkers)
+  const enabledOCRMarkersValue =
+    useAtomValue(enabledOCRMarkers)
 
   function printOCRMarkers(context: any, actualPage: number) {
     enabledOCRMarkersValue
