@@ -21,6 +21,16 @@
   transform-origin: 0% 0%;
 }
 
+.PdfPage_canvasMarkers {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  z-index: 99;
+}
+
 .highlighted {
   background-color: yellow;
   border-radius: 2px;

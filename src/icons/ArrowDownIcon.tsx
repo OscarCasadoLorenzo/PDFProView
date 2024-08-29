@@ -1,6 +1,6 @@
-import { chakra } from '@chakra-ui/react';
-import { BsChevronDown } from 'react-icons/bs';
+import { chakra } from '@chakra-ui/react'
+import { BsChevronDown } from 'react-icons/bs'
 
-const ArrowDownIcon = chakra(BsChevronDown);
+const ArrowDownIcon = chakra(BsChevronDown)
 
-export default ArrowDownIcon;
+export default ArrowDownIcon

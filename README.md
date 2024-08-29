@@ -1,30 +1,29 @@
-# React + TypeScript + Vite
+# [PDFProView](https://oscarcasadolorenzo.github.io/PDFProView/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+PDFProView is an open-source project that harnesses the power of React and the pdfjs-dist library to deliver a versatile and customizable PDF viewing experience. Whether you're building an application that requires seamless PDF integration or you're a developer looking for a robust PDF viewer, PDFProView has you covered.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React-Powered:** Utilizes the flexibility and efficiency of React to create a dynamic and responsive PDF viewer.
 
-## Expanding the ESLint configuration
+- **Customizable UI:** Tailor the user interface to fit your application's design and branding.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Versatile Navigation:** Navigate through PDF documents with ease using intuitive controls.
 
-- Configure the top-level `parserOptions` property like this:
+- **Zoom and Pan:** Zoom in and out of pages, and pan across the document for a closer inspection.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+- **Page Navigation:** Quickly jump to specific pages or scroll through the document seamlessly.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- **Text recognition:** Perform text searches within PDF documents for quick and efficient information retrieval.
+
+## Contributing
+
+We welcome contributions to PDFProView! If you have suggestions, find bugs, or want to add new features, please check out our [Contributing Guidelines](https://github.com/OscarCasadoLorenzo/PDFProView/blob/develop/CONTRIBUTING.MD).
+
+## License
+
+PDFProView is released under the [MIT License](https://opensource.org/about/).
+
+---
+
+Thank you for choosing PDFProView! We hope it enhances your PDF viewing experience. Feel free to explore the code, contribute, and make it even better. Happy coding! 📄🚀

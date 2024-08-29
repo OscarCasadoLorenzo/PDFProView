@@ -1,7 +1,12 @@
-import { atom } from 'jotai';
+import { atom } from 'jotai'
 
-export const pageAtom = atom<number>(1);
-export const scaleAtom = atom<number>(1);
-export const searchTextAtom = atom<string>('');
+import { FileInfoType, OCRMark } from './types'
 
-export const totalPagesAtom = atom<number>(0);
+export const fileAtom = atom<FileInfoType | null>(null)
+
+export const pageAtom = atom<number>(1)
+export const scaleAtom = atom<number>(1)
+export const searchTextAtom = atom<string>('')
+export const enabledOCRMarkers = atom<OCRMark[]>([])
+
+export const totalPagesAtom = atom<number>(0)

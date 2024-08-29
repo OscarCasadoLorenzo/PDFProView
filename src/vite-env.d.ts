@@ -1,3 +1,3 @@
 /// <reference types="vite/client" />
-declare module 'pdfjs-dist';
-declare module 'react-window';
+declare module 'pdfjs-dist'
+declare module 'react-window'
