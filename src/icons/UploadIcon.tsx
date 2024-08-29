@@ -1,5 +1,5 @@
-import { chakra } from '@chakra-ui/react';
-import { BsUpload } from 'react-icons/bs';
+import { chakra } from '@chakra-ui/react'
+import { BsUpload } from 'react-icons/bs'
 
-const UploadIcon = chakra(BsUpload);
-export default UploadIcon;
+const UploadIcon = chakra(BsUpload)
+export default UploadIcon

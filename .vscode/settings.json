@@ -1,4 +1,5 @@
 {
   "conventionalCommits.scopes": ["PDFProView"],
-  "cSpell.words": ["chakra"]
+  "cSpell.words": ["chakra"],
+  "editor.formatOnSave": true
 }
