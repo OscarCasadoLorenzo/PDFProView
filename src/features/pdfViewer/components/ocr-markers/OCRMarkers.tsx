@@ -7,12 +7,12 @@ import {
   Input,
   InputGroup,
   InputLeftAddon,
-  InputRightAddon
+  InputRightAddon,
+  Text
 } from '@chakra-ui/react'
-import { useAtom } from 'jotai'
+import { useAtom, useAtomValue } from 'jotai'
 import React from 'react'
-import { enabledOCRMarkers } from '../../../../data/atoms'
-import OCRMarkers from '../../../../data/ocr-sample'
+import { enabledOCRMarkers, OCRMarkersAtom } from '../../../../data/atoms'
 import { OCRMark } from '../../../../data/types'
 
 type MarkersProps = {
@@ -21,6 +21,7 @@ type MarkersProps = {
 export const Markers: React.FC<MarkersProps> = ({ windowRef }) => {
   const [enabledOCRMarkersValue, setEnabledOCRMarkers] =
     useAtom(enabledOCRMarkers)
+  const ocrMarkersFromAI = useAtomValue(OCRMarkersAtom)
 
   function removeEnabledMarkerById(markerToRemoveID: number) {
     return enabledOCRMarkersValue.filter(
@@ -29,6 +30,7 @@ export const Markers: React.FC<MarkersProps> = ({ windowRef }) => {
   }
 
   function scrollToSelectedMark(selectedMarker: OCRMark) {
+    console.log('Scrolling to marker on page:', selectedMarker.page)
     windowRef.current &&
       windowRef.current.scrollToItem(selectedMarker.page - 1, 'start')
   }
@@ -47,37 +49,43 @@ export const Markers: React.FC<MarkersProps> = ({ windowRef }) => {
 
   return (
     <Box>
-      {OCRMarkers.map((OCRMark) => {
-        return (
-          <Box>
-            <FormLabel>{OCRMark.description}</FormLabel>
-            <InputGroup>
-              <InputLeftAddon
-                onClick={() => {
-                  handleMarkerClick(
-                    enabledOCRMarkersValue.includes(OCRMark),
-                    OCRMark
-                  )
-                }}
-              >
-                {enabledOCRMarkersValue.includes(OCRMark) ? (
-                  <EyeFillIcon color={'primary.700'} />
-                ) : (
-                  <EyeIcon color={'primary.700'} />
-                )}
-              </InputLeftAddon>
-              <Input disabled={true} value={OCRMark.text}></Input>
-              <InputRightAddon
-                onClick={() => {
-                  scrollToSelectedMark(OCRMark)
-                }}
-              >
-                <BoxArrowLeftIcon />
-              </InputRightAddon>
-            </InputGroup>
-          </Box>
-        )
-      })}
+      {ocrMarkersFromAI.length === 0 ? (
+        <Text color="gray.500" fontSize="sm" textAlign="center" py={4}>
+          Ask the AI to find information in the document to see markers here
+        </Text>
+      ) : (
+        ocrMarkersFromAI.map((ocrMark: OCRMark) => {
+          return (
+            <Box key={ocrMark.id} mb={3}>
+              <FormLabel>{ocrMark.description}</FormLabel>
+              <InputGroup>
+                <InputLeftAddon
+                  onClick={() => {
+                    handleMarkerClick(
+                      enabledOCRMarkersValue.includes(ocrMark),
+                      ocrMark
+                    )
+                  }}
+                >
+                  {enabledOCRMarkersValue.includes(ocrMark) ? (
+                    <EyeFillIcon color={'primary.700'} />
+                  ) : (
+                    <EyeIcon color={'primary.700'} />
+                  )}
+                </InputLeftAddon>
+                <Input disabled={true} value={ocrMark.text}></Input>
+                <InputRightAddon
+                  onClick={() => {
+                    scrollToSelectedMark(ocrMark)
+                  }}
+                >
+                  <BoxArrowLeftIcon />
+                </InputRightAddon>
+              </InputGroup>
+            </Box>
+          )
+        })
+      )}
     </Box>
   )
 }

@@ -11,3 +11,25 @@ export type OCRMark = {
   description: string
   text: string
 }
+
+export type PDFTextBlock = {
+  text: string
+  x: number
+  y: number
+  width: number
+  height: number
+  page: number
+  fontSize?: number
+  fontName?: string
+}
+
+export type PDFStructuredData = {
+  textBlocks: PDFTextBlock[]
+  pageCount: number
+  extractedText: string
+  metadata?: {
+    filename: string
+    totalPages: number
+    extractionTimestamp: number
+  }
+}
